@@ -54,7 +54,10 @@ export default function Header() {
               <Link href="/">Home</Link>
             </Button>
             <Button sx={{ color: '#fff' }}>
-              <Link href="/products">Products</Link>
+              <Link href="/payment">Payment</Link>
+            </Button>
+            <Button sx={{ color: '#fff' }}>
+              <Link href="/delivery">Delivery</Link>
             </Button>
             <Button sx={{ color: '#fff' }}>
               <Link href="/contact">Contact</Link>

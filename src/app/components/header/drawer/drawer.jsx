@@ -27,15 +27,8 @@ export default function DrawerMenu({ mobileOpen, handleDrawerToggle }) {
         ModalProps={{
           keepMounted: true,
         }}
-        sx={{
-          display: { xs: 'block', sm: 'none' },
-          '& .MuiDrawer-paper': {
-            boxSizing: 'border-box',
-            width: 240,
-          },
-        }}
       >
-        <Box>
+        <Box sx={{ width: { xs: 240, md: 300, xl: 360 } }}>
           <Typography variant="h6" component="h1" sx={{ my: 2, mx: 2 }}>
             My Shop
           </Typography>

@@ -3,11 +3,12 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import { ArrowCircleRight, ArrowCircleLeft } from '@mui/icons-material';
 
 export default function Hero() {
@@ -17,17 +18,18 @@ export default function Hero() {
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
+        loop={true}
+        effect={'fade'}
+        slidesPerView={1}
         autoplay={{
-          delay: 25000,
-          //   disableOnInteraction: false,
+          delay: 2500,
+          disableOnInteraction: false,
         }}
         pagination={{
           clickable: true,
         }}
-        // navigation={true}
         onSwiper={it => (sliderRef.current = it)}
-        modules={[Autoplay, Pagination, Navigation]}
-        slidesPerView={1}
+        modules={[Autoplay, Pagination, Navigation, EffectFade]}
         style={{ width: '100%', height: '400px', background: 'green' }}
       >
         <ArrowCircleLeft
@@ -43,19 +45,49 @@ export default function Hero() {
           onClick={() => sliderRef.current?.slidePrev()}
         />
         <SwiperSlide>
-          <Image src="/hookah1.jpg" width="1000" height="400" alt="image" />
+          <Image
+            src="/hookah1.jpg"
+            fill={true}
+            alt="image"
+            sizes="100%"
+            priority="false"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/hookah2.jpg" width="1000" height="400" alt="image" />
+          <Image
+            src="/hookah2.jpg"
+            fill={true}
+            alt="image"
+            sizes="100%"
+            priority="false"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/hookah3.jpg" width="1000" height="400" alt="image" />
+          <Image
+            src="/hookah3.jpg"
+            fill={true}
+            alt="image"
+            sizes="100%"
+            priority="false"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/hookah4.jpg" width="1000" height="400" alt="image" />
+          <Image
+            src="/hookah4.jpg"
+            fill={true}
+            alt="image"
+            sizes="100%"
+            priority="false"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <Image src="/hookah5.jpg" width="1000" height="400" alt="image" />
+          <Image
+            src="/hookah5.jpg"
+            fill={true}
+            alt="image"
+            sizes="100%"
+            priority="false"
+          />
         </SwiperSlide>
         <ArrowCircleRight
           sx={{

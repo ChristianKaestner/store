@@ -1,16 +1,14 @@
-import { Drawer, Box } from '@mui/material';
+'use client';
+
+import { Divider } from '@mui/material';
+import { Aside } from './sidebar.styled';
+import ProductsList from '../header/drawer/products/products';
 
 export default function Sidebar() {
   return (
-    <aside
-      style={{
-        background: 'red',
-        minWidth: '350px',
-        height: '1000px',
-        alignSelf: 'start',
-        position: 'sticky',
-        marginRight: '16px',
-      }}
-    ></aside>
+    <Aside>
+      <ProductsList />
+      <Divider orientation="vertical" textAlign="right" />
+    </Aside>
   );
 }

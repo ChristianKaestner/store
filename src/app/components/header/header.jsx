@@ -10,6 +10,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import LogoDevIcon from '@mui/icons-material/LogoDev';
 import SearchIcon from '@mui/icons-material/Search';
 import AppsIcon from '@mui/icons-material/Apps';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import DrawerMenu from './drawer/drawer';
 
 export default function Header() {
@@ -23,10 +24,15 @@ export default function Header() {
     <>
       <AppBar
         position="static"
-        sx={{ direction: 'flex', justifyContent: 'center', height: 72, px: 0 }}
+        sx={{
+          direction: 'flex',
+          justifyContent: 'center',
+          height: 72,
+          px: 0,
+        }}
       >
-        <Container maxWidth="xl">
-          <Toolbar sx={{ px: 0 }}>
+        <Container maxWidth="xl" sx={{ px: 0 }}>
+          <Toolbar style={{ padding: 0 }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -112,6 +118,9 @@ export default function Header() {
                 justifyContent: 'end',
               }}
             >
+              <IconButton color="inherit" aria-label="personal account">
+                <AccountCircleOutlinedIcon sx={{ fontSize: 40 }} />
+              </IconButton>
               <IconButton color="inherit" aria-label="shoping basket">
                 <Link href="/basket">
                   <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />

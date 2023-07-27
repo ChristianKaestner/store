@@ -1,6 +1,7 @@
 import { Container, Box } from '@mui/material';
 import Hero from './components/hero/hero';
 import Sidebar from './components/sidebar/sidebar';
+import ProductsList from './components/productsList/productsList';
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         }}
       >
         <Hero />
-        <p>fsfsdf</p>
+        <ProductsList />
       </Box>
     </Container>
   );

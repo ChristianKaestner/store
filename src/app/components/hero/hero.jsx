@@ -23,14 +23,14 @@ export default function Hero() {
         slidesPerView={1}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         pagination={{
           clickable: true,
         }}
         onSwiper={it => (sliderRef.current = it)}
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        style={{ width: '100%', height: '400px', background: 'green' }}
+        style={{ width: '100%', height: '400px' }}
       >
         <ArrowCircleLeft
           sx={{
@@ -40,7 +40,8 @@ export default function Hero() {
             width: 50,
             height: 400,
             color: '#fff',
-            zIndex: 100,
+            zIndex: 2,
+            cursor: 'pointer',
           }}
           onClick={() => sliderRef.current?.slidePrev()}
         />
@@ -97,7 +98,8 @@ export default function Hero() {
             width: 50,
             height: 400,
             color: '#fff',
-            zIndex: 100,
+            zIndex: 2,
+            cursor: 'pointer',
           }}
           onClick={() => sliderRef.current?.slideNext()}
         />

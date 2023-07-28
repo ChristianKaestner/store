@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { AppBar, Typography, Toolbar, Box } from '@mui/material';
-import { Button, IconButton, Container } from '@mui/material';
+import { Button, IconButton, Container, Tooltip } from '@mui/material';
 import { FormControl, OutlinedInput, InputAdornment } from '@mui/material';
 import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
@@ -31,17 +31,20 @@ export default function Header() {
           px: 0,
         }}
       >
-        <Container maxWidth="xl" sx={{ px: 0 }}>
+        <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: { xs: 1, sm: 2 }, pr: 0 }}
-            >
-              <MenuOutlinedIcon sx={{ fontSize: 40 }} />
-            </IconButton>
+            <Tooltip title="Open menu">
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
+                sx={{ mr: { xs: 1, sm: 2 }, pr: 0 }}
+              >
+                <MenuOutlinedIcon sx={{ fontSize: 40 }} />
+              </IconButton>
+            </Tooltip>
+
             <Link
               href="/"
               style={{ display: 'flex', alignItems: 'center', height: 40 }}
@@ -64,19 +67,21 @@ export default function Header() {
               </Typography>
             </Link>
 
-            <Button
-              variant="contained"
-              color="success"
-              startIcon={<AppsIcon />}
-              sx={{
-                height: 40,
-                mr: 2,
-                minWidth: 100,
-                display: { xs: 'none', sm: 'flex' },
-              }}
-            >
-              Catologue
-            </Button>
+            <Tooltip title="Open catalogue">
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<AppsIcon />}
+                sx={{
+                  height: 40,
+                  mr: 2,
+                  minWidth: 100,
+                  display: { xs: 'none', sm: 'flex' },
+                }}
+              >
+                Catologue
+              </Button>
+            </Tooltip>
 
             <FormControl
               variant="outlined"
@@ -113,19 +118,26 @@ export default function Header() {
               />
             </FormControl>
 
-            <Box
-              sx={{
-                justifyContent: 'end',
-              }}
-            >
-              <IconButton color="inherit" aria-label="personal account">
-                <AccountCircleOutlinedIcon sx={{ fontSize: 40 }} />
-              </IconButton>
-              <IconButton color="inherit" aria-label="shoping basket">
-                <Link href="/basket">
+            <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+              <Tooltip title="Personal account">
+                <IconButton
+                  color="inherit"
+                  aria-label="personal account"
+                  sx={{ display: { xs: 'none', sm: 'flex' } }}
+                >
+                  <AccountCircleOutlinedIcon sx={{ fontSize: 40 }} />
+                </IconButton>
+              </Tooltip>
+
+              <Tooltip title="Shopping basket">
+                <IconButton
+                  color="inherit"
+                  aria-label="shoping basket"
+                  sx={{ display: { xs: 'none', sm: 'flex' } }}
+                >
                   <ShoppingBasketOutlinedIcon sx={{ fontSize: 40 }} />
-                </Link>
-              </IconButton>
+                </IconButton>
+              </Tooltip>
             </Box>
           </Toolbar>
           <DrawerMenu

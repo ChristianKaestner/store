@@ -1,11 +1,13 @@
 'use client';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Card, CardHeader, CardContent } from '@mui/material';
-import { Typography, IconButton, Box, Tooltip } from '@mui/material';
+import { Typography, IconButton, Box } from '@mui/material';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
+import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -13,8 +15,9 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function ProductsItem({ id }) {
+export default function ProductsItem({ id, promotion, price, title, images }) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [inCart, setInCart] = useState(false);
 
   const swiperRef = useRef();
 
@@ -22,22 +25,26 @@ export default function ProductsItem({ id }) {
     setIsFavorite(!isFavorite);
   };
 
+  const handleCart = () => {
+    setInCart(!inCart);
+  };
+
   const handleMouseEnter = () => {
-    console.log(swiperRef.current.swiper);
     swiperRef.current.swiper.enabled = true;
-    swiperRef.current.swiper.slideNext();
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
+    swiperRef?.current?.swiper?.slideNext();
     swiperRef?.current?.swiper?.autoplay?.start();
-    swiperRef.current.swiper.pagination.init();
+    swiperRef?.current?.swiper?.pagination?.init();
   };
 
   const handleMouseLeave = () => {
     swiperRef?.current?.swiper?.autoplay?.stop();
-    swiperRef.current.swiper.pagination.destroy();
-    swiperRef.current.swiper.slideTo(0, 500, false);
+    swiperRef?.current?.swiper?.pagination?.destroy();
+    swiperRef?.current?.swiper?.slideTo(0, 500, false);
   };
   return (
     <Card
+      component="section"
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -51,6 +58,7 @@ export default function ProductsItem({ id }) {
         },
       }}
     >
+      {/* <Typography component="h2">Products list</Typography> */}
       <Box
         sx={{
           position: 'relative',
@@ -75,7 +83,7 @@ export default function ProductsItem({ id }) {
           style={{
             width: 'calc(100% - 16px)',
             height: 200,
-            '--swiper-pagination-color': '#FFBA08',
+            '--swiper-pagination-color': '#f68e5f',
             '--swiper-pagination-bullet-inactive-color': '#999999',
             '--swiper-pagination-bullet-inactive-opacity': '1',
             '--swiper-pagination-bullet-size': '12px',
@@ -83,46 +91,54 @@ export default function ProductsItem({ id }) {
             '--swiper-pagination-right': '18px',
           }}
         >
+          {promotion && (
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 8,
+                left: 0,
+                zIndex: 2,
+                background: '#f5dd90',
+                borderRadius: 2,
+                color: '#fff',
+              }}
+            >
+              <Typography sx={{ p: 0.5 }}>{promotion}</Typography>
+            </Box>
+          )}
           <IconButton
             sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
             onClick={handleFavorite}
           >
             {isFavorite ? (
-              <Tooltip title="Remove from favorite">
-                <FavoriteOutlinedIcon sx={{ fontSize: 30 }} />
-              </Tooltip>
+              <FavoriteOutlinedIcon sx={{ fontSize: 30, color: '#f68e5f' }} />
             ) : (
-              <Tooltip title="Add to favorite">
-                <FavoriteBorderOutlinedIcon sx={{ fontSize: 30 }} />
-              </Tooltip>
+              <FavoriteBorderOutlinedIcon
+                sx={{ fontSize: 30, fill: '#f68e5f' }}
+              />
             )}
           </IconButton>
-          <SwiperSlide>
-            <Image
-              className="scaleImage"
-              style={{ transition: 'transform 500ms ease-in-out' }}
-              src="/hookah_item.jpg"
-              fill={true}
-              alt="image"
-              sizes="100%"
-              priority="false"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image
-              className="scaleImage"
-              style={{ transition: 'transform 500ms ease-in-out' }}
-              src="/hookah_item2.jpg"
-              fill={true}
-              alt="image"
-              sizes="100%"
-              priority="false"
-            />
-          </SwiperSlide>
+          {images.map(image => {
+            return (
+              <SwiperSlide key={image}>
+                <Image
+                  className="scaleImage"
+                  style={{ transition: 'transform 500ms ease-in-out' }}
+                  src={image}
+                  fill={true}
+                  alt="image"
+                  sizes="100%"
+                  priority="false"
+                />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </Box>
+      <Link href="/">
+        <CardHeader title={title} component="h3" />
+      </Link>
 
-      <CardHeader title="Hookah Mia" component="h3" />
       <CardContent
         sx={{
           display: 'flex',
@@ -133,14 +149,20 @@ export default function ProductsItem({ id }) {
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ fontWeight: 700, fontSize: 30 }}
+          sx={{ fontWeight: 700, fontSize: 30, color: '#f76c5e' }}
         >
-          100$
+          {price}$
         </Typography>
-        <IconButton>
-          <Tooltip title="Add to backet">
-            <AddShoppingCartOutlinedIcon sx={{ fontSize: 30 }} />
-          </Tooltip>
+        <IconButton onClick={handleCart}>
+          {inCart ? (
+            <ShoppingCartCheckoutOutlinedIcon
+              sx={{ fontSize: 30, fill: '#f68e5f' }}
+            />
+          ) : (
+            <AddShoppingCartOutlinedIcon
+              sx={{ fontSize: 30, fill: '#f68e5f' }}
+            />
+          )}
         </IconButton>
       </CardContent>
     </Card>

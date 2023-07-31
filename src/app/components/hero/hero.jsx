@@ -30,7 +30,15 @@ export default function Hero() {
         }}
         onSwiper={it => (sliderRef.current = it)}
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        style={{ width: '100%', height: '400px' }}
+        style={{
+          width: '100%',
+          height: '400px',
+          '--swiper-pagination-color': '#FFBA08',
+          '--swiper-pagination-bullet-inactive-color': '#999999',
+          '--swiper-pagination-bullet-inactive-opacity': '1',
+          '--swiper-pagination-bullet-size': '12px',
+          '--swiper-pagination-bullet-horizontal-gap': '8px',
+        }}
       >
         <ArrowCircleLeft
           sx={{

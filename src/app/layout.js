@@ -1,10 +1,19 @@
 import './globals.css';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import { Poppins } from 'next/font/google';
+import { ThemeProvider } from '@mui/material';
+import { myTheme } from './utils/theme';
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
+  weight: ['400', '500'],
+});
+
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['400', '700'],
 });
 
 export const metadata = {
@@ -14,11 +23,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html lang="en" className={lato.className}>
+      <body>
+        <ThemeProvider theme={myTheme}>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

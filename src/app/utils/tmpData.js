@@ -3,7 +3,8 @@ export const items = [
     id: 1,
     promotion: 'Hot',
     price: 900,
-    title: 'Shisha huisha',
+    title:
+      'Shisha huisha gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
   },
   {
@@ -27,4 +28,12 @@ export const items = [
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
   },
+];
+
+export const images = [
+  { uri: '/hookah1.jpg' },
+  { uri: '/hookah2.jpg' },
+  { uri: '/hookah3.jpg' },
+  { uri: '/hookah4.jpg' },
+  { uri: '/hookah5.jpg' },
 ];

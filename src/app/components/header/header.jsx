@@ -29,7 +29,8 @@ export default function Header() {
           justifyContent: 'center',
           height: 72,
           px: 0,
-          background: '#324376',
+          color: 'secondary',
+          // background: '#324376',
         }}
       >
         <Container maxWidth="xl" sx={{ px: 3 }}>
@@ -68,17 +69,16 @@ export default function Header() {
 
             <Button
               variant="contained"
-              color="success"
+              color="secondary"
               startIcon={<AppsIcon />}
               sx={{
                 height: 40,
                 mr: 2,
                 minWidth: 100,
                 display: { xs: 'none', sm: 'flex' },
-                background: '#586ba4',
               }}
             >
-              Catologue
+              Products
             </Button>
 
             <FormControl
@@ -105,10 +105,11 @@ export default function Header() {
                   <Button
                     position="end"
                     variant="contained"
+                    color="secondary"
                     sx={{
                       height: '100%',
                       color: '#fff',
-                      background: '#586ba4',
+                      // background: '#586ba4',
                     }}
                   >
                     Find

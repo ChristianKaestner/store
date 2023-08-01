@@ -1,21 +1,14 @@
 import { Container, Box } from '@mui/material';
-
 import Hero from './components/hero/hero';
 import Sidebar from './components/sidebar/sidebar';
 import ProductsList from './components/productsList/productsList';
-import { Poppins } from 'next/font/google';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-});
+import { images } from '../app/utils/tmpData';
 
 export default function Home() {
   return (
     <Container
       maxWidth="xl"
       sx={{ display: 'flex', flexDirection: 'row', px: 2, my: 2 }}
-      className={poppins.className}
     >
       <Sidebar />
       <Box
@@ -25,7 +18,7 @@ export default function Home() {
           width: { lg: 'calc(100% - 366px)', xs: '100%' },
         }}
       >
-        <Hero />
+        <Hero images={images} />
         <ProductsList />
       </Box>
     </Container>

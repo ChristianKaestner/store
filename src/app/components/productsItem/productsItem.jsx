@@ -44,7 +44,6 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
   };
   return (
     <Card
-      component="section"
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -98,7 +97,7 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
                 top: 8,
                 left: 0,
                 zIndex: 2,
-                background: '#f5dd90',
+                background: '#f76c5e',
                 borderRadius: 2,
                 color: '#fff',
               }}
@@ -111,10 +110,11 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
             onClick={handleFavorite}
           >
             {isFavorite ? (
-              <FavoriteOutlinedIcon sx={{ fontSize: 30, color: '#f68e5f' }} />
+              <FavoriteOutlinedIcon color="warning" sx={{ fontSize: 30 }} />
             ) : (
               <FavoriteBorderOutlinedIcon
-                sx={{ fontSize: 30, fill: '#f68e5f' }}
+                color="warning"
+                sx={{ fontSize: 30 }}
               />
             )}
           </IconButton>
@@ -149,18 +149,20 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
         <Typography
           variant="body1"
           color="text.secondary"
-          sx={{ fontWeight: 700, fontSize: 30, color: '#f76c5e' }}
+          sx={{ fontWeight: 700, fontSize: 30 }}
         >
           {price}$
         </Typography>
         <IconButton onClick={handleCart}>
           {inCart ? (
             <ShoppingCartCheckoutOutlinedIcon
-              sx={{ fontSize: 30, fill: '#f68e5f' }}
+              color="warning"
+              sx={{ fontSize: 30 }}
             />
           ) : (
             <AddShoppingCartOutlinedIcon
-              sx={{ fontSize: 30, fill: '#f68e5f' }}
+              color="warning"
+              sx={{ fontSize: 30 }}
             />
           )}
         </IconButton>

@@ -34,6 +34,7 @@ export default function Hero({ images }) {
         style={{
           width: '100%',
           height: '400px',
+          borderRadius: '4px',
           '--swiper-pagination-color': '#f68e5f',
           '--swiper-pagination-bullet-inactive-color': '#999999',
           '--swiper-pagination-bullet-inactive-opacity': '1',

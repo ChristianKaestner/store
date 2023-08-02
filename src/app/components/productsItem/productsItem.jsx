@@ -15,7 +15,14 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function ProductsItem({ id, promotion, price, title, images }) {
+export default function ProductsItem({
+  id,
+  promotion,
+  price,
+  title,
+  subTitle,
+  images,
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [inCart, setInCart] = useState(false);
 
@@ -30,7 +37,7 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
     setInCart(!inCart);
   };
 
-  const handleMouseEnter = e => {
+  const handleMouseEnter = () => {
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();
@@ -50,7 +57,7 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
       onMouseLeave={handleMouseLeave}
       sx={{
         transition: 'box-shadow 500ms ease-in-out',
-        maxHeight: 382,
+        maxHeight: 420,
         '&:hover': {
           boxShadow: '0px 4px 17px 0px rgba(34, 60, 80, 0.5)',
           '& .scaleImage': {
@@ -144,12 +151,15 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
       <CardContent>
         <Box>
           <Link href="/">
+            <Typography sx={{ textAlign: 'center', mb: 1 }}>
+              {subTitle}
+            </Typography>
             <Typography
               sx={{
                 height: 80,
                 maxHeight: 80,
                 overflow: 'hidden',
-                fontSize: 28,
+                fontSize: 18,
               }}
             >
               {title.toUpperCase()}

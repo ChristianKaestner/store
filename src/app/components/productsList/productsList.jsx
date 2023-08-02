@@ -9,16 +9,17 @@ export default function ProductsList() {
     <Box sx={{ width: '100%', mt: 4 }}>
       <Grid
         container
-        rowSpacing={{ xs: 1, sm: 2, md: 3 }}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        rowSpacing={{ xs: 2, sm: 2, md: 3 }}
+        columnSpacing={{ xs: 2, sm: 2, md: 3 }}
       >
         {items.map(item => {
           return (
-            <Grid xs={6} md={4} key={item.id}>
+            <Grid xs={12} sm={6} md={4} lg={3} key={item.id}>
               <ProductsItem
                 id={item.id}
                 promotion={item.promotion}
                 price={item.price}
+                subTitle={item.subTitle}
                 title={item.title}
                 images={item.images}
               />

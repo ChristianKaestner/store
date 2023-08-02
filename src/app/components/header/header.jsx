@@ -29,8 +29,7 @@ export default function Header() {
           justifyContent: 'center',
           height: 72,
           px: 0,
-          color: 'secondary',
-          // background: '#324376',
+          bgcolor: 'primary.main',
         }}
       >
         <Container maxWidth="xl" sx={{ px: 3 }}>

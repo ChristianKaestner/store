@@ -18,11 +18,12 @@ export const myTheme = createTheme({
     ].join(','),
   },
   palette: {
-    primary: { main: '#324376' },
-    secondary: { main: '#586ba4' },
-    error: { main: '#f76c5e' },
-    warning: { main: '#f68e5f' },
-    info: { main: '#f5dd90' },
-    success: { main: '#f5dd90' },
+    primary: {
+      main: '#324376',
+      light: '#586ba4',
+      info: '#f5dd90',
+      accent: '#f68e5f',
+      hot: '#f76c5e',
+    },
   },
 });

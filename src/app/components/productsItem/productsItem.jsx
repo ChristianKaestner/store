@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Card, CardHeader, CardContent } from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import { Typography, IconButton, Box } from '@mui/material';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
@@ -25,11 +25,12 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
     setIsFavorite(!isFavorite);
   };
 
-  const handleCart = () => {
+  const handleCart = e => {
+    console.log(e.type);
     setInCart(!inCart);
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = e => {
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();
@@ -49,6 +50,7 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
       onMouseLeave={handleMouseLeave}
       sx={{
         transition: 'box-shadow 500ms ease-in-out',
+        maxHeight: 382,
         '&:hover': {
           boxShadow: '0px 4px 17px 0px rgba(34, 60, 80, 0.5)',
           '& .scaleImage': {
@@ -97,7 +99,7 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
                 top: 8,
                 left: 0,
                 zIndex: 2,
-                background: '#f76c5e',
+                bgcolor: 'primary.hot',
                 borderRadius: 2,
                 color: '#fff',
               }}
@@ -110,62 +112,75 @@ export default function ProductsItem({ id, promotion, price, title, images }) {
             onClick={handleFavorite}
           >
             {isFavorite ? (
-              <FavoriteOutlinedIcon color="warning" sx={{ fontSize: 30 }} />
+              <FavoriteOutlinedIcon
+                sx={{ color: 'primary.accent', fontSize: 30 }}
+              />
             ) : (
               <FavoriteBorderOutlinedIcon
-                color="warning"
-                sx={{ fontSize: 30 }}
+                sx={{ fontSize: 30, color: 'primary.accent' }}
               />
             )}
           </IconButton>
           {images.map(image => {
             return (
               <SwiperSlide key={image}>
-                <Image
-                  className="scaleImage"
-                  style={{ transition: 'transform 500ms ease-in-out' }}
-                  src={image}
-                  fill={true}
-                  alt="image"
-                  sizes="100%"
-                  priority="false"
-                />
+                <Link href="/">
+                  <Image
+                    className="scaleImage"
+                    style={{ transition: 'transform 500ms ease-in-out' }}
+                    src={image}
+                    fill={true}
+                    alt="image"
+                    sizes="100%"
+                    priority="false"
+                  />
+                </Link>
               </SwiperSlide>
             );
           })}
         </Swiper>
       </Box>
-      <Link href="/">
-        <CardHeader title={title} component="h3" />
-      </Link>
 
-      <CardContent
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
-        <Typography
-          variant="body1"
-          color="text.secondary"
-          sx={{ fontWeight: 700, fontSize: 30 }}
+      <CardContent>
+        <Box>
+          <Link href="/">
+            <Typography
+              sx={{
+                height: 80,
+                maxHeight: 80,
+                overflow: 'hidden',
+                fontSize: 28,
+              }}
+            >
+              {title.toUpperCase()}
+            </Typography>
+          </Link>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}
         >
-          {price}$
-        </Typography>
-        <IconButton onClick={handleCart}>
-          {inCart ? (
-            <ShoppingCartCheckoutOutlinedIcon
-              color="warning"
-              sx={{ fontSize: 30 }}
-            />
-          ) : (
-            <AddShoppingCartOutlinedIcon
-              color="warning"
-              sx={{ fontSize: 30 }}
-            />
-          )}
-        </IconButton>
+          <Typography
+            variant="body1"
+            sx={{ fontWeight: 700, fontSize: 30, color: 'primary.hot' }}
+          >
+            {price}$
+          </Typography>
+          <IconButton onClick={handleCart}>
+            {inCart ? (
+              <ShoppingCartCheckoutOutlinedIcon
+                sx={{ fontSize: 30, color: 'primary.accent' }}
+              />
+            ) : (
+              <AddShoppingCartOutlinedIcon
+                sx={{ fontSize: 30, color: 'primary.accent' }}
+              />
+            )}
+          </IconButton>
+        </Box>
       </CardContent>
     </Card>
   );

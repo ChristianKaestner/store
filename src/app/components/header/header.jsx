@@ -69,13 +69,13 @@ export default function Header() {
 
             <Button
               variant="contained"
-              color="secondary"
               startIcon={<AppsIcon />}
               sx={{
                 height: 40,
                 mr: 2,
                 minWidth: 100,
                 display: { xs: 'none', sm: 'flex' },
+                bgcolor: 'primary.light',
               }}
             >
               Products
@@ -105,11 +105,10 @@ export default function Header() {
                   <Button
                     position="end"
                     variant="contained"
-                    color="secondary"
                     sx={{
                       height: '100%',
                       color: '#fff',
-                      // background: '#586ba4',
+                      bgcolor: 'primary.light',
                     }}
                   >
                     Find

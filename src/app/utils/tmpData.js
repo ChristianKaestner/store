@@ -99,8 +99,8 @@ export const categories = [
   {
     id: 2,
     image: '/tobako_cat.jpg',
-    title: 'Tobako',
-    description: 'Best tobako in the World',
+    title: 'Tobacco',
+    description: 'Best tobacco in the World',
   },
   {
     id: 3,

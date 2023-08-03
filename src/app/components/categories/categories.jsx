@@ -1,11 +1,15 @@
-import { Box, Card, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Box, Card, Typography } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
+import { visuallyHidden } from '@mui/utils';
 
 export default function Categories({ categories }) {
   return (
     <Box sx={{ width: '100%', mt: 4 }} component="section">
+      <Typography component="h2" sx={visuallyHidden}>
+        Best hookah price, top quality tobaссko, excelent coal & more
+      </Typography>
       <Grid
         container
         rowSpacing={{ xs: 2, sm: 2, md: 3 }}
@@ -46,7 +50,10 @@ export default function Categories({ categories }) {
                     priority="false"
                   />
                   <Box sx={{ position: 'relative', zIndex: 2 }}>
-                    <Typography sx={{ fontSize: 28, color: '#fff' }}>
+                    <Typography
+                      component="h3"
+                      sx={{ fontSize: 28, color: '#fff' }}
+                    >
                       {category.title}
                     </Typography>
                     <Typography sx={{ color: '#fff' }}>

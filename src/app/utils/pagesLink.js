@@ -1,6 +1,6 @@
 export const productsLink = [
   { id: 1, name: 'Hookah', href: '/' },
-  { id: 2, name: 'Tobaco', href: '/' },
+  { id: 2, name: 'Tobacco', href: '/' },
   { id: 3, name: 'Hookah bowl', href: '/' },
   { id: 4, name: 'Coal', href: '/' },
   { id: 5, name: 'Accessories', href: '/' },

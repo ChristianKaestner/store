@@ -66,7 +66,6 @@ export default function ProductsItem({
         },
       }}
     >
-      {/* <Typography component="h2">Products list</Typography> */}
       <Box
         sx={{
           position: 'relative',

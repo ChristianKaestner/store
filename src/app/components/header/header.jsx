@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { AppBar, Typography, Toolbar, Box } from '@mui/material';
-import { Button, IconButton, Container } from '@mui/material';
+import { Button, IconButton, Container, Badge } from '@mui/material';
 import { FormControl, OutlinedInput, InputAdornment } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
@@ -130,7 +130,9 @@ export default function Header() {
                 aria-label="shoping cart"
                 sx={{ display: { xs: 'none', sm: 'flex' } }}
               >
-                <ShoppingCartOutlinedIcon sx={{ fontSize: 40 }} />
+                <Badge badgeContent={4} color="primary">
+                  <ShoppingCartOutlinedIcon sx={{ fontSize: 40 }} />
+                </Badge>
               </IconButton>
             </Box>
           </Toolbar>

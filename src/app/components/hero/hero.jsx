@@ -4,8 +4,10 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { ArrowCircleRight, ArrowCircleLeft } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { Box, IconButton, Typography } from '@mui/material';
+import { visuallyHidden } from '@mui/utils';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -15,7 +17,10 @@ import 'swiper/css/effect-fade';
 export default function Hero({ images }) {
   const sliderRef = useRef();
   return (
-    <>
+    <Box component="section">
+      <Typography component="h1" sx={visuallyHidden}>
+        Best hookah in the world!
+      </Typography>
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
@@ -55,7 +60,7 @@ export default function Hero({ images }) {
           }}
           onClick={() => sliderRef.current?.slidePrev()}
         >
-          <ArrowCircleLeft sx={{ fontSize: 40 }} />
+          <NavigateBeforeIcon sx={{ fontSize: 40 }} />
         </IconButton>
         {images.map(image => {
           return (
@@ -83,9 +88,9 @@ export default function Hero({ images }) {
           }}
           onClick={() => sliderRef.current?.slideNext()}
         >
-          <ArrowCircleRight sx={{ fontSize: 40 }} />
+          <NavigateNextIcon sx={{ fontSize: 40 }} />
         </IconButton>
       </Swiper>
-    </>
+    </Box>
   );
 }

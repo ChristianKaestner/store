@@ -131,7 +131,15 @@ export default function ProductsItem({
           {images.map(image => {
             return (
               <SwiperSlide key={image}>
-                <Link href="/">
+                <Link
+                  href="/"
+                  style={{
+                    position: 'relative',
+                    display: 'flex',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
                   <Image
                     className="scaleImage"
                     style={{ transition: 'transform 500ms ease-in-out' }}

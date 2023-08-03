@@ -14,27 +14,23 @@ export default function Categories({ categories }) {
         {categories.map(category => {
           return (
             <Grid xs={6} key={category.id}>
-              <Card
-                sx={{
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '100%',
-                  height: 200,
-                  bgcolor: 'primary.main',
-                  '&:hover': {
-                    boxShadow: '0px 4px 17px 0px rgba(34, 60, 80, 0.5)',
-                    '& .scaleImage': {
-                      transform: 'scale(1.1)',
-                    },
-                  },
-                }}
-              >
-                <Link
-                  href="/"
-                  style={{
+              <Link href="/">
+                <Card
+                  sx={{
+                    position: 'relative',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '100%',
+                    height: 200,
                     textAlign: 'center',
+                    bgcolor: 'primary.main',
+                    '&:hover': {
+                      boxShadow: '0px 4px 17px 0px rgba(34, 60, 80, 0.5)',
+                      '& .scaleImage': {
+                        transform: 'scale(1.1)',
+                      },
+                    },
                   }}
                 >
                   <Image
@@ -57,8 +53,8 @@ export default function Categories({ categories }) {
                       {category.description}
                     </Typography>
                   </Box>
-                </Link>
-              </Card>
+                </Card>
+              </Link>
             </Grid>
           );
         })}

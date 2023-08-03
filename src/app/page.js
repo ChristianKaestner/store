@@ -1,8 +1,8 @@
 import { Container, Box } from '@mui/material';
 import Hero from './components/hero/hero';
 import Sidebar from './components/sidebar/sidebar';
-import ProductsList from './components/productsList/productsList';
 import Categories from './components/categories/categories';
+import ProductsList from './components/productsList/productsList';
 import { images } from '../app/utils/tmpData';
 import { categories } from '@/app/utils/tmpData';
 

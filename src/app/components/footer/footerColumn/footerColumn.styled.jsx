@@ -1,5 +1,6 @@
 import { styled } from '@mui/system';
 import { Box, Typography } from '@mui/material';
+import { FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export const Column = styled(Box)({
   width: 'calc(70% / 4 - 40px)',
@@ -13,7 +14,7 @@ export const Column = styled(Box)({
   },
 });
 
-export const ColumnList = styled('ul')({ listStyle: 'none' });
+export const ColumnList = styled('ul')({ listStyle: 'none', flexWrap: 'wrap' });
 
 export const ColumnTitle = styled(Typography)({
   color: '#fff',
@@ -25,3 +26,11 @@ export const ColumnText = styled(Typography)({
   color: '#fff',
   marginBottom: '4px',
 });
+
+const commonStyle = { fill: '#fff', width: '40px', height: '40px' };
+
+export const YoutubeIcon = styled(FaYoutube)(commonStyle);
+
+export const InstagramIcon = styled(FaInstagram)(commonStyle);
+
+export const FacebookIcon = styled(FaFacebook)(commonStyle);

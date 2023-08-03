@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Categories({ categories }) {
   return (
-    <Box sx={{ width: '100%', mt: 4 }}>
+    <Box sx={{ width: '100%', mt: 4 }} component="section">
       <Grid
         container
         rowSpacing={{ xs: 2, sm: 2, md: 3 }}

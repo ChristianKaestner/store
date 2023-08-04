@@ -2,14 +2,8 @@ import './globals.css';
 import { Lato } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-import { Poppins } from 'next/font/google';
 import { ThemeProvider } from '@mui/material';
 import { myTheme } from './utils/theme';
-
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-});
 
 const lato = Lato({
   subsets: ['latin'],

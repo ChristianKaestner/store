@@ -12,12 +12,19 @@ import SearchIcon from '@mui/icons-material/Search';
 import AppsIcon from '@mui/icons-material/Apps';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import DrawerMenu from './drawer/drawer';
+import Modal from '../modal/modal';
+import ProductsModal from './productsModal/productsModal';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openProducts, setOpenProducts] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleProductsToggle = () => {
+    setOpenProducts(!openProducts);
   };
 
   return (
@@ -76,6 +83,7 @@ export default function Header() {
                 display: { xs: 'none', sm: 'flex' },
                 bgcolor: 'primary.light',
               }}
+              onClick={handleProductsToggle}
             >
               Products
             </Button>
@@ -140,6 +148,11 @@ export default function Header() {
             mobileOpen={mobileOpen}
             handleDrawerToggle={handleDrawerToggle}
           />
+          {openProducts && (
+            <Modal onClose={handleProductsToggle}>
+              <ProductsModal />
+            </Modal>
+          )}
         </Container>
       </AppBar>
     </>

@@ -1,29 +1,50 @@
 import { useState } from 'react';
-import { Tabs, Tab } from '@mui/material';
+import { Tabs, Tab, Box } from '@mui/material';
+import ProductsItemModal from './productsItemModal/productsItemModal';
+import { categories } from '@/app/utils/tmpData';
 
 export default function ProductsModal() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (e, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <Tabs
-      orientation="vertical"
-      variant="scrollable"
-      value={value}
-      onChange={handleChange}
-      aria-label="Vertical tabs example"
-      sx={{ borderRight: 1, borderColor: 'divider' }}
+    <Box
+      sx={{
+        flexGrow: 1,
+        bgcolor: 'background.paper',
+        display: 'flex',
+        height: '100%',
+        overflowY: 'scroll',
+      }}
     >
-      <Tab label="Item One" />
-      <Tab label="Item Two" />
-      <Tab label="Item Three" />
-      <Tab label="Item Four" />
-      <Tab label="Item Five" />
-      <Tab label="Item Six" />
-      <Tab label="Item Seven" />
-    </Tabs>
+      <Tabs
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        sx={{ borderRight: 1, borderColor: 'divider' }}
+      >
+        {categories &&
+          categories.map(category => {
+            return <Tab label={category.name} key={category.id} />;
+          })}
+      </Tabs>
+      {categories &&
+        categories.map((category, index) => {
+          return (
+            <ProductsItemModal
+              key={category.id}
+              value={value}
+              index={index}
+              category={category}
+              subCategory={category.subCategory}
+            />
+          );
+        })}
+    </Box>
   );
 }

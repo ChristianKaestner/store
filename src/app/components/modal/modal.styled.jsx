@@ -14,12 +14,16 @@ export const Backdrop = styled.div`
 `;
 
 export const ModalWindow = styled.div`
-  position: relative;
-  width: 70%;
-  height: 70%;
-  padding: 32px;
+  position: absolute;
+  top: 72px;
+  width: 80%;
+  height: 90%;
+  padding: 32px 16px;
   border-radius: 4px;
   border: 2px solid #586ba4;
   background: #fff;
   color: #000;
+  @media (min-width: 600px) {
+    padding: 32px;
+  }
 `;

@@ -32,11 +32,13 @@ export default function Header() {
       <AppBar
         position="static"
         sx={{
+          position: 'fixed',
           direction: 'flex',
           justifyContent: 'center',
           height: 72,
           px: 0,
           bgcolor: 'primary.main',
+          zIndex: 999,
         }}
       >
         <Container maxWidth="xl" sx={{ px: 3 }}>

@@ -1,14 +1,7 @@
 import { Box, List, ListItem, Divider } from '@mui/material';
 import { LinkStyled } from '../drawer.styled';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
-
-const categories = [
-  { id: 1, name: 'hookah' },
-  { id: 2, name: 'tobaco' },
-  { id: 3, name: 'coal' },
-  { id: 4, name: 'bowl' },
-  { id: 5, name: 'utils' },
-];
+import { categories } from '@/app/utils/tmpData';
 
 export default function ProductsList() {
   return (

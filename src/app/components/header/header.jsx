@@ -1,19 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { AppBar, Typography, Toolbar, Box } from '@mui/material';
-import { Button, IconButton, Container, Badge } from '@mui/material';
-import { FormControl, OutlinedInput, InputAdornment } from '@mui/material';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import LogoDevIcon from '@mui/icons-material/LogoDev';
-import SearchIcon from '@mui/icons-material/Search';
-import AppsIcon from '@mui/icons-material/Apps';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { AppBar, Container, Toolbar, Box } from '@mui/material';
+import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
-import Modal from '../modal/modal';
+import Logo from './logo/logo';
+import ProductsButton from './productsButton/productsButton';
 import ProductsModal from './productsModal/productsModal';
+import SearchForm from './searchForm/searchForm';
+import PersonalAccount from './personalAccount/personalAccount';
+import ShoppingCart from './shoppingCart/shoppingCart';
+import Modal from '../modal/modal';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,18 +22,18 @@ export default function Header() {
 
   const onOpenProductsModal = () => {
     setOpenProducts(true);
-    document.body.style.overflow = 'hidden'
-  }
+    document.body.style.overflow = 'hidden';
+  };
 
   const onCloseProductsModal = () => {
     setOpenProducts(false);
-    document.body.style.overflow = 'scroll'
-  }
+    document.body.style.overflow = 'scroll';
+  };
 
   return (
     <>
       <AppBar
-          sx={{
+        sx={{
           position: 'fixed',
           top: 0,
           direction: 'flex',
@@ -49,107 +46,14 @@ export default function Header() {
       >
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: { xs: 1, sm: 2 }, pr: 0 }}
-            >
-              <MenuOutlinedIcon sx={{ fontSize: 40 }} />
-            </IconButton>
-
-            <Link
-              href="/"
-              style={{ display: 'flex', alignItems: 'center', height: 40 }}
-            >
-              <LogoDevIcon sx={{ fontSize: 40, mr: 1 }} />
-
-              <Typography
-                variant="h5"
-                sx={{
-                  mr: 2,
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  letterSpacing: '.3rem',
-                  color: 'inherit',
-                  fontSize: '30px',
-                  display: { xs: 'none', md: 'flex' },
-                }}
-              >
-                LOGO
-              </Typography>
-            </Link>
-
-            <Button
-              variant="contained"
-              startIcon={<AppsIcon />}
-              sx={{
-                height: 40,
-                mr: 2,
-                minWidth: 100,
-                display: { xs: 'none', sm: 'flex' },
-                bgcolor: 'primary.light',
-              }}
-              onClick={onOpenProductsModal}
-            >
-              Products
-            </Button>
-
-            <FormControl
-              variant="outlined"
-              component="form"
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexGrow: 1,
-                mr: 2,
-              }}
-            >
-              <OutlinedInput
-                placeholder="search..."
-                type="text"
-                aria-label="search items"
-                sx={{ flexGrow: 1, height: 40, pr: 0, background: '#fff' }}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                }
-                endAdornment={
-                  <Button
-                    position="end"
-                    variant="contained"
-                    sx={{
-                      height: '100%',
-                      color: '#fff',
-                      bgcolor: 'primary.light',
-                    }}
-                  >
-                    Find
-                  </Button>
-                }
-              />
-            </FormControl>
+            <MobileMenu toggle={handleDrawerToggle} />
+            <Logo />
+            <ProductsButton onOpenProductsModal={onOpenProductsModal} />
+            <SearchForm />
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <IconButton
-                color="inherit"
-                aria-label="personal account"
-                sx={{ display: { xs: 'none', sm: 'flex' } }}
-              >
-                <AccountCircleOutlinedIcon sx={{ fontSize: 40 }} />
-              </IconButton>
-
-              <IconButton
-                color="inherit"
-                aria-label="shoping cart"
-                sx={{ display: { xs: 'none', sm: 'flex' } }}
-              >
-                <Badge badgeContent={4} color="primary">
-                  <ShoppingCartOutlinedIcon sx={{ fontSize: 40 }} />
-                </Badge>
-              </IconButton>
+              <PersonalAccount />
+              <ShoppingCart />
             </Box>
           </Toolbar>
           <DrawerMenu

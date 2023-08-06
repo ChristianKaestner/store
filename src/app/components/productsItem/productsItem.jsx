@@ -37,13 +37,8 @@ export default function ProductsItem({
   };
 
   const handleMouseEnter = e => {
-    // const buttons = e.target.dataset.testid;
-    // if (
-    //   buttons === 'ShoppingCartCheckoutOutlinedIcon' ||
-    //   buttons === 'FavoriteBorderOutlinedIcon'
-    // ) {
-    //   return;
-    // }
+    const target = e.target.nodeName;
+    if (target === 'path' || target === 'svg') return;
 
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;

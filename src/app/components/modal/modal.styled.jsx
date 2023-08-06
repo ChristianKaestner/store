@@ -15,9 +15,11 @@ export const Backdrop = styled.div`
 
 export const ModalWindow = styled.div`
   position: absolute;
-  top: 72px;
-  width: 80%;
-  height: 85%;
+  top: ${props => props.top};
+  left: ${props => props.left};
+  width: ${props => props.width};
+  height: ${props => props.height};
+  transform: translate(-${props => props.left}, -${props => props.top});
   padding: 32px 16px;
   border-radius: 4px;
   border: 2px solid #586ba4;

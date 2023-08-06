@@ -15,6 +15,7 @@ import Modal from '../modal/modal';
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openProducts, setOpenProducts] = useState(false);
+  const [openAccount, setOpenAccount] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -27,6 +28,16 @@ export default function Header() {
 
   const onCloseProductsModal = () => {
     setOpenProducts(false);
+    document.body.style.overflow = 'scroll';
+  };
+
+  const onOpenAccountModal = () => {
+    setOpenAccount(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const onCloseAccountModal = () => {
+    setOpenAccount(false);
     document.body.style.overflow = 'scroll';
   };
 
@@ -52,7 +63,7 @@ export default function Header() {
             <SearchForm />
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <PersonalAccount />
+              <PersonalAccount onOpenAccountModal={onOpenAccountModal} />
               <ShoppingCart />
             </Box>
           </Toolbar>
@@ -61,8 +72,24 @@ export default function Header() {
             handleDrawerToggle={handleDrawerToggle}
           />
           {openProducts && (
-            <Modal onClose={onCloseProductsModal}>
+            <Modal
+              onClose={onCloseProductsModal}
+              width="calc(100% - 48px)"
+              height="600px"
+              top="72px"
+            >
               <ProductsModal />
+            </Modal>
+          )}
+          {openAccount && (
+            <Modal
+              onClose={onCloseAccountModal}
+              width="300px"
+              height="300px"
+              top="50%"
+              left="50%"
+            >
+              <p>1111</p>
             </Modal>
           )}
         </Container>

@@ -6,8 +6,8 @@ import { categories } from '@/app/utils/tmpData';
 export default function ProductsModal() {
   const [value, setValue] = useState(0);
 
-  const handleChange = (e, newValue) => {
-    setValue(newValue);
+  const handleChange = index => {
+    setValue(index);
   };
 
   return (
@@ -24,13 +24,18 @@ export default function ProductsModal() {
         orientation="vertical"
         variant="scrollable"
         value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label="Products menu"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
         {categories &&
-          categories.map(category => {
-            return <Tab label={category.name} key={category.id} />;
+          categories.map((category, index) => {
+            return (
+              <Tab
+                onMouseEnter={handleChange.bind(this, index)}
+                label={category.name}
+                key={category.id}
+              />
+            );
           })}
       </Tabs>
       {categories &&

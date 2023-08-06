@@ -33,11 +33,18 @@ export default function ProductsItem({
   };
 
   const handleCart = e => {
-    console.log(e.type);
     setInCart(!inCart);
   };
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = e => {
+    // const buttons = e.target.dataset.testid;
+    // if (
+    //   buttons === 'ShoppingCartCheckoutOutlinedIcon' ||
+    //   buttons === 'FavoriteBorderOutlinedIcon'
+    // ) {
+    //   return;
+    // }
+
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();

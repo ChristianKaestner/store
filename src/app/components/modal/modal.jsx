@@ -31,7 +31,7 @@ export default function Modal({ onClose, children }) {
           sx={{ position: 'absolute', top: 0, right: 0 }}
           onClick={onClose}
         >
-          <HighlightOffIcon sx={{ fill: '#000' }} />
+          <HighlightOffIcon sx={{ fill: '#586ba4' }} />
         </IconButton>
         {children}
       </ModalWindow>

@@ -20,8 +20,8 @@ export default function ProductsItemModal({
       }}
     >
       {value === index && (
-        <Box sx={{ ml: 2, textAlign: 'center' }}>
-          <Link href={category.uri}>All {category.name}</Link>
+        <Box sx={{ ml: 2, mt: 1.5, textAlign: 'center' }}>
+          <Link href={category.uri}>ALL {category.name.toUpperCase()}</Link>
           <Grid
             component="ul"
             container
@@ -46,8 +46,8 @@ export default function ProductsItemModal({
                       <Image
                         src={item.logo}
                         alt={`${item.name} logo`}
-                        width={60}
-                        height={60}
+                        width={100}
+                        height={100}
                       />
                       <Typography>{item.name}</Typography>
                     </Link>
@@ -59,37 +59,5 @@ export default function ProductsItemModal({
       )}
     </Box>
   );
-  // return (
-  //   <Box
-  //     role="tabpanel"
-  //     hidden={value !== index}
-  //     id={`vertical-tabpanel-${index}`}
-  //     aria-labelledby={`vertical-tab-${index}`}
-  //     sx={{ maxWidth: { sm: '50%' } }}
-  //   >
-  //     {value === index && (
-  //       <Box sx={{ ml: 2 }}>
-  //         <Link href={category.uri}>All {category.name}</Link>
-  //         <ProductsList>
-  //           {subCategory &&
-  //             subCategory.map(item => {
-  //               return (
-  //                 <li key={item.id}>
-  //                   <Link href={item.uri}>
-  //                     <Image
-  //                       src={item.logo}
-  //                       alt={`${item.name} logo`}
-  //                       width={40}
-  //                       height={40}
-  //                     />
-  //                     <Typography>{item.name}</Typography>
-  //                   </Link>
-  //                 </li>
-  //               );
-  //             })}
-  //         </ProductsList>
-  //       </Box>
-  //     )}
-  //   </Box>
-  // );
+  
 }

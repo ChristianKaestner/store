@@ -17,7 +17,7 @@ export default function ProductsModal() {
         bgcolor: 'background.paper',
         display: 'flex',
         height: '100%',
-        overflowY: 'scroll',
+        overflow: 'auto',
       }}
     >
       <Tabs

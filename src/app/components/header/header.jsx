@@ -23,16 +23,22 @@ export default function Header() {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleProductsToggle = () => {
-    setOpenProducts(!openProducts);
-  };
+  const onOpenProductsModal = () => {
+    setOpenProducts(true);
+    document.body.style.overflow = 'hidden'
+  }
+
+  const onCloseProductsModal = () => {
+    setOpenProducts(false);
+    document.body.style.overflow = 'scroll'
+  }
 
   return (
     <>
       <AppBar
-        position="static"
-        sx={{
+          sx={{
           position: 'fixed',
+          top: 0,
           direction: 'flex',
           justifyContent: 'center',
           height: 72,
@@ -85,7 +91,7 @@ export default function Header() {
                 display: { xs: 'none', sm: 'flex' },
                 bgcolor: 'primary.light',
               }}
-              onClick={handleProductsToggle}
+              onClick={onOpenProductsModal}
             >
               Products
             </Button>
@@ -151,7 +157,7 @@ export default function Header() {
             handleDrawerToggle={handleDrawerToggle}
           />
           {openProducts && (
-            <Modal onClose={handleProductsToggle}>
+            <Modal onClose={onCloseProductsModal}>
               <ProductsModal />
             </Modal>
           )}

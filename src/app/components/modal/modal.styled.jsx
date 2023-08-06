@@ -17,7 +17,7 @@ export const ModalWindow = styled.div`
   position: absolute;
   top: 72px;
   width: 80%;
-  height: 90%;
+  height: 85%;
   padding: 32px 16px;
   border-radius: 4px;
   border: 2px solid #586ba4;

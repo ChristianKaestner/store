@@ -1,10 +1,9 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import { Container } from '@mui/material';
+import { Container, IconButton } from '@mui/material';
 import { Backdrop, ModalWindow } from './modal.styled';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function Modal({ onClose, children, width, height, top, left }) {
   useEffect(() => {
@@ -37,7 +36,7 @@ export default function Modal({ onClose, children, width, height, top, left }) {
             sx={{ position: 'absolute', top: 0, right: 0 }}
             onClick={onClose}
           >
-            <HighlightOffIcon sx={{ fill: '#586ba4' }} />
+            <CloseIcon sx={{ fill: '#586ba4' }} />
           </IconButton>
           {children}
         </ModalWindow>

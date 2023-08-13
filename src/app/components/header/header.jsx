@@ -11,7 +11,7 @@ import SearchForm from './searchForm/searchForm';
 import PersonalAccount from './personalAccount/personalAccount';
 import ShoppingCart from './shoppingCart/shoppingCart';
 import Modal from '../modal/modal';
-import Login from '../login/login';
+import Auth from '../auth/auth';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -85,12 +85,12 @@ export default function Header() {
           {openAccount && (
             <Modal
               onClose={onCloseAccountModal}
-              width="640px"
-              height="320px"
+              width="600px"
+              height="auto"
               top="50%"
               left="50%"
             >
-              <Login />
+              <Auth />
             </Modal>
           )}
         </Container>

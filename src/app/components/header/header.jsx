@@ -77,7 +77,7 @@ export default function Header() {
               onClose={onCloseProductsModal}
               width="calc(100% - 48px)"
               height="600px"
-              top="72px"
+              position="top"
             >
               <ProductsModal />
             </Modal>
@@ -87,8 +87,7 @@ export default function Header() {
               onClose={onCloseAccountModal}
               width="600px"
               height="auto"
-              top="50%"
-              left="50%"
+              position="center"
             >
               <Auth />
             </Modal>

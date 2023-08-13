@@ -15,9 +15,8 @@ export const Backdrop = styled.div`
 
 export const ModalWindow = styled.div`
   position: absolute;
-  top: ${props => props.top};
-  left: ${props => props.left};
-  transform: translate(-${props => props.left}, -${props => props.top});
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   padding: 32px 16px;
@@ -26,8 +25,14 @@ export const ModalWindow = styled.div`
   background: #fff;
   color: #000;
   @media (min-width: 600px) {
-    padding: 32px;
+    top: ${props => props.location.top};
+    left: ${props => props.location.left};
     width: ${props => props.width};
     height: ${props => props.height};
+    transform: translate(
+      -${props => props.location.x},
+      -${props => props.location.y}
+    );
+    padding: 32px;
   }
 `;

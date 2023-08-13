@@ -1,16 +1,17 @@
 'use client';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import { Container, IconButton } from '@mui/material';
+import { Container, IconButton, Box, Typography, Divider } from '@mui/material';
 import { Backdrop, ModalWindow } from './modal.styled';
 import CloseIcon from '@mui/icons-material/Close';
 
 export default function Modal({
   onClose,
   children,
+  title,
   width,
   height,
-  position = 'ceneter',
+  position = 'center',
 }) {
   useEffect(() => {
     const keyDownEvent = e => {
@@ -31,8 +32,6 @@ export default function Modal({
     if (position === 'top') return { top: '72px', left: '50%', x: '50%', y: 0 };
   };
 
-  console.log(location(position));
-
   const onCloseBackdrop = e => {
     if (e.currentTarget === e.target) {
       onClose();
@@ -51,11 +50,15 @@ export default function Modal({
           location={location(position)}
         >
           <IconButton
-            sx={{ position: 'absolute', top: 0, right: 0 }}
+            sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
             onClick={onClose}
           >
             <CloseIcon sx={{ fill: '#586ba4' }} />
           </IconButton>
+          <Box>
+            <Typography component="h2">{title}</Typography>
+            <Divider />
+          </Box>
           {children}
         </ModalWindow>
       </Container>

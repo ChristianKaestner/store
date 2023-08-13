@@ -1,12 +1,13 @@
 import { IconButton, Badge } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-export default function ShoppingCart() {
+export default function CartIcon({ onOpenCartModal }) {
   return (
     <IconButton
       color="inherit"
       aria-label="shoping cart"
       sx={{ display: { xs: 'none', sm: 'flex' } }}
+      onClick={onOpenCartModal}
     >
       <Badge
         badgeContent={4}

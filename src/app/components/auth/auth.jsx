@@ -1,35 +1,21 @@
 'use client';
 import { useState } from 'react';
-import { Box, Typography, Divider, Chip } from '@mui/material';
+import { Box, Divider, Chip } from '@mui/material';
 import Social from './social/social';
 import Login from './login/login';
 import Register from './register/register';
 
-export default function Auth() {
-  const [login, setLogin] = useState(true);
+export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-  const toggleAuth = () => {
-    setLogin(!login);
-    console.log(login);
-  };
+  const handleLogin = () => {};
 
-  const handleLogin = () => {
-    console.log('login');
-  };
-
-  const handleRegister = () => {
-    console.log('Register');
-  };
+  const handleRegister = () => {};
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-      <Box>
-        <Typography>{login ? 'Log In' : 'Register'}</Typography>
-        <Divider />
-      </Box>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
         {login ? (
           <Login

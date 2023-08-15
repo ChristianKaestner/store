@@ -15,7 +15,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function CartItem({ product }) {
+export default function CartItem({ product, handleDelete }) {
   const [quantity, setQuantity] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null);
   const [alert, setAlert] = useState(false);
@@ -24,11 +24,12 @@ export default function CartItem({ product }) {
     quantity > total ? setAlert(true) : setAlert(false);
   };
 
-  const handleDelete = () => {
+  const onDelete = e => {
+    handleDelete(e.target.id);
     setAnchorEl(null);
   };
 
-  const handleIncrement = e => {
+  const handleAddItem = () => {
     setQuantity(quantity + 1);
     checkAvailability(quantity + 1, product.quantity);
   };
@@ -107,9 +108,10 @@ export default function CartItem({ product }) {
               }}
             >
               <Button
+                id={product.id}
                 variant="outlined"
                 startIcon={<DeleteOutlineIcon />}
-                onClick={handleDelete}
+                onClick={onDelete}
               >
                 Delete
               </Button>
@@ -137,20 +139,20 @@ export default function CartItem({ product }) {
                 onChange={handleChange}
                 value={quantity}
               />
-              <IconButton onClick={handleIncrement} id={'button'}>
+              <IconButton onClick={handleAddItem} id={'button'}>
                 <AddIcon sx={{ color: 'primary.light' }} />
               </IconButton>
             </Box>
             <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
-              {product.price}$
+              {product.price * quantity}$
             </Typography>
           </Box>
         </Box>
       </Card>
       {alert && (
-        <Alert severity="error">
-          Unfortunately this quantity is not available, you can order a maximum
-          of {product.quantity}
+        <Alert severity="error" sx={{ mt: 1 }}>
+          Unfortunately we do not have {quantity} items in stock, we can offer
+          you {product.quantity} items. If you need more contact us.
         </Alert>
       )}
     </>

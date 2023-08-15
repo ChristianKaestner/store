@@ -46,8 +46,8 @@ export default function ProductsItemModal({
                       <Image
                         src={item.logo}
                         alt={`${item.name} logo`}
-                        width={100}
-                        height={100}
+                        width={80}
+                        height={80}
                       />
                       <Typography>{item.name}</Typography>
                     </Link>
@@ -59,5 +59,4 @@ export default function ProductsItemModal({
       )}
     </Box>
   );
-  
 }

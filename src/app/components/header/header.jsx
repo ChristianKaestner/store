@@ -20,7 +20,6 @@ export default function Header() {
   const [openAccount, setOpenAccount] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [login, setLogin] = useState(true);
-  const [cart, setCart] = useState([]);
 
   const toggleAuth = () => {
     setLogin(!login);
@@ -115,9 +114,9 @@ export default function Header() {
           {openCart && (
             <Modal
               onClose={onCloseCartModal}
-              title="Shopping cart"
+              title="Cart"
               width="600px"
-              height="auto"
+              height="600px"
               position="center"
             >
               <ShoppingCart />

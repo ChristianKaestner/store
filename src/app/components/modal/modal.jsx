@@ -56,7 +56,9 @@ export default function Modal({
             <CloseIcon sx={{ fill: '#586ba4' }} />
           </IconButton>
           <Box>
-            <Typography component="h2">{title}</Typography>
+            <Typography component="h2" sx={{ fontSize: 28, fontWeight: 500 }}>
+              {title}
+            </Typography>
             <Divider />
           </Box>
           {children}

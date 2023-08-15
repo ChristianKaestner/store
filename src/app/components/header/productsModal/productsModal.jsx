@@ -16,7 +16,7 @@ export default function ProductsModal() {
         flexGrow: 1,
         bgcolor: 'background.paper',
         display: 'flex',
-        height: '100%',
+        height: 'calc(100% - 64px)',
         overflow: 'auto',
       }}
     >

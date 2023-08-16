@@ -6,7 +6,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Shisha huisha fdsfsf sdf sfdefsesff efsefs',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Smoke machine',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Big tower shisha',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 8,
@@ -69,6 +69,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
+    available: 12,
   },
   {
     id: 9,
@@ -77,7 +78,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
   {
     id: 10,
@@ -86,7 +87,7 @@ export const items = [
     subTitle: 'Brand',
     title: 'Hookah huiukah',
     images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
-    quantity: 12,
+    available: 12,
   },
 ];
 

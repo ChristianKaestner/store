@@ -16,12 +16,12 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export default function CartItem({ product, handleDelete }) {
-  const [quantity, setQuantity] = useState(1);
+  const [cartQuantity, setCartQuantity] = useState(1);
   const [anchorEl, setAnchorEl] = useState(null);
   const [alert, setAlert] = useState(false);
 
-  const checkAvailability = (quantity, total) => {
-    quantity > total ? setAlert(true) : setAlert(false);
+  const checkAvailability = (cartQuantity, available) => {
+    cartQuantity > available ? setAlert(true) : setAlert(false);
   };
 
   const onDelete = e => {
@@ -29,24 +29,24 @@ export default function CartItem({ product, handleDelete }) {
     setAnchorEl(null);
   };
 
-  const handleAddItem = () => {
-    setQuantity(quantity + 1);
-    checkAvailability(quantity + 1, product.quantity);
+  const handleIncreaseQuantity = () => {
+    setCartQuantity(cartQuantity + 1);
+    checkAvailability(cartQuantity + 1, product.available);
   };
 
-  const handleDecrement = () => {
-    quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1);
-    checkAvailability(quantity - 1, product.quantity);
+  const handleReduceQuantity = () => {
+    cartQuantity === 1 ? setCartQuantity(1) : setCartQuantity(cartQuantity - 1);
+    checkAvailability(cartQuantity - 1, product.available);
   };
 
   const handleChange = e => {
     const num = Number(e.target.value);
     if (!num) {
-      setQuantity(1);
+      setCartQuantity(1);
       return;
     }
-    setQuantity(num);
-    checkAvailability(num, product.quantity);
+    setCartQuantity(num);
+    checkAvailability(num, product.available);
   };
 
   const handlePopoverOpen = e => {
@@ -127,7 +127,7 @@ export default function CartItem({ product, handleDelete }) {
             }}
           >
             <Box id={product.id} sx={{ display: 'flex', height: '40px' }}>
-              <IconButton onClick={handleDecrement}>
+              <IconButton onClick={handleReduceQuantity}>
                 <RemoveIcon sx={{ color: 'primary.light' }} />
               </IconButton>
               <TextField
@@ -137,22 +137,22 @@ export default function CartItem({ product, handleDelete }) {
                   style: { textAlign: 'center' },
                 }}
                 onChange={handleChange}
-                value={quantity}
+                value={cartQuantity}
               />
-              <IconButton onClick={handleAddItem} id={'button'}>
+              <IconButton onClick={handleIncreaseQuantity} id={'button'}>
                 <AddIcon sx={{ color: 'primary.light' }} />
               </IconButton>
             </Box>
             <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
-              {product.price * quantity}$
+              {product.price * cartQuantity}$
             </Typography>
           </Box>
         </Box>
       </Card>
       {alert && (
         <Alert severity="error" sx={{ mt: 1 }}>
-          Unfortunately we do not have {quantity} items in stock, we can offer
-          you {product.quantity} items. If you need more contact us.
+          Unfortunately we do not have {cartQuantity} items in stock, we can
+          offer you {product.available} items. If you need more contact us.
         </Alert>
       )}
     </>

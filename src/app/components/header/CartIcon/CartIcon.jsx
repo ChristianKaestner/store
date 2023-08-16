@@ -1,7 +1,7 @@
 import { IconButton, Badge } from '@mui/material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-export default function CartIcon({ onOpenCartModal }) {
+export default function CartIcon({ onOpenCartModal, totalProducts }) {
   return (
     <IconButton
       color="inherit"
@@ -10,7 +10,7 @@ export default function CartIcon({ onOpenCartModal }) {
       onClick={onOpenCartModal}
     >
       <Badge
-        badgeContent={4}
+        badgeContent={1}
         sx={{
           '& .MuiBadge-badge': {
             backgroundColor: 'primary.light',

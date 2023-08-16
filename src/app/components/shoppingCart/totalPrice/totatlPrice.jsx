@@ -11,6 +11,7 @@ export default function TotalPrice({ total }) {
         width: '100%',
         alignItems: 'center',
         bgcolor: '#fff',
+        mt: 1,
       }}
     >
       <Box

@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
 import TotalPrice from './totalPrice/totatlPrice';
+import EmptyCart from './emptyCart/emptyCart';
 import { items } from '@/app/utils/tmpData';
 
-export default function ShoppingCart() {
+export default function ShoppingCart({ cartQuantity }) {
   const [cart, setCart] = useState(items);
 
   const handleDelete = productId => {
@@ -16,64 +16,51 @@ export default function ShoppingCart() {
     setCart(updatedCart);
   };
 
+  const shoppingTotal = () => {
+    return cart.reduce((sum, current) => sum + current.price, 0);
+  };
+
+  cartQuantity(cart.length);
+
   return (
     <Box
       sx={{
-        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        height: 'calc(100% - 64px)',
+        justifyContent: 'space-between',
+        height: '485px',
         overflowY: 'auto',
         overflowX: 'hidden',
       }}
     >
       {cart.length > 0 ? (
-        <Grid
-          component="ul"
-          container
-          columnSpacing={1}
-          sx={{
-            listStyle: 'none',
-            mx: 0.1,
-          }}
-        >
-          {cart.map(product => {
-            return (
-              <Grid
-                key={product.id}
-                component="li"
-                sx={{ width: '100%', height: 'auto', mt: 1 }}
-              >
-                <CartItem product={product} handleDelete={handleDelete} />
-              </Grid>
-            );
-          })}
-        </Grid>
+        <>
+          <Grid
+            component="ul"
+            container
+            columnSpacing={1}
+            sx={{
+              listStyle: 'none',
+              mx: 0.1,
+            }}
+          >
+            {cart.map(product => {
+              return (
+                <Grid
+                  key={product.id}
+                  component="li"
+                  sx={{ width: '100%', height: 'auto', mt: 1 }}
+                >
+                  <CartItem product={product} handleDelete={handleDelete} />
+                </Grid>
+              );
+            })}
+          </Grid>
+          <TotalPrice total={shoppingTotal()} />
+        </>
       ) : (
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            textAlign: 'center',
-            margin: '64px auto 0',
-          }}
-        >
-          <Image
-            src="/cart.png"
-            alt="image"
-            width={400}
-            height={300}
-            priority="false"
-          />
-          <Typography>Your shopping cart is empty</Typography>
-        </Box>
+        <EmptyCart />
       )}
-      <TotalPrice total="15 000" />
     </Box>
   );
-}
-
-{
-  /* */
 }

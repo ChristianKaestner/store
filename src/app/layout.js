@@ -4,6 +4,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import { ThemeProvider } from '@mui/material';
 import { myTheme } from './utils/theme';
+import ReduxProvider from './redux/provider';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -20,9 +21,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={lato.className}>
       <body>
         <ThemeProvider theme={myTheme}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <ReduxProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </ReduxProvider>
         </ThemeProvider>
       </body>
     </html>

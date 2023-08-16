@@ -20,6 +20,7 @@ export default function Header() {
   const [openAccount, setOpenAccount] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [login, setLogin] = useState(true);
+  const [totalProducts, setTotalProducts] = useState(1);
 
   const toggleAuth = () => {
     setLogin(!login);
@@ -59,6 +60,10 @@ export default function Header() {
     document.body.style.overflow = 'scroll';
   };
 
+  const handleTotalProducts = num => {
+    setTotalProducts(num);
+  };
+
   return (
     <>
       <AppBar
@@ -82,7 +87,10 @@ export default function Header() {
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>
               <PersonalAccount onOpenAccountModal={onOpenAccountModal} />
-              <CartIcon onOpenCartModal={onOpenCartModal} />
+              <CartIcon
+                onOpenCartModal={onOpenCartModal}
+                totalProducts={totalProducts}
+              />
             </Box>
           </Toolbar>
           <DrawerMenu
@@ -119,7 +127,7 @@ export default function Header() {
               height="600px"
               position="center"
             >
-              <ShoppingCart />
+              <ShoppingCart cartQuantity={handleTotalProducts} />
             </Modal>
           )}
         </Container>

@@ -1,21 +1,12 @@
 'use client';
 import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import Image from 'next/image';
 import Link from 'next/link';
 import { cartAdd } from '@/app/redux/products/slice';
 import { Card, CardContent } from '@mui/material';
 import { Typography, IconButton, Box } from '@mui/material';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
-import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
-import ShoppingCartCheckoutOutlinedIcon from '@mui/icons-material/ShoppingCartCheckoutOutlined';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import { BsFillCartCheckFill, BsCartDash, BsCart } from 'react-icons/bs';
+import CardSwiper from './cardSwiper/cardSwiper';
 
 export default function ProductsItem({ product }) {
   const { id, title, subTitle, images, price, promotion } = product;
@@ -36,8 +27,8 @@ export default function ProductsItem({ product }) {
 
   const handleMouseEnter = e => {
     const target = e.target.nodeName;
+    console.log(target);
     if (target === 'path' || target === 'svg') return;
-
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();
@@ -66,7 +57,7 @@ export default function ProductsItem({ product }) {
         },
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           position: 'relative',
           width: 'calc(100% - 16px)',
@@ -153,8 +144,14 @@ export default function ProductsItem({ product }) {
             );
           })}
         </Swiper>
-      </Box>
-
+      </Box> */}
+      <CardSwiper
+        promotion={promotion}
+        handleFavorite={handleFavorite}
+        images={images}
+        isFavorite={isFavorite}
+        swiperRef={swiperRef}
+      />
       <CardContent>
         <Box>
           <Link href="/">
@@ -188,13 +185,9 @@ export default function ProductsItem({ product }) {
           </Typography>
           <IconButton onClick={handleCart}>
             {inCart ? (
-              <ShoppingCartCheckoutOutlinedIcon
-                sx={{ fontSize: 30, color: 'primary.accent' }}
-              />
+              <BsFillCartCheckFill style={{ fontSize: 30, fill: '#f68e5f' }} />
             ) : (
-              <AddShoppingCartOutlinedIcon
-                sx={{ fontSize: 30, color: 'primary.accent' }}
-              />
+              <BsCart style={{ fontSize: 30, fill: '#f68e5f' }} />
             )}
           </IconButton>
         </Box>

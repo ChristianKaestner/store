@@ -1,3 +1,8 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { productsOperations } from '@/app/redux/products/operations';
 import { Container, Box } from '@mui/material';
 import Hero from './components/hero/hero';
 import Sidebar from './components/sidebar/sidebar';
@@ -7,6 +12,12 @@ import { images } from '../app/utils/tmpData';
 import { categories } from '@/app/utils/tmpData';
 
 export default function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(productsOperations.fetchPromotedProducts());
+  }, [dispatch]);
+
   return (
     <Container
       maxWidth="xl"

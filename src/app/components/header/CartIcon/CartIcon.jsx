@@ -10,7 +10,7 @@ export default function CartIcon({ onOpenCartModal, totalProducts }) {
       onClick={onOpenCartModal}
     >
       <Badge
-        badgeContent={1}
+        badgeContent={totalProducts}
         sx={{
           '& .MuiBadge-badge': {
             backgroundColor: 'primary.light',

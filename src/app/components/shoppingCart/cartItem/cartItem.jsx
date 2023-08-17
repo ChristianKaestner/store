@@ -15,38 +15,18 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function CartItem({ product, handleDelete }) {
-  const [cartQuantity, setCartQuantity] = useState(1);
+export default function CartItem({ product, increase, reduce, change, del }) {
+  const { id, title, images, price, quantity, available } = product;
   const [anchorEl, setAnchorEl] = useState(null);
-  const [alert, setAlert] = useState(false);
 
-  const checkAvailability = (cartQuantity, available) => {
-    cartQuantity > available ? setAlert(true) : setAlert(false);
-  };
-
-  const onDelete = e => {
-    handleDelete(e.target.id);
+  const onDelete = () => {
+    del(id);
     setAnchorEl(null);
   };
 
-  const handleIncreaseQuantity = () => {
-    setCartQuantity(cartQuantity + 1);
-    checkAvailability(cartQuantity + 1, product.available);
-  };
-
-  const handleReduceQuantity = () => {
-    cartQuantity === 1 ? setCartQuantity(1) : setCartQuantity(cartQuantity - 1);
-    checkAvailability(cartQuantity - 1, product.available);
-  };
-
-  const handleChange = e => {
+  const onChange = e => {
     const num = Number(e.target.value);
-    if (!num) {
-      setCartQuantity(1);
-      return;
-    }
-    setCartQuantity(num);
-    checkAvailability(num, product.available);
+    change(id, num);
   };
 
   const handlePopoverOpen = e => {
@@ -58,7 +38,7 @@ export default function CartItem({ product, handleDelete }) {
   };
   const open = Boolean(anchorEl);
 
-  const id = open ? 'simple-popover' : undefined;
+  const popoverId = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -73,7 +53,7 @@ export default function CartItem({ product, handleDelete }) {
       >
         <Box sx={{ position: 'relative', width: '20%' }}>
           <Image
-            src={product.images[0]}
+            src={images[0]}
             fill={true}
             alt="image"
             sizes="100%"
@@ -89,12 +69,12 @@ export default function CartItem({ product, handleDelete }) {
               justifyContent: 'space-between',
             }}
           >
-            <Typography sx={{ pl: 1 }}>{product.title}</Typography>
+            <Typography sx={{ pl: 1 }}>{title}</Typography>
             <IconButton onClick={handlePopoverOpen}>
               <MoreVertIcon sx={{ color: 'primary.light' }} />
             </IconButton>
             <Popover
-              id={id}
+              id={popoverId}
               open={open}
               anchorEl={anchorEl}
               onClose={handlePopoverClose}
@@ -108,7 +88,7 @@ export default function CartItem({ product, handleDelete }) {
               }}
             >
               <Button
-                id={product.id}
+                id={id}
                 variant="outlined"
                 startIcon={<DeleteOutlineIcon />}
                 onClick={onDelete}
@@ -126,8 +106,8 @@ export default function CartItem({ product, handleDelete }) {
               alignItems: 'center',
             }}
           >
-            <Box id={product.id} sx={{ display: 'flex', height: '40px' }}>
-              <IconButton onClick={handleReduceQuantity}>
+            <Box id={id} sx={{ display: 'flex', height: '40px' }}>
+              <IconButton onClick={() => reduce(id)}>
                 <RemoveIcon sx={{ color: 'primary.light' }} />
               </IconButton>
               <TextField
@@ -136,23 +116,23 @@ export default function CartItem({ product, handleDelete }) {
                 inputProps={{
                   style: { textAlign: 'center' },
                 }}
-                onChange={handleChange}
-                value={cartQuantity}
+                onChange={onChange}
+                value={quantity}
               />
-              <IconButton onClick={handleIncreaseQuantity} id={'button'}>
+              <IconButton onClick={() => increase(id)} id={'button'}>
                 <AddIcon sx={{ color: 'primary.light' }} />
               </IconButton>
             </Box>
             <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
-              {product.price * cartQuantity}$
+              {price * quantity}$
             </Typography>
           </Box>
         </Box>
       </Card>
-      {alert && (
+      {quantity > available && (
         <Alert severity="error" sx={{ mt: 1 }}>
-          Unfortunately we do not have {cartQuantity} items in stock, we can
-          offer you {product.available} items. If you need more contact us.
+          Unfortunately we only have {available} items, if you need more please
+          contact us.
         </Alert>
       )}
     </>

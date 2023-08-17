@@ -1,7 +1,9 @@
 'use client';
 import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import Image from 'next/image';
 import Link from 'next/link';
+import { cartAdd } from '@/app/redux/products/slice';
 import { Card, CardContent } from '@mui/material';
 import { Typography, IconButton, Box } from '@mui/material';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -15,16 +17,11 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function ProductsItem({
-  id,
-  promotion,
-  price,
-  title,
-  subTitle,
-  images,
-}) {
+export default function ProductsItem({ product }) {
+  const { id, title, subTitle, images, price, promotion } = product;
   const [isFavorite, setIsFavorite] = useState(false);
   const [inCart, setInCart] = useState(false);
+  const dispatch = useDispatch();
 
   const swiperRef = useRef();
 
@@ -32,7 +29,8 @@ export default function ProductsItem({
     setIsFavorite(!isFavorite);
   };
 
-  const handleCart = e => {
+  const handleCart = () => {
+    dispatch(cartAdd(product));
     setInCart(!inCart);
   };
 

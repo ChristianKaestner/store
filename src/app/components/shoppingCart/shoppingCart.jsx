@@ -1,40 +1,45 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import {
+  cartReduceQuantity,
+  cartIncreaseQuantity,
+  cartRemove,
+  cartSetQuantity,
+} from '@/app/redux/products/slice';
+import { useProducts } from '@/app/hooks/useProducts';
 import { Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
 import TotalPrice from './totalPrice/totatlPrice';
 import EmptyCart from './emptyCart/emptyCart';
-import { items } from '@/app/utils/tmpData';
-import { productsOperations } from '@/app/redux/products/operations';
-import { useProducts } from '@/app/hooks/useProducts';
 
-// const cartProducts = items.forEach(item => {item, item.quantity = 1})
-
-export default function ShoppingCart({ cartQuantity }) {
-  const [cart, setCart] = useState(items);
-  const { products, isLoading, isError } = useProducts();
-
+export default function ShoppingCart() {
+  const { cart, isLoading } = useProducts();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(productsOperations.fetchProducts());
-  }, [dispatch]);
+  const handleDelete = id => {
+    dispatch(cartRemove(id));
+  };
 
-  console.log(products);
+  const handleIncreaseQuantity = id => {
+    dispatch(cartIncreaseQuantity(id));
+  };
 
-  const handleDelete = productId => {
-    const updatedCart = cart.filter(item => item.id !== Number(productId));
-    setCart(updatedCart);
+  const handleReduceQuantity = id => {
+    dispatch(cartReduceQuantity(id));
+  };
+
+  const handleSetQuantity = (id, num) => {
+    dispatch(cartSetQuantity({ id, num }));
   };
 
   const shoppingTotal = () => {
-    return cart.reduce((sum, current) => sum + current.price, 0);
+    return cart.reduce(
+      (sum, current) => sum + current.price * current.quantity,
+      0
+    );
   };
-
-  cartQuantity(cart.length);
 
   return (
     <Box
@@ -65,7 +70,13 @@ export default function ShoppingCart({ cartQuantity }) {
                   component="li"
                   sx={{ width: '100%', height: 'auto', mt: 1 }}
                 >
-                  <CartItem product={product} handleDelete={handleDelete} />
+                  <CartItem
+                    product={product}
+                    increase={handleIncreaseQuantity}
+                    reduce={handleReduceQuantity}
+                    change={handleSetQuantity}
+                    del={handleDelete}
+                  />
                 </Grid>
               );
             })}

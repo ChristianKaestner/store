@@ -1,10 +1,15 @@
 'use client';
+
+import { useProducts } from '@/app/hooks/useProducts';
 import { Box } from '@mui/material';
 import ProductsItem from '../productsItem/productsItem';
 import Grid from '@mui/material/Unstable_Grid2';
-import { items } from '@/app/utils/tmpData';
 
 export default function ProductsList() {
+  const { promotedProducts, isLoading } = useProducts();
+
+  // need to add sekeleton when isLodaing
+
   return (
     <Box sx={{ width: '100%', mt: 4 }}>
       <Grid
@@ -14,17 +19,10 @@ export default function ProductsList() {
         columnSpacing={{ xs: 2, sm: 2, md: 3 }}
         sx={{ listStyle: 'none' }}
       >
-        {items.map(item => {
+        {promotedProducts.map(item => {
           return (
             <Grid xs={12} sm={6} md={4} lg={3} key={item.id} component="li">
-              <ProductsItem
-                id={item.id}
-                promotion={item.promotion}
-                price={item.price}
-                subTitle={item.subTitle}
-                title={item.title}
-                images={item.images}
-              />
+              <ProductsItem product={item} />
             </Grid>
           );
         })}

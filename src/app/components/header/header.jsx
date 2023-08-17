@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useProducts } from '@/app/hooks/useProducts';
 import { AppBar, Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
@@ -20,7 +21,7 @@ export default function Header() {
   const [openAccount, setOpenAccount] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const [login, setLogin] = useState(true);
-  const [totalProducts, setTotalProducts] = useState(1);
+  const { cart } = useProducts();
 
   const toggleAuth = () => {
     setLogin(!login);
@@ -60,10 +61,6 @@ export default function Header() {
     document.body.style.overflow = 'scroll';
   };
 
-  const handleTotalProducts = num => {
-    setTotalProducts(num);
-  };
-
   return (
     <>
       <AppBar
@@ -89,7 +86,7 @@ export default function Header() {
               <PersonalAccount onOpenAccountModal={onOpenAccountModal} />
               <CartIcon
                 onOpenCartModal={onOpenCartModal}
-                totalProducts={totalProducts}
+                totalProducts={cart.length}
               />
             </Box>
           </Toolbar>
@@ -127,7 +124,7 @@ export default function Header() {
               height="600px"
               position="center"
             >
-              <ShoppingCart cartQuantity={handleTotalProducts} />
+              <ShoppingCart />
             </Modal>
           )}
         </Container>

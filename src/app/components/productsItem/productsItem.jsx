@@ -6,10 +6,12 @@ import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 
-export default function ProductsItem({ product, cart }) {
+// const 
+
+export default function ProductsItem({ product, cart, favorite }) {
   const { id, title, subTitle, images, price, promotion } = product;
   const [isFavorite, setIsFavorite] = useState(false);
-  const [cartIcon, setCartIcon] = useState('empty');
+  const [isInCart, setIsInCart] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -17,8 +19,8 @@ export default function ProductsItem({ product, cart }) {
 
   useEffect(() => {
     cart.find(item => item.id === product.id)
-      ? setCartIcon('added')
-      : setCartIcon('empty');
+      ? setIsInCart(true)
+      : setIsInCart(false);
   }, [cart]);
 
   const handleFavorite = () => {
@@ -27,10 +29,10 @@ export default function ProductsItem({ product, cart }) {
 
   const handleCart = () => {
     if (cart.find(item => item.id === product.id)) {
-      setCartIcon('empty');
+      setIsInCart(true);
       dispatch(cartRemove(id));
     } else {
-      setCartIcon('added');
+      setIsInCart(false);
       dispatch(cartAdd(product));
     }
   };
@@ -79,7 +81,7 @@ export default function ProductsItem({ product, cart }) {
         subTitle={subTitle}
         title={title}
         price={price}
-        cartIcon={cartIcon}
+        isInCart={isInCart}
         handleCart={handleCart}
       />
     </Card>

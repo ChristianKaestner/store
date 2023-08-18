@@ -69,6 +69,16 @@ export const productsSlice = createSlice({
       });
       state.cart = updatedCart;
     },
+    favoriteAdd(state, action) {
+      const id = action.payload;
+      if (state.favorite.find(item => item.id === id)) return;
+      state.favorite.push(id);
+    },
+    favoriteRemove(state, action) {
+      const id = action.payload;
+      const updatedFavorite = state.favorite.filter(item => item !== id);
+      state.cart = updatedFavorite;
+    },
   },
   extraReducers(builder) {
     builder
@@ -94,4 +104,6 @@ export const {
   cartIncreaseQuantity,
   cartReduceQuantity,
   cartSetQuantity,
+  favoriteAdd,
+  favoriteRemove,
 } = productsSlice.actions;

@@ -6,7 +6,7 @@ export default function CardDescription({
   subTitle,
   title,
   price,
-  cartIcon,
+  isInCart,
   handleCart,
 }) {
   return (
@@ -42,10 +42,10 @@ export default function CardDescription({
           {price}$
         </Typography>
         <IconButton onClick={handleCart}>
-          {cartIcon === 'empty' ? (
-            <BsCart style={{ fontSize: 30, fill: '#f68e5f' }} />
-          ) : (
+          {isInCart ? (
             <BsFillCartCheckFill style={{ fontSize: 30, fill: '#f68e5f' }} />
+          ) : (
+            <BsCart style={{ fontSize: 30, fill: '#f68e5f' }} />
           )}
         </IconButton>
       </Box>

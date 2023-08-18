@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
+import { toggleAccount } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/products/slice';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
@@ -24,7 +25,10 @@ export default function ProductsItem({ product, cart, favorite }) {
   }, [cart]);
 
   const handleFavorite = () => {
-    if (!isLogin) return;
+    if (!isLogin) {
+      dispatch(toggleAccount(true));
+      return;
+    }
     setIsFavorite(!isFavorite);
   };
 

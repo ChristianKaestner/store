@@ -7,7 +7,7 @@ import {
   selectIsLoading,
 } from '../redux/auth/selectors';
 
-export const useProducts = () => {
+export const useAuth = () => {
   const isLogin = useSelector(selectIsLogin);
   const user = useSelector(selectUser);
   const token = useSelector(selectToken);

@@ -1,7 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useProducts } from '@/app/hooks/useProducts';
+import { useModal } from '@/app/hooks/useModal';
+import { toggleAccount, toggleProducts } from '@/app/redux/modal/slice';
+import { toggleCart, toggleMobile } from '@/app/redux/modal/slice';
 import { AppBar, Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
@@ -16,48 +20,47 @@ import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [openProducts, setOpenProducts] = useState(false);
-  const [openAccount, setOpenAccount] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
   const [login, setLogin] = useState(true);
+  const { cartModal, accountModal, mobileModal, productsModal } = useModal();
   const { cart } = useProducts();
+
+  const dispath = useDispatch();
 
   const toggleAuth = () => {
     setLogin(!login);
   };
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    dispath(toggleMobile(!mobileModal));
   };
 
   const onOpenProductsModal = () => {
-    setOpenProducts(true);
+    dispath(toggleProducts(true));
     document.body.style.overflow = 'hidden';
   };
 
   const onCloseProductsModal = () => {
-    setOpenProducts(false);
+    dispath(toggleProducts(false));
     document.body.style.overflow = 'scroll';
   };
 
   const onOpenAccountModal = () => {
-    setOpenAccount(true);
+    dispath(toggleAccount(true));
     document.body.style.overflow = 'hidden';
   };
 
   const onCloseAccountModal = () => {
-    setOpenAccount(false);
+    dispath(toggleAccount(false));
     document.body.style.overflow = 'scroll';
   };
 
   const onOpenCartModal = () => {
-    setOpenCart(true);
+    dispath(toggleCart(true));
     document.body.style.overflow = 'hidden';
   };
 
   const onCloseCartModal = () => {
-    setOpenCart(false);
+    dispath(toggleCart(false));
     document.body.style.overflow = 'scroll';
   };
 
@@ -91,10 +94,10 @@ export default function Header() {
             </Box>
           </Toolbar>
           <DrawerMenu
-            mobileOpen={mobileOpen}
+            mobileOpen={mobileModal}
             handleDrawerToggle={handleDrawerToggle}
           />
-          {openProducts && (
+          {productsModal && (
             <Modal
               onClose={onCloseProductsModal}
               title="Products"
@@ -105,7 +108,7 @@ export default function Header() {
               <ProductsModal />
             </Modal>
           )}
-          {openAccount && (
+          {accountModal && (
             <Modal
               onClose={onCloseAccountModal}
               title={login ? 'Log In' : 'Register'}
@@ -116,7 +119,7 @@ export default function Header() {
               <Auth toggleAuth={toggleAuth} login={login} />
             </Modal>
           )}
-          {openCart && (
+          {cartModal && (
             <Modal
               onClose={onCloseCartModal}
               title="Cart"

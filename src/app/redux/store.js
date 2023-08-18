@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/slice';
 import productsSlice from './products/slice';
+import modalSlice from './modal/slice';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -29,6 +30,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
     products: persistReducer(productsPersistConfig, productsSlice),
+    modal: modalSlice,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

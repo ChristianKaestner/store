@@ -1,17 +1,17 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '@/app/hooks/useAuth';
 import { cartAdd, cartRemove } from '@/app/redux/products/slice';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 
-// const 
-
 export default function ProductsItem({ product, cart, favorite }) {
   const { id, title, subTitle, images, price, promotion } = product;
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
+  const { isLogin } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -24,6 +24,7 @@ export default function ProductsItem({ product, cart, favorite }) {
   }, [cart]);
 
   const handleFavorite = () => {
+    if (!isLogin) return;
     setIsFavorite(!isFavorite);
   };
 

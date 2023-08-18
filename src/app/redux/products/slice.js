@@ -60,7 +60,7 @@ export const productsSlice = createSlice({
       if (!num || num < 1) return;
       const updatedCart = state.cart.map(item => {
         if (item.id === id) {
-          return item.quantity > item.available
+          return num > item.available
             ? { ...item, quantity: item.available }
             : { ...item, quantity: num };
         } else {

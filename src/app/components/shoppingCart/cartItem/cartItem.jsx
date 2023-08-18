@@ -1,15 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import {
-  Box,
-  Button,
-  Card,
-  IconButton,
-  TextField,
-  Typography,
-  Alert,
-} from '@mui/material';
-import { Popover } from '@mui/material';
+import { Box, Button, Card, IconButton, TextField } from '@mui/material';
+import { Popover, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -129,12 +121,6 @@ export default function CartItem({ product, increase, reduce, change, del }) {
           </Box>
         </Box>
       </Card>
-      {quantity > available && (
-        <Alert severity="error" sx={{ mt: 1 }}>
-          Unfortunately we only have {available} items, if you need more please
-          contact us.
-        </Alert>
-      )}
     </>
   );
 }

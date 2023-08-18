@@ -8,7 +8,7 @@ import {
   cartSetQuantity,
 } from '@/app/redux/products/slice';
 import { useProducts } from '@/app/hooks/useProducts';
-import { Box } from '@mui/material';
+import { Box, Alert } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
 import TotalPrice from './totalPrice/totatlPrice';
@@ -47,7 +47,7 @@ export default function ShoppingCart() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        height: '485px',
+        height: '90%',
         overflowY: 'auto',
         overflowX: 'hidden',
       }}
@@ -77,6 +77,12 @@ export default function ShoppingCart() {
                     change={handleSetQuantity}
                     del={handleDelete}
                   />
+                  {product.quantity >= product.available && (
+                    <Alert severity="error" sx={{ mt: 1 }}>
+                      Unfortunately we only have {product.available} items, if
+                      you need more please contact us.
+                    </Alert>
+                  )}
                 </Grid>
               );
             })}

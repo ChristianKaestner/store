@@ -18,7 +18,7 @@ export default function Categories({ categories }) {
         {categories.map(category => {
           return (
             <Grid xs={6} key={category.id}>
-              <Link href="/">
+              <Link href={category.name.toLowerCase()}>
                 <Card
                   sx={{
                     position: 'relative',

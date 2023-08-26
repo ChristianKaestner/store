@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FilterCommon from '../common/filterCommon';
-import { FormControl, Button, TextField, Box, IconButton } from '@mui/material';
+import { FormControl, TextField, Box, IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Slider from '@mui/material/Slider';
 import LoopIcon from '@mui/icons-material/Loop';
@@ -14,7 +14,7 @@ const CustomSliderStyles = {
   mx: 2,
   mt: 2,
 };
-
+//need to add price constraints
 export default function PriceFilter({ from, to }) {
   const [inputFrom, setInputFrom] = useState(from);
   const [inputTo, setInputTo] = useState(to);
@@ -32,7 +32,7 @@ export default function PriceFilter({ from, to }) {
     setInputTo(+e.target.value);
   };
   return (
-    <FilterCommon title="price">
+    <FilterCommon title="Price">
       <FormControl
         sx={{
           display: 'flex',

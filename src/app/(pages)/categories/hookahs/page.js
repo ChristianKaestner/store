@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { Container, Box } from '@mui/material';
+import { Container, Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
@@ -19,6 +19,7 @@ export default function Hookahs() {
       <Breadcrumbs crumbs={path} />
       <PageTitle title="Hookahs" />
       <SortFilter />
+      <Divider />
       <Sidebar />
     </Container>
   );

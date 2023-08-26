@@ -26,19 +26,21 @@ export default function SortFilter() {
             PaperProps: {
               sx: {
                 '& .MuiMenuItem-root.Mui-selected': {
-                  bgcolor: 'transparent',
+                  backgroundColor: 'primary.light',
                 },
                 '& .MuiMenuItem-root:hover': {
-                  bgcolor: 'primary.light',
+                  backgroundColor: 'primary.light',
                 },
                 '& .MuiMenuItem-root.Mui-selected:hover': {
-                  bgcolor: 'primary.light',
+                  backgroundColor: 'primary.light',
                 },
               },
             },
           }}
         >
-          <MenuItem value={1}>default</MenuItem>
+          <MenuItem value="">
+            <em>default</em>
+          </MenuItem>
           <MenuItem value={2}>cheap to expensive</MenuItem>
           <MenuItem value={3}>expensive to cheap</MenuItem>
           <MenuItem value={4}>discount rate</MenuItem>
@@ -48,3 +50,34 @@ export default function SortFilter() {
     </Box>
   );
 }
+
+// export default function SortFilter() {
+//   const [age, setAge] = React.useState('');
+
+//   const handleChange = event => {
+//     setAge(event.target.value);
+//   };
+
+//   return (
+//     <div>
+//       <FormControl sx={{ m: 1, minWidth: 80 }}>
+//         <InputLabel id="demo-simple-select-autowidth-label">Age</InputLabel>
+//         <Select
+//           labelId="demo-simple-select-autowidth-label"
+//           id="demo-simple-select-autowidth"
+//           value={age}
+//           onChange={handleChange}
+//           autoWidth
+//           label="Age"
+//         >
+// <MenuItem value="">
+//   <em>None</em>
+// </MenuItem>
+//           <MenuItem value={10}>Twenty</MenuItem>
+//           <MenuItem value={21}>Twenty one</MenuItem>
+//           <MenuItem value={22}>Twenty one and a half</MenuItem>
+//         </Select>
+//       </FormControl>
+//     </div>
+//   );
+// }

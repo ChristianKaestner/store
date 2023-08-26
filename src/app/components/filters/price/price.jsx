@@ -1,13 +1,35 @@
 import { useState } from 'react';
 import FilterCommon from '../common/filterCommon';
-import { FormControl, Button, TextField } from '@mui/material';
+import { FormControl, Button, TextField, Box, IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Slider from '@mui/material/Slider';
+import LoopIcon from '@mui/icons-material/Loop';
 
-export default function PriceFilter() {
-  const [value, setValue] = useState([20, 37]);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+const CustomSliderStyles = {
+  '& .MuiSlider-thumb': {
+    width: 20,
+    height: 20,
+    color: 'primary.light',
+  },
+  mx: 2,
+  mt: 2,
+};
+
+export default function PriceFilter({ from, to }) {
+  const [inputFrom, setInputFrom] = useState(from);
+  const [inputTo, setInputTo] = useState(to);
+
+  const handleChange = (e, newValue) => {
+    setInputFrom(newValue[0]);
+    setInputTo(newValue[1]);
+  };
+
+  const handleChangeFrom = e => {
+    setInputFrom(+e.target.value);
+  };
+
+  const handleChangeTo = e => {
+    setInputTo(+e.target.value);
   };
   return (
     <FilterCommon title="price">
@@ -26,6 +48,8 @@ export default function PriceFilter() {
           type="text"
           sx={{ width: 90 }}
           size="small"
+          value={inputFrom}
+          onChange={handleChangeFrom}
         />
         <RemoveIcon />
         <TextField
@@ -34,20 +58,23 @@ export default function PriceFilter() {
           type="text"
           sx={{ width: 90 }}
           size="small"
+          value={inputTo}
+          onChange={handleChangeTo}
         />
-        <Button
-          variant="contained"
-          sx={{ height: '100%', bgcolor: 'primary.light' }}
-        >
-          OK
-        </Button>
+        <IconButton sx={{ ml: 1, color: 'primary.light' }}>
+          <LoopIcon />
+        </IconButton>
       </FormControl>
-      <Slider
-        // getAriaLabel={() => 'Temperature range'}
-        value={value}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-      />
+      <Box sx={{ width: '85%' }}>
+        <Slider
+          value={[inputFrom, inputTo]}
+          onChange={handleChange}
+          size="small"
+          min={from}
+          max={to}
+          sx={CustomSliderStyles}
+        />
+      </Box>
     </FilterCommon>
   );
 }

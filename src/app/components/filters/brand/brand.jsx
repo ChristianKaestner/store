@@ -6,21 +6,6 @@ import { FormControlLabel, FormGroup, Box } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { brands } from '@/app/utils/tmpData';
 
-const styles = {
-  cssLabel: {
-    '&$cssFocused': {
-      color: 'red',
-    },
-  },
-  cssOutlinedInput: {
-    '&$cssFocused $notchedOutline': {
-      borderColor: 'red',
-    },
-  },
-  cssFocused: {},
-  notchedOutline: {},
-};
-
 export default function BrandFilter() {
   const [searchedBrand, setSearchedBrand] = useState('');
   const [debouncedBrand] = useDebounce(searchedBrand, 500);

@@ -14,7 +14,7 @@ const CustomSliderStyles = {
   mx: 2,
   mt: 2,
 };
-//need to add price constraints
+
 export default function PriceFilter({ from, to }) {
   const [inputFrom, setInputFrom] = useState(from);
   const [inputTo, setInputTo] = useState(to);
@@ -25,12 +25,17 @@ export default function PriceFilter({ from, to }) {
   };
 
   const handleChangeFrom = e => {
-    setInputFrom(+e.target.value);
+    const num = Number(e.target.value);
+    if (isNaN(num)) return;
+    setInputFrom(num);
   };
 
   const handleChangeTo = e => {
-    setInputTo(+e.target.value);
+    const num = Number(e.target.value);
+    if (isNaN(num)) return;
+    setInputTo(num);
   };
+
   return (
     <FilterCommon title="Price">
       <FormControl
@@ -46,7 +51,18 @@ export default function PriceFilter({ from, to }) {
           id="outlined"
           label="from"
           type="text"
-          sx={{ width: 90 }}
+          sx={{
+            width: 90,
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor:
+                inputFrom < from ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
+            },
+            '& .MuiOutlinedInput-root': {
+              '&.Mui-focused fieldset': {
+                borderColor: inputFrom < from ? 'primary.hot' : 'primary.light',
+              },
+            },
+          }}
           size="small"
           value={inputFrom}
           onChange={handleChangeFrom}
@@ -56,7 +72,17 @@ export default function PriceFilter({ from, to }) {
           id="outlined"
           label="to"
           type="text"
-          sx={{ width: 90 }}
+          sx={{
+            width: 90,
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: inputTo > to ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
+            },
+            '& .MuiOutlinedInput-root': {
+              '&.Mui-focused fieldset': {
+                borderColor: inputTo > to ? 'primary.hot' : 'primary.light',
+              },
+            },
+          }}
           size="small"
           value={inputTo}
           onChange={handleChangeTo}

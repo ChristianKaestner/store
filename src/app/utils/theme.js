@@ -50,6 +50,9 @@ export const myTheme = createTheme({
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.primary.light,
           },
+          '&.MuiOutlinedInput': {
+            zIndex: 2,
+          },
         }),
       },
     },

@@ -195,3 +195,14 @@ export const brands = [
   { id: 9, name: 'Klm' },
   { id: 10, name: 'Nft' },
 ];
+
+export const weight = [
+  { id: 1, gram: 25 },
+  { id: 2, gram: 50 },
+  { id: 3, gram: 100 },
+  { id: 4, gram: 125 },
+  { id: 5, gram: 150 },
+  { id: 6, gram: 250 },
+  { id: 7, gram: 500 },
+  { id: 8, gram: 1000 },
+];

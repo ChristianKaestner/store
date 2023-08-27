@@ -59,7 +59,9 @@ export default function BrandFilter() {
                     <Typography sx={{ fontWeight: 500 }}>{letter}</Typography>
                   )}
                   <FormControlLabel
-                    control={<Checkbox value={name} sx={{ p: 1 }} />}
+                    control={
+                      <Checkbox value={name} sx={{ p: 1 }} size="small" />
+                    }
                     label={name}
                     onClick={handleChecked}
                     sx={{

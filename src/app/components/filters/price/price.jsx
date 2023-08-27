@@ -36,6 +36,10 @@ export default function PriceFilter({ from, to }) {
     setInputTo(num);
   };
 
+  const handleRefresh = () => {
+    // update items by price
+  };
+
   return (
     <FilterCommon title="Price">
       <FormControl
@@ -87,7 +91,14 @@ export default function PriceFilter({ from, to }) {
           value={inputTo}
           onChange={handleChangeTo}
         />
-        <IconButton sx={{ ml: 1, color: 'primary.light' }}>
+        <IconButton
+          sx={{
+            ml: 1,
+            color: 'primary.light',
+          }}
+          onClick={handleRefresh}
+          disabled={inputTo > to || inputFrom < from ? true : false}
+        >
           <LoopIcon />
         </IconButton>
       </FormControl>

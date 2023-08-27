@@ -16,7 +16,7 @@ export default function SearchForm() {
     >
       <OutlinedInput
         placeholder="search..."
-        type="text"
+        type="search"
         aria-label="search items"
         sx={{ flexGrow: 1, height: 40, pr: 0, background: '#fff' }}
         startAdornment={

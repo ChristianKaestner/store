@@ -24,6 +24,76 @@ export const myTheme = createTheme({
       info: '#f5dd90',
       accent: '#f68e5f',
       hot: '#f76c5e',
+      dim: '#f5f6fa',
+    },
+  },
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.light,
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.light,
+          },
+        }),
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.light,
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.light,
+          },
+        }),
+      },
+    },
+
+    MuiSelect: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover .MuiOutlinedInput-notchedOutline ': {
+            borderColor: theme.palette.primary.light,
+          },
+          '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.light,
+          },
+        }),
+      },
+    },
+
+    MuiMenuItem: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.primary.dim,
+          },
+          '&:active': {
+            backgroundColor: theme.palette.primary.light,
+          },
+          '&.MuiMenuItem-root.Mui-selected': {
+            backgroundColor: theme.palette.primary.light,
+          },
+        }),
+      },
+    },
+
+    MuiCheckbox: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.light,
+          '&.Mui-checked': {
+            '& svg': {
+              color: theme.palette.primary.light,
+            },
+          },
+        }),
+      },
     },
   },
 });

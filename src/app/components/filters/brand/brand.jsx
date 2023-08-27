@@ -1,50 +1,38 @@
 import { useState } from 'react';
+import { useDebounce } from 'use-debounce';
 import FilterCommon from '../common/filterCommon';
-import {
-  FormControl,
-  TextField,
-  Checkbox,
-  Typography,
-  FormControlLabel,
-  FormGroup,
-} from '@mui/material';
+import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
+import { FormControlLabel, FormGroup, Box } from '@mui/material';
+import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
+import { brands } from '@/app/utils/tmpData';
 
-const brands = [
-  { id: 1, name: 'Abc' },
-  { id: 2, name: 'Btc' },
-  { id: 3, name: 'Cdo' },
-  { id: 4, name: 'Arb' },
-  { id: 5, name: 'Etf' },
-  { id: 6, name: 'Bob' },
-  { id: 7, name: 'Gld' },
-  { id: 8, name: 'Int' },
-  { id: 9, name: 'Klm' },
-  { id: 10, name: 'Nft' },
-];
-
-const CustomCheckBoxStyles = {
-  '& .MuiSvgIcon-root': {
-    color: 'primary.light',
+const styles = {
+  cssLabel: {
+    '&$cssFocused': {
+      color: 'red',
+    },
   },
+  cssOutlinedInput: {
+    '&$cssFocused $notchedOutline': {
+      borderColor: 'red',
+    },
+  },
+  cssFocused: {},
+  notchedOutline: {},
 };
 
 export default function BrandFilter() {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchedBrand, setSearchedBrand] = useState('');
+  const [debouncedBrand] = useDebounce(searchedBrand, 500);
 
-  const addAlphabetIndex = brands => {
-    let alphabetIndex = '';
-    return brands
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map(brand => {
-        if (alphabetIndex !== brand.name[0]) {
-          alphabetIndex = brand.name[0];
-          return { ...brand, letter: brand.name[0].toUpperCase() };
-        }
-        return brand;
-      });
+  const brandsWithLetter = addAlphabetIndex(brands);
+  const filtredBrands = filterByInput(brandsWithLetter, debouncedBrand);
+
+  const handleChecked = e => {
+    console.log(e.target.checked);
+    console.log(e.target.value);
+    //need to fetch items
   };
-
-  
 
   return (
     <FilterCommon title="Brand">
@@ -53,7 +41,6 @@ export default function BrandFilter() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-
           alignItems: 'baseline',
         }}
         component="form"
@@ -61,32 +48,44 @@ export default function BrandFilter() {
         <TextField
           id="outlined"
           label="Brand name"
-          type="text"
+          type="search"
           size="small"
-          value={searchValue}
+          value={searchedBrand}
+          onChange={e => setSearchedBrand(e.target.value)}
         />
         <FormGroup
+          component="ul"
           sx={{
             flexWrap: 'nowrap',
             width: '100%',
-            maxHeight: 400,
-            overflow: 'auto',
+            height: 400,
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            listStyle: 'none',
             mt: 2,
             pl: 2,
           }}
         >
           {brands.length &&
-            brands
-              //   .sort(brand => brand.name)
-              .map(({ id, name }) => {
-                return (
+            filtredBrands.map(({ id, name, letter }) => {
+              return (
+                <Box key={id} component="li">
+                  {letter && (
+                    <Typography sx={{ fontWeight: 500 }}>{letter}</Typography>
+                  )}
                   <FormControlLabel
-                    control={<Checkbox sx={CustomCheckBoxStyles} />}
+                    control={<Checkbox value={name} sx={{ p: 1 }} />}
                     label={name}
-                    key={id}
+                    onClick={handleChecked}
+                    sx={{
+                      width: '100%',
+                      borderRadius: 1,
+                      '&:hover': { bgcolor: 'primary.dim' },
+                    }}
                   />
-                );
-              })}
+                </Box>
+              );
+            })}
         </FormGroup>
       </FormControl>
     </FilterCommon>

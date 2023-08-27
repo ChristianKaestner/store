@@ -182,3 +182,16 @@ export const categories = [
     ],
   },
 ];
+
+export const brands = [
+  { id: 1, name: 'Abc' },
+  { id: 2, name: 'Btc' },
+  { id: 3, name: 'Cdo' },
+  { id: 4, name: 'Arb' },
+  { id: 5, name: 'Etf' },
+  { id: 6, name: 'Bob' },
+  { id: 7, name: 'Gld' },
+  { id: 8, name: 'Int' },
+  { id: 9, name: 'Klm' },
+  { id: 10, name: 'Nft' },
+];

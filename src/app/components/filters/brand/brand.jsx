@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../common/filterCommon';
 import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
-import { FormControlLabel, FormGroup, Box } from '@mui/material';
+import { FormControlLabel, Box } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { brands } from '@/app/utils/tmpData';
 
@@ -38,7 +38,7 @@ export default function BrandFilter() {
           value={searchedBrand}
           onChange={e => setSearchedBrand(e.target.value)}
         />
-        <FormGroup
+        <Box
           component="ul"
           sx={{
             flexWrap: 'nowrap',
@@ -73,7 +73,7 @@ export default function BrandFilter() {
                 </Box>
               );
             })}
-        </FormGroup>
+        </Box>
       </FormControl>
     </FilterCommon>
   );

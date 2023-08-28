@@ -1,6 +1,6 @@
 import FilterCommon from '../common/filterCommon';
-import { FormControl, Checkbox } from '@mui/material';
-import { FormControlLabel, FormGroup } from '@mui/material';
+import { FormControl, Checkbox, Box } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
 import { weight } from '@/app/utils/tmpData';
 
 export default function WeightFilter() {
@@ -21,42 +21,34 @@ export default function WeightFilter() {
         }}
         component="form"
       >
-        <FormGroup
+        <Box
           component="ul"
           sx={{
-            flexWrap: 'nowrap',
             width: '100%',
-            height: 200,
-            overflowY: 'auto',
-            overflowX: 'hidden',
             listStyle: 'none',
-            mt: 2,
             pl: 2,
           }}
         >
           {weight.length &&
             weight.map(({ id, gram }) => {
               return (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      value={gram}
-                      sx={{ p: 1 }}
-                      size="small"
-                      key={id}
-                    />
-                  }
-                  label={gram}
-                  onClick={handleChecked}
-                  sx={{
-                    width: '100%',
-                    borderRadius: 1,
-                    '&:hover': { bgcolor: 'primary.dim' },
-                  }}
-                />
+                <Box component="li" key={id}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox value={gram} sx={{ p: 1 }} size="small" />
+                    }
+                    label={gram}
+                    onClick={handleChecked}
+                    sx={{
+                      width: '100%',
+                      borderRadius: 1,
+                      '&:hover': { bgcolor: 'primary.dim' },
+                    }}
+                  />
+                </Box>
               );
             })}
-        </FormGroup>
+        </Box>
       </FormControl>
     </FilterCommon>
   );

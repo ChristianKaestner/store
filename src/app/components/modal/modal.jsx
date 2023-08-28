@@ -5,6 +5,7 @@ import { Container, IconButton, Box, Typography, Divider } from '@mui/material';
 import { Backdrop, ModalWindow } from './modal.styled';
 import CloseIcon from '@mui/icons-material/Close';
 
+//need to add transition or animation letter...
 export default function Modal({
   onClose,
   children,

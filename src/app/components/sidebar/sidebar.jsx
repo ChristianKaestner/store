@@ -4,6 +4,7 @@ import { Aside } from './sidebar.styled';
 import PriceFilter from '../filters/price/price';
 import BrandFilter from '../filters/brand/brand';
 import WeightFilter from '../filters/weight/weight';
+import ColorFilter from '../filters/color/color';
 
 export default function Sidebar() {
   return (
@@ -11,6 +12,7 @@ export default function Sidebar() {
       <PriceFilter from={3} to={3400} />
       <BrandFilter />
       <WeightFilter />
+      <ColorFilter />
     </Aside>
   );
 }

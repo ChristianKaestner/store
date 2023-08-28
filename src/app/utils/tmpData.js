@@ -206,3 +206,14 @@ export const weight = [
   { id: 7, gram: 500 },
   { id: 8, gram: 1000 },
 ];
+
+export const colors = [
+  { id: 1, name: 'white' },
+  { id: 2, name: 'gold' },
+  { id: 3, name: 'black' },
+  { id: 4, name: 'red' },
+  { id: 5, name: 'purple' },
+  { id: 6, name: 'blue' },
+  { id: 7, name: 'green' },
+  { id: 8, name: 'yelow' },
+];

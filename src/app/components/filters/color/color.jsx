@@ -1,0 +1,55 @@
+import FilterCommon from '../common/filterCommon';
+import { FormControl, Checkbox, Box } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
+import { colors } from '@/app/utils/tmpData';
+
+export default function ColorFilter() {
+  const handleChecked = e => {
+    console.log(e.target.checked);
+    console.log(e.target.value);
+    //need to fetch items
+  };
+
+  return (
+    <FilterCommon title="Color">
+      <FormControl
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          alignItems: 'baseline',
+        }}
+        component="form"
+      >
+        <Box
+          component="ul"
+          sx={{
+            width: '100%',
+            listStyle: 'none',
+            pl: 2,
+          }}
+        >
+          {colors.length &&
+            colors.map(({ id, name }) => {
+              return (
+                <Box component="li" key={id}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox value={name} sx={{ p: 1 }} size="small" />
+                    }
+                    label={name}
+                    onClick={handleChecked}
+                    sx={{
+                      width: '100%',
+                      borderRadius: 1,
+                      '&:hover': { bgcolor: 'primary.dim' },
+                    }}
+                  />
+                </Box>
+              );
+            })}
+        </Box>
+      </FormControl>
+    </FilterCommon>
+  );
+}

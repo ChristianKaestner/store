@@ -2,10 +2,10 @@
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { productsOperations } from '@/app/redux/products/operations';
-import { Container, Box } from '@mui/material';
+import { goodsOperations } from '@/app/redux/goods/operations';
+import { useGoods } from '@/app/hooks/useGoods';
+import { Container } from '@mui/material';
 import Hero from './components/hero/hero';
-import Sidebar from './components/sidebar/sidebar';
 import Categories from './components/categories/categories';
 import ProductsList from './components/products/productsList/productsList';
 import { images } from '../app/utils/tmpData';
@@ -13,9 +13,10 @@ import { categories } from '@/app/utils/tmpData';
 
 export default function Home() {
   const dispatch = useDispatch();
-
+  const { promotedGoods, isLoading, cart, favorite } = useGoods();
+  console.log(promotedGoods);
   useEffect(() => {
-    dispatch(productsOperations.fetchPromotedProducts());
+    dispatch(goodsOperations.fetchPromotedGoods());
   }, [dispatch]);
 
   return (
@@ -23,18 +24,14 @@ export default function Home() {
       maxWidth="xl"
       sx={{ display: 'flex', flexDirection: 'column', px: 2, mt: 12, mb: 2 }}
     >
-      {/* <Sidebar /> */}
-      {/* <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          width: { lg: 'calc(100% - 366px)', xs: '100%' },
-        }}
-      > */}
       <Hero images={images} />
       <Categories categories={categories} />
-      <ProductsList />
-      {/* </Box> */}
+      <ProductsList
+        products={promotedGoods}
+        isLoading={isLoading}
+        cart={cart}
+        favorite={favorite}
+      />
     </Container>
   );
 }

@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/slice';
-import productsSlice from './products/slice';
+import goodsSlice from './goods/slice';
 import modalSlice from './modal/slice';
+import { goodsApi } from './services/goods';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -20,8 +21,8 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const productsPersistConfig = {
-  key: 'products',
+const goodsPersistConfig = {
+  key: 'goods',
   storage,
   whitelist: ['cart', 'favorite'],
 };
@@ -29,15 +30,17 @@ const productsPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    products: persistReducer(productsPersistConfig, productsSlice),
+    goods: persistReducer(goodsPersistConfig, goodsSlice),
     modal: modalSlice,
+    [goodsApi.reducerPath]: goodsApi.reducer,
   },
+
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(goodsApi.middleware),
   ],
 });
 

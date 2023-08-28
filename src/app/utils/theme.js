@@ -67,6 +67,9 @@ export const myTheme = createTheme({
             borderColor: theme.palette.primary.light,
           },
         }),
+        icon: ({ theme }) => ({
+          fill: theme.palette.primary.light,
+        }),
       },
     },
 
@@ -91,6 +94,22 @@ export const myTheme = createTheme({
         root: ({ theme }) => ({
           color: theme.palette.primary.light,
           '&.Mui-checked': {
+            '& svg': {
+              color: theme.palette.primary.light,
+            },
+          },
+        }),
+      },
+    },
+
+    MuiPagination: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          ul: {
+            '& .MuiPaginationItem-root.Mui-selected': {
+              backgroundColor: theme.palette.primary.light,
+              color: '#fff',
+            },
             '& svg': {
               color: theme.palette.primary.light,
             },

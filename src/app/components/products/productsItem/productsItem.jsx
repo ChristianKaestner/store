@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount } from '@/app/redux/modal/slice';
-import { cartAdd, cartRemove } from '@/app/redux/products/slice';
+import { cartAdd, cartRemove } from '@/app/redux/goods/slice';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';

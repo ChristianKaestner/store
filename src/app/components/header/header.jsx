@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useProducts } from '@/app/hooks/useProducts';
+import { useGoods } from '@/app/hooks/useGoods';
 import { useModal } from '@/app/hooks/useModal';
 import { toggleAccount, toggleProducts } from '@/app/redux/modal/slice';
 import { toggleCart, toggleMobile } from '@/app/redux/modal/slice';
@@ -22,7 +22,7 @@ import ShoppingCart from '../shoppingCart/shoppingCart';
 export default function Header() {
   const [login, setLogin] = useState(true);
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
-  const { cart } = useProducts();
+  const { cart } = useGoods();
 
   const dispath = useDispatch();
 

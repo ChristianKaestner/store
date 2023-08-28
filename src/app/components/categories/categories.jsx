@@ -6,7 +6,7 @@ import { visuallyHidden } from '@mui/utils';
 
 export default function Categories({ categories }) {
   return (
-    <Box sx={{ width: '100%', mt: 4 }} component="section">
+    <Box sx={{ width: '100%', my: 4 }} component="section">
       <Typography component="h2" sx={visuallyHidden}>
         Best hookah price, top quality tobaссko, excelent coal & more
       </Typography>

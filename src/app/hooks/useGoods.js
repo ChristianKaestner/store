@@ -1,24 +1,24 @@
 import { useSelector } from 'react-redux';
 import {
-  selectProducts,
-  selectPromotedProducts,
+  selectGoods,
+  selectPromotedGoods,
   selectCart,
   selectFavorite,
   selectIsError,
   selectIsLoading,
-} from '../redux/products/selectors';
+} from '../redux/goods/selectors';
 
-export const useProducts = () => {
-  const promotedProducts = useSelector(selectPromotedProducts);
-  const products = useSelector(selectProducts);
+export const useGoods = () => {
+  const promotedGoods = useSelector(selectPromotedGoods);
+  const goods = useSelector(selectGoods);
   const cart = useSelector(selectCart);
   const favorite = useSelector(selectFavorite);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
 
   return {
-    promotedProducts,
-    products,
+    promotedGoods,
+    goods,
     cart,
     favorite,
     isLoading,

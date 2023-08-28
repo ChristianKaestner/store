@@ -13,11 +13,25 @@ const token = {
   },
 };
 
-export const fetchPromotedProducts = createAsyncThunk(
-  'promoted/products',
+export const fetchPromotedGoods = createAsyncThunk(
+  'promoted/goods',
   async (_, thunkAPI) => {
     try {
-      // const response = await axios.get('/api/products');
+      // const response = await axios.get('/api/goods');
+      // return response.data;
+      return items.filter(item => item.isPromoted);
+    } catch (e) {
+      console.log(e);
+      // return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchGoods = createAsyncThunk(
+  'goods',
+  async (_, thunkAPI) => {
+    try {
+      // const response = await axios.get('/api/goods');
       // return response.data;
       return items;
     } catch (e) {
@@ -27,25 +41,11 @@ export const fetchPromotedProducts = createAsyncThunk(
   }
 );
 
-export const fetchProducts = createAsyncThunk(
-  'products',
-  async (_, thunkAPI) => {
-    try {
-      // const response = await axios.get('/api/products');
-      // return response.data;
-      return items;
-    } catch (e) {
-      console.log(e);
-      // return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
-
-export const fetchProductById = createAsyncThunk(
-  'products/id',
+export const fetchGoodsById = createAsyncThunk(
+  'goods/id',
   async (id, thunkAPI) => {
     try {
-      // const response = await axios.get(`/api/products/${id}`);
+      // const response = await axios.get(`/api/goods/${id}`);
       // return response.data;
       return items.find(item => item.id === id);
     } catch (e) {
@@ -69,8 +69,8 @@ export const addCartRegistered = createAsyncThunk(
 
 export const addCartNotRegistered = id => {};
 
-export const productsOperations = {
-  fetchPromotedProducts,
-  fetchProducts,
+export const goodsOperations = {
+  fetchPromotedGoods,
+  fetchGoods,
   addCartRegistered,
 };

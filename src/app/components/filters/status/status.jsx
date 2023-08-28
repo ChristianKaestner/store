@@ -11,7 +11,7 @@ export default function StatusFilter() {
   };
 
   return (
-    <FilterCommon title="Color">
+    <FilterCommon title="Status">
       <FormControl
         sx={{
           display: 'flex',

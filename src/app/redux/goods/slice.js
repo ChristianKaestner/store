@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchPromotedProducts } from './operations';
+import { fetchPromotedGoods, fetchGoods } from './operations';
 
 const initialState = {
   items: [],
@@ -10,8 +10,8 @@ const initialState = {
   isLoading: false,
 };
 
-export const productsSlice = createSlice({
-  name: 'products',
+export const goodsSlice = createSlice({
+  name: 'goods',
   initialState,
   reducers: {
     cartAdd(state, action) {
@@ -82,22 +82,34 @@ export const productsSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchPromotedProducts.pending, state => {
+      .addCase(fetchPromotedGoods.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchPromotedProducts.fulfilled, (state, action) => {
+      .addCase(fetchPromotedGoods.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
         state.promoted = action.payload;
       })
-      .addCase(fetchPromotedProducts.rejected, state => {
+      .addCase(fetchPromotedGoods.rejected, state => {
+        state.isError = true;
+        state.isLoading = false;
+      })
+      .addCase(fetchGoods.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchGoods.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchGoods.rejected, state => {
         state.isError = true;
         state.isLoading = false;
       });
   },
 });
 
-export default productsSlice.reducer;
+export default goodsSlice.reducer;
 export const {
   cartAdd,
   cartRemove,
@@ -106,4 +118,4 @@ export const {
   cartSetQuantity,
   favoriteAdd,
   favoriteRemove,
-} = productsSlice.actions;
+} = goodsSlice.actions;

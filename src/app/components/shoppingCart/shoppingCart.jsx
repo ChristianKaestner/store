@@ -6,8 +6,8 @@ import {
   cartIncreaseQuantity,
   cartRemove,
   cartSetQuantity,
-} from '@/app/redux/products/slice';
-import { useProducts } from '@/app/hooks/useProducts';
+} from '@/app/redux/goods/slice';
+import { useGoods } from '@/app/hooks/useGoods';
 import { Box, Alert } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
@@ -15,7 +15,7 @@ import TotalPrice from './totalPrice/totatlPrice';
 import EmptyCart from './emptyCart/emptyCart';
 
 export default function ShoppingCart() {
-  const { cart, isLoading } = useProducts();
+  const { cart, isLoading } = useGoods();
   const dispatch = useDispatch();
 
   const handleDelete = id => {

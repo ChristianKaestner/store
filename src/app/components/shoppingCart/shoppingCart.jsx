@@ -6,8 +6,9 @@ import {
   cartIncreaseQuantity,
   cartRemove,
   cartSetQuantity,
-} from '@/app/redux/goods/slice';
-import { useGoods } from '@/app/hooks/useGoods';
+} from '@/app/redux/cart/slice';
+import { useCart } from '@/app/hooks/useCart';
+import { useGetProductsByIdsQuery } from '@/app/redux/services/goods';
 import { Box, Alert } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
@@ -15,8 +16,20 @@ import TotalPrice from './totalPrice/totatlPrice';
 import EmptyCart from './emptyCart/emptyCart';
 
 export default function ShoppingCart() {
-  const { cart, isLoading } = useGoods();
   const dispatch = useDispatch();
+  const { cart } = useCart();
+  const searchingParams = cart.map(item => `id=${item.id}&`);
+
+  const {
+    data = [],
+    isLoading,
+    error,
+  } = useGetProductsByIdsQuery(searchingParams.join(''));
+
+  const quantity = (cart, id) => {
+    const product = cart.find(item => item.id === id);
+    return product.quantity;
+  };
 
   const handleDelete = id => {
     dispatch(cartRemove(id));
@@ -30,13 +43,13 @@ export default function ShoppingCart() {
     dispatch(cartReduceQuantity(id));
   };
 
-  const handleSetQuantity = (id, num) => {
-    dispatch(cartSetQuantity({ id, num }));
+  const handleSetQuantity = (id, num, available) => {
+    dispatch(cartSetQuantity({ id, num, available }));
   };
 
   const shoppingTotal = () => {
-    return cart.reduce(
-      (sum, current) => sum + current.price * current.quantity,
+    return data.reduce(
+      (sum, current) => sum + current.price * quantity(cart, current.id),
       0
     );
   };
@@ -52,7 +65,7 @@ export default function ShoppingCart() {
         overflowX: 'hidden',
       }}
     >
-      {cart.length > 0 ? (
+      {data.length > 0 ? (
         <>
           <Grid
             component="ul"
@@ -63,7 +76,7 @@ export default function ShoppingCart() {
               mx: 0.1,
             }}
           >
-            {cart.map(product => {
+            {data.map(product => {
               return (
                 <Grid
                   key={product.id}
@@ -72,12 +85,13 @@ export default function ShoppingCart() {
                 >
                   <CartItem
                     product={product}
+                    quantity={quantity(cart, product.id)}
                     increase={handleIncreaseQuantity}
                     reduce={handleReduceQuantity}
                     change={handleSetQuantity}
                     del={handleDelete}
                   />
-                  {product.quantity >= product.available && (
+                  {quantity(cart, product.id) >= product.available && (
                     <Alert severity="error" sx={{ mt: 1 }}>
                       Unfortunately we only have {product.available} items, if
                       you need more please contact us.

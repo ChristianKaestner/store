@@ -7,8 +7,16 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export default function CartItem({ product, increase, reduce, change, del }) {
-  const { id, title, images, price, quantity, available } = product;
+export default function CartItem({
+  product,
+  increase,
+  reduce,
+  change,
+  del,
+  quantity,
+}) {
+  const { id, title, images, price, available } = product;
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const onDelete = () => {
@@ -18,7 +26,7 @@ export default function CartItem({ product, increase, reduce, change, del }) {
 
   const onChange = e => {
     const num = Number(e.target.value);
-    change(id, num);
+    change(id, num, available);
   };
 
   const handlePopoverOpen = e => {
@@ -103,6 +111,7 @@ export default function CartItem({ product, increase, reduce, change, del }) {
                 <RemoveIcon sx={{ color: 'primary.light' }} />
               </IconButton>
               <TextField
+                type="text"
                 size="small"
                 sx={{ width: '60px' }}
                 inputProps={{
@@ -111,7 +120,10 @@ export default function CartItem({ product, increase, reduce, change, del }) {
                 onChange={onChange}
                 value={quantity}
               />
-              <IconButton onClick={() => increase(id)} id={'button'}>
+              <IconButton
+                onClick={() => increase({ id, available })}
+                id={'button'}
+              >
                 <AddIcon sx={{ color: 'primary.light' }} />
               </IconButton>
             </Box>

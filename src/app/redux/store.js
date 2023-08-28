@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/slice';
-import goodsSlice from './goods/slice';
+import cartSlice from './cart/slice';
 import modalSlice from './modal/slice';
 import { goodsApi } from './services/goods';
 import storage from 'redux-persist/lib/storage';
@@ -21,16 +21,16 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const goodsPersistConfig = {
-  key: 'goods',
+const cartPersistConfig = {
+  key: 'cart',
   storage,
-  whitelist: ['cart', 'favorite'],
+  whitelist: ['cart'],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
-    goods: persistReducer(goodsPersistConfig, goodsSlice),
+    cart: persistReducer(cartPersistConfig, cartSlice),
     modal: modalSlice,
     [goodsApi.reducerPath]: goodsApi.reducer,
   },

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 // // import { useDispatch } from 'react-redux';
 // import { goodsOperations } from '@/app/redux/goods/operations';
 // import { useGoods } from '@/app/hooks/useGoods';
+import { useGetGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
 import { Container, Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
@@ -10,7 +11,7 @@ import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/sortFilter/SortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
-import { useGetGoodsQuery } from '@/app/redux/services/goods';
+
 
 export default function Hookahs() {
   const [page, setPage] = useState(1);

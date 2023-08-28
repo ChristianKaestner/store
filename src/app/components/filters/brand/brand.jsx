@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
-import FilterCommon from '../common/filterCommon';
+import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
 import { FormControlLabel, Box } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
@@ -30,14 +30,17 @@ export default function BrandFilter() {
         }}
         component="form"
       >
-        <TextField
-          id="outlined"
-          label="Brand name"
-          type="search"
-          size="small"
-          value={searchedBrand}
-          onChange={e => setSearchedBrand(e.target.value)}
-        />
+        <Box sx={{ pl: 2 }}>
+          <TextField
+            id="outlined"
+            label="Brand name"
+            type="search"
+            size="small"
+            value={searchedBrand}
+            onChange={e => setSearchedBrand(e.target.value)}
+          />
+        </Box>
+
         <Box
           component="ul"
           sx={{

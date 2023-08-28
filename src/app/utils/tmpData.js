@@ -184,16 +184,16 @@ export const categories = [
 ];
 
 export const brands = [
-  { id: 1, name: 'Abc' },
-  { id: 2, name: 'Btc' },
-  { id: 3, name: 'Cdo' },
-  { id: 4, name: 'Arb' },
-  { id: 5, name: 'Etf' },
-  { id: 6, name: 'Bob' },
-  { id: 7, name: 'Gld' },
-  { id: 8, name: 'Int' },
-  { id: 9, name: 'Klm' },
-  { id: 10, name: 'Nft' },
+  { id: 1, name: 'Armani ' },
+  { id: 2, name: 'Apple' },
+  { id: 3, name: 'Alpha Industries' },
+  { id: 4, name: 'Batman' },
+  { id: 5, name: 'Berwin and Berwin' },
+  { id: 6, name: 'Chatham' },
+  { id: 7, name: 'Chi Chi' },
+  { id: 8, name: 'Digby and Fox' },
+  { id: 9, name: 'Disney' },
+  { id: 10, name: 'DJI' },
 ];
 
 export const weight = [
@@ -208,14 +208,14 @@ export const weight = [
 ];
 
 export const colors = [
-  { id: 1, name: 'white' },
-  { id: 2, name: 'gold' },
-  { id: 3, name: 'black' },
-  { id: 4, name: 'red' },
-  { id: 5, name: 'purple' },
-  { id: 6, name: 'blue' },
-  { id: 7, name: 'green' },
-  { id: 8, name: 'yelow' },
+  { id: 1, name: 'White' },
+  { id: 2, name: 'Gold' },
+  { id: 3, name: 'Black' },
+  { id: 4, name: 'Red' },
+  { id: 5, name: 'Purple' },
+  { id: 6, name: 'Blue' },
+  { id: 7, name: 'Green' },
+  { id: 8, name: 'Yellow' },
 ];
 
 export const status = [

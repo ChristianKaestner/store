@@ -1,6 +1,7 @@
-import FilterCommon from '../common/filterCommon';
-import { FormControl, Checkbox, Box } from '@mui/material';
+import FilterCommon from '../accordion/accordionCommon';
+import { FormControl, Checkbox, Box, Typography } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
+import SquareIcon from '@mui/icons-material/Square';
 import { colors } from '@/app/utils/tmpData';
 
 export default function ColorFilter() {
@@ -32,12 +33,34 @@ export default function ColorFilter() {
           {colors.length &&
             colors.map(({ id, name }) => {
               return (
-                <Box component="li" key={id}>
+                <Box
+                  component="li"
+                  key={id}
+                  sx={{ display: 'flex', flexDirection: 'row' }}
+                >
                   <FormControlLabel
                     control={
                       <Checkbox value={name} sx={{ p: 1 }} size="small" />
                     }
-                    label={name}
+                    label={
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 1,
+                        }}
+                      >
+                        <SquareIcon
+                          fontSize="small"
+                          style={{
+                            stroke: 'black',
+                            fill: name,
+                          }}
+                        />
+                        <Typography>{name}</Typography>
+                      </Box>
+                    }
                     onClick={handleChecked}
                     sx={{
                       width: '100%',

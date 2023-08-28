@@ -1,4 +1,4 @@
-import FilterCommon from '../common/filterCommon';
+import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, Checkbox, Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import { status } from '@/app/utils/tmpData';

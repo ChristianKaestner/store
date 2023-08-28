@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FilterCommon from '../common/filterCommon';
+import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, TextField, Box, IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Slider from '@mui/material/Slider';
@@ -48,6 +48,7 @@ export default function PriceFilter({ from, to }) {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
+          pl: 2,
         }}
         component="form"
       >
@@ -102,7 +103,7 @@ export default function PriceFilter({ from, to }) {
           <LoopIcon />
         </IconButton>
       </FormControl>
-      <Box sx={{ width: '85%' }}>
+      <Box sx={{ width: '85%', pl: 2 }}>
         <Slider
           value={[inputFrom, inputTo]}
           onChange={handleChange}

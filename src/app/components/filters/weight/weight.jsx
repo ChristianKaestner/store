@@ -1,4 +1,4 @@
-import FilterCommon from '../common/filterCommon';
+import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, Checkbox, Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import { weight } from '@/app/utils/tmpData';
@@ -37,7 +37,7 @@ export default function WeightFilter() {
                     control={
                       <Checkbox value={name} sx={{ p: 1 }} size="small" />
                     }
-                    label={name}
+                    label={name + ' grams'}
                     onClick={handleChecked}
                     sx={{
                       width: '100%',

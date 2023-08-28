@@ -2,7 +2,7 @@ import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import { Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function FilterCommon({ title, children }) {
+export default function AccordionCommon({ title, children }) {
   return (
     <Accordion
       sx={{ width: '100%' }}
@@ -10,13 +10,14 @@ export default function FilterCommon({ title, children }) {
       style={{ margin: 0 }}
     >
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
+        expandIcon={<ExpandMoreIcon sx={{ color: 'primary.light' }} />}
         aria-controls="panel1a-content"
         id="panel1a-header"
+        sx={{ pl: 0 }}
       >
-        <Typography>{title}</Typography>
+        <Typography sx={{ pl: 2 }}>{title}</Typography>
       </AccordionSummary>
-      <AccordionDetails>{children}</AccordionDetails>
+      <AccordionDetails sx={{ pl: 0 }}>{children}</AccordionDetails>
     </Accordion>
   );
 }

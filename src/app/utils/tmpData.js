@@ -197,14 +197,14 @@ export const brands = [
 ];
 
 export const weight = [
-  { id: 1, gram: 25 },
-  { id: 2, gram: 50 },
-  { id: 3, gram: 100 },
-  { id: 4, gram: 125 },
-  { id: 5, gram: 150 },
-  { id: 6, gram: 250 },
-  { id: 7, gram: 500 },
-  { id: 8, gram: 1000 },
+  { id: 1, name: 25 },
+  { id: 2, name: 50 },
+  { id: 3, name: 100 },
+  { id: 4, name: 125 },
+  { id: 5, name: 150 },
+  { id: 6, name: 250 },
+  { id: 7, name: 500 },
+  { id: 8, name: 1000 },
 ];
 
 export const colors = [
@@ -216,4 +216,11 @@ export const colors = [
   { id: 6, name: 'blue' },
   { id: 7, name: 'green' },
   { id: 8, name: 'yelow' },
+];
+
+export const status = [
+  { id: 1, name: 'In stock' },
+  { id: 2, name: 'Out of stock' },
+  { id: 3, name: 'Ending' },
+  { id: 4, name: 'Awaiting' },
 ];

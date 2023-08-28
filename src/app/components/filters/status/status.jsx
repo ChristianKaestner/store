@@ -1,9 +1,9 @@
 import FilterCommon from '../common/filterCommon';
 import { FormControl, Checkbox, Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
-import { weight } from '@/app/utils/tmpData';
+import { status } from '@/app/utils/tmpData';
 
-export default function WeightFilter() {
+export default function StatusFilter() {
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -11,7 +11,7 @@ export default function WeightFilter() {
   };
 
   return (
-    <FilterCommon title="Weight">
+    <FilterCommon title="Color">
       <FormControl
         sx={{
           display: 'flex',
@@ -29,8 +29,8 @@ export default function WeightFilter() {
             pl: 2,
           }}
         >
-          {weight.length &&
-            weight.map(({ id, name }) => {
+          {status.length &&
+            status.map(({ id, name }) => {
               return (
                 <Box component="li" key={id}>
                   <FormControlLabel

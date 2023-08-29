@@ -23,7 +23,7 @@ export default function Hookahs() {
     setPage(value);
   };
 
-  const handleRefresh = () => {
+  const handleLoadMore = () => {
     //load more
   };
 
@@ -53,7 +53,7 @@ export default function Hookahs() {
           pagination={2}
           page={page}
           onPage={handlePage}
-          onRefresh={handleRefresh}
+          onLoadMore={handleLoadMore}
         />
       </Box>
     </Container>

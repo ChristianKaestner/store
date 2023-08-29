@@ -13,10 +13,10 @@ export default function ProductsList({
   pagination,
   page,
   onPage,
-  onRefresh,
+  onLoadMore,
 }) {
   // need to add sekeleton when isLodaing
-  
+
   return (
     <Box sx={{ width: '100%' }}>
       <Grid
@@ -35,7 +35,7 @@ export default function ProductsList({
             );
           })}
       </Grid>
-      {goods && (
+      {goods && pagination && (
         <>
           <Box
             sx={{
@@ -50,6 +50,7 @@ export default function ProductsList({
               startIcon={<LoopIcon />}
               sx={{ color: 'primary.light' }}
               size="large"
+              onClick={onLoadMore}
             >
               Load more
             </Button>

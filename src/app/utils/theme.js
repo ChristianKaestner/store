@@ -37,7 +37,6 @@ export const myTheme = createTheme({
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.primary.light,
           },
-          
         }),
       },
     },
@@ -114,6 +113,18 @@ export const myTheme = createTheme({
             '& svg': {
               color: theme.palette.primary.light,
             },
+          },
+        }),
+      },
+    },
+
+    MuiSpeedDial: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '& .MuiFab-primary': {
+            width: 46,
+            height: 46,
+            backgroundColor: theme.palette.primary.light,
           },
         }),
       },

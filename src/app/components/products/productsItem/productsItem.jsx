@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
-import { toggleAccount } from '@/app/redux/modal/slice';
+import { toggleAccount, toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
@@ -38,7 +38,6 @@ export default function ProductsItem({ product, cart, favorite }) {
       dispatch(cartRemove(id));
     } else {
       setIsInCart(false);
-
       dispatch(cartAdd(id));
     }
   };
@@ -89,6 +88,7 @@ export default function ProductsItem({ product, cart, favorite }) {
         price={price}
         isInCart={isInCart}
         handleCart={handleCart}
+        onCart={() => dispatch(toggleCart(true))}
       />
     </Card>
   );

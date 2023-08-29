@@ -1,6 +1,14 @@
 import Link from 'next/link';
-import { BsFillCartCheckFill, BsCart } from 'react-icons/bs';
+import { BsFillCartCheckFill, BsCart, BsCartXFill } from 'react-icons/bs';
 import { CardContent, Box, Typography, IconButton } from '@mui/material';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 export default function CardDescription({
   subTitle,
@@ -8,6 +16,7 @@ export default function CardDescription({
   price,
   isInCart,
   handleCart,
+  onCart
 }) {
   return (
     <CardContent>
@@ -30,6 +39,7 @@ export default function CardDescription({
       </Box>
       <Box
         sx={{
+          position: 'relative',
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -41,13 +51,45 @@ export default function CardDescription({
         >
           {price}$
         </Typography>
-        <IconButton onClick={handleCart}>
-          {isInCart ? (
-            <BsFillCartCheckFill style={{ fontSize: 30, fill: '#f68e5f' }} />
-          ) : (
-            <BsCart style={{ fontSize: 30, fill: '#f68e5f' }} />
-          )}
-        </IconButton>
+
+        {isInCart ? (
+          <Box>
+            <SpeedDial
+              ariaLabel="SpeedDial cart"
+              sx={{ position: 'absolute', bottom: 0, right: -5 }}
+              icon={
+                <ShoppingCartCheckoutIcon
+                  sx={{ color: 'primary.accent', fontSize: 30 }}
+                />
+              }
+            >
+              <SpeedDialAction
+                icon={
+                  <RemoveShoppingCartIcon
+                    sx={{ color: 'primary.accent', fontSize: 30 }}
+                  />
+                }
+                tooltipTitle="delete"
+                onClick={handleCart}
+              />
+              <SpeedDialAction
+                icon={
+                  <ShoppingCartIcon
+                    sx={{ color: 'primary.accent', fontSize: 30 }}
+                  />
+                }
+                tooltipTitle="cart"
+                onClick={onCart}
+              />
+            </SpeedDial>
+          </Box>
+        ) : (
+          <IconButton onClick={handleCart}>
+            <AddShoppingCartIcon
+              sx={{ color: 'primary.accent', fontSize: 30 }}
+            />
+          </IconButton>
+        )}
       </Box>
     </CardContent>
   );

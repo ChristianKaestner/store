@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { BsFillCartCheckFill, BsCart, BsCartXFill } from 'react-icons/bs';
 import { CardContent, Box, Typography, IconButton } from '@mui/material';
 import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -16,7 +13,7 @@ export default function CardDescription({
   price,
   isInCart,
   handleCart,
-  onCart
+  onCart,
 }) {
   return (
     <CardContent>

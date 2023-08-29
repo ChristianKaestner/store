@@ -21,9 +21,7 @@ export default function ShoppingCart() {
   const getQuantity = (cart, id) => {
     if (!cart.length) return;
     const product = cart.find(item => item.id === id);
-    // error on delete
-    console.log(product);
-    return product.quantity;
+    return product?.quantity || 1;
   };
 
   const handleDelete = id => {

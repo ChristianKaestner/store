@@ -52,17 +52,19 @@ export const cartSlice = createSlice({
     },
 
     cartSetQuantity(state, action) {
-      const { id, num, available } = action.payload;
-      if (!num || num < 1) return;
+      const { id, value } = action.payload;
+
+      const quantity = () => {
+        const num = Number(value);
+        const rounded = Math.round(num);
+        return isNaN(rounded) ? value : rounded;
+      };
+
       const updatedCart = state.items.map(item => {
-        if (item.id === id) {
-          return num > available
-            ? { ...item, quantity: available }
-            : { ...item, quantity: num };
-        } else {
-          return item;
-        }
+        if (item.id === id) return { ...item, quantity: quantity() };
+        return item;
       });
+      
       state.items = updatedCart;
     },
   },

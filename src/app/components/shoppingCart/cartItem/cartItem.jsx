@@ -15,9 +15,20 @@ export default function CartItem({
   del,
   quantity,
 }) {
+  const [anchorEl, setAnchorEl] = useState(null);
+
   const { id, title, images, price, available } = product;
 
-  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const popoverId = open ? 'simple-popover' : undefined;
+
+  const total = (quantity, price) => {
+    if (isNaN(quantity) || quantity < 1 || quantity > available) {
+      return price;
+    }
+
+    return quantity * price;
+  };
 
   const onDelete = () => {
     del(id);
@@ -25,8 +36,8 @@ export default function CartItem({
   };
 
   const onChange = e => {
-    const num = Number(e.target.value);
-    change(id, num, available);
+    const value = e.target.value;
+    change(id, value);
   };
 
   const handlePopoverOpen = e => {
@@ -36,9 +47,6 @@ export default function CartItem({
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
-  const open = Boolean(anchorEl);
-
-  const popoverId = open ? 'simple-popover' : undefined;
 
   return (
     <>
@@ -107,13 +115,35 @@ export default function CartItem({
             }}
           >
             <Box id={id} sx={{ display: 'flex', height: '40px' }}>
-              <IconButton onClick={() => reduce(id)}>
-                <RemoveIcon sx={{ color: 'primary.light' }} />
+              <IconButton
+                onClick={() => reduce(id)}
+                disabled={quantity <= 1 ? true : false}
+                sx={{
+                  color: 'primary.light',
+                }}
+              >
+                <RemoveIcon />
               </IconButton>
               <TextField
-                type="text"
+                type="number"
+                autoComplete="off"
+                name="quantity"
                 size="small"
-                sx={{ width: '60px' }}
+                sx={{
+                  width: '60px',
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor:
+                      quantity > available
+                        ? 'primary.hot'
+                        : 'rgba(0, 0, 0, 0.23)',
+                  },
+                  '& .MuiOutlinedInput-root': {
+                    '&.Mui-focused fieldset': {
+                      borderColor:
+                        quantity > available ? 'primary.hot' : 'primary.light',
+                    },
+                  },
+                }}
                 inputProps={{
                   style: { textAlign: 'center' },
                 }}
@@ -122,13 +152,16 @@ export default function CartItem({
               />
               <IconButton
                 onClick={() => increase({ id, available })}
-                id={'button'}
+                disabled={quantity >= available ? true : false}
+                sx={{
+                  color: 'primary.light',
+                }}
               >
-                <AddIcon sx={{ color: 'primary.light' }} />
+                <AddIcon />
               </IconButton>
             </Box>
             <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
-              {price * quantity}$
+              {total(quantity, price)}$
             </Typography>
           </Box>
         </Box>

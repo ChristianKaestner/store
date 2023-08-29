@@ -14,7 +14,7 @@ export const goodsApi = createApi({
       query: id => `/goods/${id}`,
     }),
     getProductsByIds: builder.query({
-      query: ids => `/goods?${ids}`,
+      query: params => `/goods?${params}`,
     }),
   }),
 });

@@ -1,14 +1,10 @@
 'use client';
 
 import { useDispatch } from 'react-redux';
-import {
-  cartReduceQuantity,
-  cartIncreaseQuantity,
-  cartRemove,
-  cartSetQuantity,
-} from '@/app/redux/cart/slice';
-import { useCart } from '@/app/hooks/useCart';
+import { cartReduceQuantity, cartRemove } from '@/app/redux/cart/slice';
+import { cartIncreaseQuantity, cartSetQuantity } from '@/app/redux/cart/slice';
 import { useGetProductsByIdsQuery } from '@/app/redux/services/goods';
+import { useCart } from '@/app/hooks/useCart';
 import { Box, Alert } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
@@ -18,15 +14,12 @@ import EmptyCart from './emptyCart/emptyCart';
 export default function ShoppingCart() {
   const dispatch = useDispatch();
   const { cart } = useCart();
+
   const searchingParams = cart.map(item => `id=${item.id}&`);
+  const { data = [] } = useGetProductsByIdsQuery(searchingParams.join(''));
 
-  const {
-    data = [],
-    isLoading,
-    error,
-  } = useGetProductsByIdsQuery(searchingParams.join(''));
-
-  const quantity = (cart, id) => {
+  const getQuantity = (cart, id) => {
+    if (!cart.length) return;
     const product = cart.find(item => item.id === id);
     return product.quantity;
   };
@@ -43,15 +36,18 @@ export default function ShoppingCart() {
     dispatch(cartReduceQuantity(id));
   };
 
-  const handleSetQuantity = (id, num, available) => {
-    dispatch(cartSetQuantity({ id, num, available }));
+  const handleSetQuantity = (id, value) => {
+    dispatch(cartSetQuantity({ id, value }));
   };
 
   const shoppingTotal = () => {
-    return data.reduce(
-      (sum, current) => sum + current.price * quantity(cart, current.id),
-      0
-    );
+    return data.reduce((sum, current) => {
+      const quantity = getQuantity(cart, current.id);
+      if (isNaN(quantity) || quantity < 1 || quantity > current.available) {
+        return sum + current.price;
+      }
+      return sum + current.price * quantity;
+    }, 0);
   };
 
   return (
@@ -65,7 +61,7 @@ export default function ShoppingCart() {
         overflowX: 'hidden',
       }}
     >
-      {data.length > 0 ? (
+      {data.length && cart.length ? (
         <>
           <Grid
             component="ul"
@@ -77,6 +73,7 @@ export default function ShoppingCart() {
             }}
           >
             {data.map(product => {
+              const quantity = getQuantity(cart, product.id);
               return (
                 <Grid
                   key={product.id}
@@ -85,13 +82,13 @@ export default function ShoppingCart() {
                 >
                   <CartItem
                     product={product}
-                    quantity={quantity(cart, product.id)}
+                    quantity={quantity}
                     increase={handleIncreaseQuantity}
                     reduce={handleReduceQuantity}
                     change={handleSetQuantity}
                     del={handleDelete}
                   />
-                  {quantity(cart, product.id) >= product.available && (
+                  {quantity > product.available && (
                     <Alert severity="error" sx={{ mt: 1 }}>
                       Unfortunately we only have {product.available} items, if
                       you need more please contact us.

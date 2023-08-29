@@ -5,7 +5,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Pagination, Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 
-export default function GoodsList({
+export default function ProductsList({
   goods,
   isLoading,
   cart,

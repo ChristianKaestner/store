@@ -24,7 +24,7 @@ const authPersistConfig = {
 const cartPersistConfig = {
   key: 'cart',
   storage,
-  whitelist: ['cart'],
+  whitelist: ['items'],
 };
 
 export const store = configureStore({

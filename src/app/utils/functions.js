@@ -1,22 +1,22 @@
 export const addAlphabetIndex = brands => {
   let alphabetIndex = '';
   return brands
-    .sort((a, b) => a.name.localeCompare(b.name))
-    .map(brand => {
-      if (alphabetIndex !== brand.name[0]) {
-        alphabetIndex = brand.name[0];
-        return { ...brand, letter: brand.name[0].toUpperCase() };
+    .sort((a, b) => a.brand.localeCompare(b.brand))
+    .map(item => {
+      if (alphabetIndex !== item.brand[0]) {
+        alphabetIndex = item.brand[0];
+        return { ...item, letter: item.brand[0].toUpperCase() };
       }
-      return brand;
+      return item;
     });
 };
 
 export const filterByInput = (brands, filter) => {
-  return brands.filter(brand => {
+  return brands.filter(item => {
     if (filter !== '') {
-      return brand.name.toLowerCase().startsWith(filter.toLowerCase());
+      return item.brand.toLowerCase().startsWith(filter.toLowerCase());
     }
-    return brand;
+    return item;
   });
 };
 

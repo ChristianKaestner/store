@@ -6,7 +6,7 @@ import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
 import { productsLink, supportLink, contactLink } from '@/app/utils/pagesLink';
 
 export default function Footer() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState();
 
   useEffect(() => {
     const handleWindowResize = () => {

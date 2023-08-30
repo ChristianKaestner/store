@@ -8,7 +8,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 export default function CardDescription({
-  subTitle,
+  brand,
   title,
   price,
   isInCart,
@@ -20,7 +20,7 @@ export default function CardDescription({
       <Box>
         <Link href="/">
           <Typography sx={{ textAlign: 'center', mb: 1 }}>
-            {subTitle}
+            {brand}
           </Typography>
           <Typography
             sx={{

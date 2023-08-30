@@ -4,15 +4,14 @@ import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
 import { FormControlLabel, Box } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
-import { brands } from '@/app/utils/tmpData';
 
-export default function BrandFilter() {
+export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
 
-  const brandsWithLetter = addAlphabetIndex(brands);
+  const brandsWithLetter = addAlphabetIndex(items);
   const filtredBrands = filterByInput(brandsWithLetter, debouncedBrand);
-
+  
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -54,8 +53,8 @@ export default function BrandFilter() {
             pl: 2,
           }}
         >
-          {brands.length &&
-            filtredBrands.map(({ id, name, letter }) => {
+          {items.length > 0 &&
+            filtredBrands.map(({ id, brand, letter }) => {
               return (
                 <Box key={id} component="li">
                   {letter && (
@@ -63,9 +62,9 @@ export default function BrandFilter() {
                   )}
                   <FormControlLabel
                     control={
-                      <Checkbox value={name} sx={{ p: 1 }} size="small" />
+                      <Checkbox value={brand} sx={{ p: 1 }} size="small" />
                     }
-                    label={name}
+                    label={brand}
                     onClick={handleChecked}
                     sx={{
                       width: '100%',

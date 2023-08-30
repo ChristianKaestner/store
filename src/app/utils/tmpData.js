@@ -393,19 +393,6 @@ export const categories = [
   },
 ];
 
-export const brands = [
-  { id: 1, name: 'Armani ' },
-  { id: 2, name: 'Apple' },
-  { id: 3, name: 'Alpha Industries' },
-  { id: 4, name: 'Batman' },
-  { id: 5, name: 'Berwin and Berwin' },
-  { id: 6, name: 'Chatham' },
-  { id: 7, name: 'Chi Chi' },
-  { id: 8, name: 'Digby and Fox' },
-  { id: 9, name: 'Disney' },
-  { id: 10, name: 'DJI' },
-];
-
 export const weight = [
   { id: 1, name: 25 },
   { id: 2, name: 50 },
@@ -415,17 +402,6 @@ export const weight = [
   { id: 6, name: 250 },
   { id: 7, name: 500 },
   { id: 8, name: 1000 },
-];
-
-export const colors = [
-  { id: 1, name: 'White' },
-  { id: 2, name: 'Gold' },
-  { id: 3, name: 'Black' },
-  { id: 4, name: 'Red' },
-  { id: 5, name: 'Purple' },
-  { id: 6, name: 'Blue' },
-  { id: 7, name: 'Green' },
-  { id: 8, name: 'Yellow' },
 ];
 
 export const status = [

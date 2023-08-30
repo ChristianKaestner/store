@@ -2,9 +2,8 @@ import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, Checkbox, Box, Typography } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
-import { colors } from '@/app/utils/tmpData';
 
-export default function ColorFilter() {
+export default function ColorFilter({ items }) {
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -30,8 +29,8 @@ export default function ColorFilter() {
             pl: 2,
           }}
         >
-          {colors.length &&
-            colors.map(({ id, name }) => {
+          {items.length > 0 &&
+            items.map(({ id, color }) => {
               return (
                 <Box
                   component="li"
@@ -40,7 +39,7 @@ export default function ColorFilter() {
                 >
                   <FormControlLabel
                     control={
-                      <Checkbox value={name} sx={{ p: 1 }} size="small" />
+                      <Checkbox value={color} sx={{ p: 1 }} size="small" />
                     }
                     label={
                       <Box
@@ -55,10 +54,10 @@ export default function ColorFilter() {
                           fontSize="small"
                           style={{
                             stroke: 'black',
-                            fill: name,
+                            fill: color,
                           }}
                         />
-                        <Typography>{name}</Typography>
+                        <Typography>{color}</Typography>
                       </Box>
                     }
                     onClick={handleChecked}

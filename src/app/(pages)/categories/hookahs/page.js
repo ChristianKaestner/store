@@ -38,6 +38,7 @@ export default function Hookahs() {
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Sidebar
+          goods={data}
           price={true}
           brands={true}
           color={true}

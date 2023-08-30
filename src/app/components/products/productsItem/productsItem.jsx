@@ -10,7 +10,7 @@ import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 
 export default function ProductsItem({ product, cart, favorite }) {
-  const { id, title, subTitle, images, price, promotion } = product;
+  const { id, title, brand, images, price, promotion } = product;
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
   const { isLogin } = useAuth();
@@ -84,7 +84,7 @@ export default function ProductsItem({ product, cart, favorite }) {
       />
 
       <CardDescription
-        subTitle={subTitle}
+        brand={brand}
         title={title}
         price={price}
         isInCart={isInCart}

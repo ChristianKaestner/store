@@ -11,6 +11,9 @@ export const Backdrop = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 1200;
+  body: {
+    overflow: hidden;
+  }
 `;
 
 export const ModalWindow = styled.div`
@@ -24,6 +27,9 @@ export const ModalWindow = styled.div`
   border: 2px solid #586ba4;
   background: #fff;
   color: #000;
+  body: {
+    overflow: hidden;
+  }
   @media (min-width: 600px) {
     top: ${props => props.location.top};
     left: ${props => props.location.left};

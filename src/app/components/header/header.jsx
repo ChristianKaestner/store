@@ -26,44 +26,6 @@ export default function Header() {
 
   const dispath = useDispatch();
 
-  const toggleAuth = () => {
-    setLogin(!login);
-  };
-
-  const handleDrawerToggle = () => {
-    dispath(toggleMobile(!mobileModal));
-  };
-
-  const onOpenProductsModal = () => {
-    dispath(toggleProducts(true));
-    document.body.style.overflow = 'hidden';
-  };
-
-  const onCloseProductsModal = () => {
-    dispath(toggleProducts(false));
-    document.body.style.overflow = 'scroll';
-  };
-
-  const onOpenAccountModal = () => {
-    dispath(toggleAccount(true));
-    document.body.style.overflow = 'hidden';
-  };
-
-  const onCloseAccountModal = () => {
-    dispath(toggleAccount(false));
-    document.body.style.overflow = 'scroll';
-  };
-
-  const onOpenCartModal = () => {
-    dispath(toggleCart(true));
-    document.body.style.overflow = 'hidden';
-  };
-
-  const onCloseCartModal = () => {
-    dispath(toggleCart(false));
-    document.body.style.overflow = 'scroll';
-  };
-
   return (
     <>
       <AppBar
@@ -80,26 +42,30 @@ export default function Header() {
       >
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
-            <MobileMenu toggle={handleDrawerToggle} />
+            <MobileMenu toggle={() => dispath(toggleMobile(!mobileModal))} />
             <Logo />
-            <ProductsButton onOpenProductsModal={onOpenProductsModal} />
+            <ProductsButton
+              onOpenProductsModal={() => dispath(toggleProducts(true))}
+            />
             <SearchForm />
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <PersonalAccount onOpenAccountModal={onOpenAccountModal} />
+              <PersonalAccount
+                onOpenAccountModal={() => dispath(toggleAccount(true))}
+              />
               <CartIcon
-                onOpenCartModal={onOpenCartModal}
+                onOpenCartModal={() => dispath(toggleCart(true))}
                 totalProducts={cart.length}
               />
             </Box>
           </Toolbar>
           <DrawerMenu
             mobileOpen={mobileModal}
-            handleDrawerToggle={handleDrawerToggle}
+            handleDrawerToggle={() => dispath(toggleMobile(!mobileModal))}
           />
           {productsModal && (
             <Modal
-              onClose={onCloseProductsModal}
+              onClose={() => dispath(toggleProducts(false))}
               title="Products"
               width="calc(100% - 48px)"
               height="600px"
@@ -110,18 +76,18 @@ export default function Header() {
           )}
           {accountModal && (
             <Modal
-              onClose={onCloseAccountModal}
+              onClose={() => dispath(toggleAccount(false))}
               title={login ? 'Log In' : 'Register'}
               width="600px"
               height="auto"
               position="center"
             >
-              <Auth toggleAuth={toggleAuth} login={login} />
+              <Auth toggleAuth={() => setLogin(!login)} login={login} />
             </Modal>
           )}
           {cartModal && (
             <Modal
-              onClose={onCloseCartModal}
+              onClose={() => dispath(toggleCart(false))}
               title="Cart"
               width="600px"
               height="600px"

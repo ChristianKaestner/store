@@ -18,12 +18,14 @@ export default function Modal({
     const keyDownEvent = e => {
       if (e.code === 'Escape') {
         onClose();
+        document.body.style.overflow = 'scroll';
       }
     };
     window.addEventListener('keydown', keyDownEvent);
-
+    document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', keyDownEvent);
+      document.body.style.overflow = 'scroll';
     };
   }, [onClose]);
 
@@ -36,8 +38,10 @@ export default function Modal({
   const onCloseBackdrop = e => {
     if (e.currentTarget === e.target) {
       onClose();
+      document.body.style.overflow = 'scroll';
     }
   };
+
   return createPortal(
     <Backdrop onClick={onCloseBackdrop}>
       <Container

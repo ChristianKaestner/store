@@ -54,6 +54,7 @@ export default function Hookahs() {
           page={page}
           onPage={handlePage}
           onLoadMore={handleLoadMore}
+          skeleton={20}
         />
       </Box>
     </Container>

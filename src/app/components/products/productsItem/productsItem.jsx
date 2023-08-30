@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount, toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
+import Grid from '@mui/material/Unstable_Grid2';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';

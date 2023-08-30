@@ -26,6 +26,7 @@ export default function Home() {
         isLoading={isLoading}
         cart={cart}
         favorite={[]}
+        skeleton={12}
       />
     </Container>
   );

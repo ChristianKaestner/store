@@ -4,6 +4,7 @@ import ProductsItem from '../productsItem/productsItem';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Pagination, Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
+import Skeleton from '../../skeleton/skeleton';
 
 export default function ProductsList({
   goods,
@@ -14,9 +15,8 @@ export default function ProductsList({
   page,
   onPage,
   onLoadMore,
+  skeleton,
 }) {
-  // need to add sekeleton when isLodaing
-
   return (
     <Box sx={{ width: '100%' }}>
       <Grid
@@ -26,14 +26,31 @@ export default function ProductsList({
         columnSpacing={{ xs: 2, sm: 2, md: 3 }}
         sx={{ listStyle: 'none' }}
       >
-        {goods &&
-          goods.map(item => {
-            return (
-              <Grid xs={12} sm={6} md={4} lg={3} key={item.id} component="li">
-                <ProductsItem product={item} cart={cart} favorite={favorite} />
-              </Grid>
-            );
-          })}
+        {isLoading ? (
+          <Skeleton length={skeleton} />
+        ) : (
+          <>
+            {goods &&
+              goods.map(item => {
+                return (
+                  <Grid
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    key={item.id}
+                    component="li"
+                  >
+                    <ProductsItem
+                      product={item}
+                      cart={cart}
+                      favorite={favorite}
+                    />
+                  </Grid>
+                );
+              })}
+          </>
+        )}
       </Grid>
       {goods && pagination && (
         <>

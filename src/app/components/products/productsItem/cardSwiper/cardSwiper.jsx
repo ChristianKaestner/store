@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, IconButton, Chip } from '@mui/material';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { chipColor } from '@/app/utils/functions';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
@@ -15,7 +16,7 @@ export default function CardSwiper({
   images,
   handleFavorite,
   isFavorite,
-  swiperRef
+  swiperRef,
 }) {
   return (
     <Box
@@ -51,19 +52,20 @@ export default function CardSwiper({
         }}
       >
         {promotion && (
-          <Box
+          <Chip
+            label={promotion}
             sx={{
               position: 'absolute',
               top: 8,
-              left: 0,
-              zIndex: 2,
-              bgcolor: 'primary.hot',
-              borderRadius: 2,
-              color: '#fff',
+              zIndex: 1,
+              bgcolor: chipColor(promotion),
+              '&.MuiChip-root': {
+                span: {
+                  color: '#fff',
+                },
+              },
             }}
-          >
-            <Typography sx={{ p: 0.5 }}>{promotion}</Typography>
-          </Box>
+          />
         )}
         <IconButton
           sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}

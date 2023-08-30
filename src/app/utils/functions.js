@@ -19,3 +19,16 @@ export const filterByInput = (brands, filter) => {
     return brand;
   });
 };
+
+export const chipColor = label => {
+  switch (label) {
+    case 'New':
+      return 'primary.light';
+    case 'Sale':
+      return 'primary.accent';
+    case 'Hot':
+      return 'primary.hot';
+    default:
+      return 'primary.hot';
+  }
+};

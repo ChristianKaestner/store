@@ -53,7 +53,7 @@ export default function CardDescription({
           <Box>
             <SpeedDial
               ariaLabel="SpeedDial cart"
-              sx={{ position: 'absolute', bottom: 0, right: -5 }}
+              sx={{ position: 'absolute', bottom: 0, right: -5, zIndex: 1 }}
               icon={
                 <ShoppingCartCheckoutIcon
                   sx={{ color: 'primary.accent', fontSize: 30 }}

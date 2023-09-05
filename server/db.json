@@ -401,6 +401,7 @@
     {
       "id": 31,
       "categories": "tobacco",
+      "flavor" : "Grape & mint",
       "promotion": "Hot",
       "price": 10,
       "brand": "Al Fakher",
@@ -414,6 +415,7 @@
     {
       "id": 32,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "New",
       "price": 10,
       "brand": "Al Fakher",
@@ -427,6 +429,7 @@
     {
       "id": 33,
       "categories": "tobacco",
+      "flavor" : "Bubble gum",
       "promotion": "New",
       "price": 10,
       "brand": "Al Fakher",
@@ -440,6 +443,7 @@
     {
       "id": 34,
       "categories": "tobacco",
+      "flavor" : "Double apple",
       "promotion": "Sale",
       "price": 10,
       "brand": "Al Fakher",
@@ -453,6 +457,7 @@
     {
       "id": 35,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 10,
       "brand": "Al Fakher",
@@ -466,6 +471,7 @@
     {
       "id": 36,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -479,6 +485,7 @@
     {
       "id": 37,
       "categories": "tobacco",
+      "flavor" : "Grape & mint",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -492,6 +499,7 @@
     {
       "id": 38,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -505,6 +513,7 @@
     {
       "id": 39,
       "categories": "tobacco",
+      "flavor" : "Bubble gum",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -518,6 +527,7 @@
     {
       "id": 40,
       "categories": "tobacco",
+      "flavor" : "Double apple",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -531,6 +541,7 @@
     {
       "id": 41,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -544,6 +555,7 @@
     {
       "id": 42,
       "categories": "tobacco",
+      "flavor" : "Grape & mint",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -557,6 +569,7 @@
     {
       "id": 43,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -570,6 +583,7 @@
     {
       "id": 44,
       "categories": "tobacco",
+      "flavor" : "Bubble gum",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -583,6 +597,7 @@
     {
       "id": 45,
       "categories": "tobacco",
+      "flavor" : "Double apple",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -596,6 +611,7 @@
     {
       "id": 46,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -609,6 +625,7 @@
     {
       "id": 47,
       "categories": "tobacco",
+      "flavor" : "Grape & mint",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -622,6 +639,7 @@
     {
       "id": 48,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -635,6 +653,7 @@
     {
       "id": 49,
       "categories": "tobacco",
+      "flavor" : "Bubble gum",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -648,6 +667,7 @@
     {
       "id": 50,
       "categories": "tobacco",
+      "flavor" : "Double apple",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -661,6 +681,7 @@
     {
       "id": 51,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -674,6 +695,7 @@
     {
       "id": 52,
       "categories": "tobacco",
+      "flavor" : "Grape & mint",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -687,6 +709,7 @@
     {
       "id": 53,
       "categories": "tobacco",
+      "flavor" : "Melon",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -700,6 +723,7 @@
     {
       "id": 54,
       "categories": "tobacco",
+      "flavor" : "Bubble gum",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -713,7 +737,8 @@
     {
       "id": 55,
       "categories": "tobacco",
-      "promotion": "",
+      "flavor" : "Double apple",
+      "promotion": "Double apple",
       "price": 6,
       "brand": "Al Fakher",
       "title": "Double apple",

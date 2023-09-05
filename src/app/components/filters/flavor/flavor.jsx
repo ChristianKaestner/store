@@ -5,15 +5,15 @@ import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
 import { FormControlLabel, Box } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 
-export default function BrandFilter({ items }) {
-  const [searchedBrand, setSearchedBrand] = useState('');
-  const [debouncedBrand] = useDebounce(searchedBrand, 500);
+export default function FlavorFilter({ items }) {
+  const [searchedFlavor, setSearchedFlavor] = useState('');
+  const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
 
-  const brandsWithLetter = addAlphabetIndex(items, 'brand');
-  const filtredBrands = filterByInput(
-    brandsWithLetter,
-    debouncedBrand,
-    'brand'
+  const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
+  const filtredFlavors = filterByInput(
+    flavorsWithLetter,
+    debouncedFlavor,
+    'flavor'
   );
 
   const handleChecked = e => {
@@ -23,7 +23,7 @@ export default function BrandFilter({ items }) {
   };
 
   return (
-    <FilterCommon title="Brand">
+    <FilterCommon title="Flavors">
       <FormControl
         sx={{
           display: 'flex',
@@ -36,11 +36,11 @@ export default function BrandFilter({ items }) {
         <Box sx={{ pl: 2 }}>
           <TextField
             id="outlined"
-            label="Brand name"
+            label="Flavor name"
             type="search"
             size="small"
-            value={searchedBrand}
-            onChange={e => setSearchedBrand(e.target.value)}
+            value={searchedFlavor}
+            onChange={e => setSearchedFlavor(e.target.value)}
           />
         </Box>
 
@@ -58,7 +58,7 @@ export default function BrandFilter({ items }) {
           }}
         >
           {items.length > 0 &&
-            filtredBrands.map(({ id, brand, letter }) => {
+            filtredFlavors.map(({ id, flavor, letter }) => {
               return (
                 <Box key={id} component="li">
                   {letter && (
@@ -66,9 +66,9 @@ export default function BrandFilter({ items }) {
                   )}
                   <FormControlLabel
                     control={
-                      <Checkbox value={brand} sx={{ p: 1 }} size="small" />
+                      <Checkbox value={flavor} sx={{ p: 1 }} size="small" />
                     }
-                    label={brand}
+                    label={flavor}
                     onClick={handleChecked}
                     sx={{
                       width: '100%',

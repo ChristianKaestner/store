@@ -18,7 +18,7 @@ export default function Hookahs() {
   const { data = [], isLoading } = useGetAllGoodsQuery();
 
   const tobacco = data.filter(n => n.categories === 'tobacco').slice(0, 20);
-  console.log(tobacco);
+
   const path = usePathname().split('/');
   path.splice(0, 1);
 

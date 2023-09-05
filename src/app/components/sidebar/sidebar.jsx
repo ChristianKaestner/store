@@ -6,6 +6,7 @@ import BrandFilter from '../filters/brand/brand';
 import WeightFilter from '../filters/weight/weight';
 import ColorFilter from '../filters/color/color';
 import StatusFilter from '../filters/status/status';
+import FlavorFilter from '../filters/flavor/flavor';
 
 //need to add Skeleton
 export default function Sidebar({ goods }) {
@@ -14,9 +15,11 @@ export default function Sidebar({ goods }) {
   const brands = [];
   const weights = [];
   const statuses = [];
+  const flavors = [];
 
   goods.forEach(product => {
-    const { price, color, brand, weight, status } = product;
+    const { price, color, brand, weight, status, flavor } = product;
+
     if (price) {
       prices.push(price);
     }
@@ -40,6 +43,11 @@ export default function Sidebar({ goods }) {
         statuses.push({ id: uuidv4(), status });
       }
     }
+    if (flavor) {
+      if (!flavors.find(n => n.flavor === flavor)) {
+        flavors.push({ id: uuidv4(), flavor });
+      }
+    }
   });
 
   return (
@@ -47,6 +55,7 @@ export default function Sidebar({ goods }) {
       {prices.length > 0 && <PriceFilter items={prices} />}
       {brands.length > 0 && <BrandFilter items={brands} />}
       {weights.length > 0 && <WeightFilter items={weights} />}
+      {flavors.length > 0 && <FlavorFilter items={flavors} />}
       {colors.length > 0 && <ColorFilter items={colors} />}
       {statuses.length > 0 && <StatusFilter items={statuses} />}
     </Aside>

@@ -11,7 +11,7 @@ export default function BrandFilter({ items }) {
 
   const brandsWithLetter = addAlphabetIndex(items);
   const filtredBrands = filterByInput(brandsWithLetter, debouncedBrand);
-  
+
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -45,7 +45,7 @@ export default function BrandFilter({ items }) {
           sx={{
             flexWrap: 'nowrap',
             width: '100%',
-            height: 400,
+            maxHeight: 400,
             overflowY: 'auto',
             overflowX: 'hidden',
             listStyle: 'none',

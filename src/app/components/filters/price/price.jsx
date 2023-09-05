@@ -15,7 +15,10 @@ const CustomSliderStyles = {
   mt: 2,
 };
 
-export default function PriceFilter({ from, to }) {
+export default function PriceFilter({ items }) {
+  const from = Math.min(...items);
+  const to = Math.max(...items);
+
   const [inputFrom, setInputFrom] = useState(from);
   const [inputTo, setInputTo] = useState(to);
 
@@ -37,7 +40,7 @@ export default function PriceFilter({ from, to }) {
   };
 
   const handleRefresh = () => {
-    // update items by price
+    // get products filtred by Price query
   };
 
   return (

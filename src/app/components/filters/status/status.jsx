@@ -1,9 +1,8 @@
 import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, Checkbox, Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
-import { status } from '@/app/utils/tmpData';
 
-export default function StatusFilter() {
+export default function StatusFilter({ items }) {
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -29,25 +28,24 @@ export default function StatusFilter() {
             pl: 2,
           }}
         >
-          {status.length &&
-            status.map(({ id, name }) => {
-              return (
-                <Box component="li" key={id}>
-                  <FormControlLabel
-                    control={
-                      <Checkbox value={name} sx={{ p: 1 }} size="small" />
-                    }
-                    label={name}
-                    onClick={handleChecked}
-                    sx={{
-                      width: '100%',
-                      borderRadius: 1,
-                      '&:hover': { bgcolor: 'primary.dim' },
-                    }}
-                  />
-                </Box>
-              );
-            })}
+          {items.map(({ id, status }) => {
+            return (
+              <Box component="li" key={id}>
+                <FormControlLabel
+                  control={
+                    <Checkbox value={status} sx={{ p: 1 }} size="small" />
+                  }
+                  label={status}
+                  onClick={handleChecked}
+                  sx={{
+                    width: '100%',
+                    borderRadius: 1,
+                    '&:hover': { bgcolor: 'primary.dim' },
+                  }}
+                />
+              </Box>
+            );
+          })}
         </Box>
       </FormControl>
     </FilterCommon>

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useCart } from '@/app/hooks/useCart';
 import { useGetGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
@@ -16,6 +16,7 @@ export default function Hookahs() {
   const { cart } = useCart();
 
   const { data = [], isLoading } = useGetGoodsQuery(limit);
+  const hookahs = data.filter(n => n.categories === 'hookahs');
 
   const path = usePathname().split('/');
   path.splice(0, 1);
@@ -38,17 +39,10 @@ export default function Hookahs() {
       <SortFilter />
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-        <Sidebar
-          goods={data}
-          price={true}
-          brands={true}
-          color={true}
-          status={true}
-          weight={true}
-        />
+        <Sidebar goods={hookahs} />
 
         <ProductsList
-          goods={data}
+          goods={hookahs}
           isLoading={isLoading}
           cart={cart}
           favorite={[]}

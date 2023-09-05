@@ -8,54 +8,47 @@ import ColorFilter from '../filters/color/color';
 import StatusFilter from '../filters/status/status';
 
 //need to add Skeleton
-export default function Sidebar({
-  goods,
-  price,
-  brands,
-  weight,
-  color,
-  status,
-}) {
-  // const getWeights = goods => {
-  //   const weightArr = [];
-  //   if (goods.includes(weight)) {
-  //     goods.forEach(product => {
-  //       if (!weightArr.find(n => n.weight === product.weight)) {
-  //         weightArr.push({ id: uuidv4(), brand: product.weight });
-  //       }
-  //     });
-  //   }
-  // };
+export default function Sidebar({ goods }) {
+  const prices = [];
+  const colors = [];
+  const brands = [];
+  const weights = [];
+  const statuses = [];
 
-  console.log(goods);
-
-  const colorsArr = [];
-  const brandsArr = [];
-  // const weightArr = [];
   goods.forEach(product => {
-    if (!colorsArr.find(n => n.color === product.color)) {
-      colorsArr.push({ id: uuidv4(), color: product.color });
+    const { price, color, brand, weight, status } = product;
+    if (price) {
+      prices.push(price);
     }
-    if (!brandsArr.find(n => n.brand === product.brand)) {
-      brandsArr.push({ id: uuidv4(), brand: product.brand });
+    if (color) {
+      if (!colors.find(n => n.color === color)) {
+        colors.push({ id: uuidv4(), color });
+      }
     }
-    // if (product.weight) {
-    //   if (!weightArr.find(n => n.brand === product.weight)) {
-    //     weightArr.push({ id: uuidv4(), weight: product.weight });
-    //   }
-    // }
+    if (brand) {
+      if (!brands.find(n => n.brand === brand)) {
+        brands.push({ id: uuidv4(), brand });
+      }
+    }
+    if (weight) {
+      if (!weights.find(n => n.weight === weight)) {
+        weights.push({ id: uuidv4(), weight });
+      }
+    }
+    if (status) {
+      if (!statuses.find(n => n.status === status)) {
+        statuses.push({ id: uuidv4(), status });
+      }
+    }
   });
-  // console.log(colorsArr);
-  // console.log(brandsArr);
-  // console.log(weightArr);
 
   return (
     <Aside>
-      {price && <PriceFilter from={3} to={3400} />}
-      {brands && <BrandFilter items={brandsArr} />}
-      {weight && <WeightFilter />}
-      {color && <ColorFilter items={colorsArr} />}
-      {status && <StatusFilter />}
+      {prices.length > 0 && <PriceFilter items={prices} />}
+      {brands.length > 0 && <BrandFilter items={brands} />}
+      {weights.length > 0 && <WeightFilter items={weights} />}
+      {colors.length > 0 && <ColorFilter items={colors} />}
+      {statuses.length > 0 && <StatusFilter items={statuses} />}
     </Aside>
   );
 }

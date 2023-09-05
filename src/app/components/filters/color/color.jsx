@@ -29,47 +29,46 @@ export default function ColorFilter({ items }) {
             pl: 2,
           }}
         >
-          {items.length > 0 &&
-            items.map(({ id, color }) => {
-              return (
-                <Box
-                  component="li"
-                  key={id}
-                  sx={{ display: 'flex', flexDirection: 'row' }}
-                >
-                  <FormControlLabel
-                    control={
-                      <Checkbox value={color} sx={{ p: 1 }} size="small" />
-                    }
-                    label={
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          gap: 1,
+          {items.map(({ id, color }) => {
+            return (
+              <Box
+                component="li"
+                key={id}
+                sx={{ display: 'flex', flexDirection: 'row' }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox value={color} sx={{ p: 1 }} size="small" />
+                  }
+                  label={
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 1,
+                      }}
+                    >
+                      <SquareIcon
+                        fontSize="small"
+                        style={{
+                          stroke: 'black',
+                          fill: color,
                         }}
-                      >
-                        <SquareIcon
-                          fontSize="small"
-                          style={{
-                            stroke: 'black',
-                            fill: color,
-                          }}
-                        />
-                        <Typography>{color}</Typography>
-                      </Box>
-                    }
-                    onClick={handleChecked}
-                    sx={{
-                      width: '100%',
-                      borderRadius: 1,
-                      '&:hover': { bgcolor: 'primary.dim' },
-                    }}
-                  />
-                </Box>
-              );
-            })}
+                      />
+                      <Typography>{color}</Typography>
+                    </Box>
+                  }
+                  onClick={handleChecked}
+                  sx={{
+                    width: '100%',
+                    borderRadius: 1,
+                    '&:hover': { bgcolor: 'primary.dim' },
+                  }}
+                />
+              </Box>
+            );
+          })}
         </Box>
       </FormControl>
     </FilterCommon>

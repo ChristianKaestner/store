@@ -1,9 +1,8 @@
 import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, Checkbox, Box } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
-import { weight } from '@/app/utils/tmpData';
 
-export default function WeightFilter({ items }) {
+export default function SizeFilter({ items }) {
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -29,14 +28,12 @@ export default function WeightFilter({ items }) {
             pl: 2,
           }}
         >
-          {items.map(({ id, weight }) => {
+          {items.map(({ id, size }) => {
             return (
               <Box component="li" key={id}>
                 <FormControlLabel
-                  control={
-                    <Checkbox value={weight} sx={{ p: 1 }} size="small" />
-                  }
-                  label={weight + ' grams'}
+                  control={<Checkbox value={size} sx={{ p: 1 }} size="small" />}
+                  label={size + ' mm'}
                   onClick={handleChecked}
                   sx={{
                     width: '100%',

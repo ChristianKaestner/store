@@ -10,7 +10,7 @@ import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/sortFilter/SortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
 
-export default function Hookahs() {
+export default function Coals() {
   const [page, setPage] = useState(1);
   const [limit] = useState(20);
   const { cart } = useCart();

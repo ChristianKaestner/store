@@ -817,6 +817,58 @@
       "weight": 2000,
       "size" : 26,
       "isPromoted": false
+    },
+    {
+      "id": 61,
+      "categories": "bowls",
+      "promotion": "New",
+      "price": 15,
+      "brand": "Habibi",
+      "title": "Turkish bowl",
+      "images": ["/bowl1.png"],
+      "status": "In stock",
+      "available": 55,
+      "type" : "Turkish",
+      "isPromoted": false
+    },
+    {
+      "id": 62,
+      "categories": "bowls",
+      "promotion": "",
+      "price": 18,
+      "brand": "Werkbund",
+      "title": "Phunnel bowl",
+      "images": ["/bowl2.jpg"],
+      "status": "In stock",
+      "available": 51,
+      "type" : "Phunnel",
+      "isPromoted": false
+    },
+    {
+      "id": 63,
+      "categories": "bowls",
+      "promotion": "",
+      "price": 18,
+      "brand": "Sahara smoke",
+      "title": "Vortex bowl",
+      "images": ["/bowl3.jpg"],
+      "status": "In stock",
+      "available": 51,
+      "type" : "Vortex",
+      "isPromoted": false
+    },
+    {
+      "id": 64,
+      "categories": "bowls",
+      "promotion": "",
+      "price": 18,
+      "brand": "Solaris",
+      "title": "Evil bowl",
+      "images": ["/bowl4.jpg"],
+      "status": "In stock",
+      "available": 51,
+      "type" : "Evil",
+      "isPromoted": false
     }
   ]
 }

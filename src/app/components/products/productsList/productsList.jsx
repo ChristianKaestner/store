@@ -52,7 +52,7 @@ export default function ProductsList({
           </>
         )}
       </Grid>
-      {goods && pagination && (
+      {goods.length > 20 && pagination && (
         <>
           <Box
             sx={{

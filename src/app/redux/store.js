@@ -34,7 +34,6 @@ export const store = configureStore({
     modal: modalSlice,
     [goodsApi.reducerPath]: goodsApi.reducer,
   },
-
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {

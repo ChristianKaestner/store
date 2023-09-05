@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/app/hooks/useCart';
 import { useGetGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
@@ -14,7 +14,8 @@ export default function Hookahs() {
   const [page, setPage] = useState(1);
   const [limit] = useState(20);
   const { cart } = useCart();
-  const { data = [], isLoading, error } = useGetGoodsQuery(limit);
+
+  const { data = [], isLoading } = useGetGoodsQuery(limit);
 
   const path = usePathname().split('/');
   path.splice(0, 1);

@@ -16,8 +16,22 @@ export default function Sidebar({
   color,
   status,
 }) {
+  // const getWeights = goods => {
+  //   const weightArr = [];
+  //   if (goods.includes(weight)) {
+  //     goods.forEach(product => {
+  //       if (!weightArr.find(n => n.weight === product.weight)) {
+  //         weightArr.push({ id: uuidv4(), brand: product.weight });
+  //       }
+  //     });
+  //   }
+  // };
+
+  console.log(goods);
+
   const colorsArr = [];
   const brandsArr = [];
+  // const weightArr = [];
   goods.forEach(product => {
     if (!colorsArr.find(n => n.color === product.color)) {
       colorsArr.push({ id: uuidv4(), color: product.color });
@@ -25,9 +39,15 @@ export default function Sidebar({
     if (!brandsArr.find(n => n.brand === product.brand)) {
       brandsArr.push({ id: uuidv4(), brand: product.brand });
     }
+    // if (product.weight) {
+    //   if (!weightArr.find(n => n.brand === product.weight)) {
+    //     weightArr.push({ id: uuidv4(), weight: product.weight });
+    //   }
+    // }
   });
   // console.log(colorsArr);
   // console.log(brandsArr);
+  // console.log(weightArr);
 
   return (
     <Aside>

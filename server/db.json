@@ -15,7 +15,6 @@
     },
     {
       "id": 2,
-
       "categories": "hookahs",
       "promotion": "New",
       "price": 300,
@@ -401,7 +400,7 @@
     {
       "id": 31,
       "categories": "tobacco",
-      "flavor" : "Grape & mint",
+      "flavor": "Grape & mint",
       "promotion": "Hot",
       "price": 10,
       "brand": "Al Fakher",
@@ -415,7 +414,7 @@
     {
       "id": 32,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "New",
       "price": 10,
       "brand": "Al Fakher",
@@ -429,7 +428,7 @@
     {
       "id": 33,
       "categories": "tobacco",
-      "flavor" : "Bubble gum",
+      "flavor": "Bubble gum",
       "promotion": "New",
       "price": 10,
       "brand": "Al Fakher",
@@ -443,7 +442,7 @@
     {
       "id": 34,
       "categories": "tobacco",
-      "flavor" : "Double apple",
+      "flavor": "Double apple",
       "promotion": "Sale",
       "price": 10,
       "brand": "Al Fakher",
@@ -457,7 +456,7 @@
     {
       "id": 35,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 10,
       "brand": "Al Fakher",
@@ -471,7 +470,7 @@
     {
       "id": 36,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -485,7 +484,7 @@
     {
       "id": 37,
       "categories": "tobacco",
-      "flavor" : "Grape & mint",
+      "flavor": "Grape & mint",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -499,7 +498,7 @@
     {
       "id": 38,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -513,7 +512,7 @@
     {
       "id": 39,
       "categories": "tobacco",
-      "flavor" : "Bubble gum",
+      "flavor": "Bubble gum",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -527,7 +526,7 @@
     {
       "id": 40,
       "categories": "tobacco",
-      "flavor" : "Double apple",
+      "flavor": "Double apple",
       "promotion": "",
       "price": 40,
       "brand": "Al Fakher",
@@ -541,7 +540,7 @@
     {
       "id": 41,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -555,7 +554,7 @@
     {
       "id": 42,
       "categories": "tobacco",
-      "flavor" : "Grape & mint",
+      "flavor": "Grape & mint",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -569,7 +568,7 @@
     {
       "id": 43,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -583,7 +582,7 @@
     {
       "id": 44,
       "categories": "tobacco",
-      "flavor" : "Bubble gum",
+      "flavor": "Bubble gum",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -597,7 +596,7 @@
     {
       "id": 45,
       "categories": "tobacco",
-      "flavor" : "Double apple",
+      "flavor": "Double apple",
       "promotion": "",
       "price": 80,
       "brand": "Al Fakher",
@@ -611,7 +610,7 @@
     {
       "id": 46,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -625,7 +624,7 @@
     {
       "id": 47,
       "categories": "tobacco",
-      "flavor" : "Grape & mint",
+      "flavor": "Grape & mint",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -639,7 +638,7 @@
     {
       "id": 48,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -653,7 +652,7 @@
     {
       "id": 49,
       "categories": "tobacco",
-      "flavor" : "Bubble gum",
+      "flavor": "Bubble gum",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -667,7 +666,7 @@
     {
       "id": 50,
       "categories": "tobacco",
-      "flavor" : "Double apple",
+      "flavor": "Double apple",
       "promotion": "",
       "price": 140,
       "brand": "Al Fakher",
@@ -681,7 +680,7 @@
     {
       "id": 51,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -695,7 +694,7 @@
     {
       "id": 52,
       "categories": "tobacco",
-      "flavor" : "Grape & mint",
+      "flavor": "Grape & mint",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -709,7 +708,7 @@
     {
       "id": 53,
       "categories": "tobacco",
-      "flavor" : "Melon",
+      "flavor": "Melon",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -723,7 +722,7 @@
     {
       "id": 54,
       "categories": "tobacco",
-      "flavor" : "Bubble gum",
+      "flavor": "Bubble gum",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -737,7 +736,7 @@
     {
       "id": 55,
       "categories": "tobacco",
-      "flavor" : "Double apple",
+      "flavor": "Double apple",
       "promotion": "",
       "price": 6,
       "brand": "Al Fakher",
@@ -759,7 +758,7 @@
       "status": "In stock",
       "available": 55,
       "weight": 1000,
-      "size" : 25,
+      "size": 25,
       "isPromoted": false
     },
     {
@@ -773,7 +772,7 @@
       "status": "In stock",
       "available": 34,
       "weight": 1000,
-      "size" : 25,
+      "size": 25,
       "isPromoted": false
     },
     {
@@ -781,13 +780,13 @@
       "categories": "coals",
       "promotion": "",
       "price": 6,
-      "brand": "Crown max flow",
-      "title": "Coal 26mm 1kg 64pcs",
+      "brand": "Crown",
+      "title": "Max flow 26mm 1kg 64pcs",
       "images": ["/coal-crownMaxFlow-26-1.png"],
       "status": "In stock",
       "available": 75,
       "weight": 1000,
-      "size" : 26,
+      "size": 26,
       "isPromoted": false
     },
     {
@@ -795,13 +794,13 @@
       "categories": "coals",
       "promotion": "",
       "price": 7,
-      "brand": "Crown airflow",
-      "title": "Coal 25mm 1kg 72pcs",
+      "brand": "Crown",
+      "title": "Airflow 25mm 1kg 72pcs",
       "images": ["/coal-crownAirFlow-25-1.png"],
       "status": "In stock",
       "available": 55,
       "weight": 1000,
-      "size" : 25,
+      "size": 25,
       "isPromoted": false
     },
     {
@@ -815,7 +814,7 @@
       "status": "In stock",
       "available": 55,
       "weight": 2000,
-      "size" : 26,
+      "size": 26,
       "isPromoted": false
     },
     {
@@ -828,7 +827,7 @@
       "images": ["/bowl1.png"],
       "status": "In stock",
       "available": 55,
-      "type" : "Turkish",
+      "type": "Turkish",
       "isPromoted": false
     },
     {
@@ -841,7 +840,7 @@
       "images": ["/bowl2.jpg"],
       "status": "In stock",
       "available": 51,
-      "type" : "Phunnel",
+      "type": "Phunnel",
       "isPromoted": false
     },
     {
@@ -854,7 +853,7 @@
       "images": ["/bowl3.jpg"],
       "status": "In stock",
       "available": 51,
-      "type" : "Vortex",
+      "type": "Vortex",
       "isPromoted": false
     },
     {
@@ -867,8 +866,119 @@
       "images": ["/bowl4.jpg"],
       "status": "In stock",
       "available": 51,
-      "type" : "Evil",
+      "type": "Evil",
       "isPromoted": false
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "hookahs",
+      "subCategory": [
+        {
+          "id": 1,
+          "name": "Mya",
+          "image": "/mya.png"
+        },
+        {
+          "id": 2,
+          "name": "Golden desert",
+          "image": "/desert.png"
+        },
+        {
+          "id": 3,
+          "name": "Hookah John",
+          "image": "/john.png"
+        },
+        {
+          "id": 4,
+          "name": "Oduman",
+          "image": "/Oduman.jpg"
+        },
+        {
+          "id": 5,
+          "name": "Lavoo",
+          "image": "/Lavoo.webp"
+        },
+        {
+          "id": 6,
+          "name": "Khalil",
+          "image": "/khalil-mamoon.png"
+        },
+        {
+          "id": 7,
+          "name": "Mazaya",
+          "image": "/mazaya.png"
+        },
+        {
+          "id": 8,
+          "name": "Wookah",
+          "image": "/Wookah.png"
+        },
+        {
+          "id": 9,
+          "name": "Kaloud",
+          "image": "/kaloud.png"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "tobacco",
+      "subCategory": [
+        {
+          "id": 1,
+          "name": "Al Fakher",
+          "image": "/allfakher.png"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "coals",
+      "subCategory": [
+        {
+          "id": 1,
+          "name": "Crown",
+          "image": "/Crown.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Big Maks",
+          "image": "/Big Maks.webp"
+        },
+        {
+          "id": 3,
+          "name": "Brennstoff ",
+          "image": "/brennstoff.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "bowls",
+      "subCategory": [
+        {
+          "id": 1,
+          "name": "Evil bowl",
+          "image": "/solaris.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Vortex bowl",
+          "image": "/bowl3.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Phunnel bowl",
+          "image": "/bowl2.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Turkish bowl",
+          "image": "/bowl1.png"
+        }
+      ]
     }
   ]
 }

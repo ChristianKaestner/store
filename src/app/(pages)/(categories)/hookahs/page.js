@@ -16,7 +16,7 @@ export default function Hookahs() {
   const { cart } = useCart();
 
   const { data = [], isLoading } = useGetGoodsQuery(limit);
-  const hookahs = data.filter(n => n.categories === 'bowls');
+  const hookahs = data.filter(n => n.categories === 'hookahs');
 
   const path = usePathname().split('/');
   path.splice(0, 1);

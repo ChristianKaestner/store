@@ -21,7 +21,7 @@ export default function ProductsItemModal({
     >
       {value === index && (
         <Box sx={{ ml: 2, mt: 1.5, textAlign: 'center' }}>
-          <Link href={category.uri}>ALL {category.name.toUpperCase()}</Link>
+          <Link href="/">ALL {category.name.toUpperCase()}</Link>
           <Grid
             component="ul"
             container
@@ -42,9 +42,9 @@ export default function ProductsItemModal({
                     component="li"
                     sx={{ display: 'flex', justifyContent: 'center' }}
                   >
-                    <Link href={item.uri}>
+                    <Link href="/">
                       <Image
-                        src={item.logo}
+                        src={item.image}
                         alt={`${item.name} logo`}
                         width={80}
                         height={80}

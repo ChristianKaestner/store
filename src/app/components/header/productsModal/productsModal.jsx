@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
 import ProductsItemModal from './productsItemModal/productsItemModal';
+import { useGetCategoriesQuery } from '@/app/redux/services/categories';
 import { categories } from '@/app/utils/tmpData';
 
 export default function ProductsModal() {
   const [value, setValue] = useState(0);
+  const { data = [] } = useGetCategoriesQuery();
+
+  console.log(data);
 
   const handleChange = index => {
     setValue(index);
@@ -27,8 +31,8 @@ export default function ProductsModal() {
         aria-label="Products menu"
         sx={{ borderRight: 1, borderColor: 'divider' }}
       >
-        {categories &&
-          categories.map((category, index) => {
+        {data.length &&
+          data.map((category, index) => {
             return (
               <Tab
                 onMouseEnter={handleChange.bind(this, index)}
@@ -38,8 +42,8 @@ export default function ProductsModal() {
             );
           })}
       </Tabs>
-      {categories &&
-        categories.map((category, index) => {
+      {data.length &&
+        data.map((category, index) => {
           return (
             <ProductsItemModal
               key={category.id}

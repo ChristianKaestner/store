@@ -17,6 +17,7 @@ export default function CardSwiper({
   handleFavorite,
   isFavorite,
   swiperRef,
+  path,
 }) {
   return (
     <Box
@@ -85,7 +86,7 @@ export default function CardSwiper({
           return (
             <SwiperSlide key={image}>
               <Link
-                href="/"
+                href={path}
                 style={{
                   position: 'relative',
                   display: 'flex',

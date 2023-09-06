@@ -14,14 +14,13 @@ export default function CardDescription({
   isInCart,
   handleCart,
   onCart,
+  path,
 }) {
   return (
     <CardContent>
       <Box>
-        <Link href="/">
-          <Typography sx={{ textAlign: 'center', mb: 1 }}>
-            {brand}
-          </Typography>
+        <Link href={path}>
+          <Typography sx={{ textAlign: 'center', mb: 1 }}>{brand}</Typography>
           <Typography
             sx={{
               height: 80,

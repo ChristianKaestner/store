@@ -88,3 +88,7 @@ export const catSlug = (cat, subCat) => {
   const sub = subCat.name.toLowerCase().split(' ');
   return `${cat.name}?${sub.join('_')}`;
 };
+
+export const productPath = product => {
+  return `${product.categories}/${product.id}`;
+};

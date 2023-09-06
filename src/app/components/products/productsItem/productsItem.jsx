@@ -4,19 +4,21 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount, toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
-import Grid from '@mui/material/Unstable_Grid2';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
+import { productPath } from '@/app/utils/functions';
 
 export default function ProductsItem({ product, cart, favorite }) {
   const { id, title, brand, images, price, promotion } = product;
+
   const [isFavorite, setIsFavorite] = useState(false);
   const [isInCart, setIsInCart] = useState(false);
   const { isLogin } = useAuth();
 
   const dispatch = useDispatch();
 
+  const path = productPath(product);
   const swiperRef = useRef();
 
   useEffect(() => {
@@ -81,12 +83,14 @@ export default function ProductsItem({ product, cart, favorite }) {
         images={images}
         isFavorite={isFavorite}
         swiperRef={swiperRef}
+        path={path}
       />
 
       <CardDescription
         brand={brand}
         title={title}
         price={price}
+        path={path}
         isInCart={isInCart}
         handleCart={handleCart}
         onCart={() => dispatch(toggleCart(true))}

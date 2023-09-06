@@ -58,7 +58,7 @@ export default function Header() {
                 onOpenAccountModal={() => dispath(toggleAccount(true))}
               />
               <CartIcon
-                onOpenCartModal={() => dispath(toggleAccount(true))}
+                onOpenCartModal={() => dispath(toggleCart(true))}
                 totalProducts={cart.length}
               />
             </Box>

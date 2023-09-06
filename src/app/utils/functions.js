@@ -24,6 +24,14 @@ export const addAlphabetIndex = (arr, field) => {
     });
 };
 
+export const addCount = (arr, field, value) => {
+  const filtred = arr.filter(n => {
+    // console.log(n[field]);
+    return n[field] === value;
+  });
+  return filtred.length;
+};
+
 // export const brandsInputFilter = (brands, filter) => {
 //   return brands.filter(item => {
 //     if (filter !== '') {
@@ -74,4 +82,9 @@ export const chipColor = label => {
     default:
       return 'primary.hot';
   }
+};
+
+export const catSlug = (cat, subCat) => {
+  const sub = subCat.name.toLowerCase().split(' ');
+  return `${cat.name}?${sub.join('_')}`;
 };

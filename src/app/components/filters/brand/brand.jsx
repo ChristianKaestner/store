@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
-import { FormControlLabel, Box } from '@mui/material';
+import { FormControlLabel, Box, Badge } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 
 export default function BrandFilter({ items }) {
@@ -58,7 +58,7 @@ export default function BrandFilter({ items }) {
           }}
         >
           {items.length > 0 &&
-            filtredBrands.map(({ id, brand, letter }) => {
+            filtredBrands.map(({ id, brand, letter, count }) => {
               return (
                 <Box key={id} component="li">
                   {letter && (
@@ -68,7 +68,28 @@ export default function BrandFilter({ items }) {
                     control={
                       <Checkbox value={brand} sx={{ p: 1 }} size="small" />
                     }
-                    label={brand}
+                    label={
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <Badge
+                          badgeContent={count}
+                          sx={{
+                            '& .MuiBadge-badge': {
+                              right: -13,
+                              top: 13,
+                              padding: '0 4px',
+                              bgcolor: 'primary.dim',
+                              color: '#939393',
+                            },
+                          }}
+                        >
+                          <Typography>{brand}</Typography>
+                        </Badge>
+                        {/*                         
+                        <Typography sx={{ color: 'primary.light', ml: 1 }}>
+                          ({count})
+                        </Typography> */}
+                      </Box>
+                    }
                     onClick={handleChecked}
                     sx={{
                       width: '100%',

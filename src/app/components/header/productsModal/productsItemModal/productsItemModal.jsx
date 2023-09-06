@@ -2,13 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Box, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { catSlug } from '@/app/utils/functions';
 
 export default function ProductsItemModal({
   value,
   index,
   category,
-  subCategory,
+  handleCloseModal,
 }) {
+  const { subCategory, name } = category;
   return (
     <Box
       role="tabpanel"
@@ -21,13 +23,15 @@ export default function ProductsItemModal({
     >
       {value === index && (
         <Box sx={{ ml: 2, mt: 1.5, textAlign: 'center' }}>
-          <Link href="/">ALL {category.name.toUpperCase()}</Link>
+          <Link href={name} onClick={handleCloseModal}>
+            ALL {name.toUpperCase()}
+          </Link>
           <Grid
             component="ul"
             container
-            rowSpacing={{ xs: 2, sm: 2, md: 3 }}
+            rowSpacing={{ xs: 2, sm: 2, md: 6 }}
             columnSpacing={{ xs: 2, sm: 2, md: 3 }}
-            sx={{ listStyle: 'none', mt: 2 }}
+            sx={{ listStyle: 'none', mt: 2, justifyContent: 'center' }}
           >
             {subCategory &&
               subCategory.map(item => {
@@ -42,7 +46,7 @@ export default function ProductsItemModal({
                     component="li"
                     sx={{ display: 'flex', justifyContent: 'center' }}
                   >
-                    <Link href="/">
+                    <Link href={catSlug(category, item)} target="_self">
                       <Image
                         src={item.image}
                         alt={`${item.name} logo`}

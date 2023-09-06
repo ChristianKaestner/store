@@ -9,6 +9,7 @@ import StatusFilter from '../filters/status/status';
 import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
+import { addCount } from '@/app/utils/functions';
 
 //need to add Skeleton
 export default function Sidebar({ goods }) {
@@ -33,8 +34,9 @@ export default function Sidebar({ goods }) {
       }
     }
     if (brand) {
+      const count = addCount(goods, 'brand', brand);
       if (!brands.find(n => n.brand === brand)) {
-        brands.push({ id: uuidv4(), brand });
+        brands.push({ id: uuidv4(), brand, count });
       }
     }
     if (weight) {

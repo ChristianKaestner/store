@@ -26,6 +26,10 @@ export default function Header() {
 
   const dispath = useDispatch();
 
+  const handleCloseModal = () => {
+    dispath(toggleProducts(false));
+  };
+
   return (
     <>
       <AppBar
@@ -54,7 +58,7 @@ export default function Header() {
                 onOpenAccountModal={() => dispath(toggleAccount(true))}
               />
               <CartIcon
-                onOpenCartModal={() => dispath(toggleCart(true))}
+                onOpenCartModal={() => dispath(toggleAccount(true))}
                 totalProducts={cart.length}
               />
             </Box>
@@ -65,13 +69,13 @@ export default function Header() {
           />
           {productsModal && (
             <Modal
-              onClose={() => dispath(toggleProducts(false))}
+              onClose={handleCloseModal}
               title="Products"
               width="calc(100% - 48px)"
               height="600px"
               position="top"
             >
-              <ProductsModal />
+              <ProductsModal handleCloseModal={handleCloseModal} />
             </Modal>
           )}
           {accountModal && (

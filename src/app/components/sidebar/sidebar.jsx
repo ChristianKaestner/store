@@ -14,7 +14,7 @@ import { addCount } from '@/app/utils/functions';
 //need to add Skeleton
 export default function Sidebar({ goods }) {
   const prices = [];
-  const colors = [];
+  const colorsArr = [];
   const brands = [];
   const weights = [];
   const statuses = [];
@@ -22,16 +22,25 @@ export default function Sidebar({ goods }) {
   const sizes = [];
   const types = [];
 
+  // const colorsFlated = []
+  // goods.forEach(n=> {
+  //   if (!n.colors.length) return
+
+  // })
+
   goods.forEach(product => {
-    const { price, color, brand, weight, status, flavor, size, type } = product;
+    const { price, colors, brand, weight, status, flavor, size, type } =
+      product;
 
     if (price) {
       prices.push(price);
     }
-    if (color) {
-      if (!colors.find(n => n.color === color)) {
-        colors.push({ id: uuidv4(), color });
-      }
+    if (colors) {
+      colors.forEach(color => {
+        if (!colorsArr.includes(color)) {
+          colorsArr.push(color);
+        }
+      });
     }
     if (brand) {
       const count = addCount(goods, 'brand', brand);
@@ -65,6 +74,12 @@ export default function Sidebar({ goods }) {
       }
     }
   });
+  const colorsUniq = colorsArr.map(color => {
+    return {
+      id: uuidv4(),
+      color,
+    };
+  });
 
   return (
     <Aside>
@@ -74,7 +89,7 @@ export default function Sidebar({ goods }) {
       {flavors.length > 0 && <FlavorFilter items={flavors} />}
       {sizes.length > 0 && <SizeFilter items={sizes} />}
       {types.length > 0 && <TypeFilter items={types} />}
-      {colors.length > 0 && <ColorFilter items={colors} />}
+      {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
       {statuses.length > 0 && <StatusFilter items={statuses} />}
     </Aside>
   );

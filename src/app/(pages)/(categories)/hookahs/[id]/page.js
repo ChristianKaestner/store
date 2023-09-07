@@ -34,7 +34,6 @@ export default function Hookah() {
         >
           <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
           <Breadcrumbs crumbs={path} />
-          <PageTitle title={data.title} />
           {data && <ProductPage product={data} windowWidth={windowWidth} />}
         </Container>
       )}

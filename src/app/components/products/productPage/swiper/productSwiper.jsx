@@ -15,9 +15,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import './style.css';
 
-export default function ProductSwiper({ images, title, windowWidth }) {
+export default function ProductSwiper({ product, windowWidth }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
+  const { images, title } = product;
   return (
     <>
       <Swiper

@@ -1,33 +1,27 @@
 import { Box } from '@mui/material';
 import ProductSwiper from './swiper/productSwiper';
+import ProductContent from './content/productContent';
 
 export default function ProductPage({ product, windowWidth }) {
-  const { images, title } = product;
-
   return (
     <Box
       sx={{
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
+        mt: 4,
       }}
     >
       <Box
         sx={{ position: 'relative', width: { xs: '100%', md: '50%' }, mr: 2 }}
       >
-        <ProductSwiper
-          images={images}
-          title={title}
-          windowWidth={windowWidth}
-        />
+        <ProductSwiper product={product} windowWidth={windowWidth} />
       </Box>
       <Box
         sx={{
-          display: 'flex',
           width: { xs: '100%', md: '50%' },
-          bgcolor: 'gainsboro',
         }}
       >
-        <p>123</p>
+        <ProductContent product={product} />
       </Box>
     </Box>
   );

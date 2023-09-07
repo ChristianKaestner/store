@@ -4,6 +4,7 @@ import { Box, Container } from '@mui/material';
 import { CommonColumnDesk, CommonColumnMob } from './footerColumn/footerColumn';
 import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
 import { productsLink, supportLink, contactLink } from '@/app/utils/pagesLink';
+import InnerWidth from '@/app/components/innerWidth/innerWidth';
 
 export default function Footer() {
   const isSSR = typeof window === 'undefined';
@@ -11,24 +12,23 @@ export default function Footer() {
     isSSR ? 1200 : window.innerWidth
   );
 
-  useEffect(() => {
-    const handleWindowResize = () => {
-      if (!isSSR) {
-        setWindowWidth(window.innerWidth);
-      }
-    };
-    handleWindowResize();
+  // useEffect(() => {
+  //   const handleWindowResize = () => {
+  //     if (!isSSR) {
+  //       setWindowWidth(window.innerWidth);
+  //     }
+  //   };
+  //   handleWindowResize();
 
-    window.addEventListener('resize', handleWindowResize);
+  //   window.addEventListener('resize', handleWindowResize);
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleWindowResize);
+  //   };
+  // }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('first');
   };
 
   return (
@@ -46,6 +46,7 @@ export default function Footer() {
           pt: 3,
         }}
       >
+        <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
         {windowWidth >= 900 ? (
           <>
             <CommonColumnDesk title="Shop" pages={productsLink} />

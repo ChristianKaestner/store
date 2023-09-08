@@ -51,7 +51,7 @@ export default function ProductContent({ product, isLogin }) {
   return (
     <Box>
       <Paper elevation={5} sx={{ p: 2 }}>
-        <Typography component="h1" sx={{ fontSize: 32 }}>
+        <Typography component="h1" sx={{ fontWeight: 500, fontSize: 32 }}>
           {title}
         </Typography>
         <Box
@@ -86,7 +86,9 @@ export default function ProductContent({ product, isLogin }) {
               </Typography>
             </Link>
           </Box>
-          <Typography sx={{ pr: 1, color: '#747474' }}>Code: {id}</Typography>
+          <Typography sx={{ pr: 1, color: 'primary.neutral' }}>
+            Code: {id}
+          </Typography>
         </Box>
 
         <Box sx={{ mt: 2 }}>

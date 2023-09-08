@@ -2,7 +2,10 @@
 
 import { useState } from 'react';
 import { usePathname, useParams } from 'next/navigation';
-import { useGetProductByIdQuery } from '@/app/redux/services/goods';
+import {
+  useGetProductByIdQuery,
+  useGetAllGoodsQuery,
+} from '@/app/redux/services/goods';
 import { Container } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import { useAuth } from '@/app/hooks/useAuth';
@@ -23,6 +26,7 @@ export default function Hookah() {
   const { id } = useParams();
 
   const { data, isLoading } = useGetProductByIdQuery(id);
+  const relatedProducts = useGetAllGoodsQuery();
 
   return (
     <>
@@ -44,6 +48,7 @@ export default function Hookah() {
               product={data}
               windowWidth={windowWidth}
               isLogin={isLogin}
+              relatedProducts={relatedProducts}
             />
           )}
         </Container>

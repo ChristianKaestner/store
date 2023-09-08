@@ -1,5 +1,4 @@
 'use client';
-;
 import Link from 'next/link';
 import Image from 'next/image';
 import { Box, IconButton, Chip } from '@mui/material';
@@ -60,6 +59,7 @@ export default function CardSwiper({
             sx={{
               position: 'absolute',
               top: 8,
+              left: 0,
               zIndex: 1,
               bgcolor: chipColor(promotion),
               '&.MuiChip-root': {

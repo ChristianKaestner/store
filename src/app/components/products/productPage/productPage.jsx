@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 
-export default function ProductPage({ product, windowWidth }) {
+export default function ProductPage({ product, windowWidth, isLogin }) {
   return (
     <Box
       sx={{
@@ -12,7 +12,12 @@ export default function ProductPage({ product, windowWidth }) {
       }}
     >
       <Box
-        sx={{ position: 'relative', width: { xs: '100%', md: '50%' }, mr: 2 }}
+        sx={{
+          position: 'relative',
+          width: { xs: '100%', md: '50%' },
+          mr: { xs: 0, md: 2 },
+          mb: { xs: 2, md: 0 },
+        }}
       >
         <ProductSwiper product={product} windowWidth={windowWidth} />
       </Box>
@@ -21,7 +26,7 @@ export default function ProductPage({ product, windowWidth }) {
           width: { xs: '100%', md: '50%' },
         }}
       >
-        <ProductContent product={product} />
+        <ProductContent product={product} isLogin={isLogin} />
       </Box>
     </Box>
   );

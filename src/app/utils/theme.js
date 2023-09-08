@@ -25,6 +25,7 @@ export const myTheme = createTheme({
       accent: '#f68e5f',
       hot: '#f76c5e',
       dim: '#f5f6fa',
+      text: '#221f1f',
     },
   },
   components: {
@@ -126,6 +127,32 @@ export const myTheme = createTheme({
             height: 46,
             backgroundColor: theme.palette.primary.light,
           },
+        }),
+      },
+    },
+
+    MuiTypography: {
+      styleOverrides: {
+        paragraph: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h1: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h2: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h3: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h4: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h5: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+        h6: ({ theme }) => ({
+          color: theme.palette.primary.text,
         }),
       },
     },

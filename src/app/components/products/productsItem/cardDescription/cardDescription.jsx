@@ -11,9 +11,9 @@ export default function CardDescription({
   brand,
   title,
   price,
-  isInCart,
+  inCart,
   handleCart,
-  onCart,
+  openCart,
   path,
 }) {
   return (
@@ -48,7 +48,7 @@ export default function CardDescription({
           {price}$
         </Typography>
 
-        {isInCart ? (
+        {inCart ? (
           <Box>
             <SpeedDial
               ariaLabel="SpeedDial cart"
@@ -75,7 +75,7 @@ export default function CardDescription({
                   />
                 }
                 tooltipTitle="cart"
-                onClick={onCart}
+                onClick={openCart}
               />
             </SpeedDial>
           </Box>

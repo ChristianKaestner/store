@@ -18,14 +18,14 @@ export default function Modal({
     const keyDownEvent = e => {
       if (e.code === 'Escape') {
         onClose();
-        document.body.style.overflow = 'scroll';
+        document.body.style.overflowY = 'scroll';
       }
     };
     window.addEventListener('keydown', keyDownEvent);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
     return () => {
       window.removeEventListener('keydown', keyDownEvent);
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'scroll';
     };
   }, [onClose]);
 
@@ -38,7 +38,7 @@ export default function Modal({
   const onCloseBackdrop = e => {
     if (e.currentTarget === e.target) {
       onClose();
-      document.body.style.overflow = 'scroll';
+      document.body.style.overflowY = 'scroll';
     }
   };
 

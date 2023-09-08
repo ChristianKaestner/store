@@ -13,7 +13,7 @@ export default function ProductsItem({ product, cart, favorite }) {
   const { id, title, brand, images, price, promotion } = product;
 
   const [isFavorite, setIsFavorite] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  const [inCart, setInCart] = useState(false);
   const { isLogin } = useAuth();
 
   const dispatch = useDispatch();
@@ -23,8 +23,8 @@ export default function ProductsItem({ product, cart, favorite }) {
 
   useEffect(() => {
     cart.find(item => item.id === product.id)
-      ? setIsInCart(true)
-      : setIsInCart(false);
+      ? setInCart(true)
+      : setInCart(false);
   }, [cart]);
 
   const handleFavorite = () => {
@@ -37,10 +37,10 @@ export default function ProductsItem({ product, cart, favorite }) {
 
   const handleCart = () => {
     if (cart.find(item => item.id === id)) {
-      setIsInCart(true);
+      setInCart(true);
       dispatch(cartRemove(id));
     } else {
-      setIsInCart(false);
+      setInCart(false);
       dispatch(cartAdd(id));
     }
   };
@@ -91,9 +91,9 @@ export default function ProductsItem({ product, cart, favorite }) {
         title={title}
         price={price}
         path={path}
-        isInCart={isInCart}
+        inCart={inCart}
         handleCart={handleCart}
-        onCart={() => dispatch(toggleCart(true))}
+        openCart={() => dispatch(toggleCart(true))}
       />
     </Card>
   );

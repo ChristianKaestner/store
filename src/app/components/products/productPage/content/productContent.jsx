@@ -27,7 +27,7 @@ export default function ProductContent({ product, isLogin }) {
     reviews,
   } = product;
   const [isFavorite, setIsFavorite] = useState(false);
-  const [color, setColor] = useState(colors.length ? colors[0] : null);
+  const [color, setColor] = useState(colors?.length ? colors[0] : null);
 
   const dispatch = useDispatch();
 
@@ -68,7 +68,7 @@ export default function ProductContent({ product, isLogin }) {
             rating={rating}
             reviewUrl="/reviews"
             totalReviews={reviews.length}
-            size='medium'
+            size="medium"
           />
           <Typography sx={{ pr: 1, color: 'primary.neutral' }}>
             Code: {id}

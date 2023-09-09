@@ -55,7 +55,7 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
 
   return (
     <Box sx={{ width: '100%', height: 500, my: 4 }}>
-      <Typography component="h5" sx={{ fontWeight: 500, fontSize: 32, pl: 4 }}>
+      <Typography component="h5" sx={{ fontWeight: 500, fontSize: 32, pl: 2 }}>
         You may also be interested
       </Typography>
       {!isLoading && (
@@ -66,7 +66,7 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
           onSwiper={it => (sliderRef.current = it)}
           style={{
             height: '100%',
-            padding: '32px',
+            padding: '16px',
           }}
           onSlideChange={handleSlideChange}
         >

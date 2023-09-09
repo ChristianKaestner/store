@@ -45,6 +45,7 @@ export default function CardSwiper({
         style={{
           width: 'calc(100% - 16px)',
           height: 200,
+          paddingTop: '16px',
           '--swiper-pagination-color': '#f68e5f',
           '--swiper-pagination-bullet-inactive-color': '#999999',
           '--swiper-pagination-bullet-inactive-opacity': '1',
@@ -58,7 +59,7 @@ export default function CardSwiper({
             label={promotion}
             sx={{
               position: 'absolute',
-              top: 8,
+              top: 4,
               left: 0,
               zIndex: 1,
               bgcolor: chipColor(promotion),
@@ -73,6 +74,7 @@ export default function CardSwiper({
         <IconButton
           sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
           onClick={handleFavorite}
+          size="small"
         >
           {isFavorite ? (
             <FavoriteOutlinedIcon

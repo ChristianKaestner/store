@@ -54,9 +54,13 @@ export default function Hero({ images }) {
             left: 0,
             width: 50,
             height: 50,
-            color: '#fff',
+            color: 'primary.light',
+            bgcolor: 'primary.dim',
             zIndex: 2,
             cursor: 'pointer',
+            '&:hover': {
+              bgcolor: 'primary.neutral',
+            },
           }}
           onClick={() => sliderRef.current?.slidePrev()}
         >
@@ -82,9 +86,13 @@ export default function Hero({ images }) {
             right: 0,
             width: 50,
             height: 50,
-            color: '#fff',
+            color: 'primary.light',
+            bgcolor: 'primary.dim',
             zIndex: 2,
             cursor: 'pointer',
+            '&:hover': {
+              bgcolor: 'primary.neutral',
+            },
           }}
           onClick={() => sliderRef.current?.slideNext()}
         >

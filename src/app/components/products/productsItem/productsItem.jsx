@@ -10,7 +10,7 @@ import CardDescription from './cardDescription/cardDescription';
 import { productPath } from '@/app/utils/functions';
 
 export default function ProductsItem({ product, cart, favorite }) {
-  const { id, title, brand, images, price, promotion } = product;
+  const { id, images, promotion } = product;
 
   const [isFavorite, setIsFavorite] = useState(false);
   const [inCart, setInCart] = useState(false);

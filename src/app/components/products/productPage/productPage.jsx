@@ -36,7 +36,11 @@ export default function ProductPage({
           <ProductContent product={product} isLogin={isLogin} />
         </Box>
       </Box>
-      <RelatedProducts relatedProducts={relatedProducts} isLogin={isLogin} />
+      <RelatedProducts
+        relatedProducts={relatedProducts}
+        isLogin={isLogin}
+        windowWidth={windowWidth}
+      />
     </>
   );
 }

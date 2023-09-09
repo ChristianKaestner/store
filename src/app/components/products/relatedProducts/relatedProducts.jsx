@@ -1,41 +1,56 @@
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 import { Box, Typography, IconButton } from '@mui/material';
 import ProductsItem from '../productsItem/productsItem';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useCart } from '@/app/hooks/useCart';
+import { getSlideCount } from '@/app/utils/functions';
 import 'swiper/css';
-import 'swiper/css/pagination';
 
-export default function RelatedProducts({ relatedProducts }) {
+export default function RelatedProducts({ relatedProducts, windowWidth }) {
   const [prevBtn, setPervBtn] = useState(false);
   const [nextBtn, setNextBtn] = useState(true);
   const { data, isLoading } = relatedProducts;
   const { cart } = useCart();
   const sliderRef = useRef();
+  const slidesPerView = getSlideCount(windowWidth);
 
   const handlePrevCard = () => {
-    if (sliderRef.current?.activeIndex === 0) {
+    if (sliderRef.current?.activeIndex - 1 === 0) {
       setPervBtn(false);
     }
-    if (sliderRef.current?.activeIndex < data.length - 6) {
+    if (sliderRef.current?.activeIndex === data.length - slidesPerView) {
       setNextBtn(true);
     }
     sliderRef.current?.slidePrev();
   };
 
   const handleNextCard = () => {
-    console.log(data.length);
-    if (sliderRef.current?.activeIndex > 0) {
+    if (sliderRef.current?.activeIndex + 1 > 0) {
       setPervBtn(true);
     }
-    if (sliderRef.current?.activeIndex >= data.length - 6) {
+    if (sliderRef.current?.activeIndex + 1 === data.length - slidesPerView) {
       setNextBtn(false);
     }
-    console.log(sliderRef);
     sliderRef.current?.slideNext();
+  };
+
+  const handleSlideChange = swiperCore => {
+    const { activeIndex } = swiperCore;
+    const length = data.length - slidesPerView;
+    if (activeIndex === 0) {
+      setPervBtn(false);
+    }
+    if (activeIndex > 0) {
+      setPervBtn(true);
+    }
+    if (activeIndex === length) {
+      setNextBtn(false);
+    }
+    if (activeIndex < length) {
+      setNextBtn(true);
+    }
   };
 
   return (
@@ -45,17 +60,15 @@ export default function RelatedProducts({ relatedProducts }) {
       </Typography>
       {!isLoading && (
         <Swiper
-          slidesPerView={6}
+          slidesPerView={slidesPerView}
           spaceBetween={16}
-          pagination={{
-            clickable: true,
-          }}
+          wrapperTag="ul"
           onSwiper={it => (sliderRef.current = it)}
-          modules={[Pagination]}
           style={{
             height: '100%',
             padding: '32px',
           }}
+          onSlideChange={handleSlideChange}
         >
           {prevBtn && (
             <IconButton
@@ -80,7 +93,7 @@ export default function RelatedProducts({ relatedProducts }) {
             data.map(product => {
               const { id } = product;
               return (
-                <SwiperSlide key={id}>
+                <SwiperSlide key={id} tag="li" style={{ width: 'auto' }}>
                   <ProductsItem product={product} cart={cart} />
                 </SwiperSlide>
               );

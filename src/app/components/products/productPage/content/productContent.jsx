@@ -43,7 +43,7 @@ export default function ProductContent({ product, isLogin }) {
   };
 
   const handleCart = () => {
-    //need to transmit color to cart
+    //need to transmit current color to cart
     dispatch(cartAdd(id));
     dispatch(toggleCart(true));
   };

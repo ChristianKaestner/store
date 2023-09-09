@@ -19,14 +19,19 @@ export default function CardDescription({
   return (
     <CardContent>
       <Box>
+        <Typography sx={{ textAlign: 'center', mb: 1 }}>{brand}</Typography>
         <Link href={path}>
-          <Typography sx={{ textAlign: 'center', mb: 1 }}>{brand}</Typography>
           <Typography
             sx={{
               height: 80,
               maxHeight: 80,
               overflow: 'hidden',
               fontSize: 18,
+              textAlign: 'center',
+              '&:hover': {
+                color: 'primary.accent',
+                textDecoration: 'underline',
+              },
             }}
           >
             {title.toUpperCase()}

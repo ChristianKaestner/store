@@ -7,6 +7,7 @@ import Price from '@/app/components/products/productsItem/price/price';
 export default function SideBar({ image, title, price, id }) {
   return (
     <Paper
+      elevation={3}
       component="aside"
       sx={{
         display: 'flex',

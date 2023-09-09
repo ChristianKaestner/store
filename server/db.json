@@ -11,8 +11,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["white", "black", "red"],
       "isPromoted": true
     },
@@ -27,8 +38,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["white", "black", "red"],
       "isPromoted": true
     },
@@ -43,8 +65,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["white", "black", "gold"],
       "isPromoted": true
     },
@@ -59,8 +92,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["white", "black", "gold"],
       "isPromoted": true
     },
@@ -75,8 +119,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "black", "gold"],
       "isPromoted": true
     },
@@ -92,8 +147,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "blue", "green"],
       "isPromoted": true
     },
@@ -109,8 +175,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "blue", "green"],
       "isPromoted": true
     },
@@ -126,8 +203,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "green"],
       "isPromoted": true
     },
@@ -142,8 +230,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "green"],
       "isPromoted": true
     },
@@ -158,8 +257,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "In stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "green"],
       "isPromoted": true
     },
@@ -174,8 +284,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Out of stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "lightblue"],
       "isPromoted": true
     },
@@ -190,8 +311,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Out of stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "lightblue"],
       "isPromoted": true
     },
@@ -206,8 +338,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Out of stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "lightblue"],
       "isPromoted": false
     },
@@ -222,8 +365,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Out of stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["brown", "red"],
       "isPromoted": false
     },
@@ -238,8 +392,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Out of stock",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "black", "gold"],
       "isPromoted": false
     },
@@ -254,8 +419,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -270,8 +446,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -286,8 +473,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -302,8 +500,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -318,8 +527,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -334,8 +554,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -350,8 +581,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Ending",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["purple", "gray", "gold"],
       "isPromoted": false
     },
@@ -366,8 +608,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -382,8 +635,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -398,8 +662,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -414,8 +689,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -430,8 +716,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -446,8 +743,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -462,8 +770,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -478,8 +797,19 @@
       "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
       "status": "Awaiting",
       "available": 12,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "colors": ["gold", "gray", "gold"],
       "isPromoted": false
     },
@@ -495,8 +825,19 @@
       "images": ["/1tobacco50.png"],
       "status": "In stock",
       "available": 50,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 50,
       "isPromoted": true
     },
@@ -512,8 +853,19 @@
       "images": ["/1tobacco50.png"],
       "status": "In stock",
       "available": 40,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 50,
       "isPromoted": true
     },
@@ -529,8 +881,19 @@
       "images": ["/1tobacco50.png"],
       "status": "In stock",
       "available": 40,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 50,
       "isPromoted": true
     },
@@ -546,8 +909,19 @@
       "images": ["/1tobacco50.png"],
       "status": "In stock",
       "available": 70,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 50,
       "isPromoted": true
     },
@@ -563,8 +937,19 @@
       "images": ["/1tobacco50.png"],
       "status": "In stock",
       "available": 40,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 50,
       "isPromoted": false
     },
@@ -580,8 +965,19 @@
       "images": ["/tobacco250.png"],
       "status": "In stock",
       "available": 10,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 250,
       "isPromoted": false
     },
@@ -597,8 +993,19 @@
       "images": ["/tobacco250.png"],
       "status": "In stock",
       "available": 50,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 250,
       "isPromoted": false
     },
@@ -614,8 +1021,19 @@
       "images": ["/tobacco250.png"],
       "status": "In stock",
       "available": 40,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 250,
       "isPromoted": false
     },
@@ -631,8 +1049,19 @@
       "images": ["/tobacco250.png"],
       "status": "In stock",
       "available": 30,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 250,
       "isPromoted": false
     },
@@ -648,8 +1077,19 @@
       "images": ["/tobacco250.png"],
       "status": "In stock",
       "available": 20,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 250,
       "isPromoted": false
     },
@@ -665,8 +1105,19 @@
       "images": ["/tobacco500.png"],
       "status": "In stock",
       "available": 10,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 500,
       "isPromoted": false
     },
@@ -682,8 +1133,19 @@
       "images": ["/tobacco500.png"],
       "status": "In stock",
       "available": 50,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 500,
       "isPromoted": false
     },
@@ -699,8 +1161,19 @@
       "images": ["/tobacco500.png"],
       "status": "In stock",
       "available": 40,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 500,
       "isPromoted": false
     },
@@ -716,8 +1189,19 @@
       "images": ["/tobacco500.png"],
       "status": "In stock",
       "available": 30,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 500,
       "isPromoted": false
     },
@@ -733,8 +1217,19 @@
       "images": ["/tobacco500.png"],
       "status": "In stock",
       "available": 20,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 500,
       "isPromoted": false
     },
@@ -750,8 +1245,19 @@
       "images": ["/tobacco1000.png"],
       "status": "In stock",
       "available": 4,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "isPromoted": false
     },
@@ -767,8 +1273,19 @@
       "images": ["/tobacco1000.png"],
       "status": "In stock",
       "available": 3,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "isPromoted": false
     },
@@ -784,8 +1301,19 @@
       "images": ["/tobacco1000.png"],
       "status": "In stock",
       "available": 4,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "isPromoted": false
     },
@@ -801,8 +1329,19 @@
       "images": ["/tobacco1000.png"],
       "status": "In stock",
       "available": 3,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "isPromoted": false
     },
@@ -818,8 +1357,19 @@
       "images": ["/tobacco1000.png"],
       "status": "In stock",
       "available": 5,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "isPromoted": false
     },
@@ -835,8 +1385,19 @@
       "images": ["/tobacco25.png"],
       "status": "In stock",
       "available": 46,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 25,
       "isPromoted": false
     },
@@ -852,8 +1413,19 @@
       "images": ["/tobacco25.png"],
       "status": "In stock",
       "available": 35,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 25,
       "isPromoted": false
     },
@@ -869,8 +1441,19 @@
       "images": ["/tobacco25.png"],
       "status": "In stock",
       "available": 47,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 25,
       "isPromoted": false
     },
@@ -886,8 +1469,19 @@
       "images": ["/tobacco25.png"],
       "status": "In stock",
       "available": 37,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 25,
       "isPromoted": false
     },
@@ -903,8 +1497,19 @@
       "images": ["/tobacco25.png"],
       "status": "In stock",
       "available": 55,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 25,
       "isPromoted": false
     },
@@ -919,8 +1524,19 @@
       "images": ["/coal-crown-25-1.png"],
       "status": "In stock",
       "available": 55,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "size": 25,
       "isPromoted": false
@@ -936,8 +1552,19 @@
       "images": ["/coal-bigmax-25-1.png"],
       "status": "In stock",
       "available": 34,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "size": 25,
       "isPromoted": false
@@ -953,8 +1580,19 @@
       "images": ["/coal-crownMaxFlow-26-1.png"],
       "status": "In stock",
       "available": 75,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "size": 26,
       "isPromoted": false
@@ -970,8 +1608,19 @@
       "images": ["/coal-crownAirFlow-25-1.png"],
       "status": "In stock",
       "available": 55,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 1000,
       "size": 25,
       "isPromoted": false
@@ -987,8 +1636,19 @@
       "images": ["/coal-Brennstoff-25-2.png"],
       "status": "In stock",
       "available": 55,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "weight": 2000,
       "size": 26,
       "isPromoted": false
@@ -1004,8 +1664,19 @@
       "images": ["/bowl1.png"],
       "status": "In stock",
       "available": 55,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "type": "Turkish",
       "isPromoted": false
     },
@@ -1020,8 +1691,19 @@
       "images": ["/bowl2.jpg"],
       "status": "In stock",
       "available": 51,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "type": "Phunnel",
       "isPromoted": false
     },
@@ -1036,8 +1718,19 @@
       "images": ["/bowl3.jpg"],
       "status": "In stock",
       "available": 51,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "type": "Vortex",
       "isPromoted": false
     },
@@ -1052,8 +1745,19 @@
       "images": ["/bowl4.jpg"],
       "status": "In stock",
       "available": 51,
-      "rating": null,
-      "reviews": [],
+      "rating": 5,
+      "reviews": [
+        {
+          "id": 1,
+          "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "pros": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+          "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
+          "rating": 5,
+          "date": "01 september",
+          "name": "Mike"
+        }
+      ],
       "type": "Evil",
       "isPromoted": false
     }

@@ -64,21 +64,6 @@ export default function CardSwiper({ promotion, images, swiperRef, path }) {
           />
         )}
         <FavoriteIcon />
-        {/* <IconButton
-          sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
-          onClick={handleFavorite}
-          size="small"
-        >
-          {isFavorite ? (
-            <FavoriteOutlinedIcon
-              sx={{ color: 'primary.accent', fontSize: 30 }}
-            />
-          ) : (
-            <FavoriteBorderOutlinedIcon
-              sx={{ fontSize: 30, color: 'primary.accent' }}
-            />
-          )}
-        </IconButton> */}
         {images.map(image => {
           return (
             <SwiperSlide key={image}>

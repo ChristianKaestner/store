@@ -2,13 +2,12 @@
 
 import { usePathname, useParams } from 'next/navigation';
 import { useGetProductByIdQuery } from '@/app/redux/services/goods';
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
-import { Typography, Box, Paper } from '@mui/material';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import ProductRating from '@/app/components/products/productsItem/rating/rating';
 import ProductCode from '@/app/components/products/productsItem/productCode/productCode';
-import SideBar from '@/app/components/reviews/sideBar/sideBar';
+import Reviews from '@/app/components/reviews/reviews';
 
 export default function Hookah() {
   const path = usePathname().split('/');
@@ -17,7 +16,7 @@ export default function Hookah() {
   const { id } = useParams();
 
   const { data = [], isLoading } = useGetProductByIdQuery(id);
-  const { reviews, rating, images, title, price } = data;
+  const { reviews, rating } = data;
 
   const reviewTitle = `customer reviews of ${data?.title?.toLowerCase()}`;
   return (
@@ -52,9 +51,7 @@ export default function Hookah() {
             />
             <ProductCode id={id} />
           </Box>
-          <Box sx={{ mt: 4 }}>
-            <SideBar image={images[0]} title={title} price={price} id={id} />
-          </Box>
+          <Reviews product={data} />
         </Container>
       )}
     </>

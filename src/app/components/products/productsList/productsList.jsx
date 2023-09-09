@@ -34,10 +34,10 @@ export default function ProductsList({
               goods.map(item => {
                 return (
                   <Grid
-                    xs={12}
+                    xs={6}
                     sm={6}
                     md={4}
-                    lg={3}
+                    lg={2.4}
                     key={item.id}
                     component="li"
                   >

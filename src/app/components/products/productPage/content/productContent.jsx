@@ -12,6 +12,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import PtoductRating from '../../productsItem/rating/rating';
 
 export default function ProductContent({ product, isLogin }) {
   const {
@@ -63,29 +64,12 @@ export default function ProductContent({ product, isLogin }) {
             mt: 1,
           }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <Rating name="read-only" value={rating} readOnly />
-            <Link href="reviews">
-              <Typography
-                sx={{
-                  color: 'primary.light',
-                  ml: 1,
-                  '&:hover': {
-                    color: 'primary.accent',
-                    textDecoration: 'underline',
-                  },
-                }}
-              >
-                {reviews.length} reviews
-              </Typography>
-            </Link>
-          </Box>
+          <PtoductRating
+            rating={rating}
+            reviewUrl="/reviews"
+            totalReviews={reviews.length}
+            size='medium'
+          />
           <Typography sx={{ pr: 1, color: 'primary.neutral' }}>
             Code: {id}
           </Typography>

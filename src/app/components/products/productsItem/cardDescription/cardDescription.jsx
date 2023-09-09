@@ -6,28 +6,30 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import PtoductRating from '../rating/rating';
 
 export default function CardDescription({
-  brand,
-  title,
-  price,
+  product,
   inCart,
   handleCart,
   openCart,
   path,
 }) {
+  const { brand, title, price, rating, reviews } = product;
   return (
     <CardContent>
       <Box>
-        <Typography sx={{ textAlign: 'center', mb: 1 }}>{brand}</Typography>
+        <Typography sx={{ fontSize: 14, textAlign: 'center', mb: 1 }}>
+          {brand}
+        </Typography>
         <Link href={path}>
           <Typography
             sx={{
-              height: 80,
-              maxHeight: 80,
+              height: 40,
+              maxHeight: 40,
               overflow: 'hidden',
-              fontSize: 18,
-              textAlign: 'center',
+              fontSize: 14,
+              mb: 1,
               '&:hover': {
                 color: 'primary.accent',
                 textDecoration: 'underline',
@@ -38,12 +40,19 @@ export default function CardDescription({
           </Typography>
         </Link>
       </Box>
+      <PtoductRating
+        rating={rating}
+        reviewUrl="/reviews"
+        totalReviews={reviews.length}
+        size="small"
+      />
       <Box
         sx={{
           position: 'relative',
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
+          mt: 1,
         }}
       >
         <Typography

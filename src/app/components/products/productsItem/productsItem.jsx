@@ -88,9 +88,7 @@ export default function ProductsItem({ product, cart, favorite }) {
       />
 
       <CardDescription
-        brand={brand}
-        title={title}
-        price={price}
+        product={product}
         path={path}
         inCart={inCart}
         handleCart={handleCart}

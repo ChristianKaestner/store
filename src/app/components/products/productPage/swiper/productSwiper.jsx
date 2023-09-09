@@ -28,7 +28,7 @@ export default function ProductSwiper({ product, windowWidth }) {
         pagination={{
           clickable: true,
         }}
-        style={{ padding: 20 }}
+        style={{ padding: 20, height: windowWidth > 900 ? '80%' : '400px' }}
         className="pagination"
       >
         {images &&

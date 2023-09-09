@@ -98,7 +98,10 @@ export default function CardSwiper({
               >
                 <Image
                   className="scaleImage"
-                  style={{ transition: 'transform 500ms ease-in-out' }}
+                  style={{
+                    transition: 'transform 500ms ease-in-out',
+                    objectFit: 'contain',
+                  }}
                   src={image}
                   fill={true}
                   alt="image"

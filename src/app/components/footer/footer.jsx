@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Box, Container } from '@mui/material';
 import { CommonColumnDesk, CommonColumnMob } from './footerColumn/footerColumn';
 import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
@@ -11,21 +11,6 @@ export default function Footer() {
   const [windowWidth, setWindowWidth] = useState(
     isSSR ? 1200 : window.innerWidth
   );
-
-  // useEffect(() => {
-  //   const handleWindowResize = () => {
-  //     if (!isSSR) {
-  //       setWindowWidth(window.innerWidth);
-  //     }
-  //   };
-  //   handleWindowResize();
-
-  //   window.addEventListener('resize', handleWindowResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleWindowResize);
-  //   };
-  // }, []);
 
   const handleSubmit = e => {
     e.preventDefault();

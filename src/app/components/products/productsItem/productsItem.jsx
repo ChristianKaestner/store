@@ -1,20 +1,16 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '@/app/hooks/useAuth';
-import { toggleAccount, toggleCart } from '@/app/redux/modal/slice';
+import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
 import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 import { productPath } from '@/app/utils/functions';
 
-export default function ProductsItem({ product, cart, favorite }) {
-  const { id, images, promotion } = product;
-
-  const [isFavorite, setIsFavorite] = useState(false);
+export default function ProductsItem({ product, cart }) {
   const [inCart, setInCart] = useState(false);
-  const { isLogin } = useAuth();
+  const { id, images, promotion } = product;
 
   const dispatch = useDispatch();
 
@@ -26,14 +22,6 @@ export default function ProductsItem({ product, cart, favorite }) {
       ? setInCart(true)
       : setInCart(false);
   }, [cart]);
-
-  const handleFavorite = () => {
-    if (!isLogin) {
-      dispatch(toggleAccount(true));
-      return;
-    }
-    setIsFavorite(!isFavorite);
-  };
 
   const handleCart = () => {
     if (cart.find(item => item.id === id)) {
@@ -80,9 +68,7 @@ export default function ProductsItem({ product, cart, favorite }) {
     >
       <CardSwiper
         promotion={promotion}
-        handleFavorite={handleFavorite}
         images={images}
-        isFavorite={isFavorite}
         swiperRef={swiperRef}
         path={path}
       />

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Box, Typography, Rating } from '@mui/material';
 
-export default function PtoductRating({
+export default function ProductRating({
   rating,
   reviewUrl,
   totalReviews,
@@ -15,7 +15,13 @@ export default function PtoductRating({
         alignItems: 'center',
       }}
     >
-      <Rating name="read-only" value={rating} readOnly size={size} />
+      <Rating
+        name="half-rating"
+        precision={0.2}
+        value={rating}
+        readOnly
+        size={size}
+      />
       <Link href={reviewUrl}>
         <Typography
           sx={{

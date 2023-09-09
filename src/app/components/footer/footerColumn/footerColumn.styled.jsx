@@ -27,7 +27,14 @@ export const ColumnText = styled(Typography)({
   marginBottom: '4px',
 });
 
-const commonStyle = { fill: '#fff', width: '40px', height: '40px' };
+const commonStyle = {
+  color: '#fff',
+  width: '40px',
+  height: '40px',
+  '&:hover': {
+    fill: '#f68e5f',
+  },
+};
 
 export const YoutubeIcon = styled(FaYoutube)(commonStyle);
 

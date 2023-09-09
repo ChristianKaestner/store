@@ -1,20 +1,13 @@
-'use client';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Link from 'next/link';
-import { toggleAccount, toggleCart } from '@/app/redux/modal/slice';
-import { cartAdd } from '@/app/redux/cart/slice';
-import { Box, Typography, Paper, IconButton } from '@mui/material';
-import { Radio, RadioGroup, Button, Rating } from '@mui/material';
-import { FormControlLabel, FormControl, FormLabel } from '@mui/material';
-import CircleIcon from '@mui/icons-material/Circle';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PtoductRating from '../../productsItem/rating/rating';
+import { Box, Typography, Paper } from '@mui/material';
+import ProductRating from '../../productsItem/rating/rating';
+import FavoriteIcon from '../../productsItem/favoriteIcon/favoriteIcon';
+import ColorPicker from '../colorPicker/colorPicker';
+import BuyButton from '../../productsItem/buyButton/buyButton';
+import Price from '../../productsItem/price/price';
+import BalanceStatus from '../../productsItem/balanceStatus/balanceStatus';
+import ProductCode from '../../productsItem/productCode/productCode';
 
-export default function ProductContent({ product, isLogin }) {
+export default function ProductContent({ product }) {
   const {
     brand,
     title,
@@ -26,32 +19,10 @@ export default function ProductContent({ product, isLogin }) {
     rating,
     reviews,
   } = product;
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [color, setColor] = useState(colors?.length ? colors[0] : null);
-
-  const dispatch = useDispatch();
-
-  const handleColorChange = e => {
-    setColor(e.target.value);
-  };
-
-  const handleFavorite = () => {
-    if (!isLogin) {
-      dispatch(toggleAccount(true));
-      return;
-    }
-    setIsFavorite(!isFavorite);
-  };
-
-  const handleCart = () => {
-    //need to transmit current color to cart
-    dispatch(cartAdd(id));
-    dispatch(toggleCart(true));
-  };
 
   return (
     <Box>
-      <Paper elevation={5} sx={{ p: 2 }}>
+      <Paper elevation={2} sx={{ p: 2 }}>
         <Typography component="h1" sx={{ fontWeight: 500, fontSize: 32 }}>
           {title}
         </Typography>
@@ -64,15 +35,13 @@ export default function ProductContent({ product, isLogin }) {
             mt: 1,
           }}
         >
-          <PtoductRating
+          <ProductRating
             rating={rating}
             reviewUrl="/reviews"
             totalReviews={reviews.length}
             size="medium"
           />
-          <Typography sx={{ pr: 1, color: 'primary.neutral' }}>
-            Code: {id}
-          </Typography>
+          <ProductCode id={id} />
         </Box>
 
         <Box sx={{ mt: 2 }}>
@@ -91,67 +60,7 @@ export default function ProductContent({ product, isLogin }) {
             alignItems: 'center',
           }}
         >
-          {colors && (
-            <FormControl onChange={handleColorChange}>
-              <FormLabel
-                id="color-radio-button-label"
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: 1,
-                  mb: 2,
-                  cursor: 'text',
-                  textTransform: 'capitalize',
-                }}
-              >
-                <Box
-                  component="span"
-                  sx={{ fontWeight: 500, color: 'primary.text' }}
-                >
-                  Color:
-                </Box>
-                <Typography color="#000000"> {color}</Typography>
-              </FormLabel>
-              <RadioGroup
-                aria-labelledby="color-radio-button-label"
-                defaultValue={colors[0]}
-                name="color"
-                sx={{ display: 'flex', flexDirection: 'row' }}
-              >
-                {colors.map(color => {
-                  return (
-                    <FormControlLabel
-                      key={color}
-                      value={color}
-                      control={
-                        <Radio
-                          icon={
-                            <CircleIcon
-                              fontSize="small"
-                              style={{
-                                stroke: '#747474',
-                                fill: color,
-                              }}
-                            />
-                          }
-                          checkedIcon={
-                            <CheckCircleIcon
-                              fontSize="small"
-                              style={{
-                                stroke:
-                                  color === 'white' ? '#747474' : 'transparent',
-                                fill: color,
-                              }}
-                            />
-                          }
-                        />
-                      }
-                    />
-                  );
-                })}
-              </RadioGroup>
-            </FormControl>
-          )}
+          {colors && <ColorPicker colors={colors} />}
         </Box>
         <Box>
           <Typography component="h3" sx={{ fontWeight: 400 }}>
@@ -167,7 +76,9 @@ export default function ProductContent({ product, isLogin }) {
       </Paper>
 
       <Paper
+        elevation={2}
         sx={{
+          position: 'relative',
           display: 'flex',
           flexDirection: 'row',
           mt: 4,
@@ -176,38 +87,13 @@ export default function ProductContent({ product, isLogin }) {
         }}
       >
         <Box>
-          <Typography
-            component="h4"
-            sx={{ fontWeight: 700, fontSize: 30, color: 'primary.hot' }}
-          >
-            {price}$
-          </Typography>
-          <Typography
-            sx={{ fontWeight: 500, fontSize: 16, color: 'primary.light' }}
-          >
-            {status}
-          </Typography>
+          <Price price={price} component="h4" />
+          <BalanceStatus status={status} />
         </Box>
-
-        <Button
-          variant="contained"
-          startIcon={<ShoppingCartIcon />}
-          sx={{ width: 160, height: 40, bgcolor: 'primary.light', mx: 4 }}
-          onClick={handleCart}
-        >
-          Buy
-        </Button>
-        <IconButton onClick={handleFavorite}>
-          {isFavorite ? (
-            <FavoriteOutlinedIcon
-              sx={{ color: 'primary.accent', fontSize: 30 }}
-            />
-          ) : (
-            <FavoriteBorderOutlinedIcon
-              sx={{ fontSize: 30, color: 'primary.accent' }}
-            />
-          )}
-        </IconButton>
+        <Box sx={{ position: 'relative', width: 240, ml: 2 }}>
+          <BuyButton id={id} width={160} />
+          <FavoriteIcon />
+        </Box>
       </Paper>
     </Box>
   );

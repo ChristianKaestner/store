@@ -6,7 +6,8 @@ import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-import PtoductRating from '../rating/rating';
+import ProductRating from '../rating/rating';
+import Price from '../price/price';
 
 export default function CardDescription({
   product,
@@ -40,7 +41,7 @@ export default function CardDescription({
           </Typography>
         </Link>
       </Box>
-      <PtoductRating
+      <ProductRating
         rating={rating}
         reviewUrl="/reviews"
         totalReviews={reviews.length}
@@ -55,12 +56,7 @@ export default function CardDescription({
           mt: 1,
         }}
       >
-        <Typography
-          variant="body1"
-          sx={{ fontWeight: 700, fontSize: 30, color: 'primary.hot' }}
-        >
-          {price}$
-        </Typography>
+        <Price price={price} component="p" />
 
         {inCart ? (
           <Box>

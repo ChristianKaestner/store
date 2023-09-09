@@ -82,7 +82,7 @@ export function SubscribeColumn({ handleSubmit }) {
 export function FollowUsColumn() {
   return (
     <Column>
-      <ColumnTitle>Follow us</ColumnTitle>
+      <ColumnTitle style={{ paddingLeft: 8 }}>Follow us</ColumnTitle>
 
       <ColumnList style={{ display: 'flex', gap: '8px' }}>
         <li>

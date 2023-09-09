@@ -3,12 +3,7 @@ import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
 
-export default function ProductPage({
-  product,
-  relatedProducts,
-  windowWidth,
-  isLogin,
-}) {
+export default function ProductPage({ product, relatedProducts, windowWidth }) {
   return (
     <>
       <Box
@@ -33,12 +28,11 @@ export default function ProductPage({
             width: { xs: '100%', md: '50%' },
           }}
         >
-          <ProductContent product={product} isLogin={isLogin} />
+          <ProductContent product={product} />
         </Box>
       </Box>
       <RelatedProducts
         relatedProducts={relatedProducts}
-        isLogin={isLogin}
         windowWidth={windowWidth}
       />
     </>

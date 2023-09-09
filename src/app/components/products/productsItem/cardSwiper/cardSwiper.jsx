@@ -1,25 +1,17 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Box, IconButton, Chip } from '@mui/material';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import { Box, Chip } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import FavoriteIcon from '../favoriteIcon/favoriteIcon';
 import { chipColor } from '@/app/utils/functions';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function CardSwiper({
-  promotion,
-  images,
-  handleFavorite,
-  isFavorite,
-  swiperRef,
-  path,
-}) {
+export default function CardSwiper({ promotion, images, swiperRef, path }) {
   return (
     <Box
       sx={{
@@ -71,7 +63,8 @@ export default function CardSwiper({
             }}
           />
         )}
-        <IconButton
+        <FavoriteIcon />
+        {/* <IconButton
           sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
           onClick={handleFavorite}
           size="small"
@@ -85,7 +78,7 @@ export default function CardSwiper({
               sx={{ fontSize: 30, color: 'primary.accent' }}
             />
           )}
-        </IconButton>
+        </IconButton> */}
         {images.map(image => {
           return (
             <SwiperSlide key={image}>

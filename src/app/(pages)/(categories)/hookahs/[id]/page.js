@@ -8,7 +8,6 @@ import {
 } from '@/app/redux/services/goods';
 import { Container } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
-import { useAuth } from '@/app/hooks/useAuth';
 import ProductPage from '@/app/components/products/productPage/productPage';
 import InnerWidth from '@/app/components/innerWidth/innerWidth';
 
@@ -18,7 +17,6 @@ export default function Hookah() {
   const [windowWidth, setWindowWidth] = useState(
     isSSR ? 1200 : window.innerWidth
   );
-  const { isLogin } = useAuth();
 
   const path = usePathname().split('/');
   path.splice(0, 1);
@@ -47,7 +45,6 @@ export default function Hookah() {
             <ProductPage
               product={data}
               windowWidth={windowWidth}
-              isLogin={isLogin}
               relatedProducts={relatedProducts}
             />
           )}

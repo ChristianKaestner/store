@@ -6,5 +6,5 @@ export const LinkItem = styled('li')({});
 export const LinkText = styled(Typography)({
   color: '#fff',
   marginBottom: '4px',
-  ':hover': { color: '#586ba4' },
+  ':hover': { color: '#f68e5f' },
 });

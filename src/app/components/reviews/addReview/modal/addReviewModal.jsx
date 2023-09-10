@@ -1,18 +1,16 @@
-import { useRef } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { FormControl, Button, TextField, Rating, Box } from '@mui/material';
+import { FormControl, Button, TextField, Rating } from '@mui/material';
+import { Box } from '@mui/material';
+import UploadImage from '@/app/components/uploadImage/uploadImage';
 
 export default function AddReviewModal() {
+  const [fileList, setFileList] = useState([]);
+  const [errUpload, setErrUpload] = useState(false);
   const { register, handleSubmit, control } = useForm();
-
-  const imagePicker = useRef(null);
 
   const handleAddReview = data => {
     console.log(data);
-  };
-
-  const handlePick = () => {
-    imagePicker.current.click();
   };
 
   return (
@@ -31,39 +29,13 @@ export default function AddReviewModal() {
         component="form"
         onSubmit={handleSubmit(data => handleAddReview(data))}
       >
-        <Controller
-          name="images"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <div style={{ height: 200, backgroundColor: 'aliceblue' }}>
-              <label>
-                <Button variant="contained" onClick={handlePick} type="button">
-                  Upload
-                </Button>
-                <input
-                  ref={imagePicker}
-                  type="file"
-                  name="images"
-                  onChange={e => {
-                    field.onChange(e.target.files);
-                  }}
-                  multiple
-                  accept="image/*,.png,.jpeg,.webp"
-                  style={{
-                    opacity: 0,
-                    width: 0,
-                    height: 0,
-                    lineHeight: 0,
-                    overflow: 'hidden',
-                    margin: 0,
-                    padding: 0,
-                  }}
-                />
-              </label>
-            </div>
-          )}
+        <UploadImage
+          fileList={fileList}
+          errUpload={errUpload}
+          setFileList={setFileList}
+          setErrUpload={setErrUpload}
         />
+
         <Controller
           control={control}
           name="rating"
@@ -79,6 +51,7 @@ export default function AddReviewModal() {
               onChange={onChange}
               sx={{
                 fontSize: '3rem',
+                width: '50%',
               }}
             />
           )}
@@ -120,6 +93,7 @@ export default function AddReviewModal() {
           type="submit"
           variant="contained"
           sx={{ mt: 4, height: 48, bgcolor: 'primary.light' }}
+          disabled={errUpload ? true : false}
         >
           Leave a review
         </Button>

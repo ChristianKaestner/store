@@ -64,6 +64,7 @@ export default function ProductSwiper({ product, windowWidth }) {
                   <Image
                     style={{
                       objectFit: 'contain',
+                      cursor: 'pointer',
                     }}
                     src={image}
                     width={50}

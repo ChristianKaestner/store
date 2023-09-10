@@ -18,7 +18,7 @@ export default function Hookah() {
   const { data = [], isLoading } = useGetProductByIdQuery(id);
   const { reviews, rating } = data;
 
-  const reviewTitle = `customer reviews of ${data?.title?.toLowerCase()}`;
+  const reviewTitle = `Customer reviews of ${data?.title?.toLowerCase()}`;
   return (
     <>
       {!isLoading && (

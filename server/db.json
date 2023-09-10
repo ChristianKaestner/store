@@ -20,8 +20,18 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": [
+            {
+              "id": 1,
+              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              "name": "Nick",
+              "date": "02 september 2023"
+            }
+          ]
         }
       ],
       "colors": ["white", "black", "red"],
@@ -47,8 +57,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["white", "black", "red"],
@@ -74,8 +87,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["white", "black", "gold"],
@@ -101,8 +117,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["white", "black", "gold"],
@@ -128,8 +147,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "black", "gold"],
@@ -156,8 +178,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "blue", "green"],
@@ -184,8 +209,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "blue", "green"],
@@ -212,8 +240,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "green"],
@@ -239,8 +270,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "green"],
@@ -266,8 +300,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "green"],
@@ -293,8 +330,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "lightblue"],
@@ -320,8 +360,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "lightblue"],
@@ -347,8 +390,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "lightblue"],
@@ -374,8 +420,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["brown", "red"],
@@ -401,8 +450,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "black", "gold"],
@@ -428,8 +480,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -455,8 +510,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -482,8 +540,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -509,8 +570,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -536,8 +600,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -563,8 +630,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -590,8 +660,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["purple", "gray", "gold"],
@@ -617,8 +690,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -644,8 +720,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -671,8 +750,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -698,8 +780,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -725,8 +810,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -752,8 +840,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -779,8 +870,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -806,8 +900,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "colors": ["gold", "gray", "gold"],
@@ -834,8 +931,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 50,
@@ -862,8 +962,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 50,
@@ -890,8 +993,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 50,
@@ -918,8 +1024,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 50,
@@ -946,8 +1055,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 50,
@@ -974,8 +1086,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 250,
@@ -1002,8 +1117,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 250,
@@ -1030,8 +1148,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 250,
@@ -1058,8 +1179,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 250,
@@ -1086,8 +1210,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 250,
@@ -1114,8 +1241,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 500,
@@ -1142,8 +1272,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 500,
@@ -1170,8 +1303,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 500,
@@ -1198,8 +1334,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 500,
@@ -1226,8 +1365,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 500,
@@ -1254,8 +1396,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1282,8 +1427,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1310,8 +1458,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1338,8 +1489,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1366,8 +1520,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1394,8 +1551,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 25,
@@ -1422,8 +1582,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 25,
@@ -1450,8 +1613,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 25,
@@ -1478,8 +1644,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 25,
@@ -1506,8 +1675,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 25,
@@ -1533,8 +1705,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1561,8 +1736,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1589,8 +1767,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1617,8 +1798,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 1000,
@@ -1645,8 +1829,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "weight": 2000,
@@ -1673,8 +1860,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "type": "Turkish",
@@ -1700,8 +1890,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "type": "Phunnel",
@@ -1727,8 +1920,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "type": "Vortex",
@@ -1754,8 +1950,11 @@
           "cons": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
           "images": ["/hookah_item.jpg", "/hookah_item2.jpg"],
           "rating": 5,
-          "date": "01 september",
-          "name": "Mike"
+          "date": "01 september 2023",
+          "name": "Mike",
+          "usefulness": { "pros": 0, "cons": 0 },
+          "isBuyer": true,
+          "comments": []
         }
       ],
       "type": "Evil",

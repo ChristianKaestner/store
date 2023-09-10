@@ -13,6 +13,7 @@ export default function SideBar({ image, title, price, id }) {
         display: 'flex',
         flexDirection: 'row',
         width: '30%',
+        height: 120,
         p: 2,
       }}
     >

@@ -17,7 +17,7 @@ export default function ProductRating({
     >
       <Rating
         name="half-rating"
-        precision={0.2}
+        precision={0.5}
         value={rating}
         readOnly
         size={size}

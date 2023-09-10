@@ -1,6 +1,6 @@
 import { Paper, Typography, Button } from '@mui/material';
 
-export default function AddReview() {
+export default function AddReview({ onWriteReview }) {
   return (
     <Paper
       elevation={3}
@@ -15,7 +15,9 @@ export default function AddReview() {
       <Typography component="h2" sx={{ fontSize: '1.25rem' }}>
         Leave a review for this product
       </Typography>
-      <Button variant="outlined">Write review</Button>
+      <Button variant="outlined" onClick={onWriteReview}>
+        Write review
+      </Button>
     </Paper>
   );
 }

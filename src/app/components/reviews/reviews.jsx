@@ -54,7 +54,7 @@ export default function Reviews({ product }) {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          width: '70%',
+          width: { xs: '100%', md: '70%' },
           mr: 2,
         }}
       >

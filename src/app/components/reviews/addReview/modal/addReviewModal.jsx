@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { FormControl, Button, TextField, Rating } from '@mui/material';
-import { Box } from '@mui/material';
+import { FormControl, Box, TextField, Rating } from '@mui/material';
+import CommonBtn from '../../commonBtn/commonBtn';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
 
 export default function AddReviewModal({ user, handleAddReview }) {
@@ -113,15 +113,7 @@ export default function AddReviewModal({ user, handleAddReview }) {
             />
           )}
         />
-
-        <Button
-          type="submit"
-          variant="contained"
-          sx={{ minHeight: 40, bgcolor: 'primary.light', mt: 4 }}
-          disabled={errUpload ? true : false}
-        >
-          Leave a review
-        </Button>
+        <CommonBtn text="Leave a review" />
       </FormControl>
     </Box>
   );

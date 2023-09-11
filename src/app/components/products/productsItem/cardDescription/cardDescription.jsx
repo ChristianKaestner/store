@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { CardContent, Box, Typography, IconButton } from '@mui/material';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
@@ -8,6 +7,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import ProductRating from '../rating/rating';
 import Price from '../price/price';
+import ProductTitle from '../productTitle/productTitle';
 
 export default function CardDescription({
   product,
@@ -23,23 +23,7 @@ export default function CardDescription({
         <Typography sx={{ fontSize: 14, textAlign: 'center', mb: 1 }}>
           {brand}
         </Typography>
-        <Link href={path}>
-          <Typography
-            sx={{
-              height: 40,
-              maxHeight: 40,
-              overflow: 'hidden',
-              fontSize: 14,
-              mb: 1,
-              '&:hover': {
-                color: 'primary.accent',
-                textDecoration: 'underline',
-              },
-            }}
-          >
-            {title.toUpperCase()}
-          </Typography>
-        </Link>
+        <ProductTitle path={path} title={title} />
       </Box>
       <ProductRating
         rating={rating}

@@ -1,7 +1,6 @@
 import { useForm, Controller } from 'react-hook-form';
-import { FormControl, Button, TextField } from '@mui/material';
-import { Box } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
+import { FormControl, TextField, Box } from '@mui/material';
+import CommonBtn from '../../commonBtn/commonBtn';
 
 export default function CommentReviewModal({ user, handleAddComment }) {
   const { register, handleSubmit, control } = useForm();
@@ -55,20 +54,7 @@ export default function CommentReviewModal({ user, handleAddComment }) {
             />
           )}
         />
-
-        <Button
-          type="submit"
-          variant="contained"
-          endIcon={<SendIcon />}
-          sx={{
-            minHeight: 40,
-            width: 200,
-            bgcolor: 'primary.light',
-            margin: '32px auto 0',
-          }}
-        >
-          Leave a comment
-        </Button>
+        <CommonBtn text="Leave a comment" />
       </FormControl>
     </Box>
   );

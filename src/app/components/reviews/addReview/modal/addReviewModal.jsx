@@ -4,13 +4,22 @@ import { FormControl, Button, TextField, Rating } from '@mui/material';
 import { Box } from '@mui/material';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
 
-export default function AddReviewModal() {
+export default function AddReviewModal({ user, setReviewModal }) {
   const [fileList, setFileList] = useState([]);
   const [errUpload, setErrUpload] = useState(false);
   const { register, handleSubmit, control } = useForm();
 
   const handleAddReview = data => {
-    console.log(data);
+    const { comment, pros, cons, rating, name } = data;
+    const formData = new FormData();
+    formData.append('images', fileList);
+    formData.append('comment', comment);
+    formData.append('pros', pros);
+    formData.append('cons', cons);
+    formData.append('rating', rating);
+    formData.append('name', name);
+    setReviewModal(false);
+    console.log(formData);
   };
 
   return (
@@ -29,13 +38,6 @@ export default function AddReviewModal() {
         component="form"
         onSubmit={handleSubmit(data => handleAddReview(data))}
       >
-        <UploadImage
-          fileList={fileList}
-          errUpload={errUpload}
-          setFileList={setFileList}
-          setErrUpload={setErrUpload}
-        />
-
         <Controller
           control={control}
           name="rating"
@@ -88,11 +90,35 @@ export default function AddReviewModal() {
           {...register('cons')}
           sx={{ mt: 4 }}
         />
+        <UploadImage
+          fileList={fileList}
+          errUpload={errUpload}
+          setFileList={setFileList}
+          setErrUpload={setErrUpload}
+        />
+
+        <Controller
+          control={control}
+          name="name"
+          defaultValue={'user name from props'}
+          type="text"
+          render={({ field: { onChange, value } }) => (
+            <TextField
+              required
+              id="name"
+              label="Name"
+              type="text"
+              value={value}
+              onChange={onChange}
+              sx={{ mt: 4 }}
+            />
+          )}
+        />
 
         <Button
           type="submit"
           variant="contained"
-          sx={{ mt: 4, height: 48, bgcolor: 'primary.light' }}
+          sx={{ minHeight: 40, bgcolor: 'primary.light', mt: 4 }}
           disabled={errUpload ? true : false}
         >
           Leave a review

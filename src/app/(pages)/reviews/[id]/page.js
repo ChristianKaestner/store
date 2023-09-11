@@ -14,6 +14,7 @@ export default function Hookah() {
   path.splice(0, 1);
 
   const { id } = useParams();
+  
 
   const { data = [], isLoading } = useGetProductByIdQuery(id);
   const { reviews, rating } = data;
@@ -43,13 +44,17 @@ export default function Hookah() {
               mt: 1,
             }}
           >
-            <ProductRating
-              rating={rating}
-              size="medium"
-              reviewUrl="/reviews"
-              totalReviews={reviews.length}
-            />
-            <ProductCode id={id} />
+            {reviews && (
+              <>
+                <ProductRating
+                  rating={rating}
+                  size="medium"
+                  reviewUrl="/reviews"
+                  totalReviews={reviews.length}
+                />
+                <ProductCode id={id} />
+              </>
+            )}
           </Box>
           <Reviews product={data} />
         </Container>

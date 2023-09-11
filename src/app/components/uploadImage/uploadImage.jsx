@@ -62,6 +62,7 @@ export default function UploadImage({
         borderRadius: 1,
         borderColor: errUpload ? 'primary.hot' : '#00000033',
         p: 2,
+        mt: 4,
         '&:hover': {
           borderColor: errUpload ? 'primary.hot' : 'primary.light',
         },

@@ -1,6 +1,9 @@
 'use client';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
+import { useAuth } from '@/app/hooks/useAuth';
+import { toggleAccount } from '@/app/redux/modal/slice';
 import SideBar from './sideBar/sideBar';
 import AddReview from './addReview/addReview';
 import ReviewItem from './reviewItem/reviewItem';
@@ -9,8 +12,14 @@ import AddReviewModal from './addReview/modal/addReviewModal';
 
 export default function Reviews({ product }) {
   const [reviewModal, setReviewModal] = useState(false);
-
+  const dispath = useDispatch();
+  const { isLogin, user } = useAuth();
   const { images, title, price, id, reviews } = product;
+
+  const handleWirteReview = () => {
+    !isLogin ? setReviewModal(true) : dispath(toggleAccount(true));
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
       <Box
@@ -21,7 +30,7 @@ export default function Reviews({ product }) {
           mr: 2,
         }}
       >
-        <AddReview onWriteReview={() => setReviewModal(true)} />
+        <AddReview onWriteReview={handleWirteReview} />
         {reviews && (
           <Box component="ul" sx={{ listStyle: 'none' }}>
             {reviews.map(review => {
@@ -39,7 +48,7 @@ export default function Reviews({ product }) {
           height="600px"
           position="center"
         >
-          <AddReviewModal />
+          <AddReviewModal user={user} setReviewModal={setReviewModal} />
         </Modal>
       )}
     </Box>

@@ -4,6 +4,7 @@ import {
   selectAccountModal,
   selectMobileModal,
   selectProductsModal,
+  selectSuccessModal,
 } from '../redux/modal/selectors';
 
 export const useModal = () => {
@@ -11,11 +12,12 @@ export const useModal = () => {
   const accountModal = useSelector(selectAccountModal);
   const mobileModal = useSelector(selectMobileModal);
   const productsModal = useSelector(selectProductsModal);
-
+  const successModal = useSelector(selectSuccessModal);
   return {
     cartModal,
     accountModal,
     mobileModal,
     productsModal,
+    successModal,
   };
 };

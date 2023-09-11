@@ -3,21 +3,49 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Box } from '@mui/material';
 import { useAuth } from '@/app/hooks/useAuth';
-import { toggleAccount } from '@/app/redux/modal/slice';
+import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
+import { useModal } from '@/app/hooks/useModal';
 import SideBar from './sideBar/sideBar';
 import AddReview from './addReview/addReview';
 import ReviewItem from './reviewItem/reviewItem';
 import Modal from '../modal/modal';
 import AddReviewModal from './addReview/modal/addReviewModal';
+import CommentReviewModal from './reviewComment/modal/commentReviewModal';
+import SuccessModal from '../modal/successModal/successModal';
 
 export default function Reviews({ product }) {
   const [reviewModal, setReviewModal] = useState(false);
+  const [commentModal, setCommentModal] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
   const dispath = useDispatch();
   const { isLogin, user } = useAuth();
+  const { successModal } = useModal();
   const { images, title, price, id, reviews } = product;
 
   const handleWirteReview = () => {
     !isLogin ? setReviewModal(true) : dispath(toggleAccount(true));
+  };
+
+  const handleWirteComment = () => {
+    !isLogin ? setCommentModal(true) : dispath(toggleAccount(true));
+  };
+
+  const handleAddReview = formData => {
+    setSuccessMsg(
+      'Your review has been sent for moderation and will appear on the site soon'
+    );
+    setReviewModal(false);
+    dispath(toggleSuccess(true));
+    console.log(formData);
+  };
+
+  const handleAddComment = data => {
+    setSuccessMsg(
+      'Your comment has been submitted for moderation and will appear on the site soon'
+    );
+    setCommentModal(false);
+    dispath(toggleSuccess(true));
+    console.log(data);
   };
 
   return (
@@ -34,7 +62,13 @@ export default function Reviews({ product }) {
         {reviews && (
           <Box component="ul" sx={{ listStyle: 'none' }}>
             {reviews.map(review => {
-              return <ReviewItem key={review.id} review={review} />;
+              return (
+                <ReviewItem
+                  key={review.id}
+                  review={review}
+                  onReplyClick={handleWirteComment}
+                />
+              );
             })}
           </Box>
         )}
@@ -48,7 +82,29 @@ export default function Reviews({ product }) {
           height="600px"
           position="center"
         >
-          <AddReviewModal user={user} setReviewModal={setReviewModal} />
+          <AddReviewModal user={user} handleAddReview={handleAddReview} />
+        </Modal>
+      )}
+      {commentModal && (
+        <Modal
+          onClose={() => setCommentModal(false)}
+          title="Add comment"
+          width="600px"
+          height="auto"
+          position="center"
+        >
+          <CommentReviewModal user={user} handleAddComment={handleAddComment} />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal
+          onClose={() => dispath(toggleSuccess(false))}
+          title="Successfully"
+          width="600px"
+          height="auto"
+          position="center"
+        >
+          <SuccessModal text={successMsg} />
         </Modal>
       )}
     </Box>

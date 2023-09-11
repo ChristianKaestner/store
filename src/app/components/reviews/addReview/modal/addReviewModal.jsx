@@ -4,12 +4,12 @@ import { FormControl, Button, TextField, Rating } from '@mui/material';
 import { Box } from '@mui/material';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
 
-export default function AddReviewModal({ user, setReviewModal }) {
+export default function AddReviewModal({ user, handleAddReview }) {
   const [fileList, setFileList] = useState([]);
   const [errUpload, setErrUpload] = useState(false);
   const { register, handleSubmit, control } = useForm();
 
-  const handleAddReview = data => {
+  const onAddReview = data => {
     const { comment, pros, cons, rating, name } = data;
     const formData = new FormData();
     formData.append('images', fileList);
@@ -18,8 +18,7 @@ export default function AddReviewModal({ user, setReviewModal }) {
     formData.append('cons', cons);
     formData.append('rating', rating);
     formData.append('name', name);
-    setReviewModal(false);
-    console.log(formData);
+    handleAddReview(formData);
   };
 
   return (
@@ -36,7 +35,7 @@ export default function AddReviewModal({ user, setReviewModal }) {
       <FormControl
         sx={{ display: 'flex', mt: 4, pr: 2, width: '100%', overflowY: 'auto' }}
         component="form"
-        onSubmit={handleSubmit(data => handleAddReview(data))}
+        onSubmit={handleSubmit(data => onAddReview(data))}
       >
         <Controller
           control={control}

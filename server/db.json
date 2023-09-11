@@ -27,6 +27,7 @@
           "comments": [
             {
               "id": 1,
+              "postId": 1,
               "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
               "name": "Nick",
               "date": "02 september 2023"

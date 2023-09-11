@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material';
 import ReplyIcon from '@mui/icons-material/Reply';
 
-export default function ReplyReview() {
+export default function ReplyReview({ onReplyClick }) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
       <Button
@@ -11,6 +11,7 @@ export default function ReplyReview() {
           mr: 1,
           '&:hover': { color: 'primary.accent' },
         }}
+        onClick={onReplyClick}
       >
         Reply to review
       </Button>

@@ -5,6 +5,7 @@ const initialState = {
   mobile: false,
   products: false,
   account: false,
+  success: false,
 };
 
 export const modalSlice = createSlice({
@@ -26,9 +27,17 @@ export const modalSlice = createSlice({
     toggleAccount(state, action) {
       state.account = action.payload;
     },
+    toggleSuccess(state, action) {
+      state.success = action.payload;
+    },
   },
 });
 
 export default modalSlice.reducer;
-export const { toggleCart, toggleProducts, toggleAccount, toggleMobile } =
-  modalSlice.actions;
+export const {
+  toggleCart,
+  toggleProducts,
+  toggleAccount,
+  toggleMobile,
+  toggleSuccess,
+} = modalSlice.actions;

@@ -4,10 +4,10 @@ import { Tooltip, Rating } from '@mui/material';
 import ReportIcon from '@mui/icons-material/Report';
 import ReplyReview from './replyReview/replyReview';
 import RateReview from './rateReview/rateReview';
-import ReviewComment from './reviewComment/reviewComment';
+import ReviewComment from '../reviewComment/reviewComment';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
-export default function ReviewItem({ review }) {
+export default function ReviewItem({ review, onReplyClick }) {
   const { text, pros, cons, images, rating, date } = review;
   const { name, usefulness, comments } = review;
   return (
@@ -106,7 +106,7 @@ export default function ReviewItem({ review }) {
               mt: 1,
             }}
           >
-            <ReplyReview />
+            <ReplyReview onReplyClick={onReplyClick} />
             <RateReview usefulness={usefulness} />
           </Box>
         </Box>

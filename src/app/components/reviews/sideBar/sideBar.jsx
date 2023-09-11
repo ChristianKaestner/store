@@ -14,6 +14,7 @@ export default function SideBar({ image, title, price, id }) {
         flexDirection: 'row',
         width: 'auto',
         height: 160,
+        MaxWidth: '30%',
         alignItems: 'center',
         p: 2,
       }}

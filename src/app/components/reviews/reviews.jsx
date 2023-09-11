@@ -12,16 +12,19 @@ import Modal from '../modal/modal';
 import AddReviewModal from './addReview/modal/addReviewModal';
 import CommentReviewModal from './reviewComment/modal/commentReviewModal';
 import SuccessModal from '../modal/successModal/successModal';
+import FullscreanImage from '../modal/fullscreanReview/fullscreanReview';
 
 export default function Reviews({ product }) {
   const [reviewModal, setReviewModal] = useState(false);
   const [commentModal, setCommentModal] = useState(false);
+  const [fullscrean, setFullscrean] = useState(false);
+  const [selectedImages, setSelectedImages] = useState({});
   const [successMsg, setSuccessMsg] = useState('');
   const dispath = useDispatch();
   const { isLogin, user } = useAuth();
   const { successModal } = useModal();
   const { images, title, price, id, reviews } = product;
-
+  // console.log(product);
   const handleWirteReview = () => {
     !isLogin ? setReviewModal(true) : dispath(toggleAccount(true));
   };
@@ -48,6 +51,13 @@ export default function Reviews({ product }) {
     console.log(data);
   };
 
+  const handleScaleImage = (id, image) => {
+    const filtred = reviews.filter(review => review.id === id);
+    const images = filtred[0].images;
+    setSelectedImages({ images, picked: image });
+    setFullscrean(true);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
       <Box
@@ -67,6 +77,7 @@ export default function Reviews({ product }) {
                   key={review.id}
                   review={review}
                   onReplyClick={handleWirteComment}
+                  onImageClick={handleScaleImage}
                 />
               );
             })}
@@ -105,6 +116,16 @@ export default function Reviews({ product }) {
           position="center"
         >
           <SuccessModal text={successMsg} />
+        </Modal>
+      )}
+      {fullscrean && (
+        <Modal
+          onClose={() => setFullscrean(false)}
+          width="95vw"
+          height="95vh"
+          position="center"
+        >
+          <FullscreanImage dto={selectedImages} />
         </Modal>
       )}
     </Box>

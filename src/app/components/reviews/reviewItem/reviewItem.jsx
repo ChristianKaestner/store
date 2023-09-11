@@ -7,8 +7,8 @@ import RateReview from './rateReview/rateReview';
 import ReviewComment from '../reviewComment/reviewComment';
 import VerifiedIcon from '@mui/icons-material/Verified';
 
-export default function ReviewItem({ review, onReplyClick }) {
-  const { text, pros, cons, images, rating, date } = review;
+export default function ReviewItem({ review, onReplyClick, onImageClick }) {
+  const { id, text, pros, cons, images, rating, date } = review;
   const { name, usefulness, comments } = review;
   return (
     <>
@@ -80,6 +80,9 @@ export default function ReviewItem({ review, onReplyClick }) {
                       position: 'relative',
                       width: 120,
                       height: 80,
+                      '&:hover': {
+                        cursor: 'pointer',
+                      },
                     }}
                   >
                     <Image
@@ -89,6 +92,7 @@ export default function ReviewItem({ review, onReplyClick }) {
                       fill={true}
                       sizes="100%"
                       priority="false"
+                      onClick={() => onImageClick(id, image)}
                       style={{
                         borderRadius: 4,
                       }}

@@ -1,10 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { FormControl, OutlinedInput, Button, Typography } from '@mui/material';
-import { IconButton } from '@mui/material';
+import { FormControl, IconButton, Button, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Column, ColumnTitle, ColumnList } from './footerColumn.styled';
-import { ColumnText } from './footerColumn.styled';
+import { ColumnText, InputSubscribe } from './footerColumn.styled';
 import FooterLink from '../footerLink/footerLink';
 import Link from 'next/link';
 import {
@@ -68,7 +67,8 @@ export function SubscribeColumn({ handleSubscribe }) {
         sx={{ width: '100%' }}
         onSubmit={handleSubmit(data => handleSubscribe(data))}
       >
-        <OutlinedInput
+        <InputSubscribe
+          err={errors?.email}
           component="input"
           type="email"
           aria-label="email"
@@ -77,21 +77,6 @@ export function SubscribeColumn({ handleSubscribe }) {
             required: 'required',
             pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/,
           })}
-          sx={{
-            mt: 2,
-            bgcolor: '#fff',
-            width: '100%',
-            mt: 2,
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: errors.email ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: errors.email ? 'primary.hot' : 'primary.light',
-            },
-            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: errors.email ? 'primary.hot' : 'primary.light',
-            },
-          }}
         />
         {errors.email && (
           <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>

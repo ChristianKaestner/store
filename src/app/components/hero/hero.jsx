@@ -8,6 +8,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Box, IconButton, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import { swiperStyles, IconBtnNavigate } from '@/app/utils/commonStyles';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -36,36 +37,14 @@ export default function Hero({ images }) {
         }}
         onSwiper={it => (sliderRef.current = it)}
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        style={{
-          width: '100%',
-          height: '400px',
-          borderRadius: '4px',
-          '--swiper-pagination-color': '#f68e5f',
-          '--swiper-pagination-bullet-inactive-color': '#999999',
-          '--swiper-pagination-bullet-inactive-opacity': '1',
-          '--swiper-pagination-bullet-size': '12px',
-          '--swiper-pagination-bullet-horizontal-gap': '8px',
-        }}
+        style={swiperStyles}
       >
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: 'calc(50% - 25px)',
-            left: 0,
-            width: 50,
-            height: 50,
-            color: 'primary.light',
-            bgcolor: 'primary.dim',
-            zIndex: 2,
-            cursor: 'pointer',
-            '&:hover': {
-              bgcolor: 'primary.neutral',
-            },
-          }}
+        <IconBtnNavigate
+          prev={0}
           onClick={() => sliderRef.current?.slidePrev()}
         >
           <NavigateBeforeIcon sx={{ fontSize: 40 }} />
-        </IconButton>
+        </IconBtnNavigate>
         {images.map(image => {
           return (
             <SwiperSlide key={image.uri}>
@@ -79,25 +58,12 @@ export default function Hero({ images }) {
             </SwiperSlide>
           );
         })}
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: 'calc(50% - 25px)',
-            right: 0,
-            width: 50,
-            height: 50,
-            color: 'primary.light',
-            bgcolor: 'primary.dim',
-            zIndex: 2,
-            cursor: 'pointer',
-            '&:hover': {
-              bgcolor: 'primary.neutral',
-            },
-          }}
+        <IconBtnNavigate
+          next={0}
           onClick={() => sliderRef.current?.slideNext()}
         >
           <NavigateNextIcon sx={{ fontSize: 40 }} />
-        </IconButton>
+        </IconBtnNavigate>
       </Swiper>
     </Box>
   );

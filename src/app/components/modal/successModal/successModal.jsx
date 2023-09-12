@@ -1,14 +1,11 @@
 import { Box, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
+import { ColumnCenter } from '@/app/utils/commonStyles';
 export default function SuccessModal({ text }) {
   return (
-    <Box
+    <ColumnCenter
       sx={{
-        display: 'flex',
-        alignItems: 'center',
         height: 'calc(100% - 106px)',
-
         textAlign: 'center',
       }}
     >
@@ -18,6 +15,6 @@ export default function SuccessModal({ text }) {
           {text}
         </Typography>
       </Box>
-    </Box>
+    </ColumnCenter>
   );
 }

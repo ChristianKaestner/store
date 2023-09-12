@@ -6,7 +6,7 @@ import { useCart } from '@/app/hooks/useCart';
 import { useModal } from '@/app/hooks/useModal';
 import { toggleAccount, toggleProducts } from '@/app/redux/modal/slice';
 import { toggleCart, toggleMobile } from '@/app/redux/modal/slice';
-import { AppBar, Container, Toolbar, Box } from '@mui/material';
+import { Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
 import Logo from './logo/logo';
@@ -18,6 +18,7 @@ import CartIcon from './CartIcon/CartIcon';
 import Modal from '../modal/modal';
 import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
+import { AppBar } from './header.styled';
 
 export default function Header() {
   const [login, setLogin] = useState(true);
@@ -32,18 +33,7 @@ export default function Header() {
 
   return (
     <>
-      <AppBar
-        sx={{
-          position: 'fixed',
-          top: 0,
-          direction: 'flex',
-          justifyContent: 'center',
-          height: 72,
-          px: 0,
-          bgcolor: 'primary.main',
-          zIndex: 999,
-        }}
-      >
+      <AppBar>
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
             <MobileMenu toggle={() => dispath(toggleMobile(!mobileModal))} />

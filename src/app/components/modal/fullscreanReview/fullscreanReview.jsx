@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IconButton } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { IconBtnNavigate } from '@/app/utils/commonStyles';
 import 'swiper/css';
 
 export default function FullscreanImage({ dto }) {
@@ -53,22 +53,9 @@ export default function FullscreanImage({ dto }) {
       initialSlide={startPos}
     >
       {prevBtn && (
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: 'calc(50% - 25px)',
-            left: 0,
-            width: 50,
-            height: 50,
-            color: 'primary.light',
-            bgcolor: 'primary.dim',
-            zIndex: 2,
-            cursor: 'pointer',
-          }}
-          onClick={handlePrevCard}
-        >
+        <IconBtnNavigate prev={0} onClick={handlePrevCard}>
           <NavigateBeforeIcon sx={{ fontSize: 40 }} />
-        </IconButton>
+        </IconBtnNavigate>
       )}
 
       {images.map(image => {
@@ -89,22 +76,9 @@ export default function FullscreanImage({ dto }) {
       })}
 
       {nextBtn && (
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: 'calc(50% - 25px)',
-            right: 0,
-            width: 50,
-            height: 50,
-            color: 'primary.light',
-            bgcolor: 'primary.dim',
-            zIndex: 2,
-            cursor: 'pointer',
-          }}
-          onClick={handleNextCard}
-        >
+        <IconBtnNavigate next={0} onClick={handleNextCard}>
           <NavigateNextIcon sx={{ fontSize: 40 }} />
-        </IconButton>
+        </IconBtnNavigate>
       )}
     </Swiper>
   );

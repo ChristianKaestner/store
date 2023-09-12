@@ -1,4 +1,5 @@
-import { IconButton, Badge } from '@mui/material';
+import { IconButton } from '@mui/material';
+import { Badge } from './cartIcon.styled';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 export default function CartIcon({ onOpenCartModal, totalProducts }) {
@@ -9,14 +10,7 @@ export default function CartIcon({ onOpenCartModal, totalProducts }) {
       sx={{ display: { xs: 'none', sm: 'flex' } }}
       onClick={onOpenCartModal}
     >
-      <Badge
-        badgeContent={totalProducts}
-        sx={{
-          '& .MuiBadge-badge': {
-            backgroundColor: 'primary.light',
-          },
-        }}
-      >
+      <Badge badgeContent={totalProducts}>
         <ShoppingCartOutlinedIcon sx={{ fontSize: 40 }} />
       </Badge>
     </IconButton>

@@ -1,5 +1,5 @@
-import { styled } from '@mui/system';
-import { Box, Typography } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Box, Typography, OutlinedInput } from '@mui/material';
 import { FaYoutube, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export const Column = styled(Box)({
@@ -41,3 +41,20 @@ export const YoutubeIcon = styled(FaYoutube)(commonStyle);
 export const InstagramIcon = styled(FaInstagram)(commonStyle);
 
 export const FacebookIcon = styled(FaFacebook)(commonStyle);
+
+export const InputSubscribe = styled(OutlinedInput, {
+  shouldForwardProp: prop => prop !== 'err',
+})(({ err, theme }) => ({
+  backgroundColor: '#fff',
+  width: '100%',
+  marginTop: 2,
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: err ? theme.palette.primary.hot : 'rgba(0, 0, 0, 0.23)',
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: err ? theme.palette.primary.hot : theme.palette.primary.light,
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: err ? theme.palette.primary.hot : theme.palette.primary.light,
+  },
+}));

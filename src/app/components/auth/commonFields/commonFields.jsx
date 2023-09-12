@@ -2,6 +2,7 @@ import { TextField, InputAdornment, IconButton } from '@mui/material';
 import { Typography } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { InputProps } from '@/app/utils/commonStyles';
 
 export default function CommonFileds({
   showPassword,
@@ -12,55 +13,29 @@ export default function CommonFileds({
 }) {
   return (
     <>
-      <TextField
+      <InputProps
+        err={errors?.email}
         required
         label="Email"
         id="email"
         type="email"
         {...regEmail}
-        sx={{
-          mt: 2,
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors?.email ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors?.email ? 'primary.hot' : 'primary.light',
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: errors?.email ? 'primary.hot' : 'primary.light',
-            },
-          },
-        }}
+        sx={{ mt: 2 }}
       />
       {errors?.email && (
         <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
           Invalid email address
         </Typography>
       )}
-      <TextField
+      <InputProps
+        err={errors?.password}
         required
         id="password"
         {...regPass}
         type={showPassword ? 'text' : 'password'}
         label="Password"
         autoComplete="true"
-        sx={{
-          mt: 2,
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors?.password
-              ? 'primary.hot'
-              : 'rgba(0, 0, 0, 0.23)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors?.password ? 'primary.hot' : 'primary.light',
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: errors?.password ? 'primary.hot' : 'primary.light',
-            },
-          },
-        }}
+        sx={{ mt: 2 }}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">

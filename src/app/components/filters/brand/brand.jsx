@@ -1,9 +1,11 @@
 import { useState } from 'react';
+// import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
-import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
-import { FormControlLabel, Box, Badge } from '@mui/material';
+import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
+import { Counter } from './brand.styled';
+import { Form, Label, ContainerFilter } from '@/app/utils/commonStyles';
 
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
@@ -16,6 +18,14 @@ export default function BrandFilter({ items }) {
     'brand'
   );
 
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm({
+  //   mode: 'onSubmit',
+  // });
+
   const handleChecked = e => {
     console.log(e.target.checked);
     console.log(e.target.value);
@@ -24,15 +34,7 @@ export default function BrandFilter({ items }) {
 
   return (
     <FilterCommon title="Brand">
-      <FormControl
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'baseline',
-        }}
-        component="form"
-      >
+      <Form component="form">
         <Box sx={{ pl: 2 }}>
           <TextField
             id="outlined"
@@ -44,19 +46,7 @@ export default function BrandFilter({ items }) {
           />
         </Box>
 
-        <Box
-          component="ul"
-          sx={{
-            flexWrap: 'nowrap',
-            width: '100%',
-            maxHeight: 400,
-            overflowY: 'auto',
-            overflowX: 'hidden',
-            listStyle: 'none',
-            mt: 2,
-            pl: 2,
-          }}
-        >
+        <ContainerFilter component="ul">
           {items.length > 0 &&
             filtredBrands.map(({ id, brand, letter, count }) => {
               return (
@@ -64,44 +54,24 @@ export default function BrandFilter({ items }) {
                   {letter && (
                     <Typography sx={{ fontWeight: 500 }}>{letter}</Typography>
                   )}
-                  <FormControlLabel
+                  <Label
                     control={
                       <Checkbox value={brand} sx={{ p: 1 }} size="small" />
                     }
                     label={
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <Badge
-                          badgeContent={count}
-                          sx={{
-                            '& .MuiBadge-badge': {
-                              right: -13,
-                              top: 13,
-                              padding: '0 4px',
-                              bgcolor: 'primary.dim',
-                              color: '#939393',
-                            },
-                          }}
-                        >
+                        <Counter badgeContent={count}>
                           <Typography>{brand}</Typography>
-                        </Badge>
-                        {/*                         
-                        <Typography sx={{ color: 'primary.light', ml: 1 }}>
-                          ({count})
-                        </Typography> */}
+                        </Counter>
                       </Box>
                     }
                     onClick={handleChecked}
-                    sx={{
-                      width: '100%',
-                      borderRadius: 1,
-                      '&:hover': { bgcolor: 'primary.dim' },
-                    }}
                   />
                 </Box>
               );
             })}
-        </Box>
-      </FormControl>
+        </ContainerFilter>
+      </Form>
     </FilterCommon>
   );
 }

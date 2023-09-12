@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
-import { FormControl, TextField, Checkbox, Typography } from '@mui/material';
-import { FormControlLabel, Box } from '@mui/material';
+import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
+import { ContainerFilter, Form, Label } from '@/app/utils/commonStyles';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
@@ -24,15 +24,7 @@ export default function FlavorFilter({ items }) {
 
   return (
     <FilterCommon title="Flavors">
-      <FormControl
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'baseline',
-        }}
-        component="form"
-      >
+      <Form component="form">
         <Box sx={{ pl: 2 }}>
           <TextField
             id="outlined"
@@ -44,19 +36,7 @@ export default function FlavorFilter({ items }) {
           />
         </Box>
 
-        <Box
-          component="ul"
-          sx={{
-            flexWrap: 'nowrap',
-            width: '100%',
-            maxHeight: 400,
-            overflowY: 'auto',
-            overflowX: 'hidden',
-            listStyle: 'none',
-            mt: 2,
-            pl: 2,
-          }}
-        >
+        <ContainerFilter component="ul">
           {items.length > 0 &&
             filtredFlavors.map(({ id, flavor, letter }) => {
               return (
@@ -64,23 +44,18 @@ export default function FlavorFilter({ items }) {
                   {letter && (
                     <Typography sx={{ fontWeight: 500 }}>{letter}</Typography>
                   )}
-                  <FormControlLabel
+                  <Label
                     control={
                       <Checkbox value={flavor} sx={{ p: 1 }} size="small" />
                     }
                     label={flavor}
                     onClick={handleChecked}
-                    sx={{
-                      width: '100%',
-                      borderRadius: 1,
-                      '&:hover': { bgcolor: 'primary.dim' },
-                    }}
                   />
                 </Box>
               );
             })}
-        </Box>
-      </FormControl>
+        </ContainerFilter>
+      </Form>
     </FilterCommon>
   );
 }

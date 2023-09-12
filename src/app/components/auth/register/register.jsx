@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { FormControl, TextField, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
 import CommonFileds from '../commonFields/commonFields';
+import { InputProps } from '@/app/utils/commonStyles';
 
 export default function Register({
   toggleAuth,
@@ -23,26 +24,12 @@ export default function Register({
       component="form"
       onSubmit={handleSubmit(data => handleRegister(data))}
     >
-      <TextField
+      <InputProps
+        err={errors?.firstname}
         required
         label="First Name"
         id="firstname"
         type="text"
-        sx={{
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.firstname
-              ? 'primary.hot'
-              : 'rgba(0, 0, 0, 0.23)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.firstname ? 'primary.hot' : 'primary.light',
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: errors.firstname ? 'primary.hot' : 'primary.light',
-            },
-          },
-        }}
         {...register('firstname', {
           required: 'required',
           minLength: 2,
@@ -54,27 +41,13 @@ export default function Register({
         </Typography>
       )}
 
-      <TextField
+      <InputProps
+        err={errors?.lastname}
         required
         label="Last Name"
         id="lastname"
         type="text"
-        sx={{
-          mt: 2,
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.lastname
-              ? 'primary.hot'
-              : 'rgba(0, 0, 0, 0.23)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.lastname ? 'primary.hot' : 'primary.light',
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: errors.lastname ? 'primary.hot' : 'primary.light',
-            },
-          },
-        }}
+        sx={{ mt: 2 }}
         {...register('lastname', {
           required: 'required',
           minLength: 2,
@@ -86,7 +59,8 @@ export default function Register({
         </Typography>
       )}
 
-      <TextField
+      <InputProps
+        err={errors?.phone}
         required
         id="phone"
         type="number"
@@ -101,20 +75,7 @@ export default function Register({
             </InputAdornment>
           ),
         }}
-        sx={{
-          mt: 2,
-          '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.phone ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
-          },
-          '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: errors.phone ? 'primary.hot' : 'primary.light',
-          },
-          '& .MuiOutlinedInput-root': {
-            '&.Mui-focused fieldset': {
-              borderColor: errors.phone ? 'primary.hot' : 'primary.light',
-            },
-          },
-        }}
+        sx={{ mt: 2 }}
       />
       {errors.phone && (
         <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
@@ -139,11 +100,11 @@ export default function Register({
       <Button
         type="submit"
         variant="contained"
-        sx={{ mt: 2, height: 48, bgcolor: 'primary.light' }}
+        sx={{ mt: 2, maxHeight: 40, bgcolor: 'primary.light' }}
       >
         Register
       </Button>
-      <Button sx={{ mt: 2, height: 48 }} onClick={toggleAuth}>
+      <Button sx={{ mt: 2, maxHeight: 40 }} onClick={toggleAuth}>
         Log In
       </Button>
     </FormControl>

@@ -1,26 +1,20 @@
 import { useState } from 'react';
 import FilterCommon from '../accordion/accordionCommon';
-import { FormControl, TextField, Box, IconButton } from '@mui/material';
 import RemoveIcon from '@mui/icons-material/Remove';
-import Slider from '@mui/material/Slider';
 import LoopIcon from '@mui/icons-material/Loop';
+import { Slider, IconButton, Box, PriceForm } from './price.styled';
+import { InputProps } from '@/app/utils/commonStyles';
 
-const CustomSliderStyles = {
-  '& .MuiSlider-thumb': {
-    width: 20,
-    height: 20,
-    color: 'primary.light',
-  },
-  mx: 2,
-  mt: 2,
-};
-
+//problem with useForm =(
 export default function PriceFilter({ items }) {
   const from = Math.min(...items);
   const to = Math.max(...items);
 
   const [inputFrom, setInputFrom] = useState(from);
   const [inputTo, setInputTo] = useState(to);
+
+  const disabled =
+    inputFrom < from || inputFrom > to || inputTo > to || inputTo < from;
 
   const handleChange = (e, newValue) => {
     setInputFrom(newValue[0]);
@@ -40,82 +34,93 @@ export default function PriceFilter({ items }) {
   };
 
   const handleRefresh = () => {
+    console.log(inputFrom, inputTo);
     // get products filtred by Price query
   };
 
   return (
     <FilterCommon title="Price">
-      <FormControl
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          pl: 2,
-        }}
-        component="form"
-      >
-        <TextField
-          id="outlined"
+      <PriceForm component="form">
+        <InputProps
+          err={inputFrom < from || inputFrom > to}
+          id="from"
           label="from"
-          type="text"
-          sx={{
-            width: 90,
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor:
-                inputFrom < from ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: inputFrom < from ? 'primary.hot' : 'primary.light',
-              },
-            },
-          }}
+          type="number"
           size="small"
           value={inputFrom}
           onChange={handleChangeFrom}
+          sx={{ width: 90 }}
         />
         <RemoveIcon />
-        <TextField
-          id="outlined"
+        <InputProps
+          err={inputTo > to || inputTo < from}
+          id="to"
           label="to"
-          type="text"
-          sx={{
-            width: 90,
-            '& .MuiOutlinedInput-notchedOutline': {
-              borderColor: inputTo > to ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
-            },
-            '& .MuiOutlinedInput-root': {
-              '&.Mui-focused fieldset': {
-                borderColor: inputTo > to ? 'primary.hot' : 'primary.light',
-              },
-            },
-          }}
+          type="number"
           size="small"
           value={inputTo}
           onChange={handleChangeTo}
+          sx={{ width: 90 }}
         />
-        <IconButton
-          sx={{
-            ml: 1,
-            color: 'primary.light',
-          }}
-          onClick={handleRefresh}
-          disabled={inputTo > to || inputFrom < from ? true : false}
-        >
+
+        <IconButton type="button" onClick={handleRefresh} disabled={disabled}>
           <LoopIcon />
         </IconButton>
-      </FormControl>
-      <Box sx={{ width: '85%', pl: 2 }}>
+      </PriceForm>
+      <Box>
         <Slider
           value={[inputFrom, inputTo]}
           onChange={handleChange}
           size="small"
           min={from}
           max={to}
-          sx={CustomSliderStyles}
         />
       </Box>
     </FilterCommon>
   );
+}
+
+{
+  /* <Form component="form" onSubmit={handleSubmit(data => console.log(data))}>
+        <Controller
+          control={control}
+          name="from"
+          defaultValue={from}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              err={value < from}
+              id="from"
+              label="from"
+              type="number"
+              size="small"
+              value={value}
+              onChange={onChange}
+            />
+          )}
+        />
+        <RemoveIcon />
+        <Controller
+          control={control}
+          name="to"
+          defaultValue={to}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              err={value > to}
+              id="to"
+              label="to"
+              type="number"
+              size="small"
+              value={value}
+              onChange={onChange}
+            />
+          )}
+        />
+        <IconButton
+          type="submit"
+          onClick={handleRefresh}
+          disabled={inputTo > to || inputFrom < from ? true : false}
+        >
+          <LoopIcon />
+        </IconButton>
+      </Form> */
 }

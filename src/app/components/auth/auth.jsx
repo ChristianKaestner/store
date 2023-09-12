@@ -10,9 +10,13 @@ export default function Auth({ toggleAuth, login }) {
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-  const handleLogin = () => {};
+  const handleLogin = data => {
+    console.log(data);
+  };
 
-  const handleRegister = () => {};
+  const handleRegister = data => {
+    console.log(data);
+  };
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column' }}>

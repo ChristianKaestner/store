@@ -34,6 +34,9 @@ export default function Register({
               ? 'primary.hot'
               : 'rgba(0, 0, 0, 0.23)',
           },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: errors.firstname ? 'primary.hot' : 'primary.light',
+          },
           '& .MuiOutlinedInput-root': {
             '&.Mui-focused fieldset': {
               borderColor: errors.firstname ? 'primary.hot' : 'primary.light',
@@ -62,6 +65,9 @@ export default function Register({
             borderColor: errors.lastname
               ? 'primary.hot'
               : 'rgba(0, 0, 0, 0.23)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: errors.lastname ? 'primary.hot' : 'primary.light',
           },
           '& .MuiOutlinedInput-root': {
             '&.Mui-focused fieldset': {
@@ -99,6 +105,9 @@ export default function Register({
           mt: 2,
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: errors.phone ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: errors.phone ? 'primary.hot' : 'primary.light',
           },
           '& .MuiOutlinedInput-root': {
             '&.Mui-focused fieldset': {

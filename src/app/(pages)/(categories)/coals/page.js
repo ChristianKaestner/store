@@ -7,7 +7,7 @@ import { Container, Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
-import SortFilter from '@/app/components/sortFilter/SortFilter';
+import SortFilter from '@/app/components/filters/sortFilter/SortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
 
 export default function Coals() {

@@ -23,6 +23,9 @@ export default function CommonFileds({
           '& .MuiOutlinedInput-notchedOutline': {
             borderColor: errors?.email ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
           },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: errors?.email ? 'primary.hot' : 'primary.light',
+          },
           '& .MuiOutlinedInput-root': {
             '&.Mui-focused fieldset': {
               borderColor: errors?.email ? 'primary.hot' : 'primary.light',
@@ -48,6 +51,9 @@ export default function CommonFileds({
             borderColor: errors?.password
               ? 'primary.hot'
               : 'rgba(0, 0, 0, 0.23)',
+          },
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: errors?.password ? 'primary.hot' : 'primary.light',
           },
           '& .MuiOutlinedInput-root': {
             '&.Mui-focused fieldset': {

@@ -26,7 +26,6 @@ export default function Login({
         handleClick={handleClick}
         regEmail={register('email')}
         regPass={register('password')}
-        errors={errors}
       />
       <Button
         type="submit"

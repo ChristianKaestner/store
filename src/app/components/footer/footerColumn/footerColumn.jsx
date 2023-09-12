@@ -1,5 +1,6 @@
+import { useForm } from 'react-hook-form';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { FormControl, OutlinedInput, Button } from '@mui/material';
+import { FormControl, OutlinedInput, Button, Typography } from '@mui/material';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Column, ColumnTitle, ColumnList } from './footerColumn.styled';
@@ -48,7 +49,14 @@ export function CommonColumnMob({ pages, title }) {
   );
 }
 
-export function SubscribeColumn({ handleSubmit }) {
+export function SubscribeColumn({ handleSubscribe }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onSubmit',
+  });
   return (
     <Column>
       <ColumnTitle>Newsletter</ColumnTitle>
@@ -58,15 +66,38 @@ export function SubscribeColumn({ handleSubmit }) {
       <FormControl
         component="form"
         sx={{ width: '100%' }}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(data => handleSubscribe(data))}
       >
         <OutlinedInput
           component="input"
           type="email"
           aria-label="email"
           placeholder="Your email"
-          sx={{ mt: 2, bgcolor: '#fff', width: '100%' }}
+          {...register('email', {
+            required: 'required',
+            pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/,
+          })}
+          sx={{
+            mt: 2,
+            bgcolor: '#fff',
+            width: '100%',
+            mt: 2,
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderColor: errors.email ? 'primary.hot' : 'rgba(0, 0, 0, 0.23)',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: errors.email ? 'primary.hot' : 'primary.light',
+            },
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: errors.email ? 'primary.hot' : 'primary.light',
+            },
+          }}
         />
+        {errors.email && (
+          <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
+            Invalid email address
+          </Typography>
+        )}
         <Button
           type="submit"
           variant="contained"

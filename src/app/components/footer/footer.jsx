@@ -12,8 +12,8 @@ export default function Footer() {
     isSSR ? 1200 : window.innerWidth
   );
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubscribe = data => {
+    console.log(data);
   };
 
   return (
@@ -35,7 +35,7 @@ export default function Footer() {
         {windowWidth >= 900 ? (
           <>
             <CommonColumnDesk title="Shop" pages={productsLink} />
-            <SubscribeColumn handleSubmit={handleSubmit} />
+            <SubscribeColumn handleSubscribe={handleSubscribe} />
             <CommonColumnDesk title="Support" pages={supportLink} />
             <CommonColumnDesk title="Contacts" pages={contactLink} />
           </>
@@ -44,7 +44,7 @@ export default function Footer() {
             <CommonColumnMob title="Shop" pages={productsLink} />
             <CommonColumnMob title="Support" pages={supportLink} />
             <CommonColumnMob title="Contacts" pages={contactLink} />
-            <SubscribeColumn handleSubmit={handleSubmit} />
+            <SubscribeColumn handleSubscribe={handleSubscribe} />
           </>
         )}
         <FollowUsColumn />

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDebounce } from 'use-debounce';
+import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
@@ -7,7 +8,9 @@ import { ContainerFilter, Form, Label } from '@/app/utils/commonStyles';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
+  const [checkedFlavor, setCheckedFlavor] = useState([]);
   const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
+  const [debouncedChecked] = useDebounce(checkedFlavor, 1500);
 
   const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
   const filtredFlavors = filterByInput(
@@ -16,11 +19,23 @@ export default function FlavorFilter({ items }) {
     'flavor'
   );
 
-  const handleChecked = e => {
-    console.log(e.target.checked);
-    console.log(e.target.value);
-    //need to fetch items
+  const { register } = useForm();
+
+  const handleChecked = ({ target }) => {
+    if (target.checked) {
+      setCheckedFlavor([...checkedFlavor, target.value]);
+    }
+    if (!target.checked) {
+      const filtred = checkedFlavor.filter(flavor => flavor !== target.value);
+      setCheckedFlavor(filtred);
+    }
   };
+
+  useEffect(() => {
+    if (!debouncedChecked.length) return;
+    //update data by brand
+    console.log(debouncedChecked);
+  }, [debouncedChecked]);
 
   return (
     <FilterCommon title="Flavors">
@@ -32,7 +47,9 @@ export default function FlavorFilter({ items }) {
             type="search"
             size="small"
             value={searchedFlavor}
-            onChange={e => setSearchedFlavor(e.target.value)}
+            {...register('flavorList', {
+              onChange: e => setSearchedFlavor(e.target.value),
+            })}
           />
         </Box>
 
@@ -46,10 +63,16 @@ export default function FlavorFilter({ items }) {
                   )}
                   <Label
                     control={
-                      <Checkbox value={flavor} sx={{ p: 1 }} size="small" />
+                      <Checkbox
+                        value={flavor}
+                        sx={{ p: 1 }}
+                        size="small"
+                        {...register('flavor', {
+                          onChange: handleChecked,
+                        })}
+                      />
                     }
                     label={flavor}
-                    onClick={handleChecked}
                   />
                 </Box>
               );

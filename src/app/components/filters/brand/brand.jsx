@@ -36,6 +36,7 @@ export default function BrandFilter({ items }) {
     //update data by brand
     console.log(debouncedChecked);
   }, [debouncedChecked]);
+  
   return (
     <FilterCommon title="Brand">
       <Form component="form">

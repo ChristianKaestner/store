@@ -23,7 +23,7 @@ export default function ColorFilter({ items }) {
   };
   useEffect(() => {
     if (!debouncedChecked.length) return;
-    //update data by brand
+    //update data by color
     console.log(debouncedChecked);
   }, [debouncedChecked]);
 
@@ -40,7 +40,7 @@ export default function ColorFilter({ items }) {
                       value={color}
                       sx={{ p: 1 }}
                       size="small"
-                      {...register('brandName', {
+                      {...register('color', {
                         onChange: handleChecked,
                       })}
                     />

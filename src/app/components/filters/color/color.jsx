@@ -1,14 +1,31 @@
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
 import { Form, Row, RowCenter, Label, List } from '@/app/utils/commonStyles';
 
 export default function ColorFilter({ items }) {
-  const handleChecked = e => {
-    console.log(e.target.checked);
-    console.log(e.target.value);
-    //need to fetch items
+  const [checkedColor, setCheckedColor] = useState([]);
+  const [debouncedChecked] = useDebounce(checkedColor, 1500);
+
+  const { register } = useForm();
+
+  const handleChecked = ({ target }) => {
+    if (target.checked) {
+      setCheckedColor([...checkedColor, target.value]);
+    }
+    if (!target.checked) {
+      const filtred = checkedColor.filter(color => color !== target.value);
+      setCheckedColor(filtred);
+    }
   };
+  useEffect(() => {
+    if (!debouncedChecked.length) return;
+    //update data by brand
+    console.log(debouncedChecked);
+  }, [debouncedChecked]);
 
   return (
     <FilterCommon title="Color">
@@ -19,7 +36,14 @@ export default function ColorFilter({ items }) {
               <Row component="li" key={id}>
                 <Label
                   control={
-                    <Checkbox value={color} sx={{ p: 1 }} size="small" />
+                    <Checkbox
+                      value={color}
+                      sx={{ p: 1 }}
+                      size="small"
+                      {...register('brandName', {
+                        onChange: handleChecked,
+                      })}
+                    />
                   }
                   label={
                     <RowCenter sx={{ gap: 1 }}>
@@ -33,7 +57,6 @@ export default function ColorFilter({ items }) {
                       <Typography>{color}</Typography>
                     </RowCenter>
                   }
-                  onClick={handleChecked}
                 />
               </Row>
             );

@@ -5,11 +5,12 @@ import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
 import { Form, Row, RowCenter, Label, List } from '@/app/utils/commonStyles';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function ColorFilter({ items }) {
   const [checkedColor, setCheckedColor] = useState([]);
   const [debouncedChecked] = useDebounce(checkedColor, 1500);
-
+  const isMount = useIsMount();
   const { register } = useForm();
 
   const handleChecked = ({ target }) => {
@@ -22,7 +23,7 @@ export default function ColorFilter({ items }) {
     }
   };
   useEffect(() => {
-    if (!debouncedChecked.length) return;
+    if (isMount) return;
     //update data by color
     console.log(debouncedChecked);
   }, [debouncedChecked]);

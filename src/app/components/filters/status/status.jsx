@@ -4,10 +4,13 @@ import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/utils/commonStyles';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function StatusFilter({ items }) {
   const [checkedStatus, setCheckedStatus] = useState([]);
   const [debouncedChecked] = useDebounce(checkedStatus, 1500);
+
+  const isMount = useIsMount();
 
   const { register } = useForm();
 
@@ -21,7 +24,7 @@ export default function StatusFilter({ items }) {
     }
   };
   useEffect(() => {
-    if (!debouncedChecked.length) return;
+    if (isMount) return;
     //update data by status
     console.log(debouncedChecked);
   }, [debouncedChecked]);

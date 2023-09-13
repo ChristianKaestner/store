@@ -4,10 +4,13 @@ import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/utils/commonStyles';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function WeightFilter({ items }) {
   const [checkedWeight, setCheckedWeight] = useState([]);
   const [debouncedChecked] = useDebounce(checkedWeight, 1500);
+
+  const isMount = useIsMount();
 
   const { register } = useForm();
 
@@ -22,7 +25,7 @@ export default function WeightFilter({ items }) {
   };
 
   useEffect(() => {
-    if (!debouncedChecked.length) return;
+    if (isMount) return;
     //update data by Weight
     console.log(debouncedChecked);
   }, [debouncedChecked]);

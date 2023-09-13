@@ -6,6 +6,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Slider, PriceForm } from './price.styled';
 import { InputProps, Row } from '@/app/utils/commonStyles';
 import { useDebounce } from 'use-debounce';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function PriceFilter({ items }) {
   const min = Math.min(...items);
@@ -14,10 +15,11 @@ export default function PriceFilter({ items }) {
   const [debouncedPrice] = useDebounce(price, 2000);
   const [errMin, setErrMin] = useState(false);
   const [errMax, setErrMax] = useState(false);
+  const isMount = useIsMount();
 
   useEffect(() => {
     if (errMax || errMin) return;
-    if (debouncedPrice[0] === min && debouncedPrice[1] === max) return;
+    if (isMount) return;
     //update data by price
     console.log(debouncedPrice);
   }, [debouncedPrice]);

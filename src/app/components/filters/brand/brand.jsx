@@ -6,12 +6,15 @@ import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { Counter } from './brand.styled';
 import { Form, Label, ContainerFilter } from '@/app/utils/commonStyles';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
   const [checkedBrand, setCheckedBrand] = useState([]);
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
   const [debouncedChecked] = useDebounce(checkedBrand, 1500);
+
+  const isMount = useIsMount();
 
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
@@ -32,11 +35,12 @@ export default function BrandFilter({ items }) {
     }
   };
   useEffect(() => {
-    if (!debouncedChecked.length) return;
+    if (isMount) return;
+    // if (!debouncedChecked.length) return;
     //update data by brand
     console.log(debouncedChecked);
   }, [debouncedChecked]);
-  
+
   return (
     <FilterCommon title="Brand">
       <Form component="form">

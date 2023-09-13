@@ -5,12 +5,15 @@ import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { ContainerFilter, Form, Label } from '@/app/utils/commonStyles';
+import { useIsMount } from '@/app/hooks/useMount';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
   const [checkedFlavor, setCheckedFlavor] = useState([]);
   const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
   const [debouncedChecked] = useDebounce(checkedFlavor, 1500);
+
+  const isMount = useIsMount();
 
   const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
   const filtredFlavors = filterByInput(
@@ -32,7 +35,7 @@ export default function FlavorFilter({ items }) {
   };
 
   useEffect(() => {
-    if (!debouncedChecked.length) return;
+    if (isMount) return;
     //update data by brand
     console.log(debouncedChecked);
   }, [debouncedChecked]);

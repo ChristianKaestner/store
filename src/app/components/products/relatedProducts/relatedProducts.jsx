@@ -1,11 +1,12 @@
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ProductsItem from '../productsItem/productsItem';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { useCart } from '@/app/hooks/useCart';
 import { getSlideCount } from '@/app/utils/functions';
+import { IconBtnNavigate } from '@/app/utils/commonStyles';
 import 'swiper/css';
 
 export default function RelatedProducts({ relatedProducts, windowWidth }) {
@@ -71,22 +72,9 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
           onSlideChange={handleSlideChange}
         >
           {prevBtn && (
-            <IconButton
-              sx={{
-                position: 'absolute',
-                top: 'calc(50% - 25px)',
-                left: 0,
-                width: 50,
-                height: 50,
-                color: 'primary.light',
-                bgcolor: 'primary.dim',
-                zIndex: 2,
-                cursor: 'pointer',
-              }}
-              onClick={handlePrevCard}
-            >
+            <IconBtnNavigate prev={0} onClick={handlePrevCard}>
               <NavigateBeforeIcon sx={{ fontSize: 40 }} />
-            </IconButton>
+            </IconBtnNavigate>
           )}
 
           {data &&
@@ -100,22 +88,9 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
             })}
 
           {nextBtn && (
-            <IconButton
-              sx={{
-                position: 'absolute',
-                top: 'calc(50% - 25px)',
-                right: 0,
-                width: 50,
-                height: 50,
-                color: 'primary.light',
-                bgcolor: 'primary.dim',
-                zIndex: 2,
-                cursor: 'pointer',
-              }}
-              onClick={handleNextCard}
-            >
+            <IconBtnNavigate next={0} onClick={handleNextCard}>
               <NavigateNextIcon sx={{ fontSize: 40 }} />
-            </IconButton>
+            </IconBtnNavigate>
           )}
         </Swiper>
       )}

@@ -1,126 +1,95 @@
-import { useState } from 'react';
+'use client';
+import { useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import RemoveIcon from '@mui/icons-material/Remove';
-import LoopIcon from '@mui/icons-material/Loop';
-import { Slider, IconButton, Box, PriceForm } from './price.styled';
-import { InputProps } from '@/app/utils/commonStyles';
+import { Slider, PriceForm } from './price.styled';
+import { InputProps, Row } from '@/app/utils/commonStyles';
+import { useDebounce } from 'use-debounce';
 
-//problem with useForm =(
 export default function PriceFilter({ items }) {
-  const from = Math.min(...items);
-  const to = Math.max(...items);
+  const min = Math.min(...items);
+  const max = Math.max(...items);
+  const [price, setPrice] = useState([min, max]);
+  const [debouncedPrice] = useDebounce(price, 2000);
+  const [errMin, setErrMin] = useState(false);
+  const [errMax, setErrMax] = useState(false);
 
-  const [inputFrom, setInputFrom] = useState(from);
-  const [inputTo, setInputTo] = useState(to);
+  useEffect(() => {
+    if (errMax || errMin) return;
+    if (debouncedPrice[0] === min && debouncedPrice[1] === max) return;
+    //update data by price
+    console.log(debouncedPrice);
+  }, [debouncedPrice]);
 
-  const disabled =
-    inputFrom < from || inputFrom > to || inputTo > to || inputTo < from;
+  const { control } = useForm();
 
-  const handleChange = (e, newValue) => {
-    setInputFrom(newValue[0]);
-    setInputTo(newValue[1]);
+  const validateMin = minValue => {
+    minValue < min || minValue > max ? setErrMin(true) : setErrMin(false);
   };
 
-  const handleChangeFrom = e => {
-    const num = Number(e.target.value);
-    if (isNaN(num)) return;
-    setInputFrom(num);
-  };
-
-  const handleChangeTo = e => {
-    const num = Number(e.target.value);
-    if (isNaN(num)) return;
-    setInputTo(num);
-  };
-
-  const handleRefresh = () => {
-    console.log(inputFrom, inputTo);
-    // get products filtred by Price query
+  const validateMax = maxValue => {
+    maxValue > max || maxValue < min ? setErrMax(true) : setErrMax(false);
   };
 
   return (
     <FilterCommon title="Price">
       <PriceForm component="form">
-        <InputProps
-          err={inputFrom < from || inputFrom > to}
-          id="from"
-          label="from"
-          type="number"
-          size="small"
-          value={inputFrom}
-          onChange={handleChangeFrom}
-          sx={{ width: 90 }}
+        <Controller
+          control={control}
+          name="price"
+          defaultValue={[min, max]}
+          render={({ field: { onChange, value } }) => {
+            const minValue = isNaN(value[0]) ? min : value[0];
+            const maxValue = isNaN(value[1]) ? max : value[1];
+            return (
+              <>
+                <Row sx={{ alignItems: 'center' }}>
+                  <InputProps
+                    err={errMin}
+                    id="min"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    size="small"
+                    value={minValue}
+                    onChange={e => {
+                      validateMin(+e.target.value);
+                      onChange([+e.target.value, maxValue]);
+                      setPrice([+e.target.value, maxValue]);
+                    }}
+                  />
+                  <RemoveIcon sx={{ color: 'primary.light' }} />
+                  <InputProps
+                    err={errMax}
+                    id="max"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    size="small"
+                    value={maxValue}
+                    onChange={e => {
+                      validateMax(+e.target.value);
+                      onChange([minValue, +e.target.value]);
+                      setPrice([minValue, +e.target.value]);
+                    }}
+                  />
+                </Row>
+                <Slider
+                  id="range"
+                  value={[+minValue, +maxValue]}
+                  min={+min}
+                  max={+max}
+                  onChange={(e, value) => {
+                    onChange(value);
+                    setPrice(value);
+                  }}
+                />
+              </>
+            );
+          }}
         />
-        <RemoveIcon />
-        <InputProps
-          err={inputTo > to || inputTo < from}
-          id="to"
-          label="to"
-          type="number"
-          size="small"
-          value={inputTo}
-          onChange={handleChangeTo}
-          sx={{ width: 90 }}
-        />
-
-        <IconButton type="button" onClick={handleRefresh} disabled={disabled}>
-          <LoopIcon />
-        </IconButton>
       </PriceForm>
-      <Box>
-        <Slider
-          value={[inputFrom, inputTo]}
-          onChange={handleChange}
-          size="small"
-          min={from}
-          max={to}
-        />
-      </Box>
     </FilterCommon>
   );
-}
-
-{
-  /* <Form component="form" onSubmit={handleSubmit(data => console.log(data))}>
-        <Controller
-          control={control}
-          name="from"
-          defaultValue={from}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              err={value < from}
-              id="from"
-              label="from"
-              type="number"
-              size="small"
-              value={value}
-              onChange={onChange}
-            />
-          )}
-        />
-        <RemoveIcon />
-        <Controller
-          control={control}
-          name="to"
-          defaultValue={to}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              err={value > to}
-              id="to"
-              label="to"
-              type="number"
-              size="small"
-              value={value}
-              onChange={onChange}
-            />
-          )}
-        />
-        <IconButton
-          type="submit"
-          onClick={handleRefresh}
-          disabled={inputTo > to || inputFrom < from ? true : false}
-        >
-          <LoopIcon />
-        </IconButton>
-      </Form> */
 }

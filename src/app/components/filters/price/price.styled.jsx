@@ -1,10 +1,10 @@
-import { TextField, FormControl, Slider as SliderMUI } from '@mui/material';
+import { FormControl, Slider as SliderMUI } from '@mui/material';
 import { IconButton as IconButtonMUI, Box as BoxMUI } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const PriceForm = styled(FormControl)({
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
   justifyContent: 'space-between',
   alignItems: 'center',
   paddingLeft: 16,
@@ -16,6 +16,7 @@ export const Slider = styled(SliderMUI)(({ theme }) => ({
     height: 20,
     color: theme.palette.primary.light,
   },
+  width: '90%',
   margin: 16,
   marginBottom: 0,
 }));

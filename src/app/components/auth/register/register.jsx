@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { FormControl, TextField, InputAdornment } from '@mui/material';
+import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
 import CommonFileds from '../commonFields/commonFields';
 import { InputProps } from '@/app/utils/commonStyles';
+import OnError from '../../Notifications/onError';
 
 export default function Register({
   toggleAuth,
@@ -36,9 +37,7 @@ export default function Register({
         })}
       />
       {errors.firstname && (
-        <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
-          Name must be at least 2 characters
-        </Typography>
+        <OnError text="Name must be at least 2 characters" />
       )}
 
       <InputProps
@@ -54,9 +53,7 @@ export default function Register({
         })}
       />
       {errors.lastname && (
-        <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
-          Last name must be at least 2 characters
-        </Typography>
+        <OnError text="Last name must be at least 2 characters" />
       )}
 
       <InputProps
@@ -77,11 +74,7 @@ export default function Register({
         }}
         sx={{ mt: 2 }}
       />
-      {errors.phone && (
-        <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
-          Phone number must be 9 digits
-        </Typography>
-      )}
+      {errors.phone && <OnError text="Phone number must be 9 digits" />}
 
       <CommonFileds
         showPassword={showPassword}

@@ -1,13 +1,10 @@
 import Image from 'next/image';
-import { Box, Typography } from '@mui/material';
-
+import { ColumnCenter } from '@/app/utils/commonStyles';
+import OnNotify from '../../Notifications/onNotify';
 export default function EmptyCart() {
   return (
-    <Box
+    <ColumnCenter
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
         textAlign: 'center',
         margin: '64px auto 0',
       }}
@@ -19,9 +16,7 @@ export default function EmptyCart() {
         height={300}
         priority="false"
       />
-      <Typography sx={{ fontSize: 20, fontWeight: 500 }}>
-        Your shopping cart is empty
-      </Typography>
-    </Box>
+      <OnNotify text="Your shopping cart is empty" />
+    </ColumnCenter>
   );
 }

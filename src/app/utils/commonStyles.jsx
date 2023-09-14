@@ -31,6 +31,12 @@ export const RowCenter = styled(Box)({
   alignItems: 'center',
 });
 
+export const RowBetween = styled(Box)({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+});
+
 export const Column = styled(Box)({
   display: 'flex',
   flexDirection: 'column',

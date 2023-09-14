@@ -1,8 +1,8 @@
 import { InputAdornment, IconButton } from '@mui/material';
-import { Typography } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { InputProps } from '@/app/utils/commonStyles';
+import OnError from '../../Notifications/onError';
 
 export default function CommonFileds({
   showPassword,
@@ -22,11 +22,7 @@ export default function CommonFileds({
         {...regEmail}
         sx={{ mt: 2 }}
       />
-      {errors?.email && (
-        <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
-          Invalid email address
-        </Typography>
-      )}
+      {errors?.email && <OnError text="Invalid email address" />}
       <InputProps
         err={errors?.password}
         required
@@ -50,10 +46,10 @@ export default function CommonFileds({
         }}
       />
       {errors?.password && (
-        <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>
-          Password must be at least 6 characters and contain at least one letter
-          and one digit
-        </Typography>
+        <OnError
+          text="Password must be at least 6 characters and contain at least one letter
+          and one digit"
+        />
       )}
     </>
   );

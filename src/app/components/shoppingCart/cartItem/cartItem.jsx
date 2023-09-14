@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Image from 'next/image';
-import { Box, Button, Card, IconButton, TextField } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import { Popover, Typography } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { InputProps, Column, RowBetween } from '@/app/utils/commonStyles';
+import { Card } from './cartItem.styled';
 
 export default function CartItem({
   product,
@@ -19,6 +22,12 @@ export default function CartItem({
 
   const { id, title, images, price, available } = product;
 
+  const {
+    register,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+  });
   const open = Boolean(anchorEl);
   const popoverId = open ? 'simple-popover' : undefined;
 
@@ -26,7 +35,6 @@ export default function CartItem({
     if (isNaN(quantity) || quantity < 1 || quantity > available) {
       return price;
     }
-
     return quantity * price;
   };
 
@@ -50,15 +58,7 @@ export default function CartItem({
 
   return (
     <>
-      <Card
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          height: '100px',
-          p: 1,
-        }}
-      >
+      <Card>
         <Box sx={{ position: 'relative', width: '20%' }}>
           <Image
             src={images[0]}
@@ -69,14 +69,8 @@ export default function CartItem({
           />
         </Box>
 
-        <Box sx={{ width: '80%', display: 'flex', flexDirection: 'column' }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}
-          >
+        <Column sx={{ width: '80%', ml: 2 }}>
+          <RowBetween>
             <Typography sx={{ pl: 1 }}>{title}</Typography>
             <IconButton onClick={handlePopoverOpen}>
               <MoreVertIcon sx={{ color: 'primary.light' }} />
@@ -104,16 +98,9 @@ export default function CartItem({
                 Delete
               </Button>
             </Popover>
-          </Box>
+          </RowBetween>
 
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}
-          >
+          <RowBetween sx={{ alignItems: 'center' }}>
             <Box id={id} sx={{ display: 'flex', height: '40px' }}>
               <IconButton
                 onClick={() => reduce(id)}
@@ -124,30 +111,21 @@ export default function CartItem({
               >
                 <RemoveIcon />
               </IconButton>
-              <TextField
+              <InputProps
                 type="number"
+                err={quantity > available}
                 autoComplete="off"
                 name="quantity"
                 size="small"
                 sx={{
                   width: '60px',
-                  '& .MuiOutlinedInput-notchedOutline': {
-                    borderColor:
-                      quantity > available
-                        ? 'primary.hot'
-                        : 'rgba(0, 0, 0, 0.23)',
-                  },
-                  '& .MuiOutlinedInput-root': {
-                    '&.Mui-focused fieldset': {
-                      borderColor:
-                        quantity > available ? 'primary.hot' : 'primary.light',
-                    },
-                  },
                 }}
                 inputProps={{
                   style: { textAlign: 'center' },
                 }}
-                onChange={onChange}
+                {...register('quantity', {
+                  onChange: onChange,
+                })}
                 value={quantity}
               />
               <IconButton
@@ -163,8 +141,8 @@ export default function CartItem({
             <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
               {total(quantity, price)}$
             </Typography>
-          </Box>
-        </Box>
+          </RowBetween>
+        </Column>
       </Card>
     </>
   );

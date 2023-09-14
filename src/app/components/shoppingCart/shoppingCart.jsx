@@ -5,11 +5,12 @@ import { cartReduceQuantity, cartRemove } from '@/app/redux/cart/slice';
 import { cartIncreaseQuantity, cartSetQuantity } from '@/app/redux/cart/slice';
 import { useGetProductsByIdsQuery } from '@/app/redux/services/goods';
 import { useCart } from '@/app/hooks/useCart';
-import { Box, Alert } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
 import TotalPrice from './totalPrice/totatlPrice';
 import EmptyCart from './emptyCart/emptyCart';
+import { Container } from './shoppingCart.styled';
+import OnError from '../Notifications/onError';
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
@@ -51,16 +52,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '90%',
-        overflowY: 'auto',
-        overflowX: 'hidden',
-      }}
-    >
+    <Container>
       {data.length && cart.length ? (
         <>
           <Grid
@@ -89,10 +81,10 @@ export default function ShoppingCart() {
                     del={handleDelete}
                   />
                   {quantity > product.available && (
-                    <Alert severity="error" sx={{ mt: 1 }}>
-                      Unfortunately we only have {product.available} items, if
-                      you need more please contact us.
-                    </Alert>
+                    <OnError
+                      text={`Unfortunately we only have ${product.available} items, if
+                    you need more please contact us.`}
+                    />
                   )}
                 </Grid>
               );
@@ -103,6 +95,6 @@ export default function ShoppingCart() {
       ) : (
         <EmptyCart />
       )}
-    </Box>
+    </Container>
   );
 }

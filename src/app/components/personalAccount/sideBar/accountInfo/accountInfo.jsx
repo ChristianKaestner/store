@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import { Column, RowCenter } from '@/app/utils/commonStyles';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+
 export default function AccountInfo({ name, email }) {
   return (
     <RowCenter sx={{ bgcolor: 'primary.dim', p: 2, mb: 2, borderRadius: 1 }}>

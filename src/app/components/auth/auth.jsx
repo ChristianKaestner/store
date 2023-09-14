@@ -4,6 +4,7 @@ import { Box, Divider, Chip } from '@mui/material';
 import Social from './social/social';
 import Login from './login/login';
 import Register from './register/register';
+import { Column } from '@/app/utils/commonStyles';
 
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,7 +20,7 @@ export default function Auth({ toggleAuth, login }) {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <Column>
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
         {login ? (
           <Login
@@ -46,6 +47,6 @@ export default function Auth({ toggleAuth, login }) {
         </Divider>
         <Social />
       </Box>
-    </Box>
+    </Column>
   );
 }

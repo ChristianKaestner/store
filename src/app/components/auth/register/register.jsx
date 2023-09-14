@@ -64,6 +64,7 @@ export default function Register({
         {...register('phone', {
           required: 'required',
           minLength: 9,
+          maxLength: 9,
         })}
         InputProps={{
           startAdornment: (

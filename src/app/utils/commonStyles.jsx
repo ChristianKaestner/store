@@ -133,4 +133,3 @@ export const IconBtnNavigate = styled(IconButton, {
     backgroundColor: theme.palette.primary.neutral,
   },
 }));
-

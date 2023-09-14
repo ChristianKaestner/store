@@ -1,4 +1,5 @@
 import { Paper, Typography, Button } from '@mui/material';
+import CreateIcon from '@mui/icons-material/Create';
 
 export default function AddReview({ onWriteReview }) {
   return (
@@ -15,7 +16,11 @@ export default function AddReview({ onWriteReview }) {
       <Typography component="h2" sx={{ fontSize: '1.25rem' }}>
         Leave a review for this product
       </Typography>
-      <Button variant="outlined" onClick={onWriteReview}>
+      <Button
+        variant="outlined"
+        onClick={onWriteReview}
+        startIcon={<CreateIcon />}
+      >
         Write review
       </Button>
     </Paper>

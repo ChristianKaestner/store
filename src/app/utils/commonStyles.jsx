@@ -1,4 +1,5 @@
 import { Box, FormControl, TextField, FormControlLabel } from '@mui/material';
+import { Typography } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -132,3 +133,4 @@ export const IconBtnNavigate = styled(IconButton, {
     backgroundColor: theme.palette.primary.neutral,
   },
 }));
+

@@ -157,5 +157,16 @@ export const myTheme = createTheme({
         }),
       },
     },
+
+    MuiTab: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&.Mui-selected': {
+            backgroundColor: theme.palette.primary.dim,
+            color: theme.palette.primary.light,
+          },
+        }),
+      },
+    },
   },
 });

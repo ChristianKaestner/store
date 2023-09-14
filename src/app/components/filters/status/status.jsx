@@ -1,33 +1,17 @@
-import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/utils/commonStyles';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function StatusFilter({ items }) {
-  const [checkedStatus, setCheckedStatus] = useState([]);
-  const [debouncedChecked] = useDebounce(checkedStatus, 1500);
+  const { register, getValues } = useForm();
 
-  const isMount = useIsMount();
-
-  const { register } = useForm();
-
-  const handleChecked = ({ target }) => {
-    if (target.checked) {
-      setCheckedStatus([...checkedStatus, target.value]);
-    }
-    if (!target.checked) {
-      const filtred = checkedStatus.filter(status => status !== target.value);
-      setCheckedStatus(filtred);
-    }
-  };
-  useEffect(() => {
-    if (isMount) return;
-    //update data by status
-    console.log(debouncedChecked);
-  }, [debouncedChecked]);
+  const handleChecked = debounce(() => {
+    // send request
+    const values = getValues('status');
+    console.log(values);
+  }, 1000);
 
   return (
     <FilterCommon title="Status">

@@ -1,32 +1,18 @@
-import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
 import { Form, Row, RowCenter, Label, List } from '@/app/utils/commonStyles';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function ColorFilter({ items }) {
-  const [checkedColor, setCheckedColor] = useState([]);
-  const [debouncedChecked] = useDebounce(checkedColor, 1500);
-  const isMount = useIsMount();
-  const { register } = useForm();
+  const { register, getValues } = useForm();
 
-  const handleChecked = ({ target }) => {
-    if (target.checked) {
-      setCheckedColor([...checkedColor, target.value]);
-    }
-    if (!target.checked) {
-      const filtred = checkedColor.filter(color => color !== target.value);
-      setCheckedColor(filtred);
-    }
-  };
-  useEffect(() => {
-    if (isMount) return;
-    //update data by color
-    console.log(debouncedChecked);
-  }, [debouncedChecked]);
+  const handleChecked = debounce(() => {
+    // send request
+    const values = getValues('color');
+    console.log(values);
+  }, 1000);
 
   return (
     <FilterCommon title="Color">

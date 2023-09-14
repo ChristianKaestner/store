@@ -1,38 +1,45 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Slider, PriceForm } from './price.styled';
 import { InputProps, Row } from '@/app/utils/commonStyles';
-import { useDebounce } from 'use-debounce';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function PriceFilter({ items }) {
   const min = Math.min(...items);
   const max = Math.max(...items);
-  const [price, setPrice] = useState([min, max]);
-  const [debouncedPrice] = useDebounce(price, 2000);
   const [errMin, setErrMin] = useState(false);
   const [errMax, setErrMax] = useState(false);
-  const isMount = useIsMount();
 
-  useEffect(() => {
-    if (errMax || errMin) return;
-    if (isMount) return;
-    //update data by price
-    console.log(debouncedPrice);
-  }, [debouncedPrice]);
-
-  const { control } = useForm();
+  const { control, getValues } = useForm();
 
   const validateMin = minValue => {
-    minValue < min || minValue > max ? setErrMin(true) : setErrMin(false);
+    if (minValue < min || minValue > max) {
+      setErrMin(true);
+      return;
+    } else {
+      setErrMin(false);
+      handleUpdatePrice();
+    }
   };
 
   const validateMax = maxValue => {
-    maxValue > max || maxValue < min ? setErrMax(true) : setErrMax(false);
+    if (maxValue > max || maxValue < min) {
+      setErrMax(true);
+      return;
+    } else {
+      setErrMax(false);
+      handleUpdatePrice();
+    }
   };
+
+  const handleUpdatePrice = debounce(() => {
+    // send request
+    const price = getValues();
+    console.log(price);
+  }, 1000);
 
   return (
     <FilterCommon title="Price">
@@ -58,7 +65,7 @@ export default function PriceFilter({ items }) {
                     onChange={e => {
                       validateMin(+e.target.value);
                       onChange([+e.target.value, maxValue]);
-                      setPrice([+e.target.value, maxValue]);
+                      // handleUpdatePrice();
                     }}
                   />
                   <RemoveIcon sx={{ color: 'primary.light' }} />
@@ -73,7 +80,7 @@ export default function PriceFilter({ items }) {
                     onChange={e => {
                       validateMax(+e.target.value);
                       onChange([minValue, +e.target.value]);
-                      setPrice([minValue, +e.target.value]);
+                      // handleUpdatePrice();
                     }}
                   />
                 </Row>
@@ -84,7 +91,7 @@ export default function PriceFilter({ items }) {
                   max={+max}
                   onChange={(e, value) => {
                     onChange(value);
-                    setPrice(value);
+                    handleUpdatePrice();
                   }}
                 />
               </>

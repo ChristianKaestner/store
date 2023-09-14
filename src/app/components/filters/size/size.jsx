@@ -1,33 +1,17 @@
-import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/utils/commonStyles';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function SizeFilter({ items }) {
-  const [checkedSize, setCheckedSize] = useState([]);
-  const [debouncedChecked] = useDebounce(checkedSize, 1500);
+  const { register, getValues } = useForm();
 
-  const isMount = useIsMount();
-
-  const { register } = useForm();
-
-  const handleChecked = ({ target }) => {
-    if (target.checked) {
-      setCheckedSize([...checkedSize, target.value]);
-    }
-    if (!target.checked) {
-      const filtred = checkedSize.filter(size => size !== target.value);
-      setCheckedSize(filtred);
-    }
-  };
-  useEffect(() => {
-    if (isMount) return;
-    //update data by size
-    console.log(debouncedChecked);
-  }, [debouncedChecked]);
+  const handleChecked = debounce(() => {
+    // send request
+    const values = getValues('size');
+    console.log(values);
+  }, 1000);
 
   return (
     <FilterCommon title="Size">

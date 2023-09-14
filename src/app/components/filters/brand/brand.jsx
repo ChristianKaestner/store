@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
@@ -6,15 +6,13 @@ import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { Counter } from './brand.styled';
 import { Form, Label, ContainerFilter } from '@/app/utils/commonStyles';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
-  const [checkedBrand, setCheckedBrand] = useState([]);
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
-  const [debouncedChecked] = useDebounce(checkedBrand, 1500);
 
-  const isMount = useIsMount();
+  const { register, getValues } = useForm();
 
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
@@ -23,23 +21,11 @@ export default function BrandFilter({ items }) {
     'brand'
   );
 
-  const { register } = useForm();
-
-  const handleChecked = ({ target }) => {
-    if (target.checked) {
-      setCheckedBrand([...checkedBrand, target.value]);
-    }
-    if (!target.checked) {
-      const filtred = checkedBrand.filter(brand => brand !== target.value);
-      setCheckedBrand(filtred);
-    }
-  };
-  useEffect(() => {
-    if (isMount) return;
-    // if (!debouncedChecked.length) return;
-    //update data by brand
-    console.log(debouncedChecked);
-  }, [debouncedChecked]);
+  const handleChecked = debounce(() => {
+    // send request
+    const values = getValues('brandName');
+    console.log(values);
+  }, 1000);
 
   return (
     <FilterCommon title="Brand">

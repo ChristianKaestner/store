@@ -1,19 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDebounce } from 'use-debounce';
 import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
 import { ContainerFilter, Form, Label } from '@/app/utils/commonStyles';
-import { useIsMount } from '@/app/hooks/useMount';
+import { debounce } from 'lodash';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
-  const [checkedFlavor, setCheckedFlavor] = useState([]);
   const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
-  const [debouncedChecked] = useDebounce(checkedFlavor, 1500);
-
-  const isMount = useIsMount();
 
   const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
   const filtredFlavors = filterByInput(
@@ -22,23 +18,13 @@ export default function FlavorFilter({ items }) {
     'flavor'
   );
 
-  const { register } = useForm();
+  const { register, getValues } = useForm();
 
-  const handleChecked = ({ target }) => {
-    if (target.checked) {
-      setCheckedFlavor([...checkedFlavor, target.value]);
-    }
-    if (!target.checked) {
-      const filtred = checkedFlavor.filter(flavor => flavor !== target.value);
-      setCheckedFlavor(filtred);
-    }
-  };
-
-  useEffect(() => {
-    if (isMount) return;
-    //update data by brand
-    console.log(debouncedChecked);
-  }, [debouncedChecked]);
+  const handleChecked = debounce(() => {
+    // send request
+    const values = getValues('flavor');
+    console.log(values);
+  }, 1000);
 
   return (
     <FilterCommon title="Flavors">

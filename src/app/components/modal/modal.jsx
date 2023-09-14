@@ -10,8 +10,9 @@ export default function Modal({
   onClose,
   children,
   title,
-  width,
-  height,
+  width = '100%',
+  height = 'auto',
+  maxHeight = 'auto',
   position = 'center',
 }) {
   useEffect(() => {
@@ -52,6 +53,7 @@ export default function Modal({
         <ModalWindow
           width={width}
           height={height}
+          maxHeight={maxHeight}
           location={location(position)}
         >
           <IconButton

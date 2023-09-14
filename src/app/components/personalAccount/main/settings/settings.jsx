@@ -93,7 +93,7 @@ export default function AccountSettings({ user }) {
         <Modal
           title="Edit personal details"
           onClose={() => setDetailsModal(false)}
-          height="540px"
+          maxHeight="540px"
           width="400px"
           position="center"
         >
@@ -104,7 +104,7 @@ export default function AccountSettings({ user }) {
         <Modal
           title="Edit address"
           onClose={() => setAddressModal(false)}
-          height="540px"
+          maxHeight="540px"
           width="400px"
           position="center"
         >

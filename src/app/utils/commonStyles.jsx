@@ -133,3 +133,9 @@ export const IconBtnNavigate = styled(IconButton, {
     backgroundColor: theme.palette.primary.neutral,
   },
 }));
+
+export const TextNeutral = styled(Typography)(({ theme }) => ({
+  fontSize: '1rem',
+  fontWeight: 400,
+  color: theme.palette.primary.neutral,
+}));

@@ -6,16 +6,17 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CreateIcon from '@mui/icons-material/Create';
 import { MenuText, Tabs, Tab } from './sideBar.styled';
 
-export default function AccountAside({ handleChange, value }) {
+export default function AccountAside({ handleChange, value, user }) {
+  const { firstName, lastName, email } = user;
   return (
     <Column
       component="aside"
       sx={{
-        width: '20%',
+        width: '30%',
         mr: 2,
       }}
     >
-      <AccountInfo name="Vladyslav Rohalov" email="example@email.com" />
+      <AccountInfo name={firstName + ' ' + lastName} email={email} />
       <Tabs
         orientation="vertical"
         component="nav"

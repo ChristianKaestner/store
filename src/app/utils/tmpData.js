@@ -107,3 +107,93 @@ export const status = [
   { id: 3, name: 'Ending' },
   { id: 4, name: 'Awaiting' },
 ];
+
+const order1 = {
+  id: 1,
+  date: '25 august 2023',
+  amount: 700,
+  status: 'Order shipped',
+  goods: [
+    {
+      product: {
+        id: 1,
+        categories: 'hookahs',
+        price: 720,
+        brand: 'Mya',
+        title: 'Hookah 65cm brass, good quality',
+        images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
+      },
+      quantity: 1,
+      buyingPrice: 700,
+    },
+  ],
+};
+
+const order2 = {
+  id: 2,
+  date: '28 august 2023',
+  amount: 50,
+  status: 'Fulfilled',
+  goods: [
+    {
+      product: {
+        id: 2,
+        categories: 'tobacco',
+        price: 10,
+        brand: 'Al Fakher',
+        title: 'Grape 50g',
+        images: ['/1tobacco50.png'],
+      },
+      quantity: 2,
+      buyingPrice: 10,
+    },
+    {
+      product: {
+        id: 3,
+        categories: 'tobacco',
+        price: 10,
+        brand: 'Al Fakher',
+        title: 'Melon 50g',
+        images: ['/1tobacco50.png'],
+      },
+      quantity: 2,
+      buyingPrice: 10,
+    },
+    {
+      product: {
+        id: 4,
+        categories: 'tobacco',
+        price: 10,
+        brand: 'Al Fakher',
+        title: 'Bubble gum 50g',
+        images: ['/1tobacco50.png'],
+      },
+      quantity: 1,
+      buyingPrice: 10,
+    },
+  ],
+};
+
+const orderStatus = [
+  'Fulfilled',
+  'Pending payment',
+  'Pending delivery',
+  'Order shipped',
+  'Rejected',
+];
+
+export const tmpUser = {
+  firstName: 'Vladyslav',
+  lastName: 'Rohalov',
+  phone: '+380952268222',
+  email: 'v.rohalov@gmail.com',
+  address: {
+    city: 'Dnipro',
+    street: 'Nezalezhnosti',
+    house: '25',
+    apartment: '17',
+  },
+  orders: [order1, order2],
+  favorites: [],
+  reviews: [],
+};

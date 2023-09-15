@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Box, Paper, Divider, IconButton } from '@mui/material';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import { Row, Column, RowCenter } from '@/app/utils/commonStyles';
+import { TextNeutral, TextBold, SubTitle } from '@/app/utils/commonStyles';
 import EditIcon from '@mui/icons-material/Edit';
-import { DataText, AccountText, SubTitle } from './settings.styled';
 import Modal from '@/app/components/modal/modal';
 import EditInfoModal from '@/app/components/modal/editAccount/editAccount';
 import EditAddressModal from '@/app/components/modal/editAddress/editAddress';
@@ -37,7 +37,7 @@ export default function AccountSettings({ user }) {
         }}
       >
         <RowCenter>
-          <SubTitle>Personal details</SubTitle>
+          <SubTitle sx={{ mr: 2 }}>Personal details</SubTitle>
           <IconButton onClick={() => setDetailsModal(true)}>
             <EditIcon />
           </IconButton>
@@ -46,16 +46,16 @@ export default function AccountSettings({ user }) {
         <Divider />
         <Row sx={{ mt: 2 }}>
           <Column>
-            <DataText>First name:</DataText>
-            <DataText>Last name: </DataText>
-            <DataText>Phone number: </DataText>
-            <DataText>Email: </DataText>
+            <TextNeutral>First name:</TextNeutral>
+            <TextNeutral>Last name: </TextNeutral>
+            <TextNeutral>Phone number: </TextNeutral>
+            <TextNeutral>Email: </TextNeutral>
           </Column>
           <Column sx={{ ml: 2 }}>
-            <AccountText>{firstName}</AccountText>
-            <AccountText>{lastName}</AccountText>
-            <AccountText>{phone}</AccountText>
-            <AccountText>{email}</AccountText>
+            <TextBold>{firstName}</TextBold>
+            <TextBold>{lastName}</TextBold>
+            <TextBold>{phone}</TextBold>
+            <TextBold>{email}</TextBold>
           </Column>
         </Row>
       </Paper>
@@ -68,7 +68,7 @@ export default function AccountSettings({ user }) {
         }}
       >
         <RowCenter>
-          <SubTitle>Shipping address</SubTitle>
+          <SubTitle sx={{ mr: 2 }}>Shipping address</SubTitle>
           <IconButton onClick={() => setAddressModal(true)}>
             <EditIcon />
           </IconButton>
@@ -76,16 +76,16 @@ export default function AccountSettings({ user }) {
         <Divider />
         <Row sx={{ mt: 2 }}>
           <Column>
-            <DataText>City:</DataText>
-            <DataText>Street: </DataText>
-            <DataText>House: </DataText>
-            <DataText>Apartment: </DataText>
+            <TextNeutral>City:</TextNeutral>
+            <TextNeutral>Street: </TextNeutral>
+            <TextNeutral>House: </TextNeutral>
+            <TextNeutral>Apartment: </TextNeutral>
           </Column>
           <Column sx={{ ml: 6 }}>
-            <AccountText>{city}</AccountText>
-            <AccountText>{street}</AccountText>
-            <AccountText>{house}</AccountText>
-            <AccountText>{apartment}</AccountText>
+            <TextBold>{city}</TextBold>
+            <TextBold>{street}</TextBold>
+            <TextBold>{house}</TextBold>
+            <TextBold>{apartment}</TextBold>
           </Column>
         </Row>
       </Paper>

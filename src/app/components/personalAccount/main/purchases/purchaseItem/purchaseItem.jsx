@@ -1,11 +1,16 @@
 import { useDispatch } from 'react-redux';
 import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { Typography, Paper, TableCell, Button } from '@mui/material';
+import { Paper, TableCell } from '@mui/material';
 import { TableContainer, Table, TableRow, TableHead } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { cartAdd } from '@/app/redux/cart/slice';
 import OrderStatus from './orderStatus/orderStatus';
-import { Column, RowCenter, TextNeutral } from '@/app/utils/commonStyles';
+import {
+  Column,
+  RowCenter,
+  TextNeutral,
+  TextBold,
+} from '@/app/utils/commonStyles';
 import PurchaseTable from './purchaseTable/purchaseTable';
 
 export default function PurchaseItem({ order }) {
@@ -42,17 +47,17 @@ export default function PurchaseItem({ order }) {
             <OrderStatus status={status} />
             <Column sx={{ ml: 2 }}>
               <TextNeutral>Order status</TextNeutral>
-              <Typography sx={{ fontWeight: 500 }}>{status}</Typography>
+              <TextBold>{status}</TextBold>
             </Column>
           </RowCenter>
 
           <Column>
             <TextNeutral>Order amount</TextNeutral>
-            <Typography sx={{ fontWeight: 500 }}>{amount}$</Typography>
+            <TextBold>{amount}$</TextBold>
           </Column>
           <Column>
             <TextNeutral>Order date</TextNeutral>
-            <Typography sx={{ fontWeight: 500 }}>{date}</Typography>
+            <TextBold>{date}</TextBold>
           </Column>
         </RowCenter>
       </AccordionSummary>

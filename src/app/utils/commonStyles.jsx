@@ -139,3 +139,13 @@ export const TextNeutral = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   color: theme.palette.primary.neutral,
 }));
+
+export const TextBold = styled(Typography)({
+  fontSize: '1rem',
+  fontWeight: 500,
+});
+
+export const SubTitle = styled(Typography)({
+  fontSize: '1.5rem',
+  fontWeight: 500,
+});

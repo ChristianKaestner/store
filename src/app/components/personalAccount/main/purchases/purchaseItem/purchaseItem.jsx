@@ -1,16 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
-import { Paper, TableCell } from '@mui/material';
-import { TableContainer, Table, TableRow, TableHead } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { AccordionSummary } from '@mui/material';
+import { Accordion, Icon, Container, Block } from './purchaseItem.styled';
+import { AccordionDetails } from './purchaseItem.styled';
 import { cartAdd } from '@/app/redux/cart/slice';
 import OrderStatus from './orderStatus/orderStatus';
-import {
-  Column,
-  RowCenter,
-  TextNeutral,
-  TextBold,
-} from '@/app/utils/commonStyles';
+import { Column, TextNeutral, TextBold } from '@/app/utils/commonStyles';
 import PurchaseTable from './purchaseTable/purchaseTable';
 
 export default function PurchaseItem({ order }) {
@@ -29,27 +23,21 @@ export default function PurchaseItem({ order }) {
   };
 
   return (
-    <Accordion
-      sx={{ width: '100%', mb: 2 }}
-      defaultExpanded={false}
-      component="li"
-    >
+    <Accordion defaultExpanded={false} component="li">
       <AccordionSummary
-        expandIcon={<ExpandMoreIcon sx={{ color: 'primary.light' }} />}
+        expandIcon={<Icon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
         sx={{ p: 2 }}
       >
-        <RowCenter
-          sx={{ justifyContent: 'space-between', width: '100%', mr: 2 }}
-        >
-          <RowCenter>
+        <Container>
+          <Block>
             <OrderStatus status={status} />
-            <Column sx={{ ml: 2 }}>
+            <Column sx={{ mr: 2 }}>
               <TextNeutral>Order status</TextNeutral>
               <TextBold>{status}</TextBold>
             </Column>
-          </RowCenter>
+          </Block>
 
           <Column>
             <TextNeutral>Order amount</TextNeutral>
@@ -59,39 +47,14 @@ export default function PurchaseItem({ order }) {
             <TextNeutral>Order date</TextNeutral>
             <TextBold>{date}</TextBold>
           </Column>
-        </RowCenter>
+        </Container>
       </AccordionSummary>
-      <AccordionDetails
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <TableContainer component={Paper}>
-          <Table aria-label="purchase table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left"></TableCell>
-                <TableCell align="left">Product</TableCell>
-                <TableCell align="left">Price</TableCell>
-                <TableCell align="left">Quantity</TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right"></TableCell>
-              </TableRow>
-            </TableHead>
-            {goods.map(item => {
-              return (
-                <PurchaseTable
-                  key={item.product.id}
-                  item={item}
-                  handleCart={handleCart}
-                  handleReview={handleReview}
-                />
-              );
-            })}
-          </Table>
-        </TableContainer>
+      <AccordionDetails>
+        <PurchaseTable
+          goods={goods}
+          handleCart={handleCart}
+          handleReview={handleReview}
+        />
       </AccordionDetails>
     </Accordion>
   );

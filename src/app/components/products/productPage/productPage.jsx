@@ -1,36 +1,21 @@
-import { Box } from '@mui/material';
 import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
+import { Container, BlockSwiper, BlockContent } from './productPage.styled';
+import { tmpUser } from '@/app/utils/tmpData';
 
 export default function ProductPage({ product, relatedProducts, windowWidth }) {
+  const { favorites } = tmpUser;
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          mt: 4,
-        }}
-      >
-        <Box
-          sx={{
-            position: 'relative',
-            width: { xs: '100%', md: '50%' },
-            mr: { xs: 0, md: 2 },
-            mb: { xs: 2, md: 0 },
-          }}
-        >
+      <Container>
+        <BlockSwiper>
           <ProductSwiper product={product} windowWidth={windowWidth} />
-        </Box>
-        <Box
-          sx={{
-            width: { xs: '100%', md: '50%' },
-          }}
-        >
-          <ProductContent product={product} />
-        </Box>
-      </Box>
+        </BlockSwiper>
+        <BlockContent>
+          <ProductContent product={product} favorites={favorites} />
+        </BlockContent>
+      </Container>
       <RelatedProducts
         relatedProducts={relatedProducts}
         windowWidth={windowWidth}

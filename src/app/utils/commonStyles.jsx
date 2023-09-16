@@ -172,3 +172,8 @@ export const CellBold = styled(TableCell)(({ theme }) => ({
     fontSize: '1rem',
   },
 }));
+
+export const Span = styled(Box)(({ theme }) => ({
+  fontWeight: 500,
+  color: theme.palette.primary.text,
+}));

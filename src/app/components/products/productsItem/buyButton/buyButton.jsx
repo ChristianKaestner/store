@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd } from '@/app/redux/cart/slice';
-import { Button } from '@mui/material';
+import { ButtonStyled } from './buyButton.styled';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function BuyButton({ id, width = 160 }) {
@@ -13,13 +13,13 @@ export default function BuyButton({ id, width = 160 }) {
   };
 
   return (
-    <Button
+    <ButtonStyled
+      width={width}
       variant="contained"
       startIcon={<ShoppingCartIcon />}
-      sx={{ width: width, height: 40, bgcolor: 'primary.light', mx: 2 }}
       onClick={handleCart}
     >
       Buy
-    </Button>
+    </ButtonStyled>
   );
 }

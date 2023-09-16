@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import AccountAside from './sideBar/sideBar';
 import AccountMain from './main/accountMain';
-import { Row } from '@/app/utils/commonStyles';
 import { tmpUser } from '@/app/utils/tmpData';
 import { Box } from '@mui/material';
 

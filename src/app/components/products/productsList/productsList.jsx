@@ -1,10 +1,11 @@
 'use client';
 
-import ProductsItem from '../productsItem/productsItem';
+import ProductsItem from '../productsItem/productItem';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Pagination, Button } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 import Skeleton from '../../skeleton/skeleton';
+import { BlockBtn, PaginationStyled } from './productList.styled';
 
 export default function ProductsList({
   goods,
@@ -55,15 +56,7 @@ export default function ProductsList({
       </Grid>
       {goods.length > 20 && pagination && (
         <>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              mt: 4,
-              alignItems: 'center',
-            }}
-          >
+          <BlockBtn>
             <Button
               startIcon={<LoopIcon />}
               sx={{ color: 'primary.light' }}
@@ -72,12 +65,11 @@ export default function ProductsList({
             >
               Load more
             </Button>
-          </Box>
-          <Pagination
+          </BlockBtn>
+          <PaginationStyled
             count={pagination}
             page={page}
             size="large"
-            sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}
             onChange={(e, value) => onPage(value)}
           />
         </>

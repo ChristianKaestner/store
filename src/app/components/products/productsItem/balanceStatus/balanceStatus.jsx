@@ -1,9 +1,5 @@
-import { Typography } from '@mui/material';
+import { Text } from './balanceStatus.styled';
 
 export default function BalanceStatus({ status }) {
-  return (
-    <Typography sx={{ fontWeight: 500, fontSize: 16, color: 'primary.light' }}>
-      {status}
-    </Typography>
-  );
+  return <Text>{status}</Text>;
 }

@@ -1,33 +1,20 @@
 'use client';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Box, Chip } from '@mui/material';
+
+import { Chip } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import FavoriteIcon from '../favoriteIcon/favoriteIcon';
 import { chipColor } from '@/app/utils/functions';
+import { swiperStyles } from '@/app/utils/commonStyles';
+import { Container, LinkStyled, ImageStyled } from './cardSwiper.styled';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function CardSwiper({
-  promotion,
-  images,
-  swiperRef,
-  path,
-  favorites,
-  id,
-}) {
+export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        width: 'calc(100% - 16px)',
-        height: 200,
-        m: 1,
-      }}
-    >
+    <Container>
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
@@ -42,15 +29,8 @@ export default function CardSwiper({
         }}
         modules={[Autoplay, Pagination, EffectFade]}
         style={{
-          width: 'calc(100% - 16px)',
+          ...swiperStyles,
           height: 200,
-          paddingTop: '16px',
-          '--swiper-pagination-color': '#f68e5f',
-          '--swiper-pagination-bullet-inactive-color': '#999999',
-          '--swiper-pagination-bullet-inactive-opacity': '1',
-          '--swiper-pagination-bullet-size': '12px',
-          '--swiper-pagination-bullet-vertical-gap': '8px',
-          '--swiper-pagination-right': '18px',
         }}
       >
         {promotion && (
@@ -70,36 +50,24 @@ export default function CardSwiper({
             }}
           />
         )}
-        <FavoriteIcon favorites={favorites} id={id} />
+        <FavoriteIcon id={id} />
         {images.map(image => {
           return (
             <SwiperSlide key={image}>
-              <Link
-                href={path}
-                style={{
-                  position: 'relative',
-                  display: 'flex',
-                  width: '100%',
-                  height: '100%',
-                }}
-              >
-                <Image
+              <LinkStyled href={path}>
+                <ImageStyled
                   className="scaleImage"
-                  style={{
-                    transition: 'transform 500ms ease-in-out',
-                    objectFit: 'contain',
-                  }}
                   src={image}
                   fill={true}
                   alt="image"
                   sizes="100%"
                   priority="false"
                 />
-              </Link>
+              </LinkStyled>
             </SwiperSlide>
           );
         })}
       </Swiper>
-    </Box>
+    </Container>
   );
 }

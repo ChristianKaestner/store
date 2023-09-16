@@ -3,12 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
-import { Card } from '@mui/material';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 import { productPath } from '@/app/utils/functions';
+import { Card } from './productItem.styled';
 
-export default function ProductsItem({ product, cart, favorites }) {
+export default function ProductItem({ product, cart, favorites }) {
   const [inCart, setInCart] = useState(false);
   const { id, images, promotion } = product;
 
@@ -54,24 +54,12 @@ export default function ProductsItem({ product, cart, favorites }) {
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      sx={{
-        transition: 'box-shadow 500ms ease-in-out',
-        maxHeight: 420,
-        width: '100%',
-        '&:hover': {
-          boxShadow: '0px 4px 17px 0px rgba(34, 60, 80, 0.5)',
-          '& .scaleImage': {
-            transform: 'scale(1.03)',
-          },
-        },
-      }}
     >
       <CardSwiper
         promotion={promotion}
         images={images}
         swiperRef={swiperRef}
         path={path}
-        favorites={favorites}
         id={id}
       />
 

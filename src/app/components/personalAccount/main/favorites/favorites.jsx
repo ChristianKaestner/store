@@ -18,7 +18,6 @@ export default function AccountFavorites({ favorites }) {
         cart={cart}
         lgPerPage={3}
         skeleton={12}
-        favorites={favorites}
       />
     </Box>
   );

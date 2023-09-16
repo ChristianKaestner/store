@@ -1,13 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  FreeMode,
-  Navigation,
-  Thumbs,
-  EffectFade,
-  Pagination,
-} from 'swiper/modules';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { EffectFade, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';

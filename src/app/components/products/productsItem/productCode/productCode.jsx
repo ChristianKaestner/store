@@ -1,7 +1,5 @@
-import { Typography } from '@mui/material';
+import { Text } from './productCode.styled';
 
 export default function ProductCode({ id }) {
-  return (
-    <Typography sx={{ pr: 1, color: 'primary.neutral' }}>Code: {id}</Typography>
-  );
+  return <Text>Code: {id}</Text>;
 }

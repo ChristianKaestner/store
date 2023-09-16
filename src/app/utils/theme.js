@@ -168,5 +168,13 @@ export const myTheme = createTheme({
         }),
       },
     },
+
+    MuiTypography: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.text,
+        }),
+      },
+    },
   },
 });

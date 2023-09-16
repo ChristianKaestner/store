@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Box, Typography, Rating } from '@mui/material';
-
+import { Rating } from '@mui/material';
+import { Container, Text } from './rating.styled';
 export default function ProductRating({
   rating,
   reviewUrl,
@@ -8,13 +8,7 @@ export default function ProductRating({
   size,
 }) {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
-    >
+    <Container>
       <Rating
         name="half-rating"
         precision={0.5}
@@ -23,19 +17,8 @@ export default function ProductRating({
         size={size}
       />
       <Link href={reviewUrl}>
-        <Typography
-          sx={{
-            color: 'primary.light',
-            ml: 1,
-            '&:hover': {
-              color: 'primary.accent',
-              textDecoration: 'underline',
-            },
-          }}
-        >
-          {totalReviews} reviews
-        </Typography>
+        <Text>{totalReviews} reviews</Text>
       </Link>
-    </Box>
+    </Container>
   );
 }

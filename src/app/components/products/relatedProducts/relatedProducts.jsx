@@ -1,12 +1,10 @@
 import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Box, Typography } from '@mui/material';
-import ProductsItem from '../productsItem/productsItem';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
 import { getSlideCount } from '@/app/utils/functions';
 import { IconBtnNavigate } from '@/app/utils/commonStyles';
+import { Container, Text, IconNext, IconPrev } from './relatedProducts.styled';
 import 'swiper/css';
 
 export default function RelatedProducts({ relatedProducts, windowWidth }) {
@@ -55,10 +53,8 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
   };
 
   return (
-    <Box sx={{ width: '100%', height: 500, my: 4 }}>
-      <Typography component="h5" sx={{ fontWeight: 500, fontSize: 32, pl: 2 }}>
-        You may also be interested
-      </Typography>
+    <Container>
+      <Text component="h5">You may also be interested</Text>
       {!isLoading && (
         <Swiper
           slidesPerView={slidesPerView}
@@ -73,7 +69,7 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
         >
           {prevBtn && (
             <IconBtnNavigate prev={0} onClick={handlePrevCard}>
-              <NavigateBeforeIcon sx={{ fontSize: 40 }} />
+              <IconPrev />
             </IconBtnNavigate>
           )}
 
@@ -89,11 +85,11 @@ export default function RelatedProducts({ relatedProducts, windowWidth }) {
 
           {nextBtn && (
             <IconBtnNavigate next={0} onClick={handleNextCard}>
-              <NavigateNextIcon sx={{ fontSize: 40 }} />
+              <IconNext />
             </IconBtnNavigate>
           )}
         </Swiper>
       )}
-    </Box>
+    </Container>
   );
 }

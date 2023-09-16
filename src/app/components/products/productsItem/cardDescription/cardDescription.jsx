@@ -1,9 +1,9 @@
-import { CardContent, Box, Typography, IconButton } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { CardContent, Box, IconButton } from '@mui/material';
 import ProductRating from '../rating/rating';
 import Price from '../price/price';
 import ProductTitle from '../productTitle/productTitle';
 import SpeedDialCart from '../speedDialCart/speedDialCart';
+import { Text, Block, IconAddCart } from './cardDescription.styled';
 
 export default function CardDescription({
   product,
@@ -14,11 +14,9 @@ export default function CardDescription({
 }) {
   const { brand, title, price, rating, reviews } = product;
   return (
-    <CardContent>
+    <CardContent sx={{ p: 1 }}>
       <Box>
-        <Typography sx={{ fontSize: 14, textAlign: 'center', mb: 1 }}>
-          {brand}
-        </Typography>
+        <Text>{brand}</Text>
         <ProductTitle path={path} title={title} />
       </Box>
       <ProductRating
@@ -27,15 +25,7 @@ export default function CardDescription({
         totalReviews={reviews.length}
         size="small"
       />
-      <Box
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          mt: 1,
-        }}
-      >
+      <Block>
         <Price price={price} component="p" />
 
         {inCart ? (
@@ -44,12 +34,10 @@ export default function CardDescription({
           </Box>
         ) : (
           <IconButton onClick={handleCart}>
-            <AddShoppingCartIcon
-              sx={{ color: 'primary.accent', fontSize: 30 }}
-            />
+            <IconAddCart />
           </IconButton>
         )}
-      </Box>
+      </Block>
     </CardContent>
   );
 }

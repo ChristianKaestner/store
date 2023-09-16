@@ -1,7 +1,6 @@
 import Image from 'next/image';
-import { Box, Divider, Paper, Typography, IconButton } from '@mui/material';
+import { Box, Divider, Paper, Typography } from '@mui/material';
 import { Tooltip, Rating } from '@mui/material';
-import ReportIcon from '@mui/icons-material/Report';
 import ReplyReview from './replyReview/replyReview';
 import RateReview from './rateReview/rateReview';
 import ReviewComment from '../reviewComment/reviewComment';
@@ -38,11 +37,6 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
             <Typography sx={{ color: 'primary.neutral', mr: 2 }}>
               {date}
             </Typography>
-            <Tooltip title="Report" placement="top">
-              <IconButton sx={{ color: 'primary.hot' }}>
-                <ReportIcon />
-              </IconButton>
-            </Tooltip>
           </Box>
         </Box>
         <Divider />

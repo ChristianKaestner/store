@@ -1,16 +1,18 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount } from '@/app/redux/modal/slice';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import { IconFavorite, IconFavoriteBorder } from './favoriteIcon.styled';
+import { IconButton } from './favoriteIcon.styled';
+import { tmpUser } from '@/app/utils/tmpData';
 
-export default function FavoriteIcon({ favorites, id }) {
+export default function FavoriteIcon({ id }) {
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const { favorites } = tmpUser;
+  
   useEffect(() => {
+    if (favorites === undefined) return;
     if (favorites.includes(id)) setIsFavorite(true);
   }, favorites);
 
@@ -25,18 +27,8 @@ export default function FavoriteIcon({ favorites, id }) {
     setIsFavorite(!isFavorite);
   };
   return (
-    <IconButton
-      sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
-      onClick={handleFavorite}
-      size="small"
-    >
-      {isFavorite ? (
-        <FavoriteOutlinedIcon sx={{ color: 'primary.accent', fontSize: 30 }} />
-      ) : (
-        <FavoriteBorderOutlinedIcon
-          sx={{ fontSize: 30, color: 'primary.accent' }}
-        />
-      )}
+    <IconButton onClick={handleFavorite} size="small">
+      {isFavorite ? <IconFavorite /> : <IconFavoriteBorder />}
     </IconButton>
   );
 }

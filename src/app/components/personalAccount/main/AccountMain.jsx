@@ -5,7 +5,7 @@ import AccountFavorites from './favorites/favorites';
 import AccountReviews from './reviews/reviews';
 
 export default function AccountMain({ value, user }) {
-  const { orders } = user;
+  const { orders, favorites } = user;
   return (
     <Column
       component="section"
@@ -15,7 +15,7 @@ export default function AccountMain({ value, user }) {
     >
       {value === 0 && <AccountSettings user={user} />}
       {value === 1 && <AccountPurchases orders={orders} />}
-      {value === 2 && <AccountFavorites />}
+      {value === 2 && <AccountFavorites favorites={favorites}/>}
       {value === 3 && <AccountReviews />}
     </Column>
   );

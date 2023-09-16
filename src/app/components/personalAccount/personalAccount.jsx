@@ -4,7 +4,7 @@ import AccountMain from './main/AccountMain';
 import { Row } from '@/app/utils/commonStyles';
 import { tmpUser } from '@/app/utils/tmpData';
 
-
+//need to add modal view
 export default function PersonalAccount() {
   const [value, setValue] = useState(0);
 

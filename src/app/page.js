@@ -8,11 +8,13 @@ import Categories from './components/categories/categories';
 import ProductsList from './components/products/productsList/productsList';
 import { images } from '../app/utils/tmpData';
 import { categories } from '@/app/utils/tmpData';
+import { tmpUser } from '../app/utils/tmpData';
 
 export default function Home() {
   const { data = [], isLoading, error } = useGetAllGoodsQuery();
   const { cart } = useCart();
   const goods = data.filter(n => n.isPromoted);
+  const { favorites } = tmpUser;
 
   return (
     <Container
@@ -25,7 +27,7 @@ export default function Home() {
         goods={goods}
         isLoading={isLoading}
         cart={cart}
-        favorite={[]}
+        favorites={favorites}
         skeleton={12}
       />
     </Container>

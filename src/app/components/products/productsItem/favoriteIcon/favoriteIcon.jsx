@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
@@ -7,8 +7,12 @@ import { toggleAccount } from '@/app/redux/modal/slice';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 
-export default function FavoriteIcon() {
+export default function FavoriteIcon({ favorites, id }) {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (favorites.includes(id)) setIsFavorite(true);
+  }, favorites);
 
   const { isLogin } = useAuth();
   const dispatch = useDispatch();

@@ -11,7 +11,14 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function CardSwiper({ promotion, images, swiperRef, path }) {
+export default function CardSwiper({
+  promotion,
+  images,
+  swiperRef,
+  path,
+  favorites,
+  id,
+}) {
   return (
     <Box
       sx={{
@@ -63,7 +70,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path }) {
             }}
           />
         )}
-        <FavoriteIcon />
+        <FavoriteIcon favorites={favorites} id={id} />
         {images.map(image => {
           return (
             <SwiperSlide key={image}>

@@ -10,12 +10,13 @@ export default function ProductsList({
   goods,
   isLoading,
   cart,
-  favorite,
+  favorites,
   pagination,
   page,
   onPage,
   onLoadMore,
   skeleton,
+  lgPerPage = 2.4,
 }) {
   return (
     <Box sx={{ width: '100%' }}>
@@ -37,14 +38,14 @@ export default function ProductsList({
                     xs={6}
                     sm={6}
                     md={4}
-                    lg={2.4}
+                    lg={lgPerPage}
                     key={item.id}
                     component="li"
                   >
                     <ProductsItem
                       product={item}
                       cart={cart}
-                      favorite={favorite}
+                      favorites={favorites}
                     />
                   </Grid>
                 );

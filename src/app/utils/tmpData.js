@@ -194,6 +194,6 @@ export const tmpUser = {
     apartment: '17',
   },
   orders: [order1, order2],
-  favorites: [],
+  favorites: [1, 22, 17, 35, 41, 43, 47, 52, 60, 64],
   reviews: [],
 };

@@ -8,7 +8,7 @@ import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 import { productPath } from '@/app/utils/functions';
 
-export default function ProductsItem({ product, cart }) {
+export default function ProductsItem({ product, cart, favorites }) {
   const [inCart, setInCart] = useState(false);
   const { id, images, promotion } = product;
 
@@ -71,6 +71,8 @@ export default function ProductsItem({ product, cart }) {
         images={images}
         swiperRef={swiperRef}
         path={path}
+        favorites={favorites}
+        id={id}
       />
 
       <CardDescription

@@ -1,9 +1,5 @@
-import { Typography } from '@mui/material';
+import { Text } from './pageTitle.styled';
 
 export default function PageTitle({ title }) {
-  return (
-    <Typography variant="h1" sx={{ my: 2, fontSize: 36, fontWeight: 500 }}>
-      {title}
-    </Typography>
-  );
+  return <Text variant="h1">{title}</Text>;
 }

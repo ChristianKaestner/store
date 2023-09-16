@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Box, Paper, Divider, IconButton } from '@mui/material';
+import { Box, Paper, IconButton } from '@mui/material';
+import { TableContainer, Table, TableRow, TableBody } from '@mui/material';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
-import { Row, Column, RowCenter } from '@/app/utils/commonStyles';
-import { TextNeutral, TextBold, SubTitle } from '@/app/utils/commonStyles';
+import { RowCenter } from '@/app/utils/commonStyles';
+import { CellBold, CellNeutral, SubTitle } from '@/app/utils/commonStyles';
 import EditIcon from '@mui/icons-material/Edit';
 import Modal from '@/app/components/modal/modal';
 import EditInfoModal from '@/app/components/modal/editAccount/editAccount';
@@ -43,8 +44,30 @@ export default function AccountSettings({ user }) {
           </IconButton>
         </RowCenter>
 
-        <Divider />
-        <Row sx={{ mt: 2 }}>
+        {/* <Divider /> */}
+        <TableContainer component={Paper} sx={{ mt: 2 }}>
+          <Table aria-label="purchase table">
+            <TableBody>
+              <TableRow>
+                <CellNeutral>First name:</CellNeutral>
+                <CellBold align="left">{firstName}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>First name:</CellNeutral>
+                <CellBold align="left">{lastName}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>Phone number:</CellNeutral>
+                <CellBold align="left">{phone}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>Email:</CellNeutral>
+                <CellBold align="left">{email}</CellBold>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {/* <Row sx={{ mt: 2 }}>
           <Column>
             <TextNeutral>First name:</TextNeutral>
             <TextNeutral>Last name: </TextNeutral>
@@ -57,7 +80,7 @@ export default function AccountSettings({ user }) {
             <TextBold>{phone}</TextBold>
             <TextBold>{email}</TextBold>
           </Column>
-        </Row>
+        </Row> */}
       </Paper>
 
       <Paper
@@ -73,7 +96,29 @@ export default function AccountSettings({ user }) {
             <EditIcon />
           </IconButton>
         </RowCenter>
-        <Divider />
+        <TableContainer component={Paper} sx={{ mt: 2 }}>
+          <Table aria-label="purchase table">
+            <TableBody>
+              <TableRow>
+                <CellNeutral>City:</CellNeutral>
+                <CellBold align="left">{city}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>Street:</CellNeutral>
+                <CellBold align="left">{street}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>House:</CellNeutral>
+                <CellBold align="left">{house}</CellBold>
+              </TableRow>
+              <TableRow>
+                <CellNeutral>Apartment:</CellNeutral>
+                <CellBold align="left">{apartment}</CellBold>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {/* <Divider />
         <Row sx={{ mt: 2 }}>
           <Column>
             <TextNeutral>City:</TextNeutral>
@@ -87,7 +132,7 @@ export default function AccountSettings({ user }) {
             <TextBold>{house}</TextBold>
             <TextBold>{apartment}</TextBold>
           </Column>
-        </Row>
+        </Row> */}
       </Paper>
       {detailsModal && (
         <Modal

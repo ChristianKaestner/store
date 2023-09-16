@@ -1,5 +1,5 @@
 import { Box, FormControl, TextField, FormControlLabel } from '@mui/material';
-import { Typography } from '@mui/material';
+import { Typography, TableCell } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -149,3 +149,26 @@ export const SubTitle = styled(Typography)({
   fontSize: '1.5rem',
   fontWeight: 500,
 });
+
+export const CellNeutral = styled(TableCell)(({ theme }) => ({
+  fontSize: '1rem',
+  fontWeight: 400,
+  color: theme.palette.primary.neutral,
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.8rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
+  },
+}));
+
+export const CellBold = styled(TableCell)(({ theme }) => ({
+  fontSize: '1rem',
+  fontWeight: 500,
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.8rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
+  },
+}));

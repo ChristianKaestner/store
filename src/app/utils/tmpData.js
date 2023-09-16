@@ -197,7 +197,7 @@ const review1 = {
 };
 
 const review2 = {
-  id: 1,
+  id: 2,
   text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   pros: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
   cons: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',

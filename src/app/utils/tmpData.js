@@ -182,6 +182,42 @@ const orderStatus = [
   'Rejected',
 ];
 
+const review1 = {
+  id: 1,
+  text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  pros: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  cons: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
+  rating: 5,
+  date: '01 september 2023',
+  name: 'Mike',
+  usefulness: { pros: 0, cons: 0 },
+  isBuyer: true,
+  comments: [],
+};
+
+const review2 = {
+  id: 1,
+  text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  pros: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  cons: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  images: ['/hookah_item.jpg', '/hookah_item2.jpg'],
+  rating: 5,
+  date: '01 september 2023',
+  name: 'Mike',
+  usefulness: { pros: 0, cons: 0 },
+  isBuyer: true,
+  comments: [
+    {
+      id: 1,
+      postId: 1,
+      text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+      name: 'Nick',
+      date: '02 september 2023',
+    },
+  ],
+};
+
 export const tmpUser = {
   firstName: 'Vladyslav',
   lastName: 'Rohalov',
@@ -195,5 +231,5 @@ export const tmpUser = {
   },
   orders: [order1, order2],
   favorites: [1, 22, 17, 35, 41, 43, 47, 52, 60, 64],
-  reviews: [],
+  reviews: [review1, review2],
 };

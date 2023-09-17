@@ -2,7 +2,6 @@
 
 import { usePathname, useParams } from 'next/navigation';
 import { useGetProductByIdQuery } from '@/app/redux/services/goods';
-import { Container } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Reviews from '@/app/components/reviews/reviews';
@@ -19,16 +18,7 @@ export default function Review() {
   return (
     <>
       {!isLoading && (
-        <Container
-          maxWidth="xl"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            px: 2,
-            mt: 12,
-            mb: 2,
-          }}
-        >
+        <>
           <Breadcrumbs crumbs={path} />
           <PageTitle title={reviewTitle} />
 
@@ -37,7 +27,7 @@ export default function Review() {
           ) : (
             <p>no reviews yet...</p>
           )}
-        </Container>
+        </>
       )}
     </>
   );

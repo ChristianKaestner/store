@@ -17,10 +17,7 @@ export default function Home() {
   const { favorites } = tmpUser;
 
   return (
-    <Container
-      maxWidth="xl"
-      sx={{ display: 'flex', flexDirection: 'column', px: 2, mt: 12, mb: 2 }}
-    >
+    <>
       <Hero images={images} />
       <Categories categories={categories} />
       <ProductsList
@@ -30,6 +27,6 @@ export default function Home() {
         favorites={favorites}
         skeleton={12}
       />
-    </Container>
+    </>
   );
 }

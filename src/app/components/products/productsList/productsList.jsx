@@ -20,7 +20,7 @@ export default function ProductsList({
   lgPerPage = 2.4,
 }) {
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box component="section" sx={{ width: '100%' }}>
       <Grid
         component="ul"
         container

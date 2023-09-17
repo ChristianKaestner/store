@@ -1,9 +1,10 @@
 'use client';
+
 import { useState } from 'react';
 import { useCart } from '@/app/hooks/useCart';
 import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
-import { Container, Box, Divider } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
@@ -31,10 +32,7 @@ export default function Tobacco() {
   };
 
   return (
-    <Container
-      maxWidth="xl"
-      sx={{ display: 'flex', flexDirection: 'column', px: 2, mt: 12, mb: 2 }}
-    >
+    <>
       <Breadcrumbs crumbs={path} />
       <PageTitle title="Tobacco" />
       <SortFilter />
@@ -54,6 +52,6 @@ export default function Tobacco() {
           skeleton={20}
         />
       </Box>
-    </Container>
+    </>
   );
 }

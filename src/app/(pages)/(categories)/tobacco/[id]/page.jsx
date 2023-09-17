@@ -6,7 +6,6 @@ import {
   useGetProductByIdQuery,
   useGetAllGoodsQuery,
 } from '@/app/redux/services/goods';
-import { Container } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import ProductPage from '@/app/components/products/productPage/productPage';
 import InnerWidth from '@/app/components/innerWidth/innerWidth';
@@ -29,16 +28,7 @@ export default function Hookah() {
   return (
     <>
       {!isLoading && (
-        <Container
-          maxWidth="xl"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            px: 2,
-            mt: 12,
-            mb: 2,
-          }}
-        >
+        <>
           <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
           <Breadcrumbs crumbs={path} />
           {data && (
@@ -48,7 +38,7 @@ export default function Hookah() {
               relatedProducts={relatedProducts}
             />
           )}
-        </Container>
+        </>
       )}
     </>
   );

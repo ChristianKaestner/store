@@ -4,22 +4,19 @@ import RelatedProducts from '../relatedProducts/relatedProducts';
 import { Container, BlockSwiper, BlockContent } from './productPage.styled';
 import { tmpUser } from '@/app/lib/tmpData';
 
-export default function ProductPage({ product, relatedProducts, windowWidth }) {
+export default function ProductPage({ product, relatedProducts }) {
   const { favorites } = tmpUser;
   return (
     <>
       <Container>
         <BlockSwiper>
-          <ProductSwiper product={product} windowWidth={windowWidth} />
+          <ProductSwiper product={product} />
         </BlockSwiper>
         <BlockContent>
           <ProductContent product={product} favorites={favorites} />
         </BlockContent>
       </Container>
-      <RelatedProducts
-        relatedProducts={relatedProducts}
-        windowWidth={windowWidth}
-      />
+      <RelatedProducts relatedProducts={relatedProducts} />
     </>
   );
 }

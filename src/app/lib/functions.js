@@ -54,19 +54,11 @@ export const catSlug = (cat, subCat) => {
   return `${cat.name}?${sub.join('_')}`;
 };
 
-export const getSlideCount = windowWidth => {
-  switch (true) {
-    case windowWidth >= 1200:
-      return 6;
-    case windowWidth <= 1199 && windowWidth >= 900:
-      return 4;
-    case windowWidth <= 899 && windowWidth >= 600:
-      return 3;
-    case windowWidth <= 599:
-      return 2;
-    default:
-      return 6;
-  }
+export const getSlideCount = (mediaXS, mediaSM, mediaMD, mediaLG) => {
+  if (mediaXS) return 2;
+  if (mediaSM) return 3;
+  if (mediaMD) return 4;
+  if (mediaLG) return 6;
 };
 
 export function rotateImage(image, angle = 90) {

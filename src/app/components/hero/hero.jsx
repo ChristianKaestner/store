@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import { swiperStyles, IconBtnNavigate } from '@/app/lib/commonStyles';
 import 'swiper/css';
@@ -54,6 +54,7 @@ export default function Hero({ images }) {
                 alt="image"
                 sizes="100%"
                 priority="false"
+                style={{ objectFit: 'fill' }}
               />
             </SwiperSlide>
           );

@@ -11,7 +11,7 @@ export default function ProductItem({ product, cart, favorites }) {
   const [inCart, setInCart] = useState(false);
   const { id, images, promotion, status } = product;
   const isover = status === 'Out of stock' ? true : false;
-  // console.log(isover);
+
   const dispatch = useDispatch();
 
   const swiperRef = useRef();

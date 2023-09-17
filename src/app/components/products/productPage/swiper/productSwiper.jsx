@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { EffectFade, Pagination } from 'swiper/modules';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
@@ -10,9 +11,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import './style.css';
 
-export default function ProductSwiper({ product, windowWidth }) {
+export default function ProductSwiper({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const { images, title } = product;
+  const media = useMediaQuery('(min-width:900px)');
   return (
     <>
       <Swiper
@@ -23,7 +25,7 @@ export default function ProductSwiper({ product, windowWidth }) {
         pagination={{
           clickable: true,
         }}
-        style={{ padding: 16, height: windowWidth > 900 ? '80%' : '400px' }}
+        style={{ padding: 16, height: media > 900 ? '80%' : '400px' }}
         className="pagination"
       >
         {images &&
@@ -41,7 +43,7 @@ export default function ProductSwiper({ product, windowWidth }) {
             );
           })}
       </Swiper>
-      {windowWidth >= 900 && (
+      {media >= 900 && (
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}

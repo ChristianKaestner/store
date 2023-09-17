@@ -1,16 +1,13 @@
 'use client';
-import { useState } from 'react';
+
 import { Box, Container } from '@mui/material';
 import { CommonColumnDesk, CommonColumnMob } from './footerColumn/footerColumn';
 import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
 import { productsLink, supportLink, contactLink } from '@/app/lib/pagesLink';
-import InnerWidth from '@/app/components/innerWidth/innerWidth';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Footer() {
-  const isSSR = typeof window === 'undefined';
-  const [windowWidth, setWindowWidth] = useState(
-    isSSR ? 1200 : window.innerWidth
-  );
+  const media = useMediaQuery('(min-width:900px)');
 
   const handleSubscribe = data => {
     console.log(data);
@@ -31,8 +28,7 @@ export default function Footer() {
           pt: 3,
         }}
       >
-        <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
-        {windowWidth >= 900 ? (
+        {media ? (
           <>
             <CommonColumnDesk title="Shop" pages={productsLink} />
             <SubscribeColumn handleSubscribe={handleSubscribe} />

@@ -5,15 +5,20 @@ import { useCart } from '@/app/hooks/useCart';
 import { getSlideCount } from '@/app/lib/functions';
 import { IconBtnNavigate } from '@/app/lib/commonStyles';
 import { Container, Text, IconNext, IconPrev } from './relatedProducts.styled';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import 'swiper/css';
 
-export default function RelatedProducts({ relatedProducts, windowWidth }) {
+export default function RelatedProducts({ relatedProducts }) {
   const [prevBtn, setPervBtn] = useState(false);
   const [nextBtn, setNextBtn] = useState(true);
   const { data, isLoading } = relatedProducts;
   const { cart } = useCart();
   const sliderRef = useRef();
-  const slidesPerView = getSlideCount(windowWidth);
+  const mediaXS = useMediaQuery('(max-width:599px)');
+  const mediaSM = useMediaQuery('(max-width:899px)');
+  const mediaMD = useMediaQuery('(max-width:1199px)');
+  const mediaLG = useMediaQuery('(min-width:1200px)');
+  const slidesPerView = getSlideCount(mediaXS, mediaSM, mediaMD, mediaLG);
 
   const handlePrevCard = () => {
     if (sliderRef.current?.activeIndex - 1 === 0) {

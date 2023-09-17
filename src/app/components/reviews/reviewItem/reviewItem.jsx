@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import { Box, Divider, Paper, Typography } from '@mui/material';
-import { Tooltip, Rating } from '@mui/material';
+import { Divider, Paper, Typography, Tooltip, Rating } from '@mui/material';
 import ReplyReview from './replyReview/replyReview';
 import RateReview from './rateReview/rateReview';
 import ReviewComment from '../reviewComment/reviewComment';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import { visuallyHidden } from '@mui/utils';
+import { ReviewInfoBlock, TextDate, TextName, Text } from './reviewItem.styled';
+import { ImageBlock, ImageBlockItem, ReplyBlock } from './reviewItem.styled';
+import { CommentsBlock } from './reviewItem.styled';
+import { RowCenter } from '@/app/lib/commonStyles';
 
 export default function ReviewItem({ review, onReplyClick, onImageClick }) {
   const { id, text, pros, cons, images, rating, date } = review;
@@ -13,35 +16,20 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
   return (
     <>
       <Paper elevation={3} sx={{ mt: 4, p: 2 }} component="li">
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box
-            sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-          >
+        <ReviewInfoBlock>
+          <RowCenter>
             <Tooltip title="Buyer" placement="top">
               <VerifiedIcon sx={{ color: 'primary.light' }} />
             </Tooltip>
-            <Typography sx={{ fontSize: '1.25rem', fontWeight: 500, ml: 1 }}>
-              {name}
-            </Typography>
-          </Box>
+            <TextName>{name}</TextName>
+          </RowCenter>
 
-          <Box
-            sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-          >
-            <Typography sx={{ color: 'primary.neutral', mr: 2 }}>
-              {date}
-            </Typography>
-          </Box>
-        </Box>
+          <RowCenter>
+            <TextDate>{date}</TextDate>
+          </RowCenter>
+        </ReviewInfoBlock>
         <Divider />
-        <Box>
+        <>
           <Rating
             name="half-rating"
             precision={0.2}
@@ -50,36 +38,15 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
             sx={{ my: 2 }}
           />
           <Typography>{text}</Typography>
-          <Typography sx={{ fontWeight: 500, mt: 1 }}>Pros</Typography>
+          <Text>Pros</Text>
           <Typography>{pros}</Typography>
-          <Typography sx={{ fontWeight: 500, mt: 1 }}>Cons </Typography>
+          <Text>Cons </Text>
           <Typography>{cons}</Typography>
           {images.length && (
-            <Box
-              component="ul"
-              sx={{
-                display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                listStyle: 'none',
-                gap: 2,
-                py: 2,
-              }}
-            >
+            <ImageBlock component="ul">
               {images.map(image => {
                 return (
-                  <Box
-                    component="li"
-                    key={image}
-                    sx={{
-                      position: 'relative',
-                      width: 120,
-                      height: 80,
-                      '&:hover': {
-                        cursor: 'pointer',
-                      },
-                    }}
-                  >
+                  <ImageBlockItem component="li" key={image}>
                     <Image
                       key={image}
                       src={image}
@@ -92,42 +59,27 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
                         borderRadius: 4,
                       }}
                     />
-                  </Box>
+                  </ImageBlockItem>
                 );
               })}
-            </Box>
+            </ImageBlock>
           )}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              mt: 1,
-            }}
-          >
+          <ReplyBlock>
             <ReplyReview onReplyClick={onReplyClick} />
             <RateReview usefulness={usefulness} />
-          </Box>
-        </Box>
+          </ReplyBlock>
+        </>
       </Paper>
       {comments?.length > 0 && (
         <>
           <Typography component="h4" sx={visuallyHidden}>
             Comments to review
           </Typography>
-          <Box
-            component="ul"
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'end',
-              listStyle: 'none',
-            }}
-          >
+          <CommentsBlock component="ul">
             {comments.map(comment => {
               return <ReviewComment key={comment.id} comment={comment} />;
             })}
-          </Box>
+          </CommentsBlock>
         </>
       )}
     </>

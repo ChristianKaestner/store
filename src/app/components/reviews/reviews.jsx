@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Box } from '@mui/material';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
 import { useModal } from '@/app/hooks/useModal';
@@ -10,9 +9,10 @@ import AddReview from './addReview/addReview';
 import Modal from '../modal/modal';
 import AddReviewModal from '../modal/addReview/addReviewModal';
 import SuccessModal from '../modal/successModal/successModal';
-import ReviewList from './reviewsList/reviewsList';
+import ReviewList from './reviewsList/reviewList';
 import ProductRating from '../products/productsItem/rating/rating';
 import ProductCode from '../products/productsItem/productCode/productCode';
+import { HeadBlock, ReviewBlock, MainBlock } from './reviews.styled';
 
 export default function Reviews({ product }) {
   const [reviewModal, setReviewModal] = useState(false);
@@ -33,35 +33,19 @@ export default function Reviews({ product }) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          mt: 1,
-        }}
-      >
+      <HeadBlock>
         <ProductRating product={product} size="medium" />
         <ProductCode id={id} />
-      </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
-        <Box
-          component="section"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            width: { xs: '100%', md: '70%' },
-            mr: 2,
-          }}
-        >
+      </HeadBlock>
+      <MainBlock>
+        <ReviewBlock component="section">
           <AddReview onWriteReview={handleWirteReview} />
           {reviews.length > 0 ? (
             <ReviewList reviews={reviews} />
           ) : (
             <p>no reviews yet...</p>
           )}
-        </Box>
+        </ReviewBlock>
         <SideBar image={images[0]} title={title} price={price} id={id} />
         {reviewModal && (
           <Modal
@@ -89,7 +73,7 @@ export default function Reviews({ product }) {
             />
           </Modal>
         )}
-      </Box>
+      </MainBlock>
     </>
   );
 }

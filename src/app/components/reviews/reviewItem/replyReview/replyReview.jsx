@@ -1,20 +1,16 @@
-import { Box, Button } from '@mui/material';
 import ReplyIcon from '@mui/icons-material/Reply';
+import { RowCenter } from '@/app/lib/commonStyles';
+import { ReplyBtn } from './replyReview.styled';
 
 export default function ReplyReview({ onReplyClick }) {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-      <Button
+    <RowCenter>
+      <ReplyBtn
         startIcon={<ReplyIcon sx={{ transform: 'rotate(180deg)' }} />}
-        sx={{
-          color: 'primary.light',
-          mr: 1,
-          '&:hover': { color: 'primary.accent' },
-        }}
         onClick={onReplyClick}
       >
         Reply to review
-      </Button>
-    </Box>
+      </ReplyBtn>
+    </RowCenter>
   );
 }

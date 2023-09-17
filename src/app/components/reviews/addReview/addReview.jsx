@@ -1,21 +1,11 @@
-import { Paper, Typography, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import CreateIcon from '@mui/icons-material/Create';
+import { AddBlock, Text } from './addReview.styled';
 
 export default function AddReview({ onWriteReview }) {
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        p: 2,
-      }}
-    >
-      <Typography component="h2" sx={{ fontSize: '1.25rem' }}>
-        Leave a review for this product
-      </Typography>
+    <AddBlock elevation={3}>
+      <Text component="h2">Leave a review for this product</Text>
       <Button
         variant="outlined"
         onClick={onWriteReview}
@@ -23,6 +13,6 @@ export default function AddReview({ onWriteReview }) {
       >
         Write review
       </Button>
-    </Paper>
+    </AddBlock>
   );
 }

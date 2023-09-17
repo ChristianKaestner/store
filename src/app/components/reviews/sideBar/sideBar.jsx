@@ -1,26 +1,15 @@
 import Image from 'next/image';
-import { Box, Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import BuyButton from '@/app/components/products/productsItem/buyButton/buyButton';
 import Price from '@/app/components/products/productsItem/price/price';
 import ProductTitle from '../../products/productsItem/productTitle/productTitle';
+import { AsideBlock, ImageBlock } from './sideBar.styled';
+import { RowCenter } from '@/app/lib/commonStyles';
 
 export default function SideBar({ image, title, price, id }) {
   return (
-    <Paper
-      elevation={3}
-      component="aside"
-      sx={{
-        display: { xs: 'none', md: 'flex' },
-        flexDirection: 'row',
-        flexGrow: 1,
-        width: 'auto',
-        height: 160,
-        MaxWidth: '30%',
-        alignItems: 'center',
-        p: 2,
-      }}
-    >
-      <Box sx={{ position: 'relative', mr: 2 }}>
+    <AsideBlock elevation={3} component="aside">
+      <ImageBlock>
         <Image
           src={image}
           width={80}
@@ -28,21 +17,14 @@ export default function SideBar({ image, title, price, id }) {
           alt={title + ' image'}
           priority="false"
         />
-      </Box>
+      </ImageBlock>
       <Box sx={{ width: '100%' }}>
         <ProductTitle path="/" title={title} />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 1,
-            alignItems: 'center',
-          }}
-        >
+        <RowCenter sx={{ gap: 1 }}>
           <Price price={price} component="p" />
           <BuyButton id={id} width={120} />
-        </Box>
+        </RowCenter>
       </Box>
-    </Paper>
+    </AsideBlock>
   );
 }

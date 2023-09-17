@@ -1,7 +1,10 @@
 import { Card as MuiCard } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const Card = styled(MuiCard)({
+export const Card = styled(MuiCard, {
+  shouldForwardProp: prop => prop !== 'isover',
+})(({ isover }) => ({
+  filter: isover ? 'grayscale(1)' : 'none',
   transition: 'box-shadow 500ms ease-in-out',
   maxHeight: 420,
   width: '100%',
@@ -11,4 +14,4 @@ export const Card = styled(MuiCard)({
       transform: 'scale(1.03)',
     },
   },
-});
+}));

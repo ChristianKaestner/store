@@ -55,7 +55,11 @@ export default function Reviews({ product }) {
           }}
         >
           <AddReview onWriteReview={handleWirteReview} />
-          <ReviewList reviews={reviews} />
+          {reviews.length > 0 ? (
+            <ReviewList reviews={reviews} />
+          ) : (
+            <p>no reviews yet...</p>
+          )}
         </Box>
         <SideBar image={images[0]} title={title} price={price} id={id} />
         {reviewModal && (

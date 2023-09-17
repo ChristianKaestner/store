@@ -13,6 +13,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
+  const color = chipColor(promotion);
   return (
     <Container>
       <Swiper
@@ -41,7 +42,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
               top: 4,
               left: 0,
               zIndex: 1,
-              bgcolor: chipColor(promotion),
+              bgcolor: color,
               '&.MuiChip-root': {
                 span: {
                   color: '#fff',

@@ -9,8 +9,9 @@ import { Card } from './productItem.styled';
 
 export default function ProductItem({ product, cart, favorites }) {
   const [inCart, setInCart] = useState(false);
-  const { id, images, promotion } = product;
-
+  const { id, images, promotion, status } = product;
+  const isover = status === 'Out of stock' ? true : false;
+  // console.log(isover);
   const dispatch = useDispatch();
 
   const swiperRef = useRef();
@@ -22,6 +23,7 @@ export default function ProductItem({ product, cart, favorites }) {
   }, [cart]);
 
   const handleCart = () => {
+    if (isover) return;
     if (cart.find(item => item.id === id)) {
       setInCart(true);
       dispatch(cartRemove(id));
@@ -52,6 +54,7 @@ export default function ProductItem({ product, cart, favorites }) {
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      isover={isover}
     >
       <CardSwiper
         promotion={promotion}

@@ -13,7 +13,7 @@ import { RowCenter, Span } from '@/app/lib/commonStyles';
 export default function ProductContent({ product, favorites }) {
   const { brand, title, description, colors, price } = product;
   const { status, id } = product;
-
+  const isover = status === 'Out of stock' ? true : false;
   return (
     <Box>
       <Paper elevation={2} sx={{ p: 2 }}>
@@ -40,13 +40,13 @@ export default function ProductContent({ product, favorites }) {
         </Box>
       </Paper>
 
-      <PaperStyled elevation={2}>
+      <PaperStyled elevation={2} isover={isover}>
         <Box>
           <Price price={price} component="h4" />
           <BalanceStatus status={status} />
         </Box>
         <BlockBtn>
-          <BuyButton id={id} width={160} />
+          <BuyButton id={id} width={160} isover={isover}/>
           <FavoriteIcon favorites={favorites} id={id} />
         </BlockBtn>
       </PaperStyled>

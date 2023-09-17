@@ -17,6 +17,6 @@ export const Block = styled(Box)({
 });
 
 export const IconAddCart = styled(AddShoppingCartIcon)(({ theme }) => ({
-  color: theme.palette.primary.accent,
   fontSize: '1.875rem',
+  color: theme.palette.primary.accent,
 }));

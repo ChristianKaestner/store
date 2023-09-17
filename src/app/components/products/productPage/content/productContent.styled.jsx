@@ -15,11 +15,23 @@ export const BlockBtn = styled(Box)({
   marginLeft: 16,
 });
 
-export const PaperStyled = styled(Paper)({
+export const PaperStyled = styled(Paper, {
+  shouldForwardProp: prop => prop !== 'isover',
+})(({ isover }) => ({
+  filter: isover ? 'grayscale(1)' : 'none',
   position: 'relative',
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   marginTop: 32,
   padding: 16,
-});
+}));
+
+// export const PaperStyled = styled(Paper)({
+//   position: 'relative',
+//   display: 'flex',
+//   flexDirection: 'row',
+//   alignItems: 'center',
+//   marginTop: 32,
+//   padding: 16,
+// });

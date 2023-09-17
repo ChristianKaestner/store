@@ -22,7 +22,7 @@ export default function CardDescription({
       </Box>
       <ProductRating product={product} size="small" />
       <Block>
-        <Price price={price} component="p" />
+        <Price component="p" price={price} />
 
         {inCart ? (
           <Box>

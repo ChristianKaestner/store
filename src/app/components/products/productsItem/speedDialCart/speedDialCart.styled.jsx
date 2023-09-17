@@ -22,7 +22,6 @@ export const IconCartRemove = styled(RemoveShoppingCartIcon)(({ theme }) => ({
 }));
 
 export const IconCartOpen = styled(ShoppingCartIcon)(({ theme }) => ({
-    fontSize: '1.875rem',
-    color: theme.palette.primary.accent,
-  }));
-  
+  fontSize: '1.875rem',
+  color: theme.palette.primary.accent,
+}));

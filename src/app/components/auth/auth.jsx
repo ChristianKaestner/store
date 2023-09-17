@@ -20,33 +20,39 @@ export default function Auth({ toggleAuth, login }) {
   };
 
   return (
-    <Column>
-      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
-        {login ? (
-          <Login
-            toggleAuth={toggleAuth}
-            handleLogin={handleLogin}
-            showPassword={showPassword}
-            handleClick={handleClickShowPassword}
-          />
-        ) : (
-          <Register
-            toggleAuth={toggleAuth}
-            handleRegister={handleRegister}
-            showPassword={showPassword}
-            handleClick={handleClickShowPassword}
-          />
-        )}
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: { xs: 'column', sm: 'row' },
+        height: '100%',
+        overflowY: 'auto',
+        py: { xs: 2, sm: 0 },
+      }}
+    >
+      {login ? (
+        <Login
+          toggleAuth={toggleAuth}
+          handleLogin={handleLogin}
+          showPassword={showPassword}
+          handleClick={handleClickShowPassword}
+        />
+      ) : (
+        <Register
+          toggleAuth={toggleAuth}
+          handleRegister={handleRegister}
+          showPassword={showPassword}
+          handleClick={handleClickShowPassword}
+        />
+      )}
 
-        <Divider
-          orientation="vertical"
-          flexItem
-          sx={{ mx: 2, display: { xs: 'none', sm: 'flex' } }}
-        >
-          <Chip label="or" variant="outlined" />
-        </Divider>
-        <Social />
-      </Box>
-    </Column>
+      <Divider
+        orientation="vertical"
+        flexItem
+        sx={{ mx: 2, display: { xs: 'none', sm: 'flex' } }}
+      >
+        <Chip label="or" variant="outlined" />
+      </Divider>
+      <Social />
+    </Box>
   );
 }

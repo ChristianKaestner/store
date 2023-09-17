@@ -8,7 +8,7 @@ import { useModal } from '@/app/hooks/useModal';
 import SideBar from './sideBar/sideBar';
 import AddReview from './addReview/addReview';
 import Modal from '../modal/modal';
-import AddReviewModal from './addReview/modal/addReviewModal';
+import AddReviewModal from '../modal/addReview/addReviewModal';
 import SuccessModal from '../modal/successModal/successModal';
 import ReviewList from './reviewsList/reviewsList';
 import ProductRating from '../products/productsItem/rating/rating';

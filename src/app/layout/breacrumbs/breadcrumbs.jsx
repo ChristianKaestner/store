@@ -21,7 +21,7 @@ export default function Breadcrumbs({ crumbs, title }) {
         crumbs.map((crumb, index) => {
           const isId = !isNaN(+crumb);
           const capitalizedCrumb = crumb[0].toUpperCase() + crumb.slice(1);
-          console.log(title);
+          
           if (crumbs.length - 1 !== index) {
             url += '/' + crumb;
             return (

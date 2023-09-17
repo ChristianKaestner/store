@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormControl, Box, TextField, Rating } from '@mui/material';
-import CommonBtn from '../../commonBtn/commonBtn';
+import CommonBtn from '../../reviews/commonBtn/commonBtn';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
 
 export default function AddReviewModal({ user, handleAddReview }) {

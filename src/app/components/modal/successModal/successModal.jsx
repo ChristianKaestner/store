@@ -7,6 +7,7 @@ export default function SuccessModal({ text }) {
       sx={{
         height: 'calc(100% - 106px)',
         textAlign: 'center',
+        justifyContent: 'center',
       }}
     >
       <Box>

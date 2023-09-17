@@ -73,7 +73,6 @@ export default function Header() {
               onClose={() => dispath(toggleAccount(false))}
               title={login ? 'Log In' : 'Register'}
               width="600px"
-              height="auto"
               position="center"
             >
               <Auth toggleAuth={() => setLogin(!login)} login={login} />

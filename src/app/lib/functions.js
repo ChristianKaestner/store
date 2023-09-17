@@ -54,10 +54,6 @@ export const catSlug = (cat, subCat) => {
   return `${cat.name}?${sub.join('_')}`;
 };
 
-export const productPath = product => {
-  return `/${product.categories}/${product.id}`;
-};
-
 export const getSlideCount = windowWidth => {
   switch (true) {
     case windowWidth >= 1200:

@@ -10,19 +10,19 @@ export default function Review() {
   const path = usePathname().split('/');
   path.splice(0, 1);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const { data = [], isLoading } = useGetProductByIdQuery(id);
+  const { data = [], isLoading } = useGetProductByIdQuery(slug);
 
   const reviewTitle = `Customer reviews of ${data?.title?.toLowerCase()}`;
   return (
     <>
       {!isLoading && (
         <>
-          <Breadcrumbs crumbs={path} />
+          <Breadcrumbs crumbs={path} title={data?.title} />
           <PageTitle title={reviewTitle} />
 
-          {data.reviews.length > 0 ? (
+          {data.reviews?.length > 0 ? (
             <Reviews product={data} />
           ) : (
             <p>no reviews yet...</p>

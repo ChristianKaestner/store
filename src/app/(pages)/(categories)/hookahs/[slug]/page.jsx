@@ -20,9 +20,8 @@ export default function Hookah() {
   const path = usePathname().split('/');
   path.splice(0, 1);
 
-  const { id } = useParams();
-
-  const { data, isLoading } = useGetProductByIdQuery(id);
+  const { slug } = useParams();
+  const { data, isLoading } = useGetProductByIdQuery(slug);
   const relatedProducts = useGetAllGoodsQuery();
 
   return (
@@ -30,7 +29,7 @@ export default function Hookah() {
       {!isLoading && (
         <>
           <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
-          <Breadcrumbs crumbs={path} />
+          <Breadcrumbs crumbs={path} title={data?.title} />
           {data && (
             <ProductPage
               product={data}

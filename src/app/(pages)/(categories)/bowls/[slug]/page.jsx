@@ -12,7 +12,7 @@ import InnerWidth from '@/app/components/innerWidth/innerWidth';
 
 export default function Hookah() {
   const isSSR = typeof window === 'undefined';
-
+  console.log('first');
   const [windowWidth, setWindowWidth] = useState(
     isSSR ? 1200 : window.innerWidth
   );
@@ -20,9 +20,9 @@ export default function Hookah() {
   const path = usePathname().split('/');
   path.splice(0, 1);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const { data, isLoading } = useGetProductByIdQuery(id);
+  const { data, isLoading } = useGetProductByIdQuery(slug);
   const relatedProducts = useGetAllGoodsQuery();
 
   return (
@@ -30,7 +30,7 @@ export default function Hookah() {
       {!isLoading && (
         <>
           <InnerWidth handleInnerWidth={width => setWindowWidth(width)} />
-          <Breadcrumbs crumbs={path} />
+          <Breadcrumbs crumbs={path} title={data?.title} />
           {data && (
             <ProductPage
               product={data}

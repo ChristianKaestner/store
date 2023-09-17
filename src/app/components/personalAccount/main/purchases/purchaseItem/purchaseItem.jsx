@@ -4,7 +4,7 @@ import { Accordion, Icon, Container, Block } from './purchaseItem.styled';
 import { AccordionDetails } from './purchaseItem.styled';
 import { cartAdd } from '@/app/redux/cart/slice';
 import OrderStatus from './orderStatus/orderStatus';
-import { Column, TextNeutral, TextBold } from '@/app/utils/commonStyles';
+import { Column, TextNeutral, TextBold } from '@/app/lib/commonStyles';
 import PurchaseTable from './purchaseTable/purchaseTable';
 
 export default function PurchaseItem({ order }) {

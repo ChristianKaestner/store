@@ -12,6 +12,7 @@ export default function SideBar({ image, title, price, id }) {
       sx={{
         display: { xs: 'none', md: 'flex' },
         flexDirection: 'row',
+        flexGrow: 1,
         width: 'auto',
         height: 160,
         MaxWidth: '30%',

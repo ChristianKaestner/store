@@ -4,7 +4,7 @@ import { Box, Typography, Button, Alert, Grow } from '@mui/material';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import ClearIcon from '@mui/icons-material/Clear';
 import RotateRightIcon from '@mui/icons-material/RotateRight';
-import { rotateImage, getAllFilesSize } from '@/app/utils/functions';
+import { rotateImage, getAllFilesSize } from '@/app/lib/functions';
 
 export default function UploadImage({
   fileList,

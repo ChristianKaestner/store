@@ -9,7 +9,7 @@ import StatusFilter from '../filters/status/status';
 import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
-import { addCount } from '@/app/utils/functions';
+import { addCount } from '@/app/lib/functions';
 
 //need to add Skeleton
 export default function Sidebar({ goods }) {

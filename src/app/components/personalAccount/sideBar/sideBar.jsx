@@ -1,4 +1,4 @@
-import { Row } from '@/app/utils/commonStyles';
+import { Row } from '@/app/lib/commonStyles';
 import AccountInfo from './accountInfo/accountInfo';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';

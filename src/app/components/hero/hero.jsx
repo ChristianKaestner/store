@@ -8,7 +8,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Box, IconButton, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { swiperStyles, IconBtnNavigate } from '@/app/utils/commonStyles';
+import { swiperStyles, IconBtnNavigate } from '@/app/lib/commonStyles';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';

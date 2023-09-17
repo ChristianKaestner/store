@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Box, Container } from '@mui/material';
 import { CommonColumnDesk, CommonColumnMob } from './footerColumn/footerColumn';
 import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
-import { productsLink, supportLink, contactLink } from '@/app/utils/pagesLink';
+import { productsLink, supportLink, contactLink } from '@/app/lib/pagesLink';
 import InnerWidth from '@/app/components/innerWidth/innerWidth';
 
 export default function Footer() {

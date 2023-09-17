@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Slider, PriceForm } from './price.styled';
-import { InputProps, Row } from '@/app/utils/commonStyles';
+import { InputProps, Row } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
 
 export default function PriceFilter({ items }) {

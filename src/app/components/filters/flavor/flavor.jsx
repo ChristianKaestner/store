@@ -3,8 +3,8 @@ import { useDebounce } from 'use-debounce';
 import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
-import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
-import { ContainerFilter, Form, Label } from '@/app/utils/commonStyles';
+import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
+import { ContainerFilter, Form, Label } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
 
 export default function FlavorFilter({ items }) {

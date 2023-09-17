@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { IconBtnNavigate } from '@/app/utils/commonStyles';
+import { IconBtnNavigate } from '@/app/lib/commonStyles';
 import 'swiper/css';
 
 export default function FullscreanImage({ dto }) {

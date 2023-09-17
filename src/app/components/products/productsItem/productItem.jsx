@@ -5,7 +5,6 @@ import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
 import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
-import { productPath } from '@/app/utils/functions';
 import { Card } from './productItem.styled';
 
 export default function ProductItem({ product, cart, favorites }) {
@@ -14,7 +13,6 @@ export default function ProductItem({ product, cart, favorites }) {
 
   const dispatch = useDispatch();
 
-  const path = productPath(product);
   const swiperRef = useRef();
 
   useEffect(() => {
@@ -59,13 +57,13 @@ export default function ProductItem({ product, cart, favorites }) {
         promotion={promotion}
         images={images}
         swiperRef={swiperRef}
-        path={path}
+        path={`/${product.categories}/${product.id}`}
         id={id}
       />
 
       <CardDescription
         product={product}
-        path={path}
+        path={`/${product.categories}/${product.id}`}
         inCart={inCart}
         handleCart={handleCart}
         openCart={() => dispatch(toggleCart(true))}

@@ -8,11 +8,11 @@ import BalanceStatus from '../../productsItem/balanceStatus/balanceStatus';
 import ProductCode from '../../productsItem/productCode/productCode';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import { Block, BlockBtn, PaperStyled } from './productContent.styled';
-import { RowCenter, Span } from '@/app/utils/commonStyles';
+import { RowCenter, Span } from '@/app/lib/commonStyles';
 
 export default function ProductContent({ product, favorites }) {
   const { brand, title, description, colors, price } = product;
-  const { status, id, rating, reviews } = product;
+  const { status, id } = product;
 
   return (
     <Box>
@@ -20,12 +20,7 @@ export default function ProductContent({ product, favorites }) {
         <PageTitle title={title} />
 
         <Block>
-          <ProductRating
-            rating={rating}
-            reviewUrl="/reviews"
-            totalReviews={reviews.length}
-            size="medium"
-          />
+          <ProductRating product={product} size="medium" />
           <ProductCode id={id} />
         </Block>
 

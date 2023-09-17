@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
-import { addAlphabetIndex, filterByInput } from '@/app/utils/functions';
+import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
 import { Counter } from './brand.styled';
-import { Form, Label, ContainerFilter } from '@/app/utils/commonStyles';
+import { Form, Label, ContainerFilter } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
 
 export default function BrandFilter({ items }) {

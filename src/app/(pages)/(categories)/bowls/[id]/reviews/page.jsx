@@ -2,22 +2,18 @@
 
 import { usePathname, useParams } from 'next/navigation';
 import { useGetProductByIdQuery } from '@/app/redux/services/goods';
-import { Container, Box } from '@mui/material';
+import { Container } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
-import ProductRating from '@/app/components/products/productsItem/rating/rating';
-import ProductCode from '@/app/components/products/productsItem/productCode/productCode';
 import Reviews from '@/app/components/reviews/reviews';
 
-export default function Hookah() {
+export default function Review() {
   const path = usePathname().split('/');
   path.splice(0, 1);
 
   const { id } = useParams();
-  
 
   const { data = [], isLoading } = useGetProductByIdQuery(id);
-  const { reviews, rating } = data;
 
   const reviewTitle = `Customer reviews of ${data?.title?.toLowerCase()}`;
   return (
@@ -35,28 +31,12 @@ export default function Hookah() {
         >
           <Breadcrumbs crumbs={path} />
           <PageTitle title={reviewTitle} />
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              mt: 1,
-            }}
-          >
-            {reviews && (
-              <>
-                <ProductRating
-                  rating={rating}
-                  size="medium"
-                  reviewUrl="/reviews"
-                  totalReviews={reviews.length}
-                />
-                <ProductCode id={id} />
-              </>
-            )}
-          </Box>
-          <Reviews product={data} />
+
+          {data.reviews.length > 0 ? (
+            <Reviews product={data} />
+          ) : (
+            <p>no reviews yet...</p>
+          )}
         </Container>
       )}
     </>

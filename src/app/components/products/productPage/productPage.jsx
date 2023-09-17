@@ -2,7 +2,7 @@ import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
 import { Container, BlockSwiper, BlockContent } from './productPage.styled';
-import { tmpUser } from '@/app/utils/tmpData';
+import { tmpUser } from '@/app/lib/tmpData';
 
 export default function ProductPage({ product, relatedProducts, windowWidth }) {
   const { favorites } = tmpUser;

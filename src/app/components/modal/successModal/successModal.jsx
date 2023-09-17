@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { ColumnCenter } from '@/app/utils/commonStyles';
+import { ColumnCenter } from '@/app/lib/commonStyles';
 export default function SuccessModal({ text }) {
   return (
     <ColumnCenter

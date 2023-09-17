@@ -55,7 +55,7 @@ export const catSlug = (cat, subCat) => {
 };
 
 export const productPath = product => {
-  return `${product.categories}/${product.id}`;
+  return `/${product.categories}/${product.id}`;
 };
 
 export const getSlideCount = windowWidth => {

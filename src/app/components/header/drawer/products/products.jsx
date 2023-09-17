@@ -1,7 +1,7 @@
 import { Box, List, ListItem, Divider } from '@mui/material';
 import { LinkStyled } from '../drawer.styled';
 import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
-import { categories } from '@/app/utils/tmpData';
+import { categories } from '@/app/lib/tmpData';
 
 export default function ProductsList() {
   return (

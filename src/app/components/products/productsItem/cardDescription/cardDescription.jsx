@@ -12,19 +12,15 @@ export default function CardDescription({
   openCart,
   path,
 }) {
-  const { brand, title, price, rating, reviews } = product;
+  const { brand, title, price } = product;
+
   return (
     <CardContent sx={{ p: 1 }}>
       <Box>
         <Text>{brand}</Text>
         <ProductTitle path={path} title={title} />
       </Box>
-      <ProductRating
-        rating={rating}
-        reviewUrl="/reviews"
-        totalReviews={reviews.length}
-        size="small"
-      />
+      <ProductRating product={product} size="small" />
       <Block>
         <Price price={price} component="p" />
 

@@ -5,12 +5,12 @@ import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount } from '@/app/redux/modal/slice';
 import { IconFavorite, IconFavoriteBorder } from './favoriteIcon.styled';
 import { IconButton } from './favoriteIcon.styled';
-import { tmpUser } from '@/app/utils/tmpData';
+import { tmpUser } from '@/app/lib/tmpData';
 
 export default function FavoriteIcon({ id }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const { favorites } = tmpUser;
-  
+
   useEffect(() => {
     if (favorites === undefined) return;
     if (favorites.includes(id)) setIsFavorite(true);

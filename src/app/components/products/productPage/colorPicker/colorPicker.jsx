@@ -3,7 +3,7 @@ import { Radio, Typography } from '@mui/material';
 import { FormControlLabel, FormControl } from '@mui/material';
 import { Label, BlockRadio, IconCircle } from './colorPicker.styled';
 import { IconCircleChecked } from './colorPicker.styled';
-import { Span } from '@/app/utils/commonStyles';
+import { Span } from '@/app/lib/commonStyles';
 
 export default function ColorPicker({ colors }) {
   const [color, setColor] = useState(colors?.length ? colors[0] : null);

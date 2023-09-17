@@ -3,7 +3,7 @@ import { Lato } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import { ThemeProvider } from '@mui/material';
-import { myTheme } from './utils/theme';
+import { myTheme } from './lib/theme';
 import ReduxProvider from './redux/provider';
 
 const lato = Lato({

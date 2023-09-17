@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AccountAside from './sideBar/sideBar';
 import AccountMain from './main/accountMain';
-import { tmpUser } from '@/app/utils/tmpData';
+import { tmpUser } from '@/app/lib/tmpData';
 import { Box } from '@mui/material';
 
 //need to add modal view

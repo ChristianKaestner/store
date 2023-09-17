@@ -1,6 +1,6 @@
 import { useForm, Controller } from 'react-hook-form';
 import { FormControl, Button } from '@mui/material';
-import { InputProps } from '@/app/utils/commonStyles';
+import { InputProps } from '@/app/lib/commonStyles';
 import OnError from '../../Notifications/onError';
 
 export default function EditAddressModal({ address, handleEdit }) {

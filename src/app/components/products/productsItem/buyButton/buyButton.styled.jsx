@@ -6,6 +6,6 @@ export const ButtonStyled = styled(Button, {
 })(({ width, theme }) => ({
   width: width,
   height: 40,
-  bgcolor: theme.palette.primary.light,
+  backgroundColor: theme.palette.primary.light,
   margin: '0 16px',
 }));

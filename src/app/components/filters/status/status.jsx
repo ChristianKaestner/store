@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
-import { Form, List, Label } from '@/app/utils/commonStyles';
+import { Form, List, Label } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
 
 export default function StatusFilter({ items }) {

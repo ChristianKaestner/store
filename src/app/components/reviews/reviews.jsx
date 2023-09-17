@@ -11,6 +11,8 @@ import Modal from '../modal/modal';
 import AddReviewModal from './addReview/modal/addReviewModal';
 import SuccessModal from '../modal/successModal/successModal';
 import ReviewList from './reviewsList/reviewsList';
+import ProductRating from '../products/productsItem/rating/rating';
+import ProductCode from '../products/productsItem/productCode/productCode';
 
 export default function Reviews({ product }) {
   const [reviewModal, setReviewModal] = useState(false);
@@ -30,45 +32,59 @@ export default function Reviews({ product }) {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
+    <>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
-          width: { xs: '100%', md: '70%' },
-          mr: 2,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          mt: 1,
         }}
       >
-        <AddReview onWriteReview={handleWirteReview} />
-        <ReviewList reviews={reviews} />
+        <ProductRating product={product} size="medium" />
+        <ProductCode id={id} />
       </Box>
-      <SideBar image={images[0]} title={title} price={price} id={id} />
-      {reviewModal && (
-        <Modal
-          onClose={() => setReviewModal(false)}
-          title="Add review"
-          width="600px"
-          height="600px"
-          position="center"
+      <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: { xs: '100%', md: '70%' },
+            mr: 2,
+          }}
         >
-          <AddReviewModal user={user} handleAddReview={handleAddReview} />
-        </Modal>
-      )}
-      {successModal && (
-        <Modal
-          onClose={() => dispath(toggleSuccess(false))}
-          title="Successfully"
-          width="600px"
-          height="auto"
-          position="center"
-        >
-          <SuccessModal
-            text={
-              'Your review has been sent for moderation and will appear on the site soon'
-            }
-          />
-        </Modal>
-      )}
-    </Box>
+          <AddReview onWriteReview={handleWirteReview} />
+          <ReviewList reviews={reviews} />
+        </Box>
+        <SideBar image={images[0]} title={title} price={price} id={id} />
+        {reviewModal && (
+          <Modal
+            onClose={() => setReviewModal(false)}
+            title="Add review"
+            width="600px"
+            height="600px"
+            position="center"
+          >
+            <AddReviewModal user={user} handleAddReview={handleAddReview} />
+          </Modal>
+        )}
+        {successModal && (
+          <Modal
+            onClose={() => dispath(toggleSuccess(false))}
+            title="Successfully"
+            width="600px"
+            height="auto"
+            position="center"
+          >
+            <SuccessModal
+              text={
+                'Your review has been sent for moderation and will appear on the site soon'
+              }
+            />
+          </Modal>
+        )}
+      </Box>
+    </>
   );
 }

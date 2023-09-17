@@ -2,8 +2,8 @@ import { useState, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
-import { getSlideCount } from '@/app/utils/functions';
-import { IconBtnNavigate } from '@/app/utils/commonStyles';
+import { getSlideCount } from '@/app/lib/functions';
+import { IconBtnNavigate } from '@/app/lib/commonStyles';
 import { Container, Text, IconNext, IconPrev } from './relatedProducts.styled';
 import 'swiper/css';
 

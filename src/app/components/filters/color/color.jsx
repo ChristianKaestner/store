@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
-import { Form, Row, RowCenter, Label, List } from '@/app/utils/commonStyles';
+import { Form, Row, RowCenter, Label, List } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
 
 export default function ColorFilter({ items }) {

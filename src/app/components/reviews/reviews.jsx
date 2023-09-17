@@ -47,6 +47,7 @@ export default function Reviews({ product }) {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'row', mt: 4 }}>
         <Box
+          component="section"
           sx={{
             display: 'flex',
             flexDirection: 'column',

@@ -6,6 +6,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import { Slider, PriceForm } from './price.styled';
 import { InputProps, Row } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
+import { Typography } from '@mui/material';
 
 export default function PriceFilter({ items }) {
   const min = Math.min(...items);
@@ -43,6 +45,9 @@ export default function PriceFilter({ items }) {
 
   return (
     <FilterCommon title="Price">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by price
+      </Typography>
       <PriceForm component="form">
         <Controller
           control={control}

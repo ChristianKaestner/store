@@ -43,12 +43,12 @@ export default function ProductSwiper({ product }) {
             );
           })}
       </Swiper>
-      {media >= 900 && (
+      {media && (
         <Swiper
           onSwiper={setThumbsSwiper}
           loop={true}
           spaceBetween={10}
-          slidesPerView={10}
+          slidesPerView={6}
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
@@ -64,8 +64,8 @@ export default function ProductSwiper({ product }) {
                       cursor: 'pointer',
                     }}
                     src={image}
-                    width={50}
-                    height={50}
+                    width={80}
+                    height={80}
                     alt={title + ' image'}
                     priority="false"
                   />

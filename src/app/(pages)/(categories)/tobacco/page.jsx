@@ -50,6 +50,7 @@ export default function Tobacco() {
           onPage={handlePage}
           onLoadMore={handleLoadMore}
           skeleton={20}
+          title="Large variety of tobacco for hookahs"
         />
       </Box>
     </>

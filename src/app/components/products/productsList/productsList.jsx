@@ -2,10 +2,11 @@
 
 import ProductsItem from '../productsItem/productItem';
 import Grid from '@mui/material/Unstable_Grid2';
-import { Box, Pagination, Button } from '@mui/material';
+import { Box, Pagination, Button, Typography } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 import Skeleton from '../../skeleton/skeleton';
 import { BlockBtn, PaginationStyled } from './productList.styled';
+import { visuallyHidden } from '@mui/utils';
 
 export default function ProductsList({
   goods,
@@ -18,9 +19,14 @@ export default function ProductsList({
   onLoadMore,
   skeleton,
   lgPerPage = 2.4,
+  component = 'h2',
+  title,
 }) {
   return (
     <Box component="section" sx={{ width: '100%' }}>
+      <Typography component={component} sx={visuallyHidden}>
+        {title}
+      </Typography>
       <Grid
         component="ul"
         container

@@ -58,8 +58,8 @@ export default function RelatedProducts({ relatedProducts }) {
   };
 
   return (
-    <Container>
-      <Text component="h5">You may also be interested</Text>
+    <Container component="section">
+      <Text component="h2">You may also be interested</Text>
       {!isLoading && (
         <Swiper
           slidesPerView={slidesPerView}

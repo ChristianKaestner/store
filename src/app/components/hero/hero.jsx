@@ -20,7 +20,7 @@ export default function Hero({ images }) {
   return (
     <Box component="section">
       <Typography component="h1" sx={visuallyHidden}>
-        Best hookah in the world!
+        Buy hookah and accessories here
       </Typography>
       <Swiper
         spaceBetween={0}

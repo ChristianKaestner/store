@@ -6,6 +6,7 @@ import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
 import { ContainerFilter, Form, Label } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
@@ -28,6 +29,9 @@ export default function FlavorFilter({ items }) {
 
   return (
     <FilterCommon title="Flavors">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by flavor
+      </Typography>
       <Form component="form">
         <Box sx={{ pl: 2 }}>
           <TextField

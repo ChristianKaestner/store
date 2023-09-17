@@ -48,6 +48,7 @@ export default function Hookahs() {
           onPage={handlePage}
           onLoadMore={handleLoadMore}
           skeleton={20}
+          title="Large variety of hookahs"
         />
       </Box>
     </>

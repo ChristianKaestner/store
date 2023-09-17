@@ -15,10 +15,12 @@ export default function Categories({ categories }) {
         container
         rowSpacing={{ xs: 2, sm: 2, md: 3 }}
         columnSpacing={{ xs: 2, sm: 2, md: 3 }}
+        component="ul"
+        sx={{ listStyle: 'none' }}
       >
         {categories.map(category => {
           return (
-            <Grid xs={6} key={category.id}>
+            <Grid xs={6} key={category.id} component="li">
               <Link href={category.name.toLowerCase()}>
                 <Card>
                   <Image
@@ -38,9 +40,6 @@ export default function Categories({ categories }) {
                       component="h3"
                       sx={{ fontSize: 28, color: '#fff' }}
                     >
-                      {category.title}
-                    </Typography>
-                    <Typography sx={{ color: '#fff' }}>
                       {category.description}
                     </Typography>
                   </Box>

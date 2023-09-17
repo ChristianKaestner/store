@@ -9,10 +9,10 @@ export default function ProductPage({ product, relatedProducts }) {
   return (
     <>
       <Container>
-        <BlockSwiper>
+        <BlockSwiper component="section">
           <ProductSwiper product={product} />
         </BlockSwiper>
-        <BlockContent>
+        <BlockContent component="section">
           <ProductContent product={product} favorites={favorites} />
         </BlockContent>
       </Container>

@@ -4,6 +4,7 @@ import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
 import { Form, Row, RowCenter, Label, List } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
 
 export default function ColorFilter({ items }) {
   const { register, getValues } = useForm();
@@ -16,6 +17,9 @@ export default function ColorFilter({ items }) {
 
   return (
     <FilterCommon title="Color">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by color
+      </Typography>
       <Form component="form">
         <List component="ul" sx={{ pl: 2 }}>
           {items.map(({ id, color }) => {

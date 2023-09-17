@@ -38,7 +38,9 @@ export default function AccountSettings({ user }) {
         }}
       >
         <RowCenter>
-          <SubTitle sx={{ mr: 2 }}>Personal details</SubTitle>
+          <SubTitle component="h2" sx={{ mr: 2 }}>
+            Personal details
+          </SubTitle>
           <IconButton onClick={() => setDetailsModal(true)}>
             <EditIcon />
           </IconButton>
@@ -67,20 +69,6 @@ export default function AccountSettings({ user }) {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <Row sx={{ mt: 2 }}>
-          <Column>
-            <TextNeutral>First name:</TextNeutral>
-            <TextNeutral>Last name: </TextNeutral>
-            <TextNeutral>Phone number: </TextNeutral>
-            <TextNeutral>Email: </TextNeutral>
-          </Column>
-          <Column sx={{ ml: 2 }}>
-            <TextBold>{firstName}</TextBold>
-            <TextBold>{lastName}</TextBold>
-            <TextBold>{phone}</TextBold>
-            <TextBold>{email}</TextBold>
-          </Column>
-        </Row> */}
       </Paper>
 
       <Paper
@@ -91,7 +79,9 @@ export default function AccountSettings({ user }) {
         }}
       >
         <RowCenter>
-          <SubTitle sx={{ mr: 2 }}>Shipping address</SubTitle>
+          <SubTitle component="h2" sx={{ mr: 2 }}>
+            Shipping address
+          </SubTitle>
           <IconButton onClick={() => setAddressModal(true)}>
             <EditIcon />
           </IconButton>

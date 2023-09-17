@@ -5,6 +5,7 @@ import ReplyReview from './replyReview/replyReview';
 import RateReview from './rateReview/rateReview';
 import ReviewComment from '../reviewComment/reviewComment';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import { visuallyHidden } from '@mui/utils';
 
 export default function ReviewItem({ review, onReplyClick, onImageClick }) {
   const { id, text, pros, cons, images, rating, date } = review;
@@ -110,19 +111,24 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
         </Box>
       </Paper>
       {comments?.length > 0 && (
-        <Box
-          component="ul"
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'end',
-            listStyle: 'none',
-          }}
-        >
-          {comments.map(comment => {
-            return <ReviewComment key={comment.id} comment={comment} />;
-          })}
-        </Box>
+        <>
+          <Typography component="h4" sx={visuallyHidden}>
+            Comments to review
+          </Typography>
+          <Box
+            component="ul"
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'end',
+              listStyle: 'none',
+            }}
+          >
+            {comments.map(comment => {
+              return <ReviewComment key={comment.id} comment={comment} />;
+            })}
+          </Box>
+        </>
       )}
     </>
   );

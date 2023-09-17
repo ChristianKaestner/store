@@ -9,6 +9,8 @@ import CommentReviewModal from '../reviewComment/modal/commentReviewModal';
 import FullscreanImage from '../../modal/fullscreanReview/fullscreanReview';
 import SuccessModal from '../../modal/successModal/successModal';
 import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
+import { visuallyHidden } from '@mui/utils';
+import { Typography } from '@mui/material';
 
 export default function ReviewList({ reviews }) {
   const [commentModal, setCommentModal] = useState(false);
@@ -39,6 +41,9 @@ export default function ReviewList({ reviews }) {
     <>
       {reviews && (
         <Box component="ul" sx={{ listStyle: 'none' }}>
+          <Typography component="h3" sx={visuallyHidden}>
+            list of Product Reviews
+          </Typography>
           {reviews.map(review => {
             return (
               <ReviewItem

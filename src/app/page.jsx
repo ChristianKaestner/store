@@ -2,7 +2,6 @@
 
 import { useCart } from './hooks/useCart';
 import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
-import { Container } from '@mui/material';
 import Hero from './components/hero/hero';
 import Categories from './components/categories/categories';
 import ProductsList from './components/products/productsList/productsList';
@@ -26,6 +25,8 @@ export default function Home() {
         cart={cart}
         favorites={favorites}
         skeleton={12}
+        component="h4"
+        title="Hot deals on hookahs, tobacco, coal and accessories "
       />
     </>
   );

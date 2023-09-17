@@ -3,6 +3,8 @@ import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
+import { Typography } from '@mui/material';
 
 export default function SizeFilter({ items }) {
   const { register, getValues } = useForm();
@@ -15,6 +17,9 @@ export default function SizeFilter({ items }) {
 
   return (
     <FilterCommon title="Size">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by size
+      </Typography>
       <Form component="form">
         <List component="ul" sx={{ pl: 2 }}>
           {items.map(({ id, size }) => {

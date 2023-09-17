@@ -3,6 +3,8 @@ import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
+import { Typography } from '@mui/material/';
 
 export default function WeightFilter({ items }) {
   const { register, getValues } = useForm();
@@ -15,6 +17,9 @@ export default function WeightFilter({ items }) {
 
   return (
     <FilterCommon title="Weight">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by weight
+      </Typography>
       <Form component="form">
         <List sx={{ pl: 2 }}>
           {items.map(({ id, weight }) => {

@@ -7,6 +7,7 @@ import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
 import { Counter } from './brand.styled';
 import { Form, Label, ContainerFilter } from '@/app/lib/commonStyles';
 import { debounce } from 'lodash';
+import { visuallyHidden } from '@mui/utils';
 
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
@@ -29,6 +30,9 @@ export default function BrandFilter({ items }) {
 
   return (
     <FilterCommon title="Brand">
+      <Typography component="h3" sx={visuallyHidden}>
+        Search by brand
+      </Typography>
       <Form component="form">
         <Box sx={{ pl: 2 }}>
           <TextField

@@ -49,6 +49,7 @@ export default function Coals() {
           onPage={handlePage}
           onLoadMore={handleLoadMore}
           skeleton={20}
+          title="Large variety of coals for hookahs"
         />
       </Box>
     </>

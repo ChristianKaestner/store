@@ -50,6 +50,7 @@ export default function Bowls() {
           onPage={handlePage}
           onLoadMore={handleLoadMore}
           skeleton={20}
+          title="Large variety of bowls for hookahs"
         />
       </Box>
     </>

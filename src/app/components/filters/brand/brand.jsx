@@ -57,7 +57,7 @@ export default function BrandFilter({ items }) {
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
 
-    //send request with values
+    // send request with values
     const values = getValues('brandName');
     console.log(values);
   };

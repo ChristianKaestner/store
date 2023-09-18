@@ -95,3 +95,9 @@ export const getAllFilesSize = files => {
   Object.values(files).forEach(file => (filesSize += file.size));
   return filesSize;
 };
+
+export const getSearchParams = (searchParams, field) => {
+  const matched = searchParams.get(field);
+  if (!matched) return [];
+  return matched.split(',');
+};

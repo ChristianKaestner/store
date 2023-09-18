@@ -1,19 +1,27 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDebounce } from 'use-debounce';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
+import { getSearchParams } from '@/app/lib/functions';
 import { Counter } from './brand.styled';
 import { Form, Label, ContainerFilter } from '@/app/lib/commonStyles';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
+import { Row } from '@/app/lib/commonStyles';
 
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
 
   const { register, getValues } = useForm();
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const paramsBrands = getSearchParams(searchParams, 'brand');
 
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
@@ -22,11 +30,38 @@ export default function BrandFilter({ items }) {
     'brand'
   );
 
-  const handleChecked = debounce(() => {
-    // send request
+  const handleChecked = e => {
+    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    const brands = current.get('brand');
+
+    if (brands) {
+      const brandArray = brands.split(',');
+
+      if (brandArray.includes(value)) {
+        brandArray.splice(brandArray.indexOf(value), 1);
+      } else {
+        brandArray.push(value);
+      }
+
+      if (brandArray.length > 0) {
+        current.set('brand', brandArray.join(','));
+      } else {
+        current.delete('brand');
+      }
+    } else {
+      current.set('brand', value);
+    }
+
+    const search = decodeURIComponent(current.toString());
+    const query = search ? `?${search}` : '';
+
+    router.push(`${pathname}${query}`);
+    //send request with values
     const values = getValues('brandName');
     console.log(values);
-  }, 1000);
+  };
 
   return (
     <FilterCommon title="Brand">
@@ -50,6 +85,11 @@ export default function BrandFilter({ items }) {
         <ContainerFilter component="ul">
           {items.length > 0 &&
             filtredBrands.map(({ id, brand, letter, count }) => {
+              let checked = false;
+              const brandMod = brand.toLowerCase().split(' ').join('').trim();
+              if (paramsBrands.includes(brandMod)) {
+                checked = true;
+              }
               return (
                 <Box key={id} component="li">
                   {letter && (
@@ -58,6 +98,7 @@ export default function BrandFilter({ items }) {
                   <Label
                     control={
                       <Checkbox
+                        checked={checked}
                         value={brand}
                         sx={{ p: 1 }}
                         size="small"
@@ -67,11 +108,11 @@ export default function BrandFilter({ items }) {
                       />
                     }
                     label={
-                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                      <Row>
                         <Counter badgeContent={count}>
                           <Typography>{brand}</Typography>
                         </Counter>
-                      </Box>
+                      </Row>
                     }
                   />
                 </Box>

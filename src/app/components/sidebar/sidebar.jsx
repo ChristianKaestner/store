@@ -22,12 +22,6 @@ export default function Sidebar({ goods }) {
   const sizes = [];
   const types = [];
 
-  // const colorsFlated = []
-  // goods.forEach(n=> {
-  //   if (!n.colors.length) return
-
-  // })
-
   goods.forEach(product => {
     const { price, colors, brand, weight, status, flavor, size, type } =
       product;

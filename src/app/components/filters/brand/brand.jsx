@@ -32,7 +32,6 @@ export default function BrandFilter({ items }) {
 
   const handleChecked = e => {
     const value = e.target.value.toLowerCase().split(' ').join('').trim();
-
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const brands = current.get('brand');
 
@@ -55,9 +54,10 @@ export default function BrandFilter({ items }) {
     }
 
     const search = decodeURIComponent(current.toString());
+    console.log(search);
     const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
 
-    router.push(`${pathname}${query}`);
     //send request with values
     const values = getValues('brandName');
     console.log(values);

@@ -21,7 +21,7 @@ export default function BrandFilter({ items }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const paramsBrands = getSearchParams(searchParams, 'brand');
+  const paramsBrand = getSearchParams(searchParams, 'brand');
 
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
@@ -86,7 +86,7 @@ export default function BrandFilter({ items }) {
             filtredBrands.map(({ id, brand, letter, count }) => {
               let checked = false;
               const brandMod = brand.toLowerCase().split(' ').join('').trim();
-              if (paramsBrands.includes(brandMod)) {
+              if (paramsBrand.includes(brandMod)) {
                 checked = true;
               }
               return (

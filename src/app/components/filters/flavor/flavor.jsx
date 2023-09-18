@@ -17,7 +17,7 @@ export default function FlavorFilter({ items }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const paramsFlavors = getSearchParams(searchParams, 'flavor');
+  const paramsFlavor = getSearchParams(searchParams, 'flavor');
 
   const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
   const filtredFlavors = filterByInput(
@@ -83,7 +83,7 @@ export default function FlavorFilter({ items }) {
             filtredFlavors.map(({ id, flavor, letter }) => {
               let checked = false;
               const flavorMod = flavor.toLowerCase().split(' ').join('').trim();
-              if (paramsFlavors.includes(flavorMod)) {
+              if (paramsFlavor.includes(flavorMod)) {
                 checked = true;
               }
               return (

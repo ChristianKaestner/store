@@ -54,7 +54,6 @@ export default function BrandFilter({ items }) {
     }
 
     const search = decodeURIComponent(current.toString());
-    console.log(search);
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
 

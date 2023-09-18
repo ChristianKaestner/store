@@ -1,16 +1,23 @@
 import { useState } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { getSearchParams } from '@/app/lib/functions';
 import { useDebounce } from 'use-debounce';
 import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
 import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
 import { ContainerFilter, Form, Label } from '@/app/lib/commonStyles';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
 
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
   const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const paramsFlavors = getSearchParams(searchParams, 'flavor');
 
   const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
   const filtredFlavors = filterByInput(
@@ -21,11 +28,36 @@ export default function FlavorFilter({ items }) {
 
   const { register, getValues } = useForm();
 
-  const handleChecked = debounce(() => {
+  const handleChecked = e => {
+    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    const flavors = current.get('flavor');
+
+    if (flavors) {
+      const flavorArray = flavors.split(',');
+
+      if (flavorArray.includes(value)) {
+        flavorArray.splice(flavorArray.indexOf(value), 1);
+      } else {
+        flavorArray.push(value);
+      }
+
+      if (flavorArray.length > 0) {
+        current.set('flavor', flavorArray.join(','));
+      } else {
+        current.delete('flavor');
+      }
+    } else {
+      current.set('flavor', value);
+    }
+
+    const search = decodeURIComponent(current.toString());
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
     // send request
     const values = getValues('flavor');
     console.log(values);
-  }, 1000);
+  };
 
   return (
     <FilterCommon title="Flavors">
@@ -49,6 +81,11 @@ export default function FlavorFilter({ items }) {
         <ContainerFilter component="ul">
           {items.length > 0 &&
             filtredFlavors.map(({ id, flavor, letter }) => {
+              let checked = false;
+              const flavorMod = flavor.toLowerCase().split(' ').join('').trim();
+              if (paramsFlavors.includes(flavorMod)) {
+                checked = true;
+              }
               return (
                 <Box key={id} component="li">
                   {letter && (
@@ -57,6 +94,7 @@ export default function FlavorFilter({ items }) {
                   <Label
                     control={
                       <Checkbox
+                        checked={checked}
                         value={flavor}
                         sx={{ p: 1 }}
                         size="small"

@@ -8,14 +8,13 @@ import { Form, Row, RowCenter, Label, List } from '@/app/lib/commonStyles';
 // import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
 
-
 export default function ColorFilter({ items }) {
   const { register, getValues } = useForm();
 
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const paramsColors = getSearchParams(searchParams, 'color');
+  const paramsColor = getSearchParams(searchParams, 'color');
 
   const handleChecked = e => {
     const value = e.target.value.toLowerCase().split(' ').join('').trim();
@@ -23,16 +22,16 @@ export default function ColorFilter({ items }) {
     const colors = current.get('color');
 
     if (colors) {
-      const colorsArray = colors.split(',');
+      const colorArray = colors.split(',');
 
-      if (colorsArray.includes(value)) {
-        colorsArray.splice(colorsArray.indexOf(value), 1);
+      if (colorArray.includes(value)) {
+        colorArray.splice(colorArray.indexOf(value), 1);
       } else {
-        colorsArray.push(value);
+        colorArray.push(value);
       }
 
-      if (colorsArray.length > 0) {
-        current.set('color', colorsArray.join(','));
+      if (colorArray.length > 0) {
+        current.set('color', colorArray.join(','));
       } else {
         current.delete('color');
       }
@@ -59,7 +58,7 @@ export default function ColorFilter({ items }) {
           {items.map(({ id, color }) => {
             let checked = false;
             const colorMod = color.toLowerCase().split(' ').join('').trim();
-            if (paramsColors.includes(colorMod)) {
+            if (paramsColor.includes(colorMod)) {
               checked = true;
             }
             return (

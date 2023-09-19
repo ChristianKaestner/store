@@ -8,7 +8,7 @@ import { Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
-import SortFilter from '@/app/components/filters/sortFilter/SortFilter';
+import SortFilter from '@/app/components/filters/sortFilter/sortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
 
 export default function Tobacco() {

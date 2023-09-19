@@ -1,3 +1,5 @@
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { getSearchParams } from '@/app/lib/functions';
 import { useForm, Controller } from 'react-hook-form';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -8,8 +10,23 @@ import Select from '@mui/material/Select';
 export default function SortFilter() {
   const { control } = useForm();
 
-  const handleChange = data => {
-    console.log(data);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const paramsSort = getSearchParams(searchParams, 'sort');
+  const defaultValue = paramsSort ? paramsSort : '';
+
+  const handleChange = value => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    if (value) {
+      current.set('sort', value);
+    } else {
+      current.delete('sort');
+    }
+    const search = current.toString();
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
+
     // update data by filter
   };
 
@@ -20,7 +37,7 @@ export default function SortFilter() {
         <Controller
           control={control}
           name="price"
-          defaultValue={''}
+          defaultValue={defaultValue}
           render={({ field: { onChange, value } }) => {
             return (
               <Select
@@ -36,10 +53,10 @@ export default function SortFilter() {
                 <MenuItem value="">
                   <em>default</em>
                 </MenuItem>
-                <MenuItem value={'cheap'}>cheap to expensive</MenuItem>
-                <MenuItem value={'expensive'}>expensive to cheap</MenuItem>
-                <MenuItem value={'discount'}>discount rate</MenuItem>
-                <MenuItem value={'new'}>new products</MenuItem>
+                <MenuItem value={'cheap'}>cheap</MenuItem>
+                <MenuItem value={'expensive'}>expensive</MenuItem>
+                <MenuItem value={'new'}>new</MenuItem>
+                <MenuItem value={'sale'}>sale</MenuItem>
               </Select>
             );
           }}

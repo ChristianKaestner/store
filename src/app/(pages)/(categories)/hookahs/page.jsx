@@ -7,8 +7,10 @@ import { Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
-import SortFilter from '@/app/components/filters/sortFilter/SortFilter';
+import SortFilter from '@/app/components/filters/sortFilter/sortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
+import Sortbar from '@/app/components/filters/sortbar/sortbar';
+import { Row, RowBetween } from '@/app/lib/commonStyles';
 
 export default function Hookahs() {
   const [page, setPage] = useState(1);
@@ -33,11 +35,14 @@ export default function Hookahs() {
     <>
       <Breadcrumbs crumbs={path} />
       <PageTitle title="Hookahs" />
-      <SortFilter />
-      <Divider />
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-        <Sidebar goods={hookahs} />
+      <RowBetween>
+        <Sortbar />
+        <SortFilter />
+      </RowBetween>
 
+      <Divider />
+      <Row sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Sidebar goods={hookahs} />
         <ProductsList
           goods={hookahs}
           isLoading={isLoading}
@@ -50,7 +55,7 @@ export default function Hookahs() {
           skeleton={20}
           title="Large variety of hookahs"
         />
-      </Box>
+      </Row>
     </>
   );
 }

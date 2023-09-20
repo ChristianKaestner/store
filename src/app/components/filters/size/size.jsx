@@ -17,7 +17,7 @@ export default function SizeFilter({ items }) {
   const paramsSize = getSearchParams(searchParams, 'size');
 
   const handleChecked = e => {
-    const value = e.target.value;
+    const value = e.currentTarget.value;
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const sizes = current.get('size');
 

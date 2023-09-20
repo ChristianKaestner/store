@@ -4,12 +4,14 @@ import { useState } from 'react';
 import { useCart } from '@/app/hooks/useCart';
 import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
-import { Box, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortFilter/sortFilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
+import Sortbar from '@/app/components/filters/sortbar/sortbar';
+import { Row, RowBetween } from '@/app/lib/commonStyles';
 
 export default function Bowls() {
   const [page, setPage] = useState(1);
@@ -35,9 +37,12 @@ export default function Bowls() {
     <>
       <Breadcrumbs crumbs={path} />
       <PageTitle title="Bowls" />
-      <SortFilter />
+      <RowBetween sx={{ mb: 1 }}>
+        <Sortbar />
+        <SortFilter />
+      </RowBetween>
       <Divider />
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Row>
         <Sidebar goods={bowls} />
 
         <ProductsList
@@ -52,7 +57,7 @@ export default function Bowls() {
           skeleton={20}
           title="Large variety of bowls for hookahs"
         />
-      </Box>
+      </Row>
     </>
   );
 }

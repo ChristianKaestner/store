@@ -29,7 +29,7 @@ export default function FlavorFilter({ items }) {
   const { register, getValues } = useForm();
 
   const handleChecked = e => {
-    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const value = e.currentTarget.value.toLowerCase();
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const flavors = current.get('flavor');
 
@@ -82,7 +82,8 @@ export default function FlavorFilter({ items }) {
           {items.length > 0 &&
             filtredFlavors.map(({ id, flavor, letter }) => {
               let checked = false;
-              const flavorMod = flavor.toLowerCase().split(' ').join('').trim();
+              const flavorMod = flavor.toLowerCase();
+
               if (paramsFlavor.includes(flavorMod)) {
                 checked = true;
               }

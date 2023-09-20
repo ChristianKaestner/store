@@ -31,19 +31,17 @@ export default function BrandFilter({ items }) {
   );
 
   const handleChecked = e => {
-    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const value = e.currentTarget.value.toLowerCase();
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const brands = current.get('brand');
 
     if (brands) {
       const brandArray = brands.split(',');
-
       if (brandArray.includes(value)) {
         brandArray.splice(brandArray.indexOf(value), 1);
       } else {
         brandArray.push(value);
       }
-
       if (brandArray.length > 0) {
         current.set('brand', brandArray.join(','));
       } else {
@@ -52,7 +50,6 @@ export default function BrandFilter({ items }) {
     } else {
       current.set('brand', value);
     }
-
     const search = decodeURIComponent(current.toString());
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
@@ -85,7 +82,8 @@ export default function BrandFilter({ items }) {
           {items.length > 0 &&
             filtredBrands.map(({ id, brand, letter, count }) => {
               let checked = false;
-              const brandMod = brand.toLowerCase().split(' ').join('').trim();
+              const brandMod = brand.toLowerCase();
+
               if (paramsBrand.includes(brandMod)) {
                 checked = true;
               }

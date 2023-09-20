@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Box } from '@mui/material';
 import { Form, List, Label } from '@/app/lib/commonStyles';
-// import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
 import { Typography } from '@mui/material/';
+// import { debounce } from 'lodash';
 
 export default function WeightFilter({ items }) {
   const { register, getValues } = useForm();
@@ -17,7 +17,7 @@ export default function WeightFilter({ items }) {
   const paramsWeight = getSearchParams(searchParams, 'weight');
 
   const handleChecked = e => {
-    const value = e.target.value;
+    const value = e.currentTarget.value;
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const weights = current.get('weight');
 

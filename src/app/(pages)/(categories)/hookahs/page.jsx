@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useCart } from '@/app/hooks/useCart';
 import { useGetGoodsQuery } from '@/app/redux/services/goods';
 import { usePathname } from 'next/navigation';
-import { Box, Divider } from '@mui/material';
+import { Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
@@ -35,13 +35,13 @@ export default function Hookahs() {
     <>
       <Breadcrumbs crumbs={path} />
       <PageTitle title="Hookahs" />
-      <RowBetween>
+      <RowBetween sx={{ mb: 1 }}>
         <Sortbar />
         <SortFilter />
       </RowBetween>
 
       <Divider />
-      <Row sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Row>
         <Sidebar goods={hookahs} />
         <ProductsList
           goods={hookahs}

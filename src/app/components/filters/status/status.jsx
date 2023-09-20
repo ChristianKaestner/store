@@ -17,7 +17,7 @@ export default function StatusFilter({ items }) {
   const paramsStatus = getSearchParams(searchParams, 'status');
 
   const handleChecked = e => {
-    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const value = e.currentTarget.value.toLowerCase();
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const status = current.get('status');
 
@@ -57,7 +57,7 @@ export default function StatusFilter({ items }) {
         <List component="ul" sx={{ pl: 2 }}>
           {items.map(({ id, status }) => {
             let checked = false;
-            const statusMod = status.toLowerCase().split(' ').join('').trim();
+            const statusMod = status.toLowerCase();
             if (paramsStatus.includes(statusMod)) {
               checked = true;
             }

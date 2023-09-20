@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { getSearchParams } from '@/app/lib/functions';
+import { useForm } from 'react-hook-form';
 import FilterCommon from '../accordion/accordionCommon';
 import { Checkbox, Typography } from '@mui/material';
 import SquareIcon from '@mui/icons-material/Square';
 import { Form, Row, RowCenter, Label, List } from '@/app/lib/commonStyles';
-// import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
+// import { debounce } from 'lodash';
 
 export default function ColorFilter({ items }) {
   const { register, getValues } = useForm();
@@ -17,7 +17,7 @@ export default function ColorFilter({ items }) {
   const paramsColor = getSearchParams(searchParams, 'color');
 
   const handleChecked = e => {
-    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const value = e.currentTarget.value.toLowerCase();
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const colors = current.get('color');
 
@@ -44,8 +44,8 @@ export default function ColorFilter({ items }) {
     router.push(`${pathname}${query}`, { scroll: false });
 
     //send request with values
-    const values = getValues('colors');
-    console.log(values);
+    const values = getValues('color');
+    console.log('values', values);
   };
 
   return (
@@ -57,7 +57,8 @@ export default function ColorFilter({ items }) {
         <List component="ul" sx={{ pl: 2 }}>
           {items.map(({ id, color }) => {
             let checked = false;
-            const colorMod = color.toLowerCase().split(' ').join('').trim();
+            const colorMod = color.toLowerCase();
+
             if (paramsColor.includes(colorMod)) {
               checked = true;
             }
@@ -70,7 +71,7 @@ export default function ColorFilter({ items }) {
                       value={color}
                       sx={{ p: 1 }}
                       size="small"
-                      {...register('colors', {
+                      {...register('color', {
                         onChange: handleChecked,
                       })}
                     />

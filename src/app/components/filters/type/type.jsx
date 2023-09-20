@@ -17,7 +17,7 @@ export default function TypeFilter({ items }) {
   const paramsType = getSearchParams(searchParams, 'type');
 
   const handleChecked = e => {
-    const value = e.target.value.toLowerCase().split(' ').join('').trim();
+    const value = e.currentTarget.value.toLowerCase();
     const current = new URLSearchParams(Array.from(searchParams.entries()));
     const types = current.get('type');
 
@@ -57,7 +57,7 @@ export default function TypeFilter({ items }) {
         <List component="ul" sx={{ pl: 2 }}>
           {items.map(({ id, type }) => {
             let checked = false;
-            const typeMod = type.toLowerCase().split(' ').join('').trim();
+            const typeMod = type.toLowerCase();
             if (paramsType.includes(typeMod)) {
               checked = true;
             }

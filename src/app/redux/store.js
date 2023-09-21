@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/slice';
 import cartSlice from './cart/slice';
 import modalSlice from './modal/slice';
+import filtersSlice from './filters/slice';
 import { goodsApi } from './services/goods';
 import { categoriesApi } from './services/categories';
 import storage from 'redux-persist/lib/storage';
@@ -33,6 +34,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authSlice),
     cart: persistReducer(cartPersistConfig, cartSlice),
     modal: modalSlice,
+    filters: filtersSlice,
     [goodsApi.reducerPath]: goodsApi.reducer,
     [categoriesApi.reducerPath]: categoriesApi.reducer,
   },

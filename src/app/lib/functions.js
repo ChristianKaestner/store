@@ -102,3 +102,12 @@ export const getSearchParams = (searchParams, field) => {
   return matched.split(',');
 };
 
+export const objectToArray = obj => {
+  const result = [];
+  Object.entries(obj).forEach(([name, values]) => {
+    values.forEach(value => {
+      result.push({ name, value });
+    });
+  });
+  return result;
+};

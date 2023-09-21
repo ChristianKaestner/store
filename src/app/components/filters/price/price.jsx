@@ -85,6 +85,7 @@ export default function PriceFilter({ items }) {
     router.push(`${pathname}${query}`, { scroll: false });
 
     // send request
+    console.log(price);
   };
 
   return (

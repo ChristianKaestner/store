@@ -17,13 +17,21 @@ export const filtersSlice = createSlice({
   reducers: {
     addFilter(state, action) {
       const { filterName, filterValue } = action.payload;
-      state[filterName] = [...state[filterName], filterValue];
+      if (filterName === 'price') {
+        state[filterName] = [filterValue];
+      } else {
+        state[filterName] = [...state[filterName], filterValue];
+      }
     },
     removeFilter(state, action) {
       const { filterName, filterValue } = action.payload;
-      state[filterName] = state[filterName].filter(
-        value => value !== filterValue
-      );
+      if (filterName === 'price') {
+        state[filterName] = [];
+      } else {
+        state[filterName] = state[filterName].filter(
+          value => value !== filterValue
+        );
+      }
     },
     resetFilters() {
       return initialState;

@@ -13,7 +13,7 @@ import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
 import { useIsMount } from '@/app/hooks/useMount';
 
-//need to add filter list and values list, if params consist some filter or values which doesn't inculdes in list, skip ...
+//need to validate url params, if params consist some filter or values which doesn't inculdes in list, skip ...
 export default function Sortbar() {
   const filters = useFilters();
   const filtersArr = objectToArray(filters);
@@ -42,7 +42,7 @@ export default function Sortbar() {
     queryParams.forEach((filterValue, filterName) => {
       if (filterName in filters) {
         const filterValues = filterValue.split(',');
-
+        // console.log('parse param');
         filterValues.forEach(value => {
           if (!filters[filterName].includes(value)) {
             dispatch(addFilter({ filterName, filterValue: value }));

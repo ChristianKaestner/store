@@ -1,15 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { getSearchParams } from '@/app/lib/functions';
+import { useDispatch } from 'react-redux';
+import { addFilter, removeFilter } from '@/app/redux/filters/slice';
+import { useFilters } from '@/app/hooks/useFilters';
 import { useForm, Controller } from 'react-hook-form';
-import FilterCommon from '../accordion/accordionCommon';
+import AccordionCommon from '../accordion/accordionCommon';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Slider, PriceForm } from './price.styled';
 import { InputProps, Row } from '@/app/lib/commonStyles';
-// import { debounce } from 'lodash';
 import { visuallyHidden } from '@mui/utils';
 import { Typography } from '@mui/material';
+import debounce from 'lodash.debounce';
 
 export default function PriceFilter({ items }) {
   const min = Math.min(...items);
@@ -17,16 +18,13 @@ export default function PriceFilter({ items }) {
   const [errMin, setErrMin] = useState(false);
   const [errMax, setErrMax] = useState(false);
 
+  const { price } = useFilters();
+  const dispatch = useDispatch();
   const { control, getValues } = useForm();
 
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const paramsPrice = getSearchParams(searchParams, 'price');
-
   const defaultValues = () => {
-    if (paramsPrice.length) {
-      const priceArr = paramsPrice[0].split('-');
+    if (price.length) {
+      const priceArr = price[0].split('-');
       return priceArr.map(n => Number(n));
     } else return [min, max];
   };
@@ -51,45 +49,29 @@ export default function PriceFilter({ items }) {
     }
   };
 
-  const handleUpdatePrice = () => {
+  const handleUpdatePrice = debounce(() => {
     const { price } = getValues();
     if (price[0] < min || price[0 > max] || isNaN(price[0])) return;
     if (price[1] < min || price[1 > max] || isNaN(price[1])) return;
-    const current = new URLSearchParams(Array.from(searchParams.entries()));
-    const priceParams = current.get('price');
-
-    if (priceParams) {
-      const priceArray = priceParams.split('-');
-      if (priceArray[0] !== price[0].toString()) {
-        priceArray.shift();
-        priceArray.unshift(price[0].toString());
-      }
-      if (priceArray[1] !== price[1].toString()) {
-        priceArray.pop();
-        priceArray.push(price[1].toString());
-      }
-      if (
-        priceArray[0] === min.toString() &&
-        priceArray[1] === max.toString()
-      ) {
-        current.delete('price');
-      } else {
-        current.set('price', priceArray.join('-'));
-      }
-    } else {
-      current.set('price', price.join('-'));
+    dispatch(
+      addFilter({
+        filterName: 'price',
+        filterValue: `${price[0]}-${price[1]}`,
+      })
+    );
+    if (price[0] === min && price[1] === max) {
+      dispatch(
+        removeFilter({
+          filterName: 'price',
+          filterValue: price,
+        })
+      );
     }
-
-    const search = decodeURIComponent(current.toString());
-    const query = search ? `?${search}` : '';
-    router.push(`${pathname}${query}`, { scroll: false });
-
     // send request
-    console.log(price);
-  };
+  }, 1000);
 
   return (
-    <FilterCommon title="Price">
+    <AccordionCommon title="Price">
       <Typography component="h3" sx={visuallyHidden}>
         Search by price
       </Typography>
@@ -150,6 +132,6 @@ export default function PriceFilter({ items }) {
           }}
         />
       </PriceForm>
-    </FilterCommon>
+    </AccordionCommon>
   );
 }

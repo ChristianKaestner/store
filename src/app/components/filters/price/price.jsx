@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -20,13 +20,22 @@ export default function PriceFilter({ items }) {
 
   const { price } = useFilters();
   const dispatch = useDispatch();
-  const { control, getValues } = useForm();
+  const { control, getValues, reset } = useForm();
+
+  useEffect(() => {
+    const formValues = getValues();
+    if (!price.length && formValues.price.length) reset();
+    setErrMin(false);
+    setErrMax(false);
+  }, [price]);
 
   const defaultValues = () => {
     if (price.length) {
       const priceArr = price[0].split('-');
       return priceArr.map(n => Number(n));
-    } else return [min, max];
+    } else {
+      return [min, max];
+    }
   };
 
   const validateMin = minValue => {
@@ -51,22 +60,23 @@ export default function PriceFilter({ items }) {
 
   const handleUpdatePrice = debounce(() => {
     const { price } = getValues();
-    if (price[0] < min || price[0 > max] || isNaN(price[0])) return;
-    if (price[1] < min || price[1 > max] || isNaN(price[1])) return;
-    dispatch(
-      addFilter({
-        filterName: 'price',
-        filterValue: `${price[0]}-${price[1]}`,
-      })
-    );
-    if (price[0] === min && price[1] === max) {
-      dispatch(
-        removeFilter({
-          filterName: 'price',
-          filterValue: price,
-        })
-      );
-    }
+    if (price[0] < min || price[0] > max || isNaN(price[0])) return;
+    if (price[1] < min || price[1] > max || isNaN(price[1])) return;
+
+    price[0] === min && price[1] === max
+      ? dispatch(
+          removeFilter({
+            filterName: 'price',
+            filterValue: price,
+          })
+        )
+      : dispatch(
+          addFilter({
+            filterName: 'price',
+            filterValue: `${price[0]}-${price[1]}`,
+          })
+        );
+
     // send request
   }, 1000);
 
@@ -83,7 +93,6 @@ export default function PriceFilter({ items }) {
           render={({ field: { onChange, value } }) => {
             const minValue = isNaN(value[0]) ? min : value[0];
             const maxValue = isNaN(value[1]) ? max : value[1];
-
             return (
               <>
                 <Row sx={{ alignItems: 'center' }}>
@@ -123,6 +132,9 @@ export default function PriceFilter({ items }) {
                   min={+min}
                   max={+max}
                   onChange={(e, value) => {
+                    console.log(value);
+                    validateMin(value[0]);
+                    validateMax(value[1]);
                     onChange(value);
                     handleUpdatePrice();
                   }}

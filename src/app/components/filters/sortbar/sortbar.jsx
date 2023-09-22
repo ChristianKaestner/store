@@ -2,12 +2,18 @@ import { useEffect } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useFilters } from '@/app/hooks/useFilters';
-import { addFilter, removeFilter } from '@/app/redux/filters/slice';
+import {
+  addFilter,
+  removeFilter,
+  resetFilters,
+} from '@/app/redux/filters/slice';
 import { FilterBlock, FilterBtn, IconClose } from './sortbar.styled';
 import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray } from '@/app/lib/functions';
+import { useIsMount } from '@/app/hooks/useMount';
 
+//need to add filter list and values list, if params consist some filter or values which doesn't inculdes in list, skip ...
 export default function Sortbar() {
   const filters = useFilters();
   const filtersArr = objectToArray(filters);
@@ -15,17 +21,20 @@ export default function Sortbar() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
-
+  const isMount = useIsMount();
+  console.log(filters);
   const updateFilters = () => {
     const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
     // check redux state and update param
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
+      // if filter exist in state, set it to params
       if (filterValue.length) {
         queryParams.set(filterName, filterValue);
       }
-      if (!filterValue.length && !searchParams.has(filterName)) {
+      // if no filter and not first load delete filter
+      if (!filterValue.length && !isMount) {
         queryParams.delete(filterName);
       }
     });
@@ -59,7 +68,9 @@ export default function Sortbar() {
     dispatch(removeFilter({ filterName, filterValue }));
   };
 
-  const handleDeleteAll = e => {};
+  const handleDeleteAll = () => {
+    dispatch(resetFilters());
+  };
 
   return (
     <Box>
@@ -70,7 +81,7 @@ export default function Sortbar() {
             variant="outlined"
             endIcon={<IconClose />}
             component="li"
-            // onClick={handleDeleteAll}
+            onClick={handleDeleteAll}
           >
             clear all
           </FilterBtn>

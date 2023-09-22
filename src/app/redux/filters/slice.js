@@ -25,8 +25,11 @@ export const filtersSlice = createSlice({
         value => value !== filterValue
       );
     },
+    resetFilters() {
+      return initialState;
+    },
   },
 });
 
-export const { addFilter, removeFilter } = filtersSlice.actions;
+export const { addFilter, removeFilter, resetFilters } = filtersSlice.actions;
 export default filtersSlice.reducer;

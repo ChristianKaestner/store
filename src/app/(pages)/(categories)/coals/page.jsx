@@ -7,7 +7,7 @@ import { Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
-import SortFilter from '@/app/components/filters/sortFilter/sortFilter';
+import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
 import { Row, RowBetween } from '@/app/lib/commonStyles';

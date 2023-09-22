@@ -23,7 +23,7 @@ export default function SortFilter() {
     } else {
       current.delete('sort');
     }
-    const search = current.toString();
+    const search = decodeURIComponent(current.toString());
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
 

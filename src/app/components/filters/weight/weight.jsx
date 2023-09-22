@@ -9,7 +9,7 @@ import { visuallyHidden } from '@mui/utils';
 export default function WeightFilter({ items }) {
   const { weight } = useFilters();
   const dispatch = useDispatch();
-  console.log(weight);
+
   const handleChecked = (checked, curentWeight) => {
     checked
       ? dispatch(

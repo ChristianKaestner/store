@@ -6,7 +6,7 @@ import { useFilters } from '@/app/hooks/useFilters';
 import AccordionCommon from '../accordion/accordionCommon';
 import { addAlphabetIndex, filterByInput } from '@/app/lib/functions';
 import { Box, TextField, Checkbox, Typography } from '@mui/material';
-import { Counter } from './brand.styled';
+import { Counter } from '@/app/lib/commonStyles';
 import { Form, Label, ContainerFilter, Row } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
 
@@ -16,7 +16,7 @@ export default function BrandFilter({ items }) {
 
   const { brand } = useFilters();
   const dispatch = useDispatch();
-
+  
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
     brandsWithLetter,
@@ -39,6 +39,7 @@ export default function BrandFilter({ items }) {
           })
         );
   };
+
   return (
     <AccordionCommon title="Brand">
       <Typography component="h3" sx={visuallyHidden}>

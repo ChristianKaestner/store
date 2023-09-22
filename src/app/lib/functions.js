@@ -14,7 +14,6 @@ export const addAlphabetIndex = (arr, field) => {
 
 export const addCount = (arr, field, value) => {
   const filtred = arr.filter(n => {
-    // console.log(n[field]);
     return n[field] === value;
   });
   return filtred.length;

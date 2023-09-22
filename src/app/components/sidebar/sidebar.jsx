@@ -53,8 +53,9 @@ export default function Sidebar({ goods }) {
       }
     }
     if (flavor) {
+      const count = addCount(goods, 'flavor', flavor);
       if (!flavors.find(n => n.flavor === flavor)) {
-        flavors.push({ id: uuidv4(), flavor });
+        flavors.push({ id: uuidv4(), flavor, count });
       }
     }
     if (size) {

@@ -27,6 +27,7 @@ export const myTheme = createTheme({
       dim: '#f5f6fa',
       text: '#221f1f',
       neutral: '#747474',
+      badge: '#939393',
     },
   },
   components: {

@@ -1,5 +1,5 @@
 import { Box, FormControl, TextField, FormControlLabel } from '@mui/material';
-import { Typography, TableCell } from '@mui/material';
+import { Typography, TableCell, Badge } from '@mui/material';
 import { IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
@@ -176,4 +176,13 @@ export const CellBold = styled(TableCell)(({ theme }) => ({
 export const Span = styled(Box)(({ theme }) => ({
   fontWeight: 500,
   color: theme.palette.primary.text,
+}));
+
+export const Counter = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -16,
+    top: 13,
+    backgroundColor: theme.palette.primary.dim,
+    color: theme.palette.primary.badge,
+  },
 }));

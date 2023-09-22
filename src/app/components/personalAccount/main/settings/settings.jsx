@@ -46,7 +46,6 @@ export default function AccountSettings({ user }) {
           </IconButton>
         </RowCenter>
 
-        {/* <Divider /> */}
         <TableContainer component={Paper} sx={{ mt: 2 }}>
           <Table aria-label="purchase table">
             <TableBody>
@@ -108,21 +107,6 @@ export default function AccountSettings({ user }) {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <Divider />
-        <Row sx={{ mt: 2 }}>
-          <Column>
-            <TextNeutral>City:</TextNeutral>
-            <TextNeutral>Street: </TextNeutral>
-            <TextNeutral>House: </TextNeutral>
-            <TextNeutral>Apartment: </TextNeutral>
-          </Column>
-          <Column sx={{ ml: 6 }}>
-            <TextBold>{city}</TextBold>
-            <TextBold>{street}</TextBold>
-            <TextBold>{house}</TextBold>
-            <TextBold>{apartment}</TextBold>
-          </Column>
-        </Row> */}
       </Paper>
       {detailsModal && (
         <Modal

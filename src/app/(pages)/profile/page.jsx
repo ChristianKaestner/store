@@ -1,11 +1,18 @@
 'use client';
 
-import PersonalAccount from '@/app/components/personalAccount/personalAccount';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Profile() {
-  return (
-    <>
-      <PersonalAccount />
-    </>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    const redirect = async () => {
+      await router.replace('/profile/settings');
+    };
+
+    redirect();
+  }, [router]);
+
+  return null;
 }

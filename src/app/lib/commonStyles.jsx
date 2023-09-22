@@ -186,3 +186,15 @@ export const Counter = styled(Badge)(({ theme }) => ({
     color: theme.palette.primary.badge,
   },
 }));
+
+export const ProfileContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+
+  [theme.breakpoints.up('xs')]: {
+    width: '100%',
+  },
+  [theme.breakpoints.up('md')]: {
+    width: '70%',
+  },
+}));

@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { AccordionSummary } from '@mui/material';
-import { Accordion, Icon, Container, Block } from './purchaseItem.styled';
-import { AccordionDetails } from './purchaseItem.styled';
+import { Accordion, Icon, Container, Block } from './orderItem.styled';
+import { AccordionDetails } from './orderItem.styled';
 import { cartAdd } from '@/app/redux/cart/slice';
 import OrderStatus from './orderStatus/orderStatus';
 import { Column, TextNeutral, TextBold } from '@/app/lib/commonStyles';
-import PurchaseTable from './purchaseTable/purchaseTable';
+import OrderTable from './orderTable/orderTable';
 
-export default function PurchaseItem({ order }) {
+export default function OrderItem({ order }) {
   const { date, amount, status, goods } = order;
 
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ export default function PurchaseItem({ order }) {
         </Container>
       </AccordionSummary>
       <AccordionDetails>
-        <PurchaseTable
+        <OrderTable
           goods={goods}
           handleCart={handleCart}
           handleReview={handleReview}

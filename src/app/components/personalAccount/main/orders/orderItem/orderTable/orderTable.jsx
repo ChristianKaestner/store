@@ -1,15 +1,15 @@
 import Image from 'next/image';
 import { Button, TableRow, TableBody, TableContainer } from '@mui/material';
 import { Table, TableHead, Paper } from '@mui/material';
-import { Cell } from './purchaseTable.styled';
+import { Cell } from './orderTable.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function PurchaseTable({ goods, handleCart, handleReview }) {
+export default function OrderTable({ goods, handleCart, handleReview }) {
   const media = useMediaQuery('(min-width:600px)');
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="purchase table">
+      <Table aria-label="order table">
         <TableHead>
           {media && (
             <TableRow>

@@ -10,7 +10,7 @@ import {
 import { FilterBlock, FilterBtn, IconClose } from './sortbar.styled';
 import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
-import { objectToArray } from '@/app/lib/functions';
+import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
 import { useIsMount } from '@/app/hooks/useMount';
 
 //need to add filter list and values list, if params consist some filter or values which doesn't inculdes in list, skip ...
@@ -94,7 +94,7 @@ export default function Sortbar() {
                 component="li"
                 onClick={handleDelete}
               >
-                {value}
+                {updatedFilterLabel(name, value)}
               </FilterBtn>
             );
           })}

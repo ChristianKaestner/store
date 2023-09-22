@@ -111,3 +111,10 @@ export const objectToArray = obj => {
   });
   return result;
 };
+
+export const updatedFilterLabel = (name, value) => {
+  if (name === 'weight') return value + ' gram';
+  if (name === 'size') return value + ' mm';
+  if (name === 'price') return 'price ' + value;
+  return value;
+};

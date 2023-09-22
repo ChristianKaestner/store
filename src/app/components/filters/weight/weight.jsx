@@ -1,86 +1,60 @@
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { getSearchParams } from '@/app/lib/functions';
-import { useForm } from 'react-hook-form';
-import FilterCommon from '../accordion/accordionCommon';
-import { Checkbox, Box } from '@mui/material';
-import { Form, List, Label } from '@/app/lib/commonStyles';
+import { useDispatch } from 'react-redux';
+import { addFilter, removeFilter } from '@/app/redux/filters/slice';
+import { useFilters } from '@/app/hooks/useFilters';
+import AccordionCommon from '../accordion/accordionCommon';
+import { Checkbox, Box, Typography } from '@mui/material';
+import { Form, Label, List } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
-import { Typography } from '@mui/material/';
-// import { debounce } from 'lodash';
 
 export default function WeightFilter({ items }) {
-  const { register, getValues } = useForm();
-
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const paramsWeight = getSearchParams(searchParams, 'weight');
-
-  const handleChecked = e => {
-    const value = e.currentTarget.value;
-    const current = new URLSearchParams(Array.from(searchParams.entries()));
-    const weights = current.get('weight');
-
-    if (weights) {
-      const weightArray = weights.split(',');
-
-      if (weightArray.includes(value)) {
-        weightArray.splice(weightArray.indexOf(value), 1);
-      } else {
-        weightArray.push(value);
-      }
-
-      if (weightArray.length > 0) {
-        current.set('weight', weightArray.join(','));
-      } else {
-        current.delete('weight');
-      }
-    } else {
-      current.set('weight', value);
-    }
-
-    const search = decodeURIComponent(current.toString());
-    const query = search ? `?${search}` : '';
-    router.push(`${pathname}${query}`, { scroll: false });
-
-    // send request
-    const values = getValues('weight');
-    console.log(values);
+  const { weight } = useFilters();
+  const dispatch = useDispatch();
+  console.log(weight);
+  const handleChecked = (checked, curentWeight) => {
+    checked
+      ? dispatch(
+          addFilter({
+            filterName: 'weight',
+            filterValue: curentWeight,
+          })
+        )
+      : dispatch(
+          removeFilter({
+            filterName: 'weight',
+            filterValue: curentWeight,
+          })
+        );
   };
 
   return (
-    <FilterCommon title="Weight">
+    <AccordionCommon title="Weight">
       <Typography component="h3" sx={visuallyHidden}>
         Search by weight
       </Typography>
       <Form component="form">
-        <List sx={{ pl: 2 }}>
-          {items.map(({ id, weight }) => {
-            let checked = false;
-            if (paramsWeight.includes(weight.toString())) {
-              checked = true;
-            }
+        <List component="ul" sx={{ pl: 2 }}>
+          {items.map(item => {
             return (
-              <Box component="li" key={id}>
+              <Box component="li" key={item.id}>
                 <Label
+                  label={item.weight + ' gram'}
                   control={
                     <Checkbox
-                      checked={checked}
                       value={weight}
+                      checked={weight.includes(item.weight.toString())}
                       sx={{ p: 1 }}
                       size="small"
-                      {...register('weight', {
-                        onChange: handleChecked,
-                      })}
+                      onChange={(e, checked) => {
+                        handleChecked(checked, item.weight.toString());
+                      }}
                     />
                   }
-                  label={weight + ' grams'}
                 />
               </Box>
             );
           })}
         </List>
       </Form>
-    </FilterCommon>
+    </AccordionCommon>
   );
 }

@@ -6,15 +6,16 @@ export default function EmptyCart() {
     <ColumnCenter
       sx={{
         textAlign: 'center',
-        margin: '64px auto 0',
+        marginTop: '16px',
       }}
     >
       <Image
         src="/cart.png"
-        alt="image"
-        width={400}
-        height={300}
-        priority="false"
+        alt="shopping cart image"
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        style={{ height: '100%', zIndex: -1 }}
       />
       <OnNotify text="Your shopping cart is empty" />
     </ColumnCenter>

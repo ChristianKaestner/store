@@ -54,7 +54,7 @@ export default function Hero({ images }) {
                 alt="image"
                 sizes="100%"
                 priority="false"
-                style={{ objectFit: 'fill' }}
+                style={{ objectFit: 'cover' }}
               />
             </SwiperSlide>
           );

@@ -1,17 +1,15 @@
 import Link from 'next/link';
-import { Typography, IconButton } from '@mui/material';
-import LogoDevIcon from '@mui/icons-material/LogoDev';
-
+import { Typography, Box } from '@mui/material';
+import Icon from './icon';
 export default function Logo() {
   return (
     <Link
       href="/"
       style={{ display: 'flex', alignItems: 'center', height: 40 }}
     >
-      <IconButton color="inherit">
-        <LogoDevIcon sx={{ fontSize: 40, mr: 1 }} />
-      </IconButton>
-
+      <Box sx={{ width: 40, height: 40 }}>
+        <Icon />
+      </Box>
       <Typography
         variant="h5"
         sx={{
@@ -24,7 +22,7 @@ export default function Logo() {
           display: { xs: 'none', md: 'flex' },
         }}
       >
-        LOGO
+        S4U
       </Typography>
     </Link>
   );

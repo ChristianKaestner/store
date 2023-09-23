@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
 import { Container } from '@mui/material';
 
 export default function Loading({ error }) {
@@ -13,14 +14,23 @@ export default function Loading({ error }) {
     <Container
       maxWidth="xl"
       sx={{
+        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'center',
         px: 2,
-        mt: 12,
-        mb: 2,
+        flexGrow: 1,
       }}
     >
-      <h2>Something went wrong!</h2>
+      <h1>SOMETHING WENT WORNG...</h1>
+      <Image
+        src="/error.png"
+        alt="shopping cart image"
+        layout="fill"
+        objectFit="contain"
+        objectPosition="center"
+        style={{ zIndex: -1 }}
+      />
     </Container>
   );
 }

@@ -2,7 +2,6 @@ export const images = [
   { uri: '/hero1.png' },
   { uri: '/hero2.png' },
   { uri: '/hero3.png' },
-  { uri: '/hero4.png' },
   { uri: '/hero5.png' },
   { uri: '/hero6.png' },
   { uri: '/hero7.png' },

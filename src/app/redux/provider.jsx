@@ -11,18 +11,37 @@ export default function ReduxProvider({ children }) {
   const [startDisappearing, setStartDisappearing] = useState(false);
 
   useEffect(() => {
+    let reduxTimer;
+    let disappearingTimer;
+
     const checkIfReduxLoaded = () => {
+      const now = performance.now();
+
       if (persistor.getState().bootstrapped) {
-        setStartDisappearing(true);
-        setTimeout(() => {
-          setReduxLoaded(true);
-        }, 1000);
+        if (now >= 3000) {
+          setStartDisappearing(true);
+          disappearingTimer = setTimeout(() => {
+            setReduxLoaded(true);
+          }, 1000);
+        } else {
+          reduxTimer = setTimeout(() => {
+            setStartDisappearing(true);
+            disappearingTimer = setTimeout(() => {
+              setReduxLoaded(true);
+            }, 1000);
+          }, 3000 - now);
+        }
       } else {
         setTimeout(checkIfReduxLoaded, 100);
       }
     };
 
     checkIfReduxLoaded();
+
+    return () => {
+      clearTimeout(reduxTimer);
+      clearTimeout(disappearingTimer);
+    };
   }, []);
 
   return (

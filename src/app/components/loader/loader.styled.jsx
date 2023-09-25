@@ -101,18 +101,6 @@ export const Container = styled(Box, {
     : `${appear} 300ms ease-in-out`,
 }));
 
-// export const Container = styled(Box)({
-//   background: '#111',
-//   display: 'flex',
-//   flexDirection: 'column',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-//   height: '100vh',
-//   width: '100%',
-//   overflow: 'hidden',
-//   animation: `${appear} 300ms ease-in-out`,
-// });
-
 export const Circle = styled(Box)(({ theme }) => ({
   position: 'relative',
   height: '500px',

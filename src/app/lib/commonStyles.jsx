@@ -115,23 +115,23 @@ export const IconBtnPrev = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-export const IconBtnNavigate = styled(IconButton, {
-  shouldForwardProp: prop => prop !== 'prev' && prop !== 'next',
-})(({ prev, next, theme }) => ({
-  position: 'absolute',
-  top: 'calc(50% - 25px)',
-  right: next,
-  left: prev,
-  width: 50,
-  height: 50,
-  color: theme.palette.primary.light,
-  backgroundColor: theme.palette.primary.dim,
-  zIndex: 2,
-  cursor: 'pointer',
-  '&:hover': {
-    backgroundColor: theme.palette.primary.neutral,
-  },
-}));
+// export const IconBtnNavigate = styled(IconButton, {
+//   shouldForwardProp: prop => prop !== 'prev' && prop !== 'next',
+// })(({ prev, next, theme }) => ({
+//   position: 'absolute',
+//   top: 'calc(50% - 25px)',
+//   right: next,
+//   left: prev,
+//   width: 50,
+//   height: 50,
+//   color: theme.palette.primary.light,
+//   backgroundColor: theme.palette.primary.dim,
+//   zIndex: 2,
+//   cursor: 'pointer',
+//   '&:hover': {
+//     backgroundColor: theme.palette.primary.neutral,
+//   },
+// }));
 
 export const TextNeutral = styled(Typography)(({ theme }) => ({
   fontSize: '1rem',

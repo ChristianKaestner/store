@@ -4,12 +4,11 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Box, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { swiperStyles, IconBtnNavigate } from '@/app/lib/commonStyles';
+import { NavigateNext, NavigatePrev } from '../navigateBtn/navigateBtn';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -41,12 +40,10 @@ export default function Hero({ images }) {
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
         style={{ ...swiperStyles, height: xs ? '240px' : '400px' }}
       >
-        <IconBtnNavigate
-          prev={0}
-          onClick={() => sliderRef.current?.slidePrev()}
-        >
-          <NavigateBeforeIcon sx={{ fontSize: 40 }} />
-        </IconBtnNavigate>
+        <NavigatePrev
+          prev={() => sliderRef.current?.slidePrev()}
+          color="white"
+        />
         {images.map((image, index) => {
           return (
             <SwiperSlide key={image.uri}>
@@ -61,12 +58,10 @@ export default function Hero({ images }) {
             </SwiperSlide>
           );
         })}
-        <IconBtnNavigate
-          next={0}
-          onClick={() => sliderRef.current?.slideNext()}
-        >
-          <NavigateNextIcon sx={{ fontSize: 40 }} />
-        </IconBtnNavigate>
+        <NavigateNext
+          next={() => sliderRef.current?.slideNext()}
+          color="white"
+        />
       </Swiper>
     </Box>
   );

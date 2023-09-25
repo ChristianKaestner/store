@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import { IconBtnNavigate } from '@/app/lib/commonStyles';
+import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import 'swiper/css';
 
 export default function FullscreanImage({ dto }) {
@@ -52,11 +50,7 @@ export default function FullscreanImage({ dto }) {
       }}
       initialSlide={startPos}
     >
-      {prevBtn && (
-        <IconBtnNavigate prev={0} onClick={handlePrevCard}>
-          <NavigateBeforeIcon sx={{ fontSize: 40 }} />
-        </IconBtnNavigate>
-      )}
+      {prevBtn && <NavigatePrev prev={handlePrevCard} />}
 
       {images.map(image => {
         return (
@@ -75,11 +69,7 @@ export default function FullscreanImage({ dto }) {
         );
       })}
 
-      {nextBtn && (
-        <IconBtnNavigate next={0} onClick={handleNextCard}>
-          <NavigateNextIcon sx={{ fontSize: 40 }} />
-        </IconBtnNavigate>
-      )}
+      {nextBtn && <NavigateNext next={handleNextCard} />}
     </Swiper>
   );
 }

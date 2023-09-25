@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
 import { getSlideCount } from '@/app/lib/functions';
-import { IconBtnNavigate } from '@/app/lib/commonStyles';
-import { Container, Text, IconNext, IconPrev } from './relatedProducts.styled';
+import { Container, Text } from './relatedProducts.styled';
+import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'swiper/css';
 
@@ -72,11 +72,7 @@ export default function RelatedProducts({ relatedProducts }) {
           }}
           onSlideChange={handleSlideChange}
         >
-          {prevBtn && (
-            <IconBtnNavigate prev={0} onClick={handlePrevCard}>
-              <IconPrev />
-            </IconBtnNavigate>
-          )}
+          {prevBtn && <NavigatePrev prev={handlePrevCard} />}
 
           {data &&
             data.map(product => {
@@ -88,11 +84,7 @@ export default function RelatedProducts({ relatedProducts }) {
               );
             })}
 
-          {nextBtn && (
-            <IconBtnNavigate next={0} onClick={handleNextCard}>
-              <IconNext />
-            </IconBtnNavigate>
-          )}
+          {nextBtn && <NavigateNext next={handleNextCard} />}
         </Swiper>
       )}
     </Container>

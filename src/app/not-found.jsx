@@ -9,9 +9,9 @@ export default function NotFound() {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        px: 2,
         flexGrow: 1,
+        minHeight: 500,
+        px: 2,
       }}
     >
       <h1>404 | PAGE NOT FOUND</h1>

@@ -8,6 +8,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import { Box, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { swiperStyles, IconBtnNavigate } from '@/app/lib/commonStyles';
 import 'swiper/css';
 import 'swiper/css/autoplay';
@@ -17,6 +18,7 @@ import 'swiper/css/effect-fade';
 
 export default function Hero({ images }) {
   const sliderRef = useRef();
+  const xs = useMediaQuery('(max-width:599px)');
   return (
     <Box component="section">
       <Typography component="h1" sx={visuallyHidden}>
@@ -37,7 +39,7 @@ export default function Hero({ images }) {
         }}
         onSwiper={it => (sliderRef.current = it)}
         modules={[Autoplay, Pagination, Navigation, EffectFade]}
-        style={swiperStyles}
+        style={{ ...swiperStyles, height: xs ? '240px' : '400px' }}
       >
         <IconBtnNavigate
           prev={0}
@@ -45,7 +47,7 @@ export default function Hero({ images }) {
         >
           <NavigateBeforeIcon sx={{ fontSize: 40 }} />
         </IconBtnNavigate>
-        {images.map(image => {
+        {images.map((image, index) => {
           return (
             <SwiperSlide key={image.uri}>
               <Image
@@ -53,7 +55,7 @@ export default function Hero({ images }) {
                 fill={true}
                 alt="image"
                 sizes="100%"
-                priority="false"
+                priority={index === 0 ? 'true' : 'false'}
                 style={{ objectFit: 'cover' }}
               />
             </SwiperSlide>

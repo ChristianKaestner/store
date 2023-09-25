@@ -17,9 +17,9 @@ export default function Loading({ error }) {
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        px: 2,
         flexGrow: 1,
+        minHeight: 500,
+        px: 2,
       }}
     >
       <h1>SOMETHING WENT WORNG...</h1>

@@ -33,14 +33,13 @@ export default function Categories({ categories }) {
                     fill={true}
                     alt="image"
                     sizes="100%"
-                    priority="false"
                   />
-                  <Box sx={{ position: 'relative', zIndex: 2 }}>
+                  <Box sx={{ zIndex: 2 }}>
                     <Typography
                       component="h3"
                       sx={{ fontSize: 28, color: '#fff' }}
                     >
-                      {category.description}
+                      {category.name.toUpperCase()}
                     </Typography>
                   </Box>
                 </Card>

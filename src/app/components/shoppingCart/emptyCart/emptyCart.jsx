@@ -12,10 +12,8 @@ export default function EmptyCart() {
       <Image
         src="/cart.png"
         alt="shopping cart image"
-        layout="fill"
+        fill={true}
         sizes="100%"
-        objectFit="cover"
-        objectPosition="center"
         style={{ height: '100%', zIndex: -1 }}
       />
       <OnNotify text="Your shopping cart is empty" />

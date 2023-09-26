@@ -49,24 +49,24 @@ export default function Reviews({ product }) {
         <SideBar image={images[0]} title={title} price={price} id={id} />
         {reviewModal && (
           <Modal
-            onClose={() => setReviewModal(false)}
+            open={reviewModal}
+            close={() => setReviewModal(false)}
             title="Add review"
             width="600px"
             height="600px"
             position="center"
-            open={reviewModal}
           >
             <AddReviewModal user={user} handleAddReview={handleAddReview} />
           </Modal>
         )}
         {successModal && (
           <Modal
-            onClose={() => dispath(toggleSuccess(false))}
+            open={successModal}
+            close={() => dispath(toggleSuccess(false))}
             title="Successfully"
             width="600px"
             height="auto"
             position="center"
-            open={successModal}
           >
             <SuccessModal
               text={

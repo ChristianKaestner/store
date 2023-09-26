@@ -58,35 +58,35 @@ export default function ReviewList({ reviews }) {
       )}
       {commentModal && (
         <Modal
-          onClose={() => setCommentModal(false)}
+          open={commentModal}
+          close={() => setCommentModal(false)}
           title="Add comment"
           width="600px"
           height="auto"
           position="center"
-          open={commentModal}
         >
           <CommentReviewModal user={user} handleAddComment={handleAddComment} />
         </Modal>
       )}
       {fullscrean && (
         <Modal
-          onClose={() => setFullscrean(false)}
+          open={fullscrean}
+          close={() => setFullscrean(false)}
           width="95vw"
           height="95vh"
           position="center"
-          open={fullscrean}
         >
           <FullscreanImage dto={selectedImages} />
         </Modal>
       )}
       {successModal && (
         <Modal
-          onClose={() => dispath(toggleSuccess(false))}
+          open={successModal}
+          close={() => dispath(toggleSuccess(false))}
           title="Successfully"
           width="600px"
           height="auto"
           position="center"
-          open={successModal}
         >
           <SuccessModal
             text={

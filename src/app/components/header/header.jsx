@@ -15,10 +15,10 @@ import ProductsModal from './productsModal/productsModal';
 import SearchForm from './searchForm/searchForm';
 import PersonalAccount from './personalAccount/personalAccount';
 import CartIcon from './CartIcon/CartIcon';
-import Modal from '../modal/modal';
 import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
 import { AppBar } from './header.styled';
+import Modal from '../modal/modal';
 
 export default function Header() {
   const [login, setLogin] = useState(true);
@@ -58,35 +58,35 @@ export default function Header() {
           />
           {productsModal && (
             <Modal
-              onClose={handleCloseModal}
+              open={productsModal}
+              close={handleCloseModal}
               title="Products"
               width="calc(100% - 48px)"
               height="600px"
               position="top"
-              open={productsModal}
             >
               <ProductsModal handleCloseModal={handleCloseModal} />
             </Modal>
           )}
           {accountModal && (
             <Modal
-              onClose={() => dispath(toggleAccount(false))}
+              open={accountModal}
+              close={() => dispath(toggleAccount(false))}
               title={login ? 'Log In' : 'Register'}
               width="600px"
               position="center"
-              open={accountModal}
             >
               <Auth toggleAuth={() => setLogin(!login)} login={login} />
             </Modal>
           )}
           {cartModal && (
             <Modal
-              onClose={() => dispath(toggleCart(false))}
+              open={cartModal}
+              close={() => dispath(toggleCart(false))}
               title="Cart"
               width="600px"
               height="600px"
               position="center"
-              open={cartModal}
             >
               <ShoppingCart />
             </Modal>

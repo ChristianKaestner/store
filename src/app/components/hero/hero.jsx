@@ -7,7 +7,7 @@ import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { Box, Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { swiperStyles, IconBtnNavigate } from '@/app/lib/commonStyles';
+import { swiperStyles } from '@/app/lib/commonStyles';
 import { NavigateNext, NavigatePrev } from '../navigateBtn/navigateBtn';
 import 'swiper/css';
 import 'swiper/css/autoplay';

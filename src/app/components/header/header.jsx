@@ -30,13 +30,18 @@ export default function Header() {
     dispath(toggleProducts(false));
   };
 
+  const handleAuth = () => {
+    dispath(toggleAccount(true));
+    dispath(toggleMobile(false));
+  };
+
   return (
     <>
       <AppBar>
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
             <MobileMenu toggle={() => dispath(toggleMobile(!mobileModal))} />
-            <Logo />
+            <Logo isMobile={false} />
             <ProductsButton
               onOpenProductsModal={() => dispath(toggleProducts(true))}
             />
@@ -55,6 +60,7 @@ export default function Header() {
           <DrawerMenu
             mobileOpen={mobileModal}
             handleDrawerToggle={() => dispath(toggleMobile(!mobileModal))}
+            openAuth={handleAuth}
           />
           {productsModal && (
             <Modal

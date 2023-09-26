@@ -1,17 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Box, Divider, Drawer, Typography } from '@mui/material';
-import { List, ListItem, Button } from '@mui/material';
-import AppsIcon from '@mui/icons-material/Apps';
-import HomeIcon from '@mui/icons-material/Home';
-import PhoneIcon from '@mui/icons-material/Phone';
-import PaymentIcon from '@mui/icons-material/Payment';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { Divider, Drawer, Typography, List } from '@mui/material';
 import { LinkStyled } from './drawer.styled';
 import ProductsList from './products/products';
+import { visuallyHidden } from '@mui/utils';
+import Logo from '../logo/logo';
+import { DrawerBlock, ButtonToggle, IconApp, Item } from './drawer.styled';
+import { ListStyled, ItemText, IconHome, IconPay } from './drawer.styled';
+import { IconProfile, IconShipping, IconPhone } from './drawer.styled';
 
-export default function DrawerMenu({ mobileOpen, handleDrawerToggle }) {
+export default function DrawerMenu({
+  mobileOpen,
+  handleDrawerToggle,
+  openAuth,
+}) {
   const [productsOpen, setProductsOpen] = useState(false);
 
   const handleProductsToggle = () => {
@@ -19,66 +22,68 @@ export default function DrawerMenu({ mobileOpen, handleDrawerToggle }) {
   };
 
   return (
-    <Box component="nav">
-      <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true,
-        }}
-      >
-        <Box sx={{ width: { xs: 240, md: 300, xl: 360 } }}>
-          <Typography variant="h6" component="h1" sx={{ my: 2, mx: 2 }}>
-            My Shop
-          </Typography>
+    <Drawer
+      variant="temporary"
+      open={mobileOpen}
+      onClose={handleDrawerToggle}
+      ModalProps={{
+        keepMounted: true,
+      }}
+    >
+      <DrawerBlock component="nav">
+        <Typography component="h1" sx={visuallyHidden}>
+          Hookah for you, hookah store
+        </Typography>
+        <Logo isMobile={true} />
+        <ButtonToggle
+          color="inherit"
+          aria-label="shoping basket"
+          onClick={handleProductsToggle}
+        >
+          <IconApp />
+          {productsOpen ? 'Main menu' : 'Products'}
+        </ButtonToggle>
 
-          <Button
-            color="inherit"
-            aria-label="shoping basket"
-            sx={{ ml: 2, pl: 0 }}
-            onClick={handleProductsToggle}
-          >
-            <AppsIcon sx={{ mr: 2 }} />
-            {productsOpen ? 'Main menu' : 'Products'}
-          </Button>
+        <Divider />
+        {productsOpen ? (
+          <ProductsList />
+        ) : (
+          <ListStyled>
+            <Item>
+              <LinkStyled href="/">
+                <IconHome />
+                <ItemText>Home</ItemText>
+              </LinkStyled>
+            </Item>
 
-          <Divider />
-          {productsOpen ? (
-            <ProductsList />
-          ) : (
-            <List sx={{ display: 'flex', flexDirection: 'column' }}>
-              <ListItem>
-                <LinkStyled href="/">
-                  <HomeIcon sx={{ mr: 2 }} />
-                  Home
-                </LinkStyled>
-              </ListItem>
+            <Item onClick={openAuth}>
+              <IconProfile />
+              <ItemText>Profile</ItemText>
+            </Item>
 
-              <ListItem>
-                <LinkStyled href="/payment">
-                  <PaymentIcon sx={{ mr: 2 }} />
-                  Payment
-                </LinkStyled>
-              </ListItem>
+            <Item>
+              <LinkStyled href="/payment">
+                <IconPay />
+                <ItemText>Payment</ItemText>
+              </LinkStyled>
+            </Item>
 
-              <ListItem>
-                <LinkStyled href="/delivery">
-                  <LocalShippingIcon sx={{ mr: 2 }} />
-                  Delivery
-                </LinkStyled>
-              </ListItem>
+            <Item>
+              <LinkStyled href="/delivery">
+                <IconShipping />
+                <ItemText>Delivery</ItemText>
+              </LinkStyled>
+            </Item>
 
-              <ListItem>
-                <LinkStyled href="/contact">
-                  <PhoneIcon sx={{ mr: 2 }} />
-                  Contact
-                </LinkStyled>
-              </ListItem>
-            </List>
-          )}
-        </Box>
-      </Drawer>
-    </Box>
+            <Item>
+              <LinkStyled href="/contact">
+                <IconPhone />
+                <ItemText>Contact</ItemText>
+              </LinkStyled>
+            </Item>
+          </ListStyled>
+        )}
+      </DrawerBlock>
+    </Drawer>
   );
 }

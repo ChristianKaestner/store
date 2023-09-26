@@ -1,8 +1,7 @@
 import { IconButton, Box, Typography, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { Container, Modal as MuiModal } from '@mui/material';
+import { Modal as MuiModal } from '@mui/material';
 import { ModalBlock } from './modal.styled';
-import Fade from '@mui/material/Fade';
 
 export default function Modal({
   children,
@@ -24,6 +23,7 @@ export default function Modal({
     <MuiModal
       open={open}
       onClose={close}
+      closeAfterTransition={true}
       // aria-labelledby="modal-modal-title"
       // aria-describedby="modal-modal-description"
     >

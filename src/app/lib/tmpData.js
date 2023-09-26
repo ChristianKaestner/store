@@ -15,25 +15,25 @@ export const categories = [
     id: 1,
     image: '/cat-hookahs.png',
     name: 'Hookahs',
-    description: 'Best hookah in the World',
+    url: '/hookahs',
   },
   {
     id: 2,
     image: '/cat-tobacco.png',
     name: 'Tobacco',
-    description: 'Best tobacco in the World',
+    url: '/tobacco',
   },
   {
     id: 3,
     image: '/cat-coals.png',
     name: 'Coals',
-    description: 'Best coal in the World',
+    url: '/coals',
   },
   {
     id: 4,
     image: '/cat-bowls.png',
     name: 'Bowls',
-    description: 'Best hookah bowl in the World',
+    url: '/bowls',
   },
 ];
 

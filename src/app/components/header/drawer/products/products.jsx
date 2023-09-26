@@ -1,24 +1,24 @@
-import { Box, List, ListItem, Divider } from '@mui/material';
+import { Box, List } from '@mui/material';
 import { LinkStyled } from '../drawer.styled';
-import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import { ItemText, Item, ListStyled } from '../drawer.styled';
 import { categories } from '@/app/lib/tmpData';
 
 export default function ProductsList() {
   return (
     <Box sx={{ width: '100%' }}>
-      <List>
-        {categories.map(category => {
+      <ListStyled>
+        {categories.map(({ id, url, name }) => {
           return (
-            <ListItem key={category.id}>
-              <LinkStyled href={`/${category.name}`}>
-                <CatchingPokemonIcon sx={{ mr: 2 }} />
-                {category.name.charAt(0).toUpperCase() + category.name.slice(1)}
+            <Item key={id}>
+              <LinkStyled href={url}>
+                <ItemText>
+                  {name.charAt(0).toUpperCase() + name.slice(1)}
+                </ItemText>
               </LinkStyled>
-            </ListItem>
+            </Item>
           );
         })}
-      </List>
-      <Divider orientation="horizontal" />
+      </ListStyled>
     </Box>
   );
 }

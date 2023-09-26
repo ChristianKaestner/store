@@ -8,6 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PaymentIcon from '@mui/icons-material/Payment';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import Image from 'next/image';
 
 export const LinkStyled = styled(Link)({
   display: 'flex',
@@ -16,7 +17,9 @@ export const LinkStyled = styled(Link)({
 });
 
 export const DrawerBlock = styled(Box)(({ theme }) => ({
+  position: 'relative',
   width: 260,
+  height: '100%',
   padding: 16,
 }));
 
@@ -77,3 +80,10 @@ export const IconShipping = styled(LocalShippingIcon)(({ theme }) => ({
   fontSize: '1.5rem',
   color: theme.palette.primary.light,
 }));
+
+export const ImageStyled = styled(Image)({
+  height: '100%',
+  zIndex: -1,
+  opacity: 0.15,
+  objectFit: 'cover',
+});

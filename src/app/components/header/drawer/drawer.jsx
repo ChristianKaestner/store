@@ -1,14 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { Divider, Drawer, Typography, List } from '@mui/material';
-import { LinkStyled } from './drawer.styled';
+import { Divider, Drawer, Typography } from '@mui/material';
+import { LinkStyled, ImageStyled } from './drawer.styled';
+import { ListStyled, ItemText, IconHome, IconPay } from './drawer.styled';
+import { IconProfile, IconShipping, IconPhone } from './drawer.styled';
+import { DrawerBlock, ButtonToggle, IconApp, Item } from './drawer.styled';
 import ProductsList from './products/products';
 import { visuallyHidden } from '@mui/utils';
 import Logo from '../logo/logo';
-import { DrawerBlock, ButtonToggle, IconApp, Item } from './drawer.styled';
-import { ListStyled, ItemText, IconHome, IconPay } from './drawer.styled';
-import { IconProfile, IconShipping, IconPhone } from './drawer.styled';
 
 export default function DrawerMenu({
   mobileOpen,
@@ -31,6 +31,12 @@ export default function DrawerMenu({
       }}
     >
       <DrawerBlock component="nav">
+        <ImageStyled
+          src="/bg-drawer.png"
+          alt="Pencil drawing of a Hookah"
+          fill={true}
+          sizes="100%"
+        />
         <Typography component="h1" sx={visuallyHidden}>
           Hookah for you, hookah store
         </Typography>

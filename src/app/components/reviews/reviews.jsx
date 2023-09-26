@@ -54,6 +54,7 @@ export default function Reviews({ product }) {
             width="600px"
             height="600px"
             position="center"
+            open={reviewModal}
           >
             <AddReviewModal user={user} handleAddReview={handleAddReview} />
           </Modal>
@@ -65,6 +66,7 @@ export default function Reviews({ product }) {
             width="600px"
             height="auto"
             position="center"
+            open={successModal}
           >
             <SuccessModal
               text={

@@ -4,7 +4,7 @@ import { Box, Divider, Chip } from '@mui/material';
 import Social from './social/social';
 import Login from './login/login';
 import Register from './register/register';
-import { Column } from '@/app/lib/commonStyles';
+
 
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);

@@ -63,6 +63,7 @@ export default function ReviewList({ reviews }) {
           width="600px"
           height="auto"
           position="center"
+          open={commentModal}
         >
           <CommentReviewModal user={user} handleAddComment={handleAddComment} />
         </Modal>
@@ -73,6 +74,7 @@ export default function ReviewList({ reviews }) {
           width="95vw"
           height="95vh"
           position="center"
+          open={fullscrean}
         >
           <FullscreanImage dto={selectedImages} />
         </Modal>
@@ -84,6 +86,7 @@ export default function ReviewList({ reviews }) {
           width="600px"
           height="auto"
           position="center"
+          open={successModal}
         >
           <SuccessModal
             text={

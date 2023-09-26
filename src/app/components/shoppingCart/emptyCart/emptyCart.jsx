@@ -13,6 +13,7 @@ export default function EmptyCart() {
         src="/cart.png"
         alt="shopping cart image"
         layout="fill"
+        sizes="100%"
         objectFit="cover"
         objectPosition="center"
         style={{ height: '100%', zIndex: -1 }}

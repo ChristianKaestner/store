@@ -24,7 +24,6 @@ export default function Header() {
   const [login, setLogin] = useState(true);
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
   const { cart } = useCart();
-
   const dispath = useDispatch();
 
   const handleCloseModal = () => {
@@ -64,6 +63,7 @@ export default function Header() {
               width="calc(100% - 48px)"
               height="600px"
               position="top"
+              open={productsModal}
             >
               <ProductsModal handleCloseModal={handleCloseModal} />
             </Modal>
@@ -74,6 +74,7 @@ export default function Header() {
               title={login ? 'Log In' : 'Register'}
               width="600px"
               position="center"
+              open={accountModal}
             >
               <Auth toggleAuth={() => setLogin(!login)} login={login} />
             </Modal>
@@ -85,6 +86,7 @@ export default function Header() {
               width="600px"
               height="600px"
               position="center"
+              open={cartModal}
             >
               <ShoppingCart />
             </Modal>

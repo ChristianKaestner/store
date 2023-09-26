@@ -1,11 +1,11 @@
 'use client';
+
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { Container, IconButton, Box, Typography, Divider } from '@mui/material';
 import { Backdrop, ModalWindow } from './modal.styled';
 import CloseIcon from '@mui/icons-material/Close';
 
-//need to add transition or animation letter...
 export default function Modal({
   onClose,
   children,
@@ -14,6 +14,7 @@ export default function Modal({
   height = 'auto',
   maxHeight = 'auto',
   position = 'center',
+  open,
 }) {
   useEffect(() => {
     const keyDownEvent = e => {
@@ -22,8 +23,10 @@ export default function Modal({
         document.body.style.overflowY = 'scroll';
       }
     };
+
     window.addEventListener('keydown', keyDownEvent);
     document.body.style.overflowY = 'hidden';
+
     return () => {
       window.removeEventListener('keydown', keyDownEvent);
       document.body.style.overflowY = 'scroll';
@@ -55,6 +58,7 @@ export default function Modal({
           height={height}
           maxHeight={maxHeight}
           location={location(position)}
+          open={open}
         >
           <IconButton
             sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}

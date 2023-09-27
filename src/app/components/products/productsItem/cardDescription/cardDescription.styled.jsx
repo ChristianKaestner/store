@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, CardContent } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
@@ -13,6 +13,7 @@ export const Block = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
+  alignItems: 'center',
   marginTop: 8,
 });
 
@@ -20,3 +21,7 @@ export const IconAddCart = styled(AddShoppingCartIcon)(({ theme }) => ({
   fontSize: '1.875rem',
   color: theme.palette.primary.accent,
 }));
+
+export const Description = styled(CardContent)({
+  padding: '0px 8px 8px 8px !important',
+});

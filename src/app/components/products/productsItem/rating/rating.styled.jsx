@@ -1,16 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Rating, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Container = styled(Box)(({ theme }) => ({
   display: 'flex',
+  flexDirection: 'row',
   alignItems: 'center',
-
-  [theme.breakpoints.up('xs')]: {
-    flexDirection: 'column',
-  },
-  [theme.breakpoints.up('sm')]: {
-    flexDirection: 'row',
-  },
 }));
 
 export const Text = styled(Typography)(({ theme }) => ({
@@ -19,5 +13,20 @@ export const Text = styled(Typography)(({ theme }) => ({
   '&:hover': {
     color: theme.palette.primary.accent,
     textDecoration: 'underline',
+  },
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
+  },
+}));
+
+export const RatingStyled = styled(Rating)(({ theme }) => ({
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1rem',
   },
 }));

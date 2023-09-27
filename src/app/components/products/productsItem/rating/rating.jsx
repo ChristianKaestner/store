@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import { Rating } from '@mui/material';
-import { Container, Text } from './rating.styled';
+import { Container, Text, RatingStyled } from './rating.styled';
 
 export default function ProductRating({ product, size }) {
   const { rating, reviews, categories, id } = product;
 
   return (
     <Container>
-      <Rating
+      <RatingStyled
         name="half-rating"
         precision={0.5}
         value={rating}
@@ -15,7 +14,7 @@ export default function ProductRating({ product, size }) {
         size={size}
       />
       <Link href={`/${categories}/${id}/reviews`}>
-        <Text>{reviews.length} reviews</Text>
+        <Text>{reviews.length} review</Text>
       </Link>
     </Container>
   );

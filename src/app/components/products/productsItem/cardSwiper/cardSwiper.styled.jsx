@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 
 export const Container = styled(Box)({
   position: 'relative',
-  height: 200,
+  height: 216,
   padding: 8,
 });
 
@@ -16,7 +16,7 @@ export const LinkStyled = styled(Link)({
   height: '100%',
 });
 
-export const ImageStyled = styled(Image)({
+export const ImageStyled = styled(Image)(({ theme }) => ({
   transition: 'transform 500ms ease-in-out',
-  objectFit: 'contain',
-});
+  objectFit: 'fill',
+}));

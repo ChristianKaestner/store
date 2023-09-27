@@ -18,11 +18,10 @@ export default function NotFound() {
 
       <Image
         src="/404.png"
-        alt="shopping cart image"
-        layout="fill"
-        objectFit="contain"
-        objectPosition="center"
-        style={{ zIndex: -1 }}
+        alt="not found image"
+        fill={true}
+        sizes="100%"
+        style={{ height: '100%', objectFit: 'contain', zIndex: -1 }}
       />
     </Container>
   );

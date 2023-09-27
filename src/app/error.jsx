@@ -25,11 +25,10 @@ export default function Loading({ error }) {
       <h1>SOMETHING WENT WORNG...</h1>
       <Image
         src="/error.png"
-        alt="shopping cart image"
-        layout="fill"
-        objectFit="contain"
-        objectPosition="center"
-        style={{ zIndex: -1 }}
+        alt="error image"
+        fill={true}
+        sizes="100%"
+        style={{ height: '100%', objectFit: 'contain', zIndex: -1 }}
       />
     </Container>
   );

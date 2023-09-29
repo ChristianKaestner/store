@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
@@ -8,10 +9,10 @@ import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'swiper/css';
 
-export default function RelatedProducts({ relatedProducts }) {
+export default function RelatedProducts() {
   const [prevBtn, setPervBtn] = useState(false);
   const [nextBtn, setNextBtn] = useState(true);
-  const { data, isLoading } = relatedProducts;
+  const { data = [], isLoading } = useGetAllGoodsQuery();
   const { cart } = useCart();
   const sliderRef = useRef();
   const mediaXS = useMediaQuery('(max-width:599px)');

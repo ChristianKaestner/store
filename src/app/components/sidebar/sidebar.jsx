@@ -1,4 +1,5 @@
 'use client';
+import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import { v4 as uuidv4 } from 'uuid';
 import { Aside } from './sidebar.styled';
 import PriceFilter from '../filters/price/price';
@@ -12,7 +13,10 @@ import TypeFilter from '../filters/type/type';
 import { addCount } from '@/app/lib/functions';
 
 //need to add Skeleton
-export default function Sidebar({ goods }) {
+export default function Sidebar({ category }) {
+  const { data = [], isLoading, error } = useGetAllGoodsQuery();
+  const goods = data.filter(n => n.categories === category);
+
   const prices = [];
   const colorsArr = [];
   const brands = [];

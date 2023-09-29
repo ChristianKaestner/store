@@ -13,8 +13,9 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
-  title: 'Shop',
-  description: 'Some shop',
+  title: 'Smoke for you',
+  description:
+    'Store hookahs which is pleased to provide you with a large assortment of hookahs, tobacco, charcoal and accessories. Our prices are the best. Our goods are of high quality.  ',
 };
 
 export default function RootLayout({ children }) {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { getSearchParams } from '@/app/lib/functions';
 import { useForm, Controller } from 'react-hook-form';

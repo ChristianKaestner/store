@@ -117,3 +117,19 @@ export const updatedFilterLabel = (name, value) => {
   if (name === 'price') return 'price ' + value;
   return value;
 };
+
+export const getGoods = (data, promoted, category) => {
+  if (promoted) return data.filter(n => n.isPromoted);
+  if (category) return data.filter(n => n.categories === category);
+  return data;
+};
+
+export const brandsForMetaData = products => {
+  const uniqBrands = [];
+  products.forEach(product => {
+    if (!uniqBrands.includes(product.brand)) {
+      uniqBrands.push(product.brand);
+    } else return;
+  });
+  return uniqBrands.join(', ');
+};

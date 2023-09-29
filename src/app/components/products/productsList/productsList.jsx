@@ -1,27 +1,42 @@
 'use client';
 
+import { useState } from 'react';
+import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import ProductsItem from '../productsItem/productItem';
+import { useCart } from '@/app/hooks/useCart';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Pagination, Button, Typography } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 import Skeleton from '../../skeleton/skeleton';
 import { BlockBtn, PaginationStyled } from './productList.styled';
 import { visuallyHidden } from '@mui/utils';
+import { tmpUser } from '@/app/lib/tmpData';
+import { getGoods } from '@/app/lib/functions';
 
 export default function ProductsList({
-  goods,
-  isLoading,
-  cart,
-  favorites,
+  promoted,
   pagination,
-  page,
-  onPage,
-  onLoadMore,
+  category,
   skeleton,
   lgPerPage = 2.4,
   component = 'h2',
   title,
 }) {
+  const [page, setPage] = useState(1);
+  const [limit] = useState(20); //fetch by this limit
+  const { data = [], isLoading, error } = useGetAllGoodsQuery();
+  const { cart } = useCart();
+  const goods = getGoods(data, promoted, category);
+  const { favorites } = tmpUser;
+
+  const handlePage = value => {
+    setPage(value);
+  };
+
+  const handleLoadMore = () => {
+    //load more
+  };
+
   return (
     <Box component="section" sx={{ width: '100%' }}>
       <Typography component={component} sx={visuallyHidden}>
@@ -67,7 +82,7 @@ export default function ProductsList({
               startIcon={<LoopIcon />}
               sx={{ color: 'primary.light' }}
               size="large"
-              onClick={onLoadMore}
+              onClick={handleLoadMore}
             >
               Load more
             </Button>
@@ -76,7 +91,7 @@ export default function ProductsList({
             count={pagination}
             page={page}
             size="large"
-            onChange={(e, value) => onPage(value)}
+            onChange={(e, value) => handlePage(value)}
           />
         </>
       )}

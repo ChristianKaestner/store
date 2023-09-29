@@ -1,61 +1,56 @@
-'use client';
-import { useState } from 'react';
-import { useCart } from '@/app/hooks/useCart';
-import { useGetGoodsQuery } from '@/app/redux/services/goods';
-import { usePathname } from 'next/navigation';
-import { Divider } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
-import { Row, RowBetween } from '@/app/lib/commonStyles';
+import { brandsForMetaData } from '@/app/lib/functions';
+
+export async function generateMetadata({ params, searchParams }) {
+  const products = await fetch(
+    `http://localhost:3001/goods?${searchParams}`
+  ).then(res => res.json());
+  const brands = brandsForMetaData(products);
+
+  return {
+    title: 'Hookahs - Smoke for you',
+    description: `Sale of hookahs from famous world brands ${brands} `,
+  };
+}
 
 export default function Hookahs() {
-  const [page, setPage] = useState(1);
-  const [limit] = useState(20);
-  const { cart } = useCart();
-
-  const { data = [], isLoading } = useGetGoodsQuery(limit);
-  const hookahs = data.filter(n => n.categories === 'hookahs');
-
-  const path = usePathname().split('/');
-  path.splice(0, 1);
-
-  const handlePage = value => {
-    setPage(value);
-  };
-
-  const handleLoadMore = () => {
-    //load more
-  };
-
   return (
     <>
-      <Breadcrumbs crumbs={path} />
+      <Breadcrumbs />
       <PageTitle title="Hookahs" />
-      <RowBetween sx={{ mb: 1 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          mb: 1,
+        }}
+      >
         <Sortbar />
         <SortFilter />
-      </RowBetween>
+      </Box>
 
       <Divider />
-      <Row>
-        <Sidebar goods={hookahs} />
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+        }}
+      >
+        <Sidebar category={'hookahs'} />
         <ProductsList
-          goods={hookahs}
-          isLoading={isLoading}
-          cart={cart}
-          favorite={[]}
+          category={'hookahs'}
           pagination={2}
-          page={page}
-          onPage={handlePage}
-          onLoadMore={handleLoadMore}
           skeleton={20}
           title="Large variety of hookahs"
         />
-      </Row>
+      </Box>
     </>
   );
 }

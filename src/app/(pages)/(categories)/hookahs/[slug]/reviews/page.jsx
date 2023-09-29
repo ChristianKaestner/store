@@ -6,6 +6,11 @@ import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Reviews from '@/app/components/reviews/reviews';
 
+export const metadata = {
+  title: 'new meta',
+  description: 'new meta',
+};
+
 export default function Review() {
   const path = usePathname().split('/');
   path.splice(0, 1);

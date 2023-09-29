@@ -4,14 +4,15 @@ import { IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const colors = {
-  main: '#324376',
-  light: '#586ba4',
-  info: '#f5dd90',
-  accent: '#f68e5f',
-  hot: '#f76c5e',
+  main: '#001219',
+  light: '#005f73',
+  info: '#e9d8a6',
+  accent: '#ee9b00',
+  hot: '#ae2012',
   dim: '#f5f6fa',
   text: '#221f1f',
   neutral: '#747474',
+  badge: '#939393',
 };
 
 export const Form = styled(FormControl)({
@@ -94,7 +95,7 @@ export const swiperStyles = {
   width: '100%',
   borderRadius: '4px',
   '--swiper-pagination-color': colors.accent,
-  '--swiper-pagination-bullet-inactive-color': colors.neutral,
+  '--swiper-pagination-bullet-inactive-color': colors.badge,
   '--swiper-pagination-bullet-inactive-opacity': '1',
   '--swiper-pagination-bullet-size': '12px',
   '--swiper-pagination-bullet-horizontal-gap': '8px',

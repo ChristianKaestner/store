@@ -40,7 +40,7 @@ export const chipColor = label => {
     case 'New':
       return 'primary.light';
     case 'Sale':
-      return 'primary.accent';
+      return 'primary.subsidiary';
     case 'Hot':
       return 'primary.hot';
     default:

@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material';
 export const myTheme = createTheme({
   typography: {
     fontFamily: [
-      'Lato',
+      'Open Sans',
       '-apple-system',
       'BlinkMacSystemFont',
       '"Segoe UI"',
@@ -19,11 +19,13 @@ export const myTheme = createTheme({
   },
   palette: {
     primary: {
-      main: '#324376',
-      light: '#586ba4',
-      info: '#f5dd90',
-      accent: '#f68e5f',
-      hot: '#f76c5e',
+      main: '#001219',
+      light: '#005f73',
+      subsidiary: '#0a9396',
+      w: '#94d2bd',
+      info: '#e9d8a6',
+      accent: '#ee9b00',
+      hot: '#ae2012',
       dim: '#f5f6fa',
       text: '#221f1f',
       neutral: '#747474',

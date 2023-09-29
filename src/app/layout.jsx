@@ -1,5 +1,5 @@
 import './globals.css';
-import { Lato } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import { ThemeProvider } from '@mui/material';
@@ -7,9 +7,9 @@ import { myTheme } from './lib/theme';
 import ReduxProvider from './redux/provider';
 import Main from './layout/main/main';
 
-const lato = Lato({
+const openSans = Open_Sans({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
 });
 
 export const metadata = {
@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={lato.className}>
+    <html lang="en" className={openSans.className}>
       <body>
         <ThemeProvider theme={myTheme}>
           <ReduxProvider>

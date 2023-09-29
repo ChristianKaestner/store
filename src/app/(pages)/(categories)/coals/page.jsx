@@ -7,17 +7,17 @@ import ProductsList from '@/app/components/products/productsList/productsList';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
 import { brandsForMetaData } from '@/app/lib/functions';
 
-export async function generateMetadata({ params, searchParams }) {
-  const products = await fetch(
-    `http://localhost:3001/goods?${searchParams}`
-  ).then(res => res.json());
-  const brands = brandsForMetaData(products);
+// export async function generateMetadata({ params, searchParams }) {
+//   const products = await fetch(
+//     `http://localhost:3001/goods?${searchParams}`
+//   ).then(res => res.json());
+//   const brands = brandsForMetaData(products);
 
-  return {
-    title: 'Coals - Smoke for you',
-    description: `Sale of hookah coal from famous world brands ${brands} `,
-  };
-}
+//   return {
+//     title: 'Coals - Smoke for you',
+//     description: `Sale of hookah coal from famous world brands ${brands} `,
+//   };
+// }
 
 export default function Hookahs() {
   return (

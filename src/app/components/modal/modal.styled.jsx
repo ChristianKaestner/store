@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 
 export const ModalBlock = styled(Box, {
@@ -15,7 +16,7 @@ export const ModalBlock = styled(Box, {
   width: '100%',
   padding: '32px 16px',
   borderRadius: 4,
-  border: '2px solid #586ba4',
+  border: `2px solid ${theme.palette.primary.light}`,
   background: '#fff',
   color: '#000',
 
@@ -28,5 +29,12 @@ export const ModalBlock = styled(Box, {
     maxWidth: 1488,
     transform: `translate(-${location.x}, -${location.y})`,
     padding: 32,
+  },
+}));
+
+export const IconClose = styled(CloseIcon)(({ theme }) => ({
+  fill: theme.palette.primary.light,
+  '&:hover': {
+    fill: theme.palette.primary.accent,
   },
 }));

@@ -1,32 +1,23 @@
-'use client';
-
-import { usePathname, useParams } from 'next/navigation';
-import {
-  useGetProductByIdQuery,
-  useGetAllGoodsQuery,
-} from '@/app/redux/services/goods';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import ProductPage from '@/app/components/products/productPage/productPage';
 
+export async function generateMetadata({ params }) {
+  const id = params.slug;
+
+  const product = await fetch(`http://localhost:3001/goods/${id}`).then(res =>
+    res.json()
+  );
+  return {
+    title: `Hookah coal ${product.brand}`,
+    description: product.description,
+  };
+}
+
 export default function Hookah() {
-  const path = usePathname().split('/');
-  path.splice(0, 1);
-
-  const { slug } = useParams();
-
-  const { data, isLoading } = useGetProductByIdQuery(slug);
-  const relatedProducts = useGetAllGoodsQuery();
-
   return (
     <>
-      {!isLoading && (
-        <>
-          <Breadcrumbs crumbs={path} title={data?.title} />
-          {data && (
-            <ProductPage product={data} relatedProducts={relatedProducts} />
-          )}
-        </>
-      )}
+      <Breadcrumbs />
+      <ProductPage />
     </>
   );
 }

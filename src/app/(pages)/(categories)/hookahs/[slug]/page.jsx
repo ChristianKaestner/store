@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
     res.json()
   );
   return {
-    title: `Hookah - ${product.brand}`,
+    title: `Hookah brand ${product.brand}`,
     description: product.description,
   };
 }

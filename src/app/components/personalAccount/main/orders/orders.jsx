@@ -1,3 +1,4 @@
+'use client';
 import { Box } from '@mui/material';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import OrderItem from './orderItem/orderItem';

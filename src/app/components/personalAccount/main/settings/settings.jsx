@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import { Box, Paper, IconButton } from '@mui/material';
 import { TableContainer, Table, TableRow, TableBody } from '@mui/material';

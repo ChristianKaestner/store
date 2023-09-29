@@ -25,7 +25,7 @@ export const myTheme = createTheme({
       w: '#94d2bd',
       info: '#e9d8a6',
       accent: '#ee9b00',
-      hot: '#ae2012',
+      hot: '#F46145',
       dim: '#f5f6fa',
       text: '#221f1f',
       neutral: '#747474',

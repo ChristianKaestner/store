@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 
@@ -16,11 +16,16 @@ export const FilterBtn = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.light,
   border: `1px solid ${theme.palette.primary.light}`,
   borderRadius: 16,
-
+  '.MuiSvgIcon-root': {
+    transition: 'all 300ms ease-in-out',
+  },
   '&:hover': {
     backgroundColor: theme.palette.primary.dim,
     '.MuiButton-endIcon': {
-      '.MuiSvgIcon-root': { color: theme.palette.primary.hot },
+      '.MuiSvgIcon-root': {
+        transform: 'scale(1.1)',
+        color: theme.palette.primary.hot,
+      },
     },
   },
 }));
@@ -28,6 +33,3 @@ export const FilterBtn = styled(Button)(({ theme }) => ({
 export const IconClose = styled(CloseIcon)({
   fontSize: '1rem',
 });
-
-
-

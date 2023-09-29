@@ -1,6 +1,6 @@
 import { IconButton, Box, Typography, Divider } from '@mui/material';
 import { Modal as MuiModal } from '@mui/material';
-import { ModalBlock, IconClose } from './modal.styled';
+import { ModalBlock, ButtonClose, IconClose } from './modal.styled';
 
 export default function Modal({
   children,
@@ -26,12 +26,9 @@ export default function Modal({
         maxHeight={maxHeight}
         location={location(position)}
       >
-        <IconButton
-          sx={{ position: 'absolute', top: 0, right: 0, zIndex: 2 }}
-          onClick={close}
-        >
-          <IconClose />
-        </IconButton>
+        <ButtonClose onClick={close}>
+          <IconClose className="changeFill" />
+        </ButtonClose>
         {title && (
           <Box>
             <Typography component="h2" sx={{ fontSize: 28, fontWeight: 500 }}>

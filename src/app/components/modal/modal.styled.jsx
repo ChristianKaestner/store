@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 
@@ -33,8 +33,20 @@ export const ModalBlock = styled(Box, {
 }));
 
 export const IconClose = styled(CloseIcon)(({ theme }) => ({
+  transition: 'all 300ms ease-in-out',
   fill: theme.palette.primary.light,
+}));
+
+export const ButtonClose = styled(IconButton)(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  zIndex: 2,
+
   '&:hover': {
-    fill: theme.palette.primary.accent,
+    '& .changeFill': {
+      fill: theme.palette.primary.hot,
+      transform: 'scale(1.1)',
+    },
   },
 }));

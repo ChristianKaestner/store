@@ -51,6 +51,7 @@ export default function ProductItem({ product, cart, favorites }) {
 
   return (
     <Card
+      component="li"
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

@@ -13,16 +13,31 @@ export default function Categories({ categories }) {
       <Typography component="h2" sx={visuallyHidden}>
         Best hookah price, top quality tobaссko, excelent coal & more
       </Typography>
-      <Grid
+      {/* <Grid
         container
         rowSpacing={{ xs: 2, sm: 2, md: 3 }}
         columnSpacing={{ xs: 2, sm: 2, md: 3 }}
         component="ul"
         sx={{ listStyle: 'none' }}
+      > */}
+      <Box
+        component="ul"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          listStyle: 'none',
+        }}
       >
         {categories.map(category => {
           return (
-            <Grid xs={6} key={category.id} component="li">
+            // <Grid xs={6} key={category.id} component="li">
+            <Box
+              component="li"
+              sx={{ width: 'calc(100% / 2 - 16px)', mb: 2, opacity: 0.9 }}
+              key={category.id}
+            >
               <Link href={category.name.toLowerCase()}>
                 <Card>
                   <Image
@@ -46,10 +61,12 @@ export default function Categories({ categories }) {
                   </Box>
                 </Card>
               </Link>
-            </Grid>
+            </Box>
+            // </Grid>
           );
         })}
-      </Grid>
+      </Box>
+      {/* </Grid> */}
     </Box>
   );
 }

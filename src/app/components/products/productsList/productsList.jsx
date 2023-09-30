@@ -42,12 +42,22 @@ export default function ProductsList({
       <Typography component={component} sx={visuallyHidden}>
         {title}
       </Typography>
-      <Grid
+      {/* <Grid
         component="ul"
         container
         rowSpacing={{ xs: 2, sm: 2, md: 3 }}
         columnSpacing={{ xs: 2, sm: 2, md: 3 }}
         sx={{ listStyle: 'none' }}
+      > */}
+      <Box
+        component="ul"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          listStyle: 'none',
+        }}
       >
         {isLoading ? (
           <Skeleton length={skeleton} />
@@ -56,28 +66,30 @@ export default function ProductsList({
             {goods &&
               goods.map(item => {
                 return (
-                  <Grid
-                    xs={6}
-                    sm={4}
-                    md={3}
-                    lg={lgPerPage}
+                  // <Grid
+                  //   xs={6}
+                  //   sm={4}
+                  //   md={3}
+                  //   lg={lgPerPage}
+                  //   key={item.id}
+                  //   component="li"
+                  //   sx={{
+                  //     zIndex: 1,
+                  //   }}
+                  // >
+                  <ProductsItem
                     key={item.id}
-                    component="li"
-                    sx={{
-                      zIndex: 1,
-                    }}
-                  >
-                    <ProductsItem
-                      product={item}
-                      cart={cart}
-                      favorites={favorites}
-                    />
-                  </Grid>
+                    product={item}
+                    cart={cart}
+                    favorites={favorites}
+                  />
+                  // </Grid>
                 );
               })}
           </>
         )}
-      </Grid>
+      </Box>
+      {/* </Grid> */}
       {goods.length > 20 && pagination && (
         <>
           <BlockBtn>

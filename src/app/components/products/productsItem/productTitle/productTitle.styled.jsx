@@ -7,6 +7,7 @@ export const Text = styled(Typography)(({ theme }) => ({
   overflow: 'hidden',
   fontSize: '0.875rem',
   marginBottom: 8,
+  color: '#fff',
   '&:hover': {
     color: theme.palette.primary.accent,
     textDecoration: 'underline',

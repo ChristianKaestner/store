@@ -2,6 +2,7 @@ import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import CursorComponent from './components/cursor/cursor';
 import { ThemeProvider } from '@mui/material';
 import { myTheme } from './lib/theme';
 import ReduxProvider from './redux/provider';
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider theme={myTheme}>
           <ReduxProvider>
+            <CursorComponent />
             <Header />
             <Main>{children}</Main>
             <Footer />

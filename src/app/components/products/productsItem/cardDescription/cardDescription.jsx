@@ -12,7 +12,7 @@ export default function CardDescription({
   openCart,
   path,
 }) {
-  const { brand, title, price } = product;
+  const { title, price } = product;
 
   return (
     <Description>
@@ -24,9 +24,7 @@ export default function CardDescription({
         <Price component="p" price={price} />
 
         {inCart ? (
-          <Box>
-            <SpeedDialCart handleCart={handleCart} openCart={openCart} />
-          </Box>
+          <SpeedDialCart handleCart={handleCart} openCart={openCart} />
         ) : (
           <IconButton onClick={handleCart}>
             <IconAddCart />

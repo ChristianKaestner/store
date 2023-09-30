@@ -3,11 +3,17 @@ import Image from 'next/image';
 import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-export const Container = styled(Box)({
+export const Container = styled(Box)(({ theme }) => ({
   position: 'relative',
-  height: 216,
   padding: 8,
-});
+  marginTop: 8,
+  [theme.breakpoints.up('xs')]: {
+    height: 160,
+  },
+  [theme.breakpoints.up('md')]: {
+    height: 216,
+  },
+}));
 
 export const LinkStyled = styled(Link)({
   position: 'relative',

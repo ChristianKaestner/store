@@ -15,7 +15,13 @@ export default function Footer() {
 
   return (
     <Box
-      sx={{ width: '100%', bgcolor: 'primary.main', pb: 3 }}
+      sx={{
+        width: '100%',
+        bgcolor: 'primary.main',
+        pb: 3,
+        zIndex: 1,
+        opacity: 0.8,
+      }}
       component="footer"
     >
       <Container

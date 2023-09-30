@@ -58,11 +58,14 @@ export default function ProductsList({
                 return (
                   <Grid
                     xs={6}
-                    sm={6}
-                    md={4}
+                    sm={4}
+                    md={3}
                     lg={lgPerPage}
                     key={item.id}
                     component="li"
+                    sx={{
+                      zIndex: 1,
+                    }}
                   >
                     <ProductsItem
                       product={item}

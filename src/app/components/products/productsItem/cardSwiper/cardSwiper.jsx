@@ -31,7 +31,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
         modules={[Autoplay, Pagination, EffectFade]}
         style={{
           ...swiperStyles,
-          height: 200,
+          height: '100%',
         }}
       >
         {promotion && (

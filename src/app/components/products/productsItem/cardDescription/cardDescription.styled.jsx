@@ -14,6 +14,7 @@ export const Block = styled(Box)({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
+  height: 46,
   marginTop: 8,
 });
 

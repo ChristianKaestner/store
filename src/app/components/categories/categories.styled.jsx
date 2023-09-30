@@ -9,7 +9,8 @@ export const Card = styled(MuiCard)(({ theme }) => ({
   justifyContent: 'end',
   width: '100%',
   textAlign: 'center',
-  bgcolor: theme.palette.primary.main,
+  borderRadius: 4,
+
   [theme.breakpoints.up('xs')]: {
     height: 160,
   },

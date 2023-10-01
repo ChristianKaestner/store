@@ -40,25 +40,28 @@ export const ReplyBlock = styled(Box)({
   marginTop: 8,
 });
 
-export const CommentsBlock = styled(Box)({
+export const CommentsBlock = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'end',
   listStyle: 'none',
-});
+ 
+}));
 
 export const TextDate = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.neutral,
   marginRight: 16,
 }));
 
-export const TextName = styled(Typography)({
+export const TextName = styled(Typography)(({ theme }) => ({
   fontSize: '1.25rem',
   fontWeight: 500,
   marginLeft: 8,
-});
+  color: theme.palette.primary.dim,
+}));
 
-export const Text = styled(Typography)({
+export const Text = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   marginTop: 8,
-});
+  color: theme.palette.primary.subsidiary,
+}));

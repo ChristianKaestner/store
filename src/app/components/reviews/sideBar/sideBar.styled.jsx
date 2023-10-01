@@ -9,6 +9,9 @@ export const AsideBlock = styled(Paper)(({ theme }) => ({
   MaxWidth: '30%',
   alignItems: 'center',
   padding: 16,
+  backgroundColor: theme.palette.primary.main,
+  zIndex: 1,
+  opacity: 0.9,
 
   [theme.breakpoints.up('xs')]: {
     display: 'none',
@@ -21,4 +24,5 @@ export const AsideBlock = styled(Paper)(({ theme }) => ({
 export const ImageBlock = styled(Box)({
   position: 'relative',
   marginRight: 16,
+  borderRadius: 4,
 });

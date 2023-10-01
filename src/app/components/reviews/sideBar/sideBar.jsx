@@ -16,6 +16,7 @@ export default function SideBar({ image, title, price, id }) {
           height={80}
           alt={title + ' image'}
           priority="false"
+          style={{ borderRadius: 4 }}
         />
       </ImageBlock>
       <Box sx={{ width: '100%' }}>

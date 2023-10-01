@@ -10,6 +10,16 @@ export default function AddReview({ onWriteReview }) {
         variant="outlined"
         onClick={onWriteReview}
         startIcon={<CreateIcon />}
+        sx={{
+          zIndex: 1,
+          color: 'primary.dim',
+          borderColor: 'primary.dim',
+          '&:hover': {
+            borderColor: 'primary.light',
+            backgroundColor: 'primary.dim',
+            color: 'primary.light',
+          },
+        }}
       >
         Write review
       </Button>

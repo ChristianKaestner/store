@@ -15,7 +15,11 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
   const { name, usefulness, comments } = review;
   return (
     <>
-      <Paper elevation={3} sx={{ mt: 4, p: 2 }} component="li">
+      <Paper
+        elevation={3}
+        sx={{ bgcolor: 'primary.main', mt: 4, p: 2, zIndex: 1, opacity: 0.9 }}
+        component="li"
+      >
         <ReviewInfoBlock>
           <RowCenter>
             <Tooltip title="Buyer" placement="top">
@@ -37,11 +41,11 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
             readOnly
             sx={{ my: 2 }}
           />
-          <Typography>{text}</Typography>
+          <Typography sx={{ color: 'primary.dim' }}>{text}</Typography>
           <Text>Pros</Text>
-          <Typography>{pros}</Typography>
+          <Typography sx={{ color: 'primary.dim' }}>{pros}</Typography>
           <Text>Cons </Text>
-          <Typography>{cons}</Typography>
+          <Typography sx={{ color: 'primary.dim' }}>{cons}</Typography>
           {images.length && (
             <ImageBlock component="ul">
               {images.map(image => {

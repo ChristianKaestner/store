@@ -61,7 +61,7 @@ export default function Breadcrumbs() {
                 );
               }
               return (
-                <Typography key={index} sx={{ color: 'primary.dim' }}>
+                <Typography key={index} sx={{ color: 'primary.accent' }}>
                   {isId ? title : capitalizedCrumb}
                 </Typography>
               );

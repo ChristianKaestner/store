@@ -7,12 +7,15 @@ export const HeadBlock = styled(Box)({
   alignItems: 'center',
   justifyContent: 'space-between',
   marginTop: 8,
+  zIndex: 1,
+  opacity: 0.9,
 });
 
 export const ReviewBlock = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   marginRight: 16,
+
   [theme.breakpoints.up('xs')]: {
     width: '100%',
   },
@@ -25,4 +28,5 @@ export const MainBlock = styled(Box)({
   display: 'flex',
   flexDirection: 'row',
   marginTop: 32,
+  marginBottom: 32,
 });

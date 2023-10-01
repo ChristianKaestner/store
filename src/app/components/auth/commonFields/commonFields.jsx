@@ -19,6 +19,7 @@ export default function CommonFileds({
         label="Email"
         id="email"
         type="email"
+        autoComplete="off"
         {...regEmail}
         sx={{ mt: 2 }}
       />

@@ -1,4 +1,4 @@
-import { IconButton, Box, Typography, Divider } from '@mui/material';
+import { Box, Typography, Divider } from '@mui/material';
 import { Modal as MuiModal } from '@mui/material';
 import { ModalBlock, ButtonClose, IconClose } from './modal.styled';
 
@@ -31,10 +31,13 @@ export default function Modal({
         </ButtonClose>
         {title && (
           <Box>
-            <Typography component="h2" sx={{ fontSize: 28, fontWeight: 500 }}>
+            <Typography
+              component="h2"
+              sx={{ fontSize: 28, fontWeight: 500, color: 'primary.dim' }}
+            >
               {title}
             </Typography>
-            <Divider />
+            <Divider sx={{ bgcolor: 'primary.dim' }} />
           </Box>
         )}
         {children}

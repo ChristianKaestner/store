@@ -58,3 +58,11 @@ input[type="number"] {
    box-shadow: inset 0px 0px 1px 1px #ffffff4d;
 }
 
+/* set autofil color for google */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #747474 inset !important;
+  -webkit-text-fill-color: #f5f6fa;
+}

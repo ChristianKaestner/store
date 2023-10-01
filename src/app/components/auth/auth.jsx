@@ -5,7 +5,6 @@ import Social from './social/social';
 import Login from './login/login';
 import Register from './register/register';
 
-
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -48,9 +47,20 @@ export default function Auth({ toggleAuth, login }) {
       <Divider
         orientation="vertical"
         flexItem
-        sx={{ mx: 2, display: { xs: 'none', sm: 'flex' } }}
+        sx={{
+          mx: 2,
+          display: { xs: 'none', sm: 'flex' },
+          color: 'primary.dim',
+          '&::before, &::after': {
+            borderColor: 'primary.dim',
+          },
+        }}
       >
-        <Chip label="or" variant="outlined" />
+        <Chip
+          label="or"
+          variant="outlined"
+          sx={{ borderColor: 'primary.dim', color: 'primary.dim' }}
+        />
       </Divider>
       <Social />
     </Box>

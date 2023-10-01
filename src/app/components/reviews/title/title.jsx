@@ -19,7 +19,7 @@ export default function ReviewTitle() {
             fontWeight: 500,
             fontSize: { xs: '1.5rem', sm: '2rem' },
             zIndex: 1,
-            color: '#000',
+            color: 'primary.dim',
           }}
         >
           {reviewTitle}

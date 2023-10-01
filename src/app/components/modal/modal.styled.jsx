@@ -16,9 +16,10 @@ export const ModalBlock = styled(Box, {
   width: '100%',
   padding: '32px 16px',
   borderRadius: 4,
-  border: `2px solid ${theme.palette.primary.light}`,
+  border: `1px solid ${theme.palette.primary.light}`,
   background: '#fff',
   color: '#000',
+  backgroundColor: theme.palette.primary.neutral,
 
   [theme.breakpoints.up('sm')]: {
     top: location.top,

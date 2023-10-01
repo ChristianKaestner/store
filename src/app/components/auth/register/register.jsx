@@ -69,7 +69,7 @@ export default function Register({
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <Typography>+380</Typography>
+              <Typography sx={{ color: 'primary.dim' }}>+380</Typography>
             </InputAdornment>
           ),
         }}

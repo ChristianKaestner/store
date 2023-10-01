@@ -60,7 +60,7 @@ export default function UploadImage({
         flexDirection: 'column',
         border: 1,
         borderRadius: 1,
-        borderColor: errUpload ? 'primary.hot' : '#00000033',
+        borderColor: errUpload ? 'primary.hot' : 'primary.dim',
         p: 2,
         mt: 4,
         '&:hover': {
@@ -76,7 +76,9 @@ export default function UploadImage({
         }}
       >
         <Box sx={{ mr: 2 }}>
-          <Typography sx={{ fontWeight: 500 }}>Add images</Typography>
+          <Typography sx={{ fontWeight: 500, color: 'primary.dim' }}>
+            Add images
+          </Typography>
           <Typography sx={{ color: 'primary.neutral' }}>
             Add up to 10 images in .jpg, .png formats, file size up to 5 MB
           </Typography>

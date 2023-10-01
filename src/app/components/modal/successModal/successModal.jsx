@@ -12,7 +12,9 @@ export default function SuccessModal({ text }) {
     >
       <Box>
         <CheckCircleIcon sx={{ fontSize: '10rem', color: 'success.light' }} />
-        <Typography sx={{ fontSize: '1.25rem', fontWeight: 500 }}>
+        <Typography
+          sx={{ fontSize: '1.25rem', fontWeight: 500, color: 'primary.dim' }}
+        >
           {text}
         </Typography>
       </Box>

@@ -82,7 +82,6 @@ export const InputProps = styled(TextField, {
   '&:hover .MuiOutlinedInput-notchedOutline': {
     borderColor: err ? theme.palette.primary.hot : theme.palette.primary.light,
   },
-
   '& .MuiOutlinedInput-root': {
     '&.Mui-focused fieldset': {
       borderColor: err

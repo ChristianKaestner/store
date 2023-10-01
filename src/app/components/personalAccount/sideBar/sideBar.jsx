@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Row } from '@/app/lib/commonStyles';
@@ -34,8 +34,9 @@ export default function AccountAside() {
         value={page}
         aria-label="Personal account menu"
         TabIndicatorProps={{
-          style: {
-            backgroundColor: 'primary.light',
+          sx: {
+            backgroundColor: 'primary.accent',
+            borderRadius: 4,
           },
         }}
       >
@@ -44,7 +45,7 @@ export default function AccountAside() {
           label={
             <Row>
               <ManageAccountsIcon sx={{ fontSize: '1.7rem' }} />
-              <MenuText>Account settings</MenuText>
+              <MenuText>Profile settings</MenuText>
             </Row>
           }
           onClick={() => router.push('/profile/settings')}

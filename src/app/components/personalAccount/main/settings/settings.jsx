@@ -30,12 +30,15 @@ export default function AccountSettings({ user }) {
   };
 
   return (
-    <Box sx={{ px: 2 }}>
+    <>
       <PageTitle title="Personal information" sx={{ mt: 0 }} />
       <Paper
         elevation={3}
         sx={{
           p: 2,
+          bgcolor: 'primary.main',
+          zIndex: 1,
+          opacity: 0.9,
         }}
       >
         <RowCenter>
@@ -43,11 +46,14 @@ export default function AccountSettings({ user }) {
             Personal details
           </SubTitle>
           <IconButton onClick={() => setDetailsModal(true)}>
-            <EditIcon />
+            <EditIcon sx={{ color: 'primary.dim' }} />
           </IconButton>
         </RowCenter>
 
-        <TableContainer component={Paper} sx={{ mt: 2 }}>
+        <TableContainer
+          component={Paper}
+          sx={{ mt: 2, bgcolor: 'primary.main' }}
+        >
           <Table aria-label="purchase table">
             <TableBody>
               <TableRow>
@@ -76,6 +82,10 @@ export default function AccountSettings({ user }) {
         sx={{
           p: 2,
           mt: 2,
+          bgcolor: 'primary.main',
+          zIndex: 1,
+          opacity: 0.9,
+          mb: 4,
         }}
       >
         <RowCenter>
@@ -83,10 +93,13 @@ export default function AccountSettings({ user }) {
             Shipping address
           </SubTitle>
           <IconButton onClick={() => setAddressModal(true)}>
-            <EditIcon />
+            <EditIcon sx={{ color: 'primary.dim' }} />
           </IconButton>
         </RowCenter>
-        <TableContainer component={Paper} sx={{ mt: 2 }}>
+        <TableContainer
+          component={Paper}
+          sx={{ mt: 2, bgcolor: 'primary.main' }}
+        >
           <Table aria-label="purchase table">
             <TableBody>
               <TableRow>
@@ -131,6 +144,6 @@ export default function AccountSettings({ user }) {
           <EditAddressModal handleEdit={handleEditAddress} address={address} />
         </Modal>
       )}
-    </Box>
+    </>
   );
 }

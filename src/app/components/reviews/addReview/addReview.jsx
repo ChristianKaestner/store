@@ -4,7 +4,7 @@ import { AddBlock, Text } from './addReview.styled';
 
 export default function AddReview({ onWriteReview }) {
   return (
-    <AddBlock elevation={3}>
+    <AddBlock elevation={3} sx={{ mb: 4 }}>
       <Text component="h2">Leave a review for this product</Text>
       <Button
         variant="outlined"

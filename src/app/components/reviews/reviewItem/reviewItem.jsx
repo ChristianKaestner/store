@@ -17,7 +17,14 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
     <>
       <Paper
         elevation={3}
-        sx={{ bgcolor: 'primary.main', mt: 4, p: 2, zIndex: 1, opacity: 0.9 }}
+        sx={{
+          bgcolor: 'primary.main',
+          mt: 4,
+          p: 2,
+          zIndex: 1,
+          opacity: 0.9,
+          '&:first-of-type': { mt: 0 },
+        }}
         component="li"
       >
         <ReviewInfoBlock>

@@ -8,7 +8,7 @@ export default function OrderTable({ goods, handleCart, handleReview }) {
   const media = useMediaQuery('(min-width:600px)');
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ bgcolor: 'primary.main' }}>
       <Table aria-label="order table">
         <TableHead>
           {media && (
@@ -35,6 +35,7 @@ export default function OrderTable({ goods, handleCart, handleReview }) {
                       alt={`${product.title} image`}
                       width={64}
                       height={64}
+                      style={{ borderRadius: 4 }}
                     />
                   </Cell>
                   <Cell align="left">{product.title}</Cell>

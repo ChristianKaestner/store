@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
-import Grid from '@mui/material/Unstable_Grid2';
 import { Box, Pagination, Button, Typography } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 import Skeleton from '../../skeleton/skeleton';
@@ -18,7 +17,7 @@ export default function ProductsList({
   pagination,
   category,
   skeleton,
-  lgPerPage = 2.4,
+  width,
   component = 'h2',
   title,
 }) {
@@ -43,13 +42,6 @@ export default function ProductsList({
         {title}
       </Typography>
 
-      {/* <Grid
-        component="ul"
-        container
-        rowSpacing={{ xs: 2, sm: 2, md: 3 }}
-        columnSpacing={{ xs: 2, sm: 2, md: 3 }}
-        sx={{ listStyle: 'none' }}
-      > */}
       <Box
         component="ul"
         sx={{
@@ -67,30 +59,19 @@ export default function ProductsList({
             {goods &&
               goods.map(item => {
                 return (
-                  // <Grid
-                  //   xs={6}
-                  //   sm={4}
-                  //   md={3}
-                  //   lg={lgPerPage}
-                  //   key={item.id}
-                  //   component="li"
-                  //   sx={{
-                  //     zIndex: 1,
-                  //   }}
-                  // >
                   <ProductsItem
                     key={item.id}
                     product={item}
                     cart={cart}
                     favorites={favorites}
+                    width={width}
                   />
-                  // </Grid>
                 );
               })}
           </>
         )}
       </Box>
-      {/* </Grid> */}
+
       {goods.length > 20 && pagination && (
         <>
           <BlockBtn>

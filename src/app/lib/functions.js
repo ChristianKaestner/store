@@ -133,3 +133,10 @@ export const brandsForMetaData = products => {
   });
   return uniqBrands.join(', ');
 };
+
+export const profileFavoritePerRow = (lg, md, sm) => {
+  if (lg) return '23%';
+  if (md) return '30%';
+  if (sm) return '30%';
+  return '47%';
+};

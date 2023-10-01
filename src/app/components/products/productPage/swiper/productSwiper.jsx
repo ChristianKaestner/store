@@ -25,19 +25,26 @@ export default function ProductSwiper({ product }) {
         pagination={{
           clickable: true,
         }}
-        style={{ height: media > 900 ? '80%' : '400px', borderRadius: 4 }}
+        style={{
+          height: media > 900 ? '80%' : '400px',
+          borderRadius: 4,
+        }}
         className="pagination"
       >
         {images &&
           images.map(image => {
             return (
-              <SwiperSlide key={image}>
+              <SwiperSlide
+                key={image}
+                style={{ backgroundColor: 'transparent' }}
+              >
                 <Image
                   src={image}
                   fill={true}
                   alt={title + ' image'}
                   sizes="100%"
                   priority="false"
+                  style={{ objectFit: 'fill' }}
                 />
               </SwiperSlide>
             );
@@ -57,10 +64,13 @@ export default function ProductSwiper({ product }) {
           {images &&
             images.map(image => {
               return (
-                <SwiperSlide key={image}>
+                <SwiperSlide
+                  key={image}
+                  style={{ backgroundColor: 'transparent' }}
+                >
                   <Image
                     style={{
-                      objectFit: 'contain',
+                      objectFit: 'fill',
                       cursor: 'pointer',
                     }}
                     src={image}

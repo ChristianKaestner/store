@@ -1,4 +1,3 @@
-// import { Text } from './pageTitle.styled';
 import { Typography } from '@mui/material';
 
 export default function PageTitle({ title }) {

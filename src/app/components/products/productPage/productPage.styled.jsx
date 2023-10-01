@@ -15,7 +15,6 @@ export const Container = styled(Box)(({ theme }) => ({
 
 export const BlockSwiper = styled(Box)(({ theme }) => ({
   position: 'relative',
-
   [theme.breakpoints.up('xs')]: {
     width: '100%',
     marginRight: 0,

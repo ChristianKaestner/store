@@ -16,6 +16,9 @@ export const AccordionDetails = styled(MuiAccordionDetails)({
 
 export const Icon = styled(ExpandMoreIcon)(({ theme }) => ({
   color: theme.palette.primary.light,
+  '&:hover': {
+    color: theme.palette.primary.accent,
+  },
 }));
 
 export const Container = styled(Box)(({ theme }) => ({

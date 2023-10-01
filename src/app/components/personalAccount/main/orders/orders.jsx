@@ -5,7 +5,7 @@ import OrderItem from './orderItem/orderItem';
 
 export default function AccountOrders({ orders }) {
   return (
-    <Box sx={{ px: 2 }}>
+    <>
       <PageTitle title="Order History" />
       {orders.length > 0 && (
         <Box sx={{ listStyle: 'none' }} component="ul">
@@ -14,6 +14,6 @@ export default function AccountOrders({ orders }) {
           })}
         </Box>
       )}
-    </Box>
+    </>
   );
 }

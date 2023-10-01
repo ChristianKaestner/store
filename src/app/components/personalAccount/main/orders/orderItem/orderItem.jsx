@@ -23,7 +23,15 @@ export default function OrderItem({ order }) {
   };
 
   return (
-    <Accordion defaultExpanded={false} component="li">
+    <Accordion
+      defaultExpanded={false}
+      component="li"
+      sx={{
+        bgcolor: 'primary.main',
+        opacity: 0.9,
+        '&:last-child': { mb: 4 },
+      }}
+    >
       <AccordionSummary
         expandIcon={<Icon />}
         aria-controls="panel1a-content"

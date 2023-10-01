@@ -27,6 +27,9 @@ export const IconCircle = styled(CircleIcon, {
 export const IconCircleChecked = styled(CheckCircleIcon, {
   shouldForwardProp: prop => prop !== 'color',
 })(({ color, theme }) => ({
-  stroke: color === 'white' ? theme.palette.primary.neutral : 'transparent',
+  stroke: theme.palette.primary.accent,
+  // color === 'white'
+  //   ? theme.palette.primary.dim
+  //   : theme.palette.primary.accent,
   fill: color,
 }));

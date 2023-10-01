@@ -7,7 +7,14 @@ import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 import { Card } from './productItem.styled';
 
-export default function ProductItem({ product, cart, favorites }) {
+export default function ProductItem({
+  product,
+  cart,
+  favorites,
+  width,
+  component = 'li',
+  mb = 16,
+}) {
   const [inCart, setInCart] = useState(false);
   const { id, images, promotion, status } = product;
   const isover = status === 'Out of stock' ? true : false;
@@ -51,11 +58,13 @@ export default function ProductItem({ product, cart, favorites }) {
 
   return (
     <Card
-      component="li"
+      component={component}
       id={id}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       isover={isover}
+      width={width}
+      mb={mb}
     >
       <CardSwiper
         promotion={promotion}

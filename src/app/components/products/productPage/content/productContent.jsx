@@ -16,7 +16,10 @@ export default function ProductContent({ product, favorites }) {
   const isover = status === 'Out of stock' ? true : false;
   return (
     <Box>
-      <Paper elevation={2} sx={{ p: 2 }}>
+      <Paper
+        elevation={2}
+        sx={{ p: 2, bgcolor: 'primary.main', zIndex: 1, opacity: 0.9 }}
+      >
         <PageTitle title={title} />
 
         <Block>
@@ -25,7 +28,10 @@ export default function ProductContent({ product, favorites }) {
         </Block>
 
         <Box sx={{ mt: 2 }}>
-          <Typography component="h2">
+          <Typography
+            component="h2"
+            sx={{ color: 'primary.dim', fontWeight: 400 }}
+          >
             <Span component="span">Brand: </Span>
             {brand}
           </Typography>
@@ -34,7 +40,7 @@ export default function ProductContent({ product, favorites }) {
           {colors && <ColorPicker colors={colors} />}
         </RowCenter>
         <Box>
-          <Typography component="h3">
+          <Typography component="h3" sx={{ color: 'primary.dim' }}>
             <Span component="span">Description:</Span> {description}
           </Typography>
         </Box>
@@ -46,7 +52,7 @@ export default function ProductContent({ product, favorites }) {
           <BalanceStatus status={status} />
         </Box>
         <BlockBtn>
-          <BuyButton id={id} width={160} isover={isover}/>
+          <BuyButton id={id} width={160} isover={isover} />
           <FavoriteIcon favorites={favorites} id={id} />
         </BlockBtn>
       </PaperStyled>

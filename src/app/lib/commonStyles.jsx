@@ -177,7 +177,7 @@ export const CellBold = styled(TableCell)(({ theme }) => ({
 
 export const Span = styled(Box)(({ theme }) => ({
   fontWeight: 500,
-  color: theme.palette.primary.text,
+  color: theme.palette.primary.dim,
 }));
 
 export const Counter = styled(Badge)(({ theme }) => ({

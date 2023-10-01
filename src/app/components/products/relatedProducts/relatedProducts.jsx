@@ -79,8 +79,18 @@ export default function RelatedProducts() {
             data.map(product => {
               const { id } = product;
               return (
-                <SwiperSlide key={id} tag="li" style={{ width: 'auto' }}>
-                  <ProductsItem product={product} cart={cart} />
+                <SwiperSlide
+                  key={id}
+                  tag="li"
+                  style={{ width: 'auto', backgroundColor: 'transparent' }}
+                >
+                  <ProductsItem
+                    product={product}
+                    cart={cart}
+                    width={'100%'}
+                    component="div"
+                    mb={0}
+                  />
                 </SwiperSlide>
               );
             })}

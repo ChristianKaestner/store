@@ -14,9 +14,9 @@ export default function ColorPicker({ colors }) {
 
   return (
     <FormControl onChange={handleColorChange}>
-      <Label id="color-radio-button-label">
+      <Label id="color-radio-button-label" sx={{ color: 'primary.dim' }}>
         <Span component="span">Color:</Span>
-        <Typography color="#000000"> {color}</Typography>
+        <Typography sx={{ color: 'primary.dim' }}> {color}</Typography>
       </Label>
       <BlockRadio
         aria-labelledby="color-radio-button-label"

@@ -17,7 +17,7 @@ export const BlockBtn = styled(Box)({
 
 export const PaperStyled = styled(Paper, {
   shouldForwardProp: prop => prop !== 'isover',
-})(({ isover }) => ({
+})(({ isover, theme }) => ({
   filter: isover ? 'grayscale(1)' : 'none',
   position: 'relative',
   display: 'flex',
@@ -25,13 +25,7 @@ export const PaperStyled = styled(Paper, {
   alignItems: 'center',
   marginTop: 32,
   padding: 16,
+  backgroundColor: theme.palette.primary.main,
+  zIndex: 1,
+  opacity: 0.9,
 }));
-
-// export const PaperStyled = styled(Paper)({
-//   position: 'relative',
-//   display: 'flex',
-//   flexDirection: 'row',
-//   alignItems: 'center',
-//   marginTop: 32,
-//   padding: 16,
-// });

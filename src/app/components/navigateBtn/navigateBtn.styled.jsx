@@ -15,12 +15,14 @@ export const IconBtnNavigate = styled(IconButton, {
   width: 56,
   height: 40,
   borderRadius: 24,
-  color: color === 'white' ? '#fff' : theme.palette.primary.light,
+  color:
+    color === 'white' ? theme.palette.primary.dim : theme.palette.primary.light,
   border:
     color === 'white'
-      ? `1px solid #fff`
+      ? `1px solid ${theme.palette.primary.dim}`
       : `1px solid ${theme.palette.primary.light}`,
-  backgroundColor: 'transparent',
+  backgroundColor:
+    color === 'white' ? 'transparent' : theme.palette.primary.dim,
   zIndex: 2,
   cursor: 'pointer',
   '.MuiSvgIcon-root': {
@@ -31,6 +33,8 @@ export const IconBtnNavigate = styled(IconButton, {
   },
 
   '&:hover': {
+    backgroundColor:
+      color === 'white' ? 'transparent' : theme.palette.primary.dim,
     '.MuiSvgIcon-root': {
       right: next,
       left: prev,

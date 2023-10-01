@@ -51,9 +51,9 @@ export const ColumnCenter = styled(Box)({
 });
 
 export const Label = styled(FormControlLabel)(({ theme }) => ({
-  width: '100%',
+  width: '110%',
   borderRadius: 1,
-  '&:hover': { backgroundColor: theme.palette.primary.dim },
+  '&:hover': { backgroundColor: theme.palette.primary.iconbtn },
 }));
 
 export const List = styled(Box)({
@@ -75,8 +75,9 @@ export const ContainerFilter = styled(Box)({
 export const InputProps = styled(TextField, {
   shouldForwardProp: prop => prop !== 'err',
 })(({ err, theme }) => ({
+  input: { color: err ? theme.palette.primary.hot : theme.palette.primary.dim },
   '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: err ? theme.palette.primary.hot : 'rgba(0, 0, 0, 0.23)',
+    borderColor: err ? theme.palette.primary.hot : theme.palette.primary.dim,
   },
   '&:hover .MuiOutlinedInput-notchedOutline': {
     borderColor: err ? theme.palette.primary.hot : theme.palette.primary.light,
@@ -140,10 +141,11 @@ export const TextNeutral = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.neutral,
 }));
 
-export const TextBold = styled(Typography)({
+export const TextBold = styled(Typography)(({ theme }) => ({
   fontSize: '1rem',
   fontWeight: 500,
-});
+  color: theme.palette.primary.dim,
+}));
 
 export const SubTitle = styled(Typography)({
   fontSize: '1.5rem',
@@ -182,8 +184,8 @@ export const Counter = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: -16,
     top: 13,
-    backgroundColor: theme.palette.primary.dim,
-    color: theme.palette.primary.badge,
+    backgroundColor: theme.palette.primary.iconbtn,
+    color: theme.palette.primary.dim,
   },
 }));
 

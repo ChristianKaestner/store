@@ -37,7 +37,11 @@ export default function StatusFilter({ items }) {
             return (
               <Box component="li" key={item.id}>
                 <Label
-                  label={item.status}
+                  label={
+                    <Typography sx={{ color: 'primary.dim' }}>
+                      {item.status}
+                    </Typography>
+                  }
                   control={
                     <Checkbox
                       value={status}

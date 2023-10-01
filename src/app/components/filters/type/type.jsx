@@ -37,7 +37,11 @@ export default function TypeFilter({ items }) {
             return (
               <Box component="li" key={item.id}>
                 <Label
-                  label={item.type}
+                  label={
+                    <Typography sx={{ color: 'primary.dim' }}>
+                      {item.type}
+                    </Typography>
+                  }
                   control={
                     <Checkbox
                       value={type}

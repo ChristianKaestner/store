@@ -13,13 +13,18 @@ export const FilterBlock = styled(Box)({
 export const FilterBtn = styled(Button)(({ theme }) => ({
   height: 40,
   backgroundColor: 'transparent',
-  color: theme.palette.primary.light,
-  border: `1px solid ${theme.palette.primary.light}`,
+  color: theme.palette.primary.dim,
+  border: `1px solid ${theme.palette.primary.dim}`,
+  transition: 'all 300ms ease-in-out',
   borderRadius: 16,
-  '.MuiSvgIcon-root': {
-    transition: 'all 300ms ease-in-out',
+  opacity: 0.9,
+  '.MuiButton-endIcon': {
+    '.MuiSvgIcon-root': {
+      transition: 'all 300ms ease-in-out',
+    },
   },
   '&:hover': {
+    color: theme.palette.primary.light,
     backgroundColor: theme.palette.primary.dim,
     '.MuiButton-endIcon': {
       '.MuiSvgIcon-root': {

@@ -19,7 +19,7 @@ export default function Hero({ images }) {
   const sliderRef = useRef();
   const xs = useMediaQuery('(max-width:599px)');
   return (
-    <Box component="section">
+    <Box component="section" sx={{ opacity: 0.9 }}>
       <Typography component="h1" sx={visuallyHidden}>
         Buy hookah and accessories here
       </Typography>

@@ -30,12 +30,20 @@ export const myTheme = createTheme({
       text: '#221f1f',
       neutral: '#747474',
       badge: '#939393',
+      iconbtn: '#ffffff33',
     },
   },
   components: {
     MuiTextField: {
       styleOverrides: {
         root: ({ theme }) => ({
+          '.MuiInputBase-input.MuiOutlinedInput-input': {
+            color: theme.palette.primary.dim,
+          },
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.dim,
+          },
+
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: theme.palette.primary.light,
           },
@@ -62,9 +70,33 @@ export const myTheme = createTheme({
       },
     },
 
-    MuiSelect: {
+    MuiInputLabel: {
       styleOverrides: {
         root: ({ theme }) => ({
+          color: theme.palette.primary.dim,
+        }),
+
+        shrink: ({ theme }) => ({
+          color: `${theme.palette.primary.dim} !important`,
+        }),
+      },
+    },
+
+    MuiSelect: {
+      styleOverrides: {
+        select: ({ theme }) => ({
+          color: `${theme.palette.primary.dim} !important`,
+        }),
+        root: ({ theme }) => ({
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.dim,
+          },
+          '&:hover': {
+            '.MuiSvgIcon-root ': {
+              fill: theme.palette.primary.accent,
+              transform: 'scale(1.1)',
+            },
+          },
           '&:hover .MuiOutlinedInput-notchedOutline ': {
             borderColor: theme.palette.primary.light,
           },
@@ -73,7 +105,7 @@ export const myTheme = createTheme({
           },
         }),
         icon: ({ theme }) => ({
-          fill: theme.palette.primary.light,
+          fill: theme.palette.primary.dim,
         }),
       },
     },
@@ -176,6 +208,16 @@ export const myTheme = createTheme({
       styleOverrides: {
         root: ({ theme }) => ({
           color: theme.palette.primary.text,
+        }),
+      },
+    },
+
+    MuiIconButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.primary.iconbtn,
+          },
         }),
       },
     },

@@ -47,7 +47,9 @@ export default function ColorFilter({ items }) {
                           fill: item.color,
                         }}
                       />
-                      <Typography>{item.color}</Typography>
+                      <Typography sx={{ color: 'primary.dim' }}>
+                        {item.color}
+                      </Typography>
                     </RowCenter>
                   }
                   control={

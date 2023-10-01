@@ -20,7 +20,7 @@ export default function Footer() {
         bgcolor: 'primary.main',
         pb: 3,
         zIndex: 1,
-        opacity: 0.8,
+        opacity: 0.9,
       }}
       component="footer"
     >

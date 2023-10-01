@@ -74,7 +74,7 @@ export default function Sortbar() {
   };
 
   return (
-    <Box>
+    <Box sx={{ zIndex: 1 }}>
       {filtersArr.length > 0 && (
         <FilterBlock component="ul" sx={{ gap: 1, flexWrap: 'wrap' }}>
           <TextBold>30 products found</TextBold>

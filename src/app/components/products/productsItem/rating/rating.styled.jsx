@@ -8,7 +8,7 @@ export const Container = styled(Box)(({ theme }) => ({
 }));
 
 export const Text = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.light,
+  color: theme.palette.primary.subsidiary,
   marginLeft: 8,
   '&:hover': {
     color: theme.palette.primary.accent,

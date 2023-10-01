@@ -33,9 +33,15 @@ export default function SortFilter() {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'end', mb: 2 }}>
+    <Box sx={{ display: 'flex', justifyContent: 'end', mb: 2, zIndex: 1 }}>
       <FormControl size="small" sx={{ width: 200 }}>
-        <InputLabel id="sorting-filter-label">Sort</InputLabel>
+        <InputLabel
+          id="sorting-filter-label"
+          sx={{ color: 'primary.dim' }}
+          className="labelSelect"
+        >
+          Sort
+        </InputLabel>
         <Controller
           control={control}
           name="price"
@@ -50,6 +56,13 @@ export default function SortFilter() {
                 onChange={e => {
                   onChange(e.target.value);
                   handleChange(e.target.value);
+                }}
+                sx={{
+                  '&:hover': {
+                    '& .labelSelect': {
+                      color: 'red important!',
+                    },
+                  },
                 }}
               >
                 <MenuItem value="">

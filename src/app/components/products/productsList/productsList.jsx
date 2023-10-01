@@ -42,6 +42,7 @@ export default function ProductsList({
       <Typography component={component} sx={visuallyHidden}>
         {title}
       </Typography>
+
       {/* <Grid
         component="ul"
         container

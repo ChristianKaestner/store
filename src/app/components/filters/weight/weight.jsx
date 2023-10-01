@@ -37,7 +37,11 @@ export default function WeightFilter({ items }) {
             return (
               <Box component="li" key={item.id}>
                 <Label
-                  label={item.weight + ' gram'}
+                  label={
+                    <Typography sx={{ color: 'primary.dim' }}>
+                      {item.weight + ' gram'}
+                    </Typography>
+                  }
                   control={
                     <Checkbox
                       value={weight}

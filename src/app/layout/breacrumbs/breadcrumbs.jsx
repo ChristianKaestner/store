@@ -25,12 +25,12 @@ export default function Breadcrumbs() {
   return (
     <>
       {crumbs.length > 0 && (
-        <Breadcrumb>
+        <Breadcrumb sx={{ zIndex: 1 }}>
           <Link href="/" style={{ display: 'flex' }}>
             <HomeIcon
               fontSize="small"
               sx={{
-                color: 'primary.neutral',
+                color: 'primary.dim',
                 '&:hover': {
                   color: 'primary.accent',
                 },
@@ -48,7 +48,7 @@ export default function Breadcrumbs() {
                   <Link href={url} key={index}>
                     <Typography
                       sx={{
-                        color: 'primary.neutral',
+                        color: 'primary.dim',
                         '&:hover': {
                           color: 'primary.accent',
                           textDecoration: 'underline',
@@ -61,7 +61,7 @@ export default function Breadcrumbs() {
                 );
               }
               return (
-                <Typography key={index} sx={{ color: 'primary.neutral' }}>
+                <Typography key={index} sx={{ color: 'primary.dim' }}>
                   {isId ? title : capitalizedCrumb}
                 </Typography>
               );

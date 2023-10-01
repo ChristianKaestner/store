@@ -16,7 +16,7 @@ export default function BrandFilter({ items }) {
 
   const { brand } = useFilters();
   const dispatch = useDispatch();
-  
+
   const brandsWithLetter = addAlphabetIndex(items, 'brand');
   const filtredBrands = filterByInput(
     brandsWithLetter,
@@ -64,13 +64,17 @@ export default function BrandFilter({ items }) {
               return (
                 <Box key={id} component="li">
                   {letter && (
-                    <Typography sx={{ fontWeight: 500 }}>{letter}</Typography>
+                    <Typography sx={{ fontWeight: 500, color: 'primary.dim' }}>
+                      {letter}
+                    </Typography>
                   )}
                   <Label
                     label={
                       <Row>
                         <Counter badgeContent={count}>
-                          <Typography>{item.brand}</Typography>
+                          <Typography sx={{ color: 'primary.dim' }}>
+                            {item.brand}
+                          </Typography>
                         </Counter>
                       </Row>
                     }

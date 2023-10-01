@@ -3,7 +3,7 @@ import ProductRating from '../rating/rating';
 import Price from '../price/price';
 import ProductTitle from '../productTitle/productTitle';
 import SpeedDialCart from '../speedDialCart/speedDialCart';
-import { Block, IconAddCart, Description,Text } from './cardDescription.styled';
+import { Block, IconAddCart, Description } from './cardDescription.styled';
 
 export default function CardDescription({
   product,

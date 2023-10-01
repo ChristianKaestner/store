@@ -15,6 +15,15 @@ export const Slider = styled(SliderMUI)(({ theme }) => ({
     width: 20,
     height: 20,
     color: theme.palette.primary.light,
+    '&:hover': {
+      boxShadow: `0 0 0 8px ${theme.palette.primary.iconbtn}`,
+    },
+  },
+  '& .MuiSlider-track': {
+    color: theme.palette.primary.dim,
+  },
+  '& .MuiSlider-rail': {
+    color: theme.palette.primary.iconbtn,
   },
   width: '90%',
   margin: 16,

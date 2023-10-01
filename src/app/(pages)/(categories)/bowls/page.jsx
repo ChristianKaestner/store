@@ -1,4 +1,4 @@
-import { Box, Divider } from '@mui/material';
+import { Box } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
@@ -36,7 +36,6 @@ export default function Bowls() {
         <SortFilter />
       </Box>
 
-      <Divider />
       <Box
         sx={{
           display: 'flex',

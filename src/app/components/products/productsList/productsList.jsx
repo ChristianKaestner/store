@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
-import { Box, Pagination, Button, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import LoopIcon from '@mui/icons-material/Loop';
 import Skeleton from '../../skeleton/skeleton';
 import { BlockBtn, PaginationStyled } from './productList.styled';
@@ -77,7 +77,7 @@ export default function ProductsList({
           <BlockBtn>
             <Button
               startIcon={<LoopIcon />}
-              sx={{ color: 'primary.light' }}
+              sx={{ color: 'primary.dim' }}
               size="large"
               onClick={handleLoadMore}
             >
@@ -88,6 +88,7 @@ export default function ProductsList({
             count={pagination}
             page={page}
             size="large"
+            shape="rounded"
             onChange={(e, value) => handlePage(value)}
           />
         </>

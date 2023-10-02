@@ -221,5 +221,14 @@ export const myTheme = createTheme({
         }),
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '&:hover': {
+            color: theme.palette.primary.accent,
+          },
+        }),
+      },
+    },
   },
 });

@@ -32,7 +32,7 @@ export default function Hookahs() {
           mb: 1,
         }}
       >
-        <FiltersMenu />
+        <FiltersMenu category="hookahs" />
         <SortFilter />
       </Box>
 

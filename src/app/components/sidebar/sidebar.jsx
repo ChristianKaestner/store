@@ -11,9 +11,8 @@ import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
 import { addCount } from '@/app/lib/functions';
-
-//need to add Skeleton
-export default function Sidebar({ category }) {
+import { Box } from '@mui/material';
+export default function Sidebar({ category, mobile = false }) {
   const { data = [], isLoading, error } = useGetAllGoodsQuery();
   const goods = data.filter(n => n.categories === category);
 
@@ -81,15 +80,30 @@ export default function Sidebar({ category }) {
   });
 
   return (
-    <Aside>
-      {prices.length > 0 && <PriceFilter items={prices} />}
-      {brands.length > 0 && <BrandFilter items={brands} />}
-      {weights.length > 0 && <WeightFilter items={weights} />}
-      {flavors.length > 0 && <FlavorFilter items={flavors} />}
-      {sizes.length > 0 && <SizeFilter items={sizes} />}
-      {types.length > 0 && <TypeFilter items={types} />}
-      {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
-      {statuses.length > 0 && <StatusFilter items={statuses} />}
-    </Aside>
+    <>
+      {mobile ? (
+        <Box>
+          {prices.length > 0 && <PriceFilter items={prices} />}
+          {brands.length > 0 && <BrandFilter items={brands} />}
+          {weights.length > 0 && <WeightFilter items={weights} />}
+          {flavors.length > 0 && <FlavorFilter items={flavors} />}
+          {sizes.length > 0 && <SizeFilter items={sizes} />}
+          {types.length > 0 && <TypeFilter items={types} />}
+          {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
+          {statuses.length > 0 && <StatusFilter items={statuses} />}
+        </Box>
+      ) : (
+        <Aside>
+          {prices.length > 0 && <PriceFilter items={prices} />}
+          {brands.length > 0 && <BrandFilter items={brands} />}
+          {weights.length > 0 && <WeightFilter items={weights} />}
+          {flavors.length > 0 && <FlavorFilter items={flavors} />}
+          {sizes.length > 0 && <SizeFilter items={sizes} />}
+          {types.length > 0 && <TypeFilter items={types} />}
+          {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
+          {statuses.length > 0 && <StatusFilter items={statuses} />}
+        </Aside>
+      )}
+    </>
   );
 }

@@ -26,10 +26,7 @@ export const LogoText = styled(Typography, {
   shouldForwardProp: prop => prop !== 'isMobile',
 })(({ isMobile, theme }) => ({
   marginRight: 16,
-  fontFamily: 'monospace',
-  fontWeight: 700,
-  letterSpacing: '0.3rem',
-  color: 'inherit',
+  color: theme.palette.primary.light,
   fontSize: '2rem',
 
   [theme.breakpoints.up('xs')]: {

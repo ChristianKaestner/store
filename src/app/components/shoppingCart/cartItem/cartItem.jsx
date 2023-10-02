@@ -59,19 +59,22 @@ export default function CartItem({
   return (
     <>
       <Card>
-        <Box sx={{ position: 'relative', width: '20%' }}>
+        <Box sx={{ position: 'relative', width: '20%', borderRadius: 4 }}>
           <Image
             src={images[0]}
             fill={true}
             alt="image"
             sizes="100%"
             priority="false"
+            style={{ borderRadius: 4 }}
           />
         </Box>
 
         <Column sx={{ width: '80%', ml: 2 }}>
           <RowBetween>
-            <Typography sx={{ pl: 1 }}>{title}</Typography>
+            <Typography sx={{ color: 'primary.dim', pl: 1 }}>
+              {title}
+            </Typography>
             <IconButton onClick={handlePopoverOpen}>
               <MoreVertIcon sx={{ color: 'primary.light' }} />
             </IconButton>
@@ -94,6 +97,15 @@ export default function CartItem({
                 variant="outlined"
                 startIcon={<DeleteOutlineIcon />}
                 onClick={onDelete}
+                sx={{
+                  bgcolor: 'primary.neutral',
+                  color: 'primary.dim',
+                  '&:hover': {
+                    bgcolor: 'primary.neutral',
+                    color: 'primary.hot',
+                    borderColor: 'primary.light',
+                  },
+                }}
               >
                 Delete
               </Button>
@@ -107,6 +119,7 @@ export default function CartItem({
                 disabled={quantity <= 1 ? true : false}
                 sx={{
                   color: 'primary.light',
+                  '&:disabled': { color: 'primary.neutral' },
                 }}
               >
                 <RemoveIcon />
@@ -133,12 +146,15 @@ export default function CartItem({
                 disabled={quantity >= available ? true : false}
                 sx={{
                   color: 'primary.light',
+                  '&:disabled': { color: 'primary.neutral' },
                 }}
               >
                 <AddIcon />
               </IconButton>
             </Box>
-            <Typography sx={{ fontWeight: '500', p: 1, color: 'primary.hot' }}>
+            <Typography
+              sx={{ fontWeight: '500', p: 1, color: 'primary.accent' }}
+            >
               {total(quantity, price)}$
             </Typography>
           </RowBetween>

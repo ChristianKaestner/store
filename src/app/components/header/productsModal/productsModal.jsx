@@ -15,7 +15,7 @@ export default function ProductsModal({ handleCloseModal }) {
     <Box
       sx={{
         flexGrow: 1,
-        bgcolor: 'background.paper',
+        bgcolor: 'primary.nutral',
         display: 'flex',
         height: 'calc(100% - 64px)',
         overflow: 'auto',
@@ -26,7 +26,13 @@ export default function ProductsModal({ handleCloseModal }) {
         variant="scrollable"
         value={value}
         aria-label="Products menu"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        TabIndicatorProps={{
+          sx: {
+            backgroundColor: 'primary.accent',
+            borderRadius: 4,
+          },
+        }}
+        sx={{ borderRight: 1, borderColor: 'divider', minWidth: 160 }}
       >
         {data.length &&
           data.map((category, index) => {
@@ -35,6 +41,7 @@ export default function ProductsModal({ handleCloseModal }) {
                 onMouseEnter={handleChange.bind(this, index)}
                 label={category.name}
                 key={category.id}
+                sx={{ borderRadius: 1 }}
               />
             );
           })}

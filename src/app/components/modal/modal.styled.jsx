@@ -34,7 +34,7 @@ export const ModalBlock = styled(Box, {
 }));
 
 export const IconClose = styled(CloseIcon)(({ theme }) => ({
-  transition: 'all 300ms ease-in-out',
+  transition: 'all 100ms ease-in-out',
   fill: theme.palette.primary.light,
 }));
 

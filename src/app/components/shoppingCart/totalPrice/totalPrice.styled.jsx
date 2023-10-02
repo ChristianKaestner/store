@@ -8,7 +8,6 @@ export const Container = styled(MuiBox)({
   justifyContent: 'end',
   width: '100%',
   alignItems: 'center',
-  backgroundColor: '#fff',
   marginTop: 8,
 });
 

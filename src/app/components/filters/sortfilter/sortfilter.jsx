@@ -34,7 +34,7 @@ export default function SortFilter() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'end', mb: 2, zIndex: 1 }}>
-      <FormControl size="small" sx={{ width: 200 }}>
+      <FormControl size="small" sx={{ width: { xs: 150, sm: 200 } }}>
         <InputLabel
           id="sorting-filter-label"
           sx={{ color: 'primary.dim' }}

@@ -8,7 +8,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
 import PaymentIcon from '@mui/icons-material/Payment';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import Image from 'next/image';
 
 export const LinkStyled = styled(Link)({
   display: 'flex',
@@ -21,6 +20,7 @@ export const DrawerBlock = styled(Box)(({ theme }) => ({
   width: 260,
   height: '100%',
   padding: 16,
+  backgroundColor: theme.palette.primary.main,
 }));
 
 export const ButtonToggle = styled(Button)(({ theme }) => ({
@@ -30,13 +30,13 @@ export const ButtonToggle = styled(Button)(({ theme }) => ({
   height: 40,
   marginTop: 16,
   fontSize: '1.25rem',
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.dim,
 }));
 
 export const IconApp = styled(AppsIcon)(({ theme }) => ({
   marginRight: 16,
   fontSize: '1.5rem',
-  color: theme.palette.primary.main,
+  color: theme.palette.primary.dim,
 }));
 
 export const ListStyled = styled(List)({
@@ -49,11 +49,12 @@ export const Item = styled(ListItem)({
   cursor: 'pointer',
 });
 
-export const ItemText = styled(Typography)({
+export const ItemText = styled(Typography)(({ theme }) => ({
   fontSize: '1.25rem',
   fontWeight: 500,
+  color: theme.palette.primary.dim,
   width: '100%',
-});
+}));
 
 export const IconProfile = styled(AccountCircleOutlinedIcon)(({ theme }) => ({
   marginRight: 16,
@@ -80,10 +81,3 @@ export const IconShipping = styled(LocalShippingIcon)(({ theme }) => ({
   fontSize: '1.5rem',
   color: theme.palette.primary.light,
 }));
-
-export const ImageStyled = styled(Image)({
-  height: '100%',
-  zIndex: -1,
-  opacity: 0.15,
-  objectFit: 'cover',
-});

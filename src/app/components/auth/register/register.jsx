@@ -94,11 +94,11 @@ export default function Register({
       <Button
         type="submit"
         variant="contained"
-        sx={{ mt: 2, bgcolor: 'primary.light' }}
+        sx={{ height: 48, mt: 2, bgcolor: 'primary.light' }}
       >
         Register
       </Button>
-      <Button sx={{ mt: 2 }} onClick={toggleAuth}>
+      <Button sx={{ height: 48, mt: 2 }} onClick={toggleAuth}>
         Log In
       </Button>
     </FormControl>

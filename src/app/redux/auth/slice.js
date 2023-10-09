@@ -9,7 +9,13 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: {
+    firstName: null,
+    lastName: null,
+    phone: null,
+    email: null,
+    address: { city: null, street: null, house: null, apartment: null },
+  },
   token: null,
   isLogin: false,
   isError: false,
@@ -65,7 +71,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = null;
+        state.user = this.initialState.user;
         state.token = null;
         state.isLogin = false;
       })
@@ -88,7 +94,8 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        const updated = action.payload.user;
+        state.user = { ...state.user, updated };
         state.isLogin = true;
       })
       .addCase(refreshUser.rejected, state => {

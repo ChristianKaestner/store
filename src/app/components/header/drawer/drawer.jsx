@@ -14,6 +14,7 @@ export default function DrawerMenu({
   mobileOpen,
   handleDrawerToggle,
   openAuth,
+  isLogin,
 }) {
   const [productsOpen, setProductsOpen] = useState(false);
 
@@ -56,10 +57,19 @@ export default function DrawerMenu({
               </LinkStyled>
             </Item>
 
-            <Item onClick={openAuth}>
-              <IconProfile />
-              <ItemText>Profile</ItemText>
-            </Item>
+            {isLogin ? (
+              <Item>
+                <LinkStyled href="/profile/settings">
+                  <IconProfile />
+                  <ItemText>Profile</ItemText>
+                </LinkStyled>
+              </Item>
+            ) : (
+              <Item onClick={openAuth}>
+                <IconProfile />
+                <ItemText>Login</ItemText>
+              </Item>
+            )}
 
             <Item>
               <LinkStyled href="/payment">

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { redirect } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useCart } from '@/app/hooks/useCart';
 import { useModal } from '@/app/hooks/useModal';
@@ -32,7 +31,6 @@ export default function Header() {
 
   useEffect(() => {
     dispath(refreshUser());
-    console.log(isLogin);
   }, []);
 
   const handleCloseModal = () => {
@@ -40,13 +38,8 @@ export default function Header() {
   };
 
   const handleAuth = () => {
-    if (isLogin) {
-      console.log('redirect');
-      redirect('/profile/settings');
-    } else {
-      dispath(toggleAccount(true));
-      dispath(toggleMobile(false));
-    }
+    dispath(toggleAccount(true));
+    dispath(toggleMobile(false));
   };
 
   return (
@@ -62,7 +55,10 @@ export default function Header() {
             <SearchForm />
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-              <PersonalAccount onOpenAccountModal={handleAuth} />
+              <PersonalAccount
+                onOpenAccountModal={handleAuth}
+                isLogin={isLogin}
+              />
               <CartIcon
                 onOpenCartModal={() => dispath(toggleCart(true))}
                 totalProducts={cart.length}
@@ -73,6 +69,7 @@ export default function Header() {
             mobileOpen={mobileModal}
             handleDrawerToggle={() => dispath(toggleMobile(!mobileModal))}
             openAuth={handleAuth}
+            isLogin={isLogin}
           />
           {productsModal && (
             <Modal

@@ -1,21 +1,31 @@
 'use client';
-import { useState } from 'react';
-import { Box, Paper, IconButton } from '@mui/material';
-import { TableContainer, Table, TableRow, TableBody } from '@mui/material';
+import { useState, useEffect } from 'react';
+import { redirect } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { logOut } from '@/app/redux/auth/operations';
+import { useAuth } from '@/app/hooks/useAuth';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
-import { RowCenter } from '@/app/lib/commonStyles';
-import { CellBold, CellNeutral, SubTitle } from '@/app/lib/commonStyles';
-import EditIcon from '@mui/icons-material/Edit';
+import PersonalDetails from './personalDetails/personalDeatils';
+import ShippingAddress from './shippingAddress/ShippingAddress';
+import AccountManagement from './accountManagment/accountManagement';
 import Modal from '@/app/components/modal/modal';
 import EditInfoModal from '@/app/components/modal/editAccount/editAccount';
 import EditAddressModal from '@/app/components/modal/editAddress/editAddress';
 
-export default function AccountSettings({ user }) {
+export default function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
 
-  const { firstName, lastName, phone, email, address } = user;
-  const { city, street, house, apartment } = address;
+  const { isLogin, isLoading, user } = useAuth();
+  console.log(user);
+
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    if (!isLogin) {
+      redirect('/');
+    }
+  }, [isLogin]);
 
   const handleEditInfo = data => {
     // send request
@@ -29,120 +39,53 @@ export default function AccountSettings({ user }) {
     setAddressModal(false);
   };
 
+  const handleLogout = () => {
+    dispath(logOut());
+  };
+
+  const handleDelete = () => {};
+
   return (
     <>
-      <PageTitle title="Personal information" sx={{ mt: 0 }} />
-      <Paper
-        elevation={3}
-        sx={{
-          p: 2,
-          bgcolor: 'primary.main',
-          zIndex: 1,
-          opacity: 0.9,
-        }}
-      >
-        <RowCenter>
-          <SubTitle component="h2" sx={{ mr: 2 }}>
-            Personal details
-          </SubTitle>
-          <IconButton onClick={() => setDetailsModal(true)}>
-            <EditIcon sx={{ color: 'primary.dim' }} />
-          </IconButton>
-        </RowCenter>
+      {isLogin && !isLoading && (
+        <>
+          <PageTitle title="Personal information" sx={{ mt: 0 }} />
 
-        <TableContainer
-          component={Paper}
-          sx={{ mt: 2, bgcolor: 'primary.main' }}
-        >
-          <Table aria-label="purchase table">
-            <TableBody>
-              <TableRow>
-                <CellNeutral>First name:</CellNeutral>
-                <CellBold align="left">{firstName}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>First name:</CellNeutral>
-                <CellBold align="left">{lastName}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>Phone number:</CellNeutral>
-                <CellBold align="left">{phone}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>Email:</CellNeutral>
-                <CellBold align="left">{email}</CellBold>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
+          <PersonalDetails user={user} onClick={() => setDetailsModal(true)} />
 
-      <Paper
-        elevation={3}
-        sx={{
-          p: 2,
-          mt: 2,
-          bgcolor: 'primary.main',
-          zIndex: 1,
-          opacity: 0.9,
-          mb: 4,
-        }}
-      >
-        <RowCenter>
-          <SubTitle component="h2" sx={{ mr: 2 }}>
-            Shipping address
-          </SubTitle>
-          <IconButton onClick={() => setAddressModal(true)}>
-            <EditIcon sx={{ color: 'primary.dim' }} />
-          </IconButton>
-        </RowCenter>
-        <TableContainer
-          component={Paper}
-          sx={{ mt: 2, bgcolor: 'primary.main' }}
-        >
-          <Table aria-label="purchase table">
-            <TableBody>
-              <TableRow>
-                <CellNeutral>City:</CellNeutral>
-                <CellBold align="left">{city}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>Street:</CellNeutral>
-                <CellBold align="left">{street}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>House:</CellNeutral>
-                <CellBold align="left">{house}</CellBold>
-              </TableRow>
-              <TableRow>
-                <CellNeutral>Apartment:</CellNeutral>
-                <CellBold align="left">{apartment}</CellBold>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Paper>
-      {detailsModal && (
-        <Modal
-          title="Edit personal details"
-          onClose={() => setDetailsModal(false)}
-          maxHeight="540px"
-          width="400px"
-          position="center"
-        >
-          <EditInfoModal handleEdit={handleEditInfo} user={user} />
-        </Modal>
-      )}
-      {addressModal && (
-        <Modal
-          title="Edit address"
-          onClose={() => setAddressModal(false)}
-          maxHeight="540px"
-          width="400px"
-          position="center"
-        >
-          <EditAddressModal handleEdit={handleEditAddress} address={address} />
-        </Modal>
+          <ShippingAddress
+            address={user.address}
+            onClick={() => setAddressModal(true)}
+          />
+
+          <AccountManagement onDelete={handleDelete} onLogout={handleLogout} />
+
+          {detailsModal && (
+            <Modal
+              open={detailsModal}
+              close={() => setDetailsModal(false)}
+              title="Edit personal details"
+              width="400px"
+              maxHeight="540px"
+            >
+              <EditInfoModal handleEdit={handleEditInfo} user={user} />
+            </Modal>
+          )}
+          {addressModal && (
+            <Modal
+              open={addressModal}
+              close={() => setAddressModal(false)}
+              title="Edit address"
+              width="400px"
+              maxHeight="540px"
+            >
+              <EditAddressModal
+                handleEdit={handleEditAddress}
+                address={address}
+              />
+            </Modal>
+          )}
+        </>
       )}
     </>
   );

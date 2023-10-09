@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 export default function NotFound() {
   return (
@@ -14,7 +14,17 @@ export default function NotFound() {
         px: 2,
       }}
     >
-      <h1>404 | PAGE NOT FOUND</h1>
+      <Typography
+        component="h1"
+        sx={{
+          textAlign: 'center',
+          color: 'primary.text',
+          fontSize: '2rem',
+          fontWeight: 500,
+        }}
+      >
+        404 | PAGE NOT FOUND
+      </Typography>
 
       <Image
         src="/404.png"

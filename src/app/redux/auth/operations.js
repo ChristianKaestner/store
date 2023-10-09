@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const token = {
   set(token) {
@@ -12,13 +12,13 @@ const token = {
   },
 };
 
-
 export const register = createAsyncThunk(
   'auth/register',
   async (newUser, thunkAPI) => {
     try {
-      const response = await axios.post('/users/register', newUser);
+      const response = await axios.post('/auth/register', newUser);
       token.set(response.data.token);
+
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -38,9 +38,9 @@ export const registerGoogle = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk('auth/logIn', async (user, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
-    const response = await axios.post('/users/login', user);
+    const response = await axios.post('/auth/login', user);
     token.set(response.data.token);
 
     return response.data;
@@ -70,9 +70,8 @@ export const update = createAsyncThunk(
   }
 );
 
-
 export const refreshUser = createAsyncThunk(
-  'auth/refresh',
+  'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;

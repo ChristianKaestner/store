@@ -26,33 +26,33 @@ export default function Register({
       onSubmit={handleSubmit(data => handleRegister(data))}
     >
       <InputProps
-        err={errors?.firstname}
+        err={errors?.firstName}
         required
         label="First Name"
-        id="firstname"
+        id="firstName"
         type="text"
-        {...register('firstname', {
+        {...register('firstName', {
           required: 'required',
           minLength: 2,
         })}
       />
-      {errors.firstname && (
+      {errors.firstName && (
         <OnError text="Name must be at least 2 characters" />
       )}
 
       <InputProps
-        err={errors?.lastname}
+        err={errors?.lastName}
         required
         label="Last Name"
-        id="lastname"
+        id="lastName"
         type="text"
         sx={{ mt: 2 }}
-        {...register('lastname', {
+        {...register('lastName', {
           required: 'required',
           minLength: 2,
         })}
       />
-      {errors.lastname && (
+      {errors.lastName && (
         <OnError text="Last name must be at least 2 characters" />
       )}
 

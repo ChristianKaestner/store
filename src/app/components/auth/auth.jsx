@@ -1,5 +1,8 @@
 'use client';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleAccount } from '@/app/redux/modal/slice';
+import { register, logIn } from '@/app/redux/auth/operations';
 import { Box, Divider, Chip } from '@mui/material';
 import Social from './social/social';
 import Login from './login/login';
@@ -7,15 +10,18 @@ import Register from './register/register';
 
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   const handleLogin = data => {
-    console.log(data);
+    dispatch(logIn(data));
+    dispatch(toggleAccount(false));
   };
 
   const handleRegister = data => {
-    console.log(data);
+    dispatch(register(data));
+    dispatch(toggleAccount(false));
   };
 
   return (

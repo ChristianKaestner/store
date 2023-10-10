@@ -1,6 +1,5 @@
 import AccountOrders from '@/app/components/personalAccount/main/orders/orders';
 import { Box } from '@mui/material';
-import { tmpUser } from '@/app/lib/tmpData';
 
 export const metadata = {
   title: 'Profile - Orders history',
@@ -8,7 +7,6 @@ export const metadata = {
 };
 
 export default function Purchases() {
-  const { orders } = tmpUser;
   return (
     <Box
       sx={{
@@ -17,7 +15,7 @@ export default function Purchases() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountOrders orders={orders} />
+      <AccountOrders />
     </Box>
   );
 }

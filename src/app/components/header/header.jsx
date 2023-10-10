@@ -1,11 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useCart } from '@/app/hooks/useCart';
 import { useModal } from '@/app/hooks/useModal';
 import { useAuth } from '@/app/hooks/useAuth';
-import { refreshUser } from '@/app/redux/auth/operations';
 import { toggleAccount, toggleProducts } from '@/app/redux/modal/slice';
 import { toggleCart, toggleMobile } from '@/app/redux/modal/slice';
 import { Container, Toolbar, Box } from '@mui/material';
@@ -27,19 +26,15 @@ export default function Header() {
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
   const { cart } = useCart();
   const { isLogin } = useAuth();
-  const dispath = useDispatch();
-
-  useEffect(() => {
-    dispath(refreshUser());
-  }, []);
+  const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispath(toggleProducts(false));
+    dispatch(toggleProducts(false));
   };
 
   const handleAuth = () => {
-    dispath(toggleAccount(true));
-    dispath(toggleMobile(false));
+    dispatch(toggleAccount(true));
+    dispatch(toggleMobile(false));
   };
 
   return (
@@ -47,7 +42,7 @@ export default function Header() {
       <AppBar>
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
-            <MobileMenu toggle={() => dispath(toggleMobile(!mobileModal))} />
+            <MobileMenu toggle={() => dispatch(toggleMobile(!mobileModal))} />
             <Logo isMobile={false} />
             <ProductsButton
               onOpenProductsModal={() => dispath(toggleProducts(true))}
@@ -60,14 +55,14 @@ export default function Header() {
                 isLogin={isLogin}
               />
               <CartIcon
-                onOpenCartModal={() => dispath(toggleCart(true))}
+                onOpenCartModal={() => dispatch(toggleCart(true))}
                 totalProducts={cart.length}
               />
             </Box>
           </Toolbar>
           <DrawerMenu
             mobileOpen={mobileModal}
-            handleDrawerToggle={() => dispath(toggleMobile(!mobileModal))}
+            handleDrawerToggle={() => dispatch(toggleMobile(!mobileModal))}
             openAuth={handleAuth}
             isLogin={isLogin}
           />
@@ -86,7 +81,7 @@ export default function Header() {
           {accountModal && (
             <Modal
               open={accountModal}
-              close={() => dispath(toggleAccount(false))}
+              close={() => dispatch(toggleAccount(false))}
               title={login ? 'Log In' : 'Register'}
               width="600px"
               position="center"
@@ -97,7 +92,7 @@ export default function Header() {
           {cartModal && (
             <Modal
               open={cartModal}
-              close={() => dispath(toggleCart(false))}
+              close={() => dispatch(toggleCart(false))}
               title="Cart"
               width="600px"
               height="600px"

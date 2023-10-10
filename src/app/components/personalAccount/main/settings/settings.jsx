@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { redirect } from 'next/navigation';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { redirect } from 'next/navigation';
 import { logOut } from '@/app/redux/auth/operations';
 import { useAuth } from '@/app/hooks/useAuth';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
@@ -11,21 +11,15 @@ import AccountManagement from './accountManagment/accountManagement';
 import Modal from '@/app/components/modal/modal';
 import EditInfoModal from '@/app/components/modal/editAccount/editAccount';
 import EditAddressModal from '@/app/components/modal/editAddress/editAddress';
+import withAuth from '@/app/components/auth/withAuth';
 
-export default function AccountSettings() {
+function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
 
-  const { isLogin, isLoading, user } = useAuth();
-  console.log(user);
+  const { user } = useAuth();
 
   const dispath = useDispatch();
-
-  useEffect(() => {
-    if (!isLogin) {
-      redirect('/');
-    }
-  }, [isLogin]);
 
   const handleEditInfo = data => {
     // send request
@@ -41,52 +35,48 @@ export default function AccountSettings() {
 
   const handleLogout = () => {
     dispath(logOut());
+    redirect('/');
   };
 
   const handleDelete = () => {};
 
   return (
     <>
-      {isLogin && !isLoading && (
-        <>
-          <PageTitle title="Personal information" sx={{ mt: 0 }} />
+      <PageTitle title="Personal information" sx={{ mt: 0 }} />
 
-          <PersonalDetails user={user} onClick={() => setDetailsModal(true)} />
+      <PersonalDetails user={user} onClick={() => setDetailsModal(true)} />
 
-          <ShippingAddress
-            address={user.address}
-            onClick={() => setAddressModal(true)}
-          />
+      <ShippingAddress
+        address={user.address}
+        onClick={() => setAddressModal(true)}
+      />
 
-          <AccountManagement onDelete={handleDelete} onLogout={handleLogout} />
+      <AccountManagement onDelete={handleDelete} onLogout={handleLogout} />
 
-          {detailsModal && (
-            <Modal
-              open={detailsModal}
-              close={() => setDetailsModal(false)}
-              title="Edit personal details"
-              width="400px"
-              maxHeight="540px"
-            >
-              <EditInfoModal handleEdit={handleEditInfo} user={user} />
-            </Modal>
-          )}
-          {addressModal && (
-            <Modal
-              open={addressModal}
-              close={() => setAddressModal(false)}
-              title="Edit address"
-              width="400px"
-              maxHeight="540px"
-            >
-              <EditAddressModal
-                handleEdit={handleEditAddress}
-                address={address}
-              />
-            </Modal>
-          )}
-        </>
+      {detailsModal && (
+        <Modal
+          open={detailsModal}
+          close={() => setDetailsModal(false)}
+          title="Edit personal details"
+          width="400px"
+          maxHeight="540px"
+        >
+          <EditInfoModal handleEdit={handleEditInfo} user={user} />
+        </Modal>
+      )}
+      {addressModal && (
+        <Modal
+          open={addressModal}
+          close={() => setAddressModal(false)}
+          title="Edit address"
+          width="400px"
+          maxHeight="540px"
+        >
+          <EditAddressModal handleEdit={handleEditAddress} address={address} />
+        </Modal>
       )}
     </>
   );
 }
+
+export default withAuth(AccountSettings);

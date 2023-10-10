@@ -6,6 +6,7 @@ import EditIcon from '@mui/icons-material/Edit';
 
 export default function PersonalDetails({ onClick, user }) {
   const { firstName, lastName, phone, email } = user;
+
   return (
     <Paper
       elevation={3}

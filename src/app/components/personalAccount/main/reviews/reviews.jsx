@@ -2,8 +2,11 @@
 
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import ReviewList from '@/app/components/reviews/reviewsList/reviewList';
+import withAuth from '@/app/components/auth/withAuth';
+import { tmpUser } from '@/app/lib/tmpData';
 
-export default function AccountReviews({ reviews }) {
+function AccountReviews() {
+  const { reviews } = tmpUser;
   return (
     <>
       <PageTitle title="Product Reviews" />
@@ -11,3 +14,5 @@ export default function AccountReviews({ reviews }) {
     </>
   );
 }
+
+export default withAuth(AccountReviews);

@@ -6,8 +6,11 @@ import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
 import { useCart } from '@/app/hooks/useCart';
 import { useMediaQuery } from '@mui/material';
 import { profileFavoritePerRow } from '@/app/lib/functions';
+import withAuth from '@/app/components/auth/withAuth';
+import { tmpUser } from '@/app/lib/tmpData';
 
-export default function AccountFavorites({ favorites }) {
+function AccountFavorites() {
+  const { favorites } = tmpUser;
   const { data = [], isLoading } = useGetAllGoodsQuery();
   const { cart } = useCart();
   const favoritesGoods = data.filter(product => favorites.includes(product.id));
@@ -29,3 +32,5 @@ export default function AccountFavorites({ favorites }) {
     </>
   );
 }
+
+export default withAuth(AccountFavorites);

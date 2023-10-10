@@ -75,7 +75,7 @@ export default function EditInfoModal({ user, handleEdit }) {
       <Controller
         control={control}
         name="phone"
-        defaultValue={phone.slice(4)}
+        defaultValue={phone}
         rules={{ required: true, minLength: 9, maxLength: 9 }}
         render={({ field: { onChange, value } }) => {
           return (

@@ -32,9 +32,12 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        const user = action.payload.user;
+        const token = action.payload.token;
+        state.user = { ...state.user, ...user };
+        state.token = token;
         state.isLogin = true;
+        state.isLoading = false;
       })
       .addCase(register.rejected, state => {
         state.isError = true;
@@ -58,9 +61,12 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+        const user = action.payload.user;
+        const token = action.payload.token;
+        state.user = { ...state.user, ...user };
+        state.token = token;
         state.isLogin = true;
+        state.isLoading = false;
       })
       .addCase(logIn.rejected, state => {
         state.isError = true;
@@ -71,7 +77,7 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logOut.fulfilled, state => {
-        state.user = this.initialState.user;
+        state.user = initialState.user;
         state.token = null;
         state.isLogin = false;
       })
@@ -94,9 +100,10 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        const updated = action.payload.user;
-        state.user = { ...state.user, updated };
+        const user = action.payload.user;
+        state.user = { ...state.user, ...user };
         state.isLogin = true;
+        state.isLoading = false;
       })
       .addCase(refreshUser.rejected, state => {
         state.isLoading = false;

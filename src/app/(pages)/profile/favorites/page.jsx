@@ -1,6 +1,5 @@
 import AccountFavorites from '@/app/components/personalAccount/main/favorites/favorites';
 import { Box } from '@mui/material';
-import { tmpUser } from '@/app/lib/tmpData';
 
 export const metadata = {
   title: 'Profile - Favorite',
@@ -8,7 +7,6 @@ export const metadata = {
 };
 
 export default function Favorites() {
-  const { favorites } = tmpUser;
   return (
     <Box
       sx={{
@@ -17,7 +15,7 @@ export default function Favorites() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountFavorites favorites={favorites} />
+      <AccountFavorites />
     </Box>
   );
 }

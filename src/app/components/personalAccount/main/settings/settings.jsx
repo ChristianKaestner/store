@@ -2,28 +2,30 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { redirect } from 'next/navigation';
-import { logOut } from '@/app/redux/auth/operations';
-import { useAuth } from '@/app/hooks/useAuth';
-import PageTitle from '@/app/components/pageTitle/pageTitle';
+import { logOut, deleteUser } from '../../../../redux/auth/operations';
+import { updateUser } from '../../../../redux/auth/operations';
+import { useAuth } from '../../../../hooks/useAuth';
+import PageTitle from '../../../../components/pageTitle/pageTitle';
 import PersonalDetails from './personalDetails/personalDeatils';
 import ShippingAddress from './shippingAddress/ShippingAddress';
 import AccountManagement from './accountManagment/accountManagement';
-import Modal from '@/app/components/modal/modal';
-import EditInfoModal from '@/app/components/modal/editAccount/editAccount';
-import EditAddressModal from '@/app/components/modal/editAddress/editAddress';
-import withAuth from '@/app/components/auth/withAuth';
+import Modal from '../../../../components/modal/modal';
+import EditInfoModal from '../../../../components/modal/editAccount/editAccount';
+import EditAddressModal from '../../../../components/modal/editAddress/editAddress';
+import ConfirmDelModal from '../../../../components/modal/confirmDeletion/confirmDeletion';
+import withAuth from '../../../../components/auth/withAuth';
 
 function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const { user } = useAuth();
-
+  console.log(user);
   const dispath = useDispatch();
 
   const handleEditInfo = data => {
-    // send request
-    console.log(data);
+    dispath(updateUser(data));
     setDetailsModal(false);
   };
 
@@ -38,7 +40,10 @@ function AccountSettings() {
     redirect('/');
   };
 
-  const handleDelete = () => {};
+  const handleDelete = () => {
+    dispath(deleteUser());
+    redirect('/');
+  };
 
   return (
     <>
@@ -51,7 +56,10 @@ function AccountSettings() {
         onClick={() => setAddressModal(true)}
       />
 
-      <AccountManagement onDelete={handleDelete} onLogout={handleLogout} />
+      <AccountManagement
+        onDelete={() => setDeleteModal(true)}
+        onLogout={handleLogout}
+      />
 
       {detailsModal && (
         <Modal
@@ -73,6 +81,20 @@ function AccountSettings() {
           maxHeight="540px"
         >
           <EditAddressModal handleEdit={handleEditAddress} address={address} />
+        </Modal>
+      )}
+      {deleteModal && (
+        <Modal
+          open={deleteModal}
+          close={() => setDeleteModal(false)}
+          title="Confirm profile deletion"
+          width="400px"
+          maxHeight="540px"
+        >
+          <ConfirmDelModal
+            handleDelete={handleDelete}
+            handleAbort={() => setDeleteModal(false)}
+          />
         </Modal>
       )}
     </>

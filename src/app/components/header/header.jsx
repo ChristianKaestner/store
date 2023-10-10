@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useCart } from '@/app/hooks/useCart';
-import { useModal } from '@/app/hooks/useModal';
-import { useAuth } from '@/app/hooks/useAuth';
-import { toggleAccount, toggleProducts } from '@/app/redux/modal/slice';
-import { toggleCart, toggleMobile } from '@/app/redux/modal/slice';
+import { useCart } from '../../hooks/useCart';
+import { useModal } from '../../hooks/useModal';
+import { useAuth } from '../../hooks/useAuth';
+import { toggleAccount, toggleProducts } from '../../redux/modal/slice';
+import { toggleCart, toggleMobile } from '../../redux/modal/slice';
 import { Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
@@ -45,7 +45,7 @@ export default function Header() {
             <MobileMenu toggle={() => dispatch(toggleMobile(!mobileModal))} />
             <Logo isMobile={false} />
             <ProductsButton
-              onOpenProductsModal={() => dispath(toggleProducts(true))}
+              onOpenProductsModal={() => dispatch(toggleProducts(true))}
             />
             <SearchForm />
 

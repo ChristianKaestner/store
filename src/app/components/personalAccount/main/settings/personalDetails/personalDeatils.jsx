@@ -1,7 +1,7 @@
 import { Paper, IconButton } from '@mui/material';
 import { TableContainer, Table, TableRow, TableBody } from '@mui/material';
-import { CellBold, CellNeutral, SubTitle } from '@/app/lib/commonStyles';
-import { RowCenter } from '@/app/lib/commonStyles';
+import { CellBold, CellNeutral } from '../../../../../lib/commonStyles';
+import { RowCenter, SubTitle } from '../../../../../lib/commonStyles';
 import EditIcon from '@mui/icons-material/Edit';
 
 export default function PersonalDetails({ onClick, user }) {

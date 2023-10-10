@@ -1,5 +1,9 @@
-import { Paper, Box } from '@mui/material';
-import { RowCenter, SubTitle, RowBetween } from '@/app/lib/commonStyles';
+import { Paper } from '@mui/material';
+import {
+  RowCenter,
+  SubTitle,
+  RowBetween,
+} from '../../../../../lib/commonStyles';
 import AccountButton from './button/accountButton';
 
 export default function AccountManagement({ onLogout, onDelete }) {

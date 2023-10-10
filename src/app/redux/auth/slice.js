@@ -4,8 +4,9 @@ import {
   register,
   registerGoogle,
   logOut,
-  update,
+  updateUser,
   refreshUser,
+  deleteUser,
 } from './operations';
 
 const initialState = {
@@ -18,7 +19,7 @@ const initialState = {
   },
   token: null,
   isLogin: false,
-  isError: false,
+  error: null,
   isLoading: false,
 };
 
@@ -31,82 +32,103 @@ export const authSlice = createSlice({
       .addCase(register.pending, state => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
-        const user = action.payload.user;
-        const token = action.payload.token;
-        state.user = { ...state.user, ...user };
-        state.token = token;
-        state.isLogin = true;
+      .addCase(register.rejected, (state, action) => {
+        state.error = action.payload;
         state.isLoading = false;
       })
-      .addCase(register.rejected, state => {
-        state.isError = true;
+      .addCase(register.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
+        state.token = action.payload.token;
+        state.isLogin = true;
         state.isLoading = false;
+        state.error = null;
       })
 
       .addCase(registerGoogle.pending, state => {
         state.isLoading = true;
       })
+      .addCase(registerGoogle.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
       .addCase(registerGoogle.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLogin = true;
-      })
-      .addCase(registerGoogle.rejected, state => {
-        state.isError = true;
         state.isLoading = false;
       })
 
       .addCase(logIn.pending, state => {
         state.isLoading = true;
       })
-      .addCase(logIn.fulfilled, (state, action) => {
-        const user = action.payload.user;
-        const token = action.payload.token;
-        state.user = { ...state.user, ...user };
-        state.token = token;
-        state.isLogin = true;
+      .addCase(logIn.rejected, (state, action) => {
+        state.error = action.payload;
         state.isLoading = false;
       })
-      .addCase(logIn.rejected, state => {
-        state.isError = true;
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
+        state.token = action.payload.token;
+        state.isLogin = true;
         state.isLoading = false;
+        state.error = null;
       })
 
       .addCase(logOut.pending, state => {
         state.isLoading = true;
       })
+      .addCase(logOut.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
       .addCase(logOut.fulfilled, state => {
         state.user = initialState.user;
         state.token = null;
         state.isLogin = false;
-      })
-      .addCase(logOut.rejected, state => {
-        state.isError = true;
         state.isLoading = false;
+        state.error = null;
       })
-      .addCase(update.pending, state => {
+
+      .addCase(updateUser.pending, state => {
         state.isLoading = true;
       })
-      .addCase(update.fulfilled, state => {
-        state.user = action.payload.user;
+      .addCase(updateUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.isLoading = false;
       })
-      .addCase(update.rejected, state => {
-        state.isError = true;
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
+        state.isLogin = true;
         state.isLoading = false;
+        state.error = null;
       })
+
       .addCase(refreshUser.pending, state => {
         state.isLoading = true;
       })
+      .addCase(refreshUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
       .addCase(refreshUser.fulfilled, (state, action) => {
-        const user = action.payload.user;
-        state.user = { ...state.user, ...user };
+        state.user = { ...state.user, ...action.payload.user };
         state.isLogin = true;
         state.isLoading = false;
+        state.error = null;
       })
-      .addCase(refreshUser.rejected, state => {
+
+      .addCase(deleteUser.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
+        state.error = action.payload;
         state.isLoading = false;
+      })
+      .addCase(deleteUser.fulfilled, state => {
+        state.user = initialState.user;
+        state.token = null;
+        state.isLogin = false;
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });

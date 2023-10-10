@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
 import ProductsItemModal from './productsItemModal/productsItemModal';
-import { useGetCategoriesQuery } from '@/app/redux/services/categories';
+import { useGetCategoriesQuery } from '../../../redux/services/categories';
 
 export default function ProductsModal({ handleCloseModal }) {
   const [value, setValue] = useState(0);

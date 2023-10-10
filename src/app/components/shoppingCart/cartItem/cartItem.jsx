@@ -7,7 +7,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { InputProps, Column, RowBetween } from '@/app/lib/commonStyles';
+import { InputProps, Column, RowBetween } from '../../../lib/commonStyles';
 import { Card } from './cartItem.styled';
 
 export default function CartItem({

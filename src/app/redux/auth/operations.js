@@ -45,7 +45,10 @@ export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 
     return response.data;
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue({
+      message: e.response.data.message,
+      status: e.response.status,
+    });
   }
 });
 
@@ -58,11 +61,11 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const update = createAsyncThunk(
-  'auth/update',
-  async (updateUser, thunkAPI) => {
+export const updateUser = createAsyncThunk(
+  'users/update',
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.patch('/users/update', updateUser);
+      const response = await axios.patch('/users/update', data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -76,17 +79,27 @@ export const refreshUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
     if (persistedToken === null) {
-      console.log('first');
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
       token.set(persistedToken);
       const response = await axios.get('/users/current');
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteUser = createAsyncThunk(
+  'users/delete',
+  async (updateUser, thunkAPI) => {
+    try {
+      const response = await axios.delete('/users', updateUser);
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

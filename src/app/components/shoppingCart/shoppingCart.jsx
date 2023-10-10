@@ -1,10 +1,10 @@
 'use client';
 
 import { useDispatch } from 'react-redux';
-import { cartReduceQuantity, cartRemove } from '@/app/redux/cart/slice';
-import { cartIncreaseQuantity, cartSetQuantity } from '@/app/redux/cart/slice';
-import { useGetProductsByIdsQuery } from '@/app/redux/services/goods';
-import { useCart } from '@/app/hooks/useCart';
+import { cartReduceQuantity, cartRemove } from '../../redux/cart/slice';
+import { cartIncreaseQuantity, cartSetQuantity } from '../../redux/cart/slice';
+import { useGetProductsByIdsQuery } from '../../redux/services/goods';
+import { useCart } from '../../hooks/useCart';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
 import TotalPrice from './totalPrice/totatlPrice';

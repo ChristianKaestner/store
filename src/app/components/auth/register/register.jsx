@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
 import CommonFileds from '../commonFields/commonFields';
-import { InputProps } from '@/app/lib/commonStyles';
+import { InputProps } from '../../../lib/commonStyles';
 import OnError from '../../Notifications/onError';
 
 export default function Register({

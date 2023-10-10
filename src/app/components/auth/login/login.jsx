@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormControl, Button } from '@mui/material';
 import CommonFileds from '../commonFields/commonFields';
@@ -7,14 +8,24 @@ export default function Login({
   handleLogin,
   showPassword,
   handleClick,
+  httpError,
 }) {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({
     mode: 'onSubmit',
   });
+
+  useEffect(() => {
+    if (httpError?.status) {
+      setError('email', { type: 'manual', message: httpError.message });
+      setError('password', { type: 'manual', message: httpError.message });
+    }
+  }, [httpError]);
+
   return (
     <FormControl
       sx={{ display: 'flex', mt: 2, width: { xs: '100%', sm: '60%' } }}
@@ -26,6 +37,7 @@ export default function Login({
         handleClick={handleClick}
         regEmail={register('email')}
         regPass={register('password')}
+        errors={errors}
       />
       <Button
         type="submit"

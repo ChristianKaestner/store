@@ -1,7 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
-import { InputProps } from '@/app/lib/commonStyles';
+import { InputProps } from '../../../lib/commonStyles';
 import OnError from '../../Notifications/onError';
 
 export default function EditInfoModal({ user, handleEdit }) {

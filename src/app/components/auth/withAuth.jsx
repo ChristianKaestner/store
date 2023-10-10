@@ -18,7 +18,7 @@ export default function withAuth(Component) {
         console.log('redirect');
         redirect('/');
       }
-    }, [isLogin, isLoading]);
+    }, [isLogin, isLoading, isInitialLoad]);
 
     return <>{isLogin && !isLoading && <Component />}</>;
   };

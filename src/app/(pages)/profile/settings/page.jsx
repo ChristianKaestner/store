@@ -1,4 +1,4 @@
-import AccountSettings from '@/app/components/personalAccount/main/settings/settings';
+import AccountSettings from '../../../components/personalAccount/main/settings/settings';
 import { Box } from '@mui/material';
 import { tmpUser } from '@/app/lib/tmpData';
 

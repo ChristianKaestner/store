@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ColumnCenter } from '@/app/lib/commonStyles';
+import { ColumnCenter } from '../../../lib/commonStyles';
 import OnNotify from '../../Notifications/onNotify';
 export default function EmptyCart() {
   return (

@@ -4,7 +4,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import CursorComponent from './components/cursor/cursor';
 import RefreshUser from './components/auth/refreshUser';
-import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { myTheme } from './lib/theme';
 import ReduxProvider from './redux/provider';
 import Main from './layout/main/main';

@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { Column, RowCenter } from '@/app/lib/commonStyles';
+import { Column, RowCenter } from '../../../../lib/commonStyles';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 export default function AccountInfo({ name, email }) {

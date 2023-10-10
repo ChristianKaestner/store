@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Box, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
-import { catSlug } from '@/app/lib/functions';
+import { catSlug } from '../../../../lib/functions.js';
 
 export default function ProductsItemModal({
   value,

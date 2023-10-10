@@ -1,7 +1,7 @@
 import { Box, List } from '@mui/material';
 import { LinkStyled } from '../drawer.styled';
 import { ItemText, Item, ListStyled } from '../drawer.styled';
-import { categories } from '@/app/lib/tmpData';
+import { categories } from '../../../../lib/tmpData';
 
 export default function ProductsList() {
   return (

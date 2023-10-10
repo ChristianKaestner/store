@@ -1,8 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { Row } from '@/app/lib/commonStyles';
+import { Row } from '../../../lib/commonStyles';
 import AccountInfo from './accountInfo/accountInfo';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -10,7 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CreateIcon from '@mui/icons-material/Create';
 import { Container, MenuText, Tabs, Tab } from './sideBar.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { tmpUser } from '@/app/lib/tmpData';
+import { tmpUser } from '../../../lib/tmpData';
 
 export default function AccountAside() {
   const [page, setPage] = useState('settings');

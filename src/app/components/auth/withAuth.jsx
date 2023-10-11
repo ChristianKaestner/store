@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { useAuth } from '@/app/hooks/useAuth';
 
-export default function withAuth(Component) {
+function withAuth(Component) {
   return () => {
     const [isInitialLoad, setIsInitialLoad] = useState(true);
     const { isLogin, isLoading } = useAuth();
@@ -23,6 +23,9 @@ export default function withAuth(Component) {
     //  return <>{isLogin && !isLoading && <Component />}</>;
   };
 }
+
+withAuth.displayName = 'withAuth';
+export default withAuth;
 
 // export default function WithAuth({ children }) {
 //   const { isLogin, isLoading } = useAuth();

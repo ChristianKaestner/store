@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { useAuth } from '@/app/hooks/useAuth';
 
 function withAuth(Component) {
-  return () => {
+  const WithAuthComponent = () => {
     const [isInitialLoad, setIsInitialLoad] = useState(true);
     const { isLogin, isLoading } = useAuth();
 
@@ -22,25 +22,11 @@ function withAuth(Component) {
     return <>{isLogin && <Component />}</>;
     //  return <>{isLogin && !isLoading && <Component />}</>;
   };
+  WithAuthComponent.displayName = `WithAuth(${
+    Component.displayName || Component.name || 'Component'
+  })`;
+
+  return WithAuthComponent;
 }
 
-withAuth.displayName = 'withAuth';
 export default withAuth;
-
-// export default function WithAuth({ children }) {
-//   const { isLogin, isLoading } = useAuth();
-//   const [isInitialLoad, setIsInitialLoad] = useState(true);
-
-//   useEffect(() => {
-//     if (isInitialLoad) {
-//       setIsInitialLoad(false);
-//       return;
-//     }
-
-//     if (!isLogin && !isLoading) {
-//       redirect('/');
-//     }
-//   }, [isLogin, isLoading, isInitialLoad]);
-
-//   return <>{isLogin && !isLoading && children}</>;
-// }

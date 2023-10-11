@@ -14,7 +14,7 @@ export default function FavoriteIcon({ id }) {
   useEffect(() => {
     if (favorites === undefined) return;
     if (favorites.includes(id)) setIsFavorite(true);
-  }, favorites);
+  }, [favorites, id]);
 
   const { isLogin } = useAuth();
   const dispatch = useDispatch();

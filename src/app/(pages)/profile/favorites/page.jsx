@@ -1,4 +1,5 @@
-import AccountFavorites from '@/app/components/personalAccount/main/favorites/favorites';
+// import AccountFavorites from '@/app/components/personalAccount/main/favorites/favorites';
+import { AccountFavoritesWithAuth } from '../../../components/personalAccount/main/favorites/favorites';
 import { Box } from '@mui/material';
 
 export const metadata = {
@@ -15,7 +16,7 @@ export default function Favorites() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountFavorites />
+      <AccountFavoritesWithAuth />
     </Box>
   );
 }

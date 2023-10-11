@@ -27,7 +27,7 @@ export default function Register({
     if (httpError?.status) {
       setError('email', { type: 'manual', message: httpError.message });
     }
-  }, [httpError]);
+  }, [httpError, setError]);
 
   const handleClearError = () => {
     if (httpError?.status) {

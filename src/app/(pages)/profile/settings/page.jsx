@@ -1,4 +1,5 @@
-import AccountSettings from '../../../components/personalAccount/main/settings/settings';
+// import AccountSettings from '../../../components/personalAccount/main/settings/settings';
+import { AccountSettingsWithAuth } from '../../../components/personalAccount/main/settings/settings';
 import { Box } from '@mui/material';
 
 export const metadata = {
@@ -16,7 +17,7 @@ export default function Settings() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountSettings />
+      <AccountSettingsWithAuth />
     </Box>
   );
 }

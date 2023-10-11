@@ -108,4 +108,5 @@ function AccountSettings() {
 }
 
 AccountSettings.displayName = 'AccountSettings';
-export default withAuth(AccountSettings);
+// export default withAuth(AccountSettings);
+export const AccountSettingsWithAuth = withAuth(AccountSettings);

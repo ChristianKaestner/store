@@ -1,4 +1,5 @@
-import AccountOrders from '@/app/components/personalAccount/main/orders/orders';
+// import AccountOrders from '@/app/components/personalAccount/main/orders/orders';
+import { AccountOrdersWithAuth } from '../../../components/personalAccount/main/orders/orders';
 import { Box } from '@mui/material';
 
 export const metadata = {
@@ -15,7 +16,7 @@ export default function Purchases() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountOrders />
+      <AccountOrdersWithAuth />
     </Box>
   );
 }

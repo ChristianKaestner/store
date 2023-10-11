@@ -1,4 +1,5 @@
-import AccountReviews from '../../../components/personalAccount/main/reviews/reviews';
+// import AccountReviews from '../../../components/personalAccount/main/reviews/reviews';
+import { AccountReviewsWithAuth } from '../../../components/personalAccount/main/reviews/reviews';
 import { Box } from '@mui/material';
 
 export const metadata = {
@@ -15,7 +16,7 @@ export default function Reviews() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountReviews />
+      <AccountReviewsWithAuth />
     </Box>
   );
 }

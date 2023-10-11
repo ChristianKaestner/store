@@ -25,7 +25,7 @@ export default function Login({
       setError('email', { type: 'manual', message: httpError.message });
       setError('password', { type: 'manual', message: httpError.message });
     }
-  }, [httpError]);
+  }, [httpError, setError]);
 
   const handleClearError = () => {
     if (httpError?.status) {

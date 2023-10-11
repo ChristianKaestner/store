@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, set } from 'react-hook-form';
 import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
 import { InputProps } from '../../../lib/commonStyles';
@@ -22,7 +22,7 @@ export default function EditInfoModal({ user, handleEdit, httpError }) {
     if (httpError?.status) {
       setError('email', { type: 'manual', message: httpError.message });
     }
-  }, [httpError]);
+  }, [httpError, setError]);
 
   const handleClearError = () => {
     if (httpError?.status) {

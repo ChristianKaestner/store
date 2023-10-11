@@ -22,4 +22,5 @@ function AccountOrders() {
 }
 
 AccountOrders.displayName = 'AccountOrders';
-export default withAuth(AccountOrders);
+// export default withAuth(AccountOrders);
+export const AccountOrdersWithAuth = withAuth(AccountOrders);

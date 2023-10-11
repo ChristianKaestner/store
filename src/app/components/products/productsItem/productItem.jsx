@@ -27,7 +27,7 @@ export default function ProductItem({
     cart.find(item => item.id === product.id)
       ? setInCart(true)
       : setInCart(false);
-  }, [cart]);
+  }, [cart, product.id]);
 
   const handleCart = () => {
     if (isover) return;

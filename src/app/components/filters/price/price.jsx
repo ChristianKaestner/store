@@ -27,7 +27,7 @@ export default function PriceFilter({ items }) {
     if (!price.length && formValues.price.length) reset();
     setErrMin(false);
     setErrMax(false);
-  }, [price]);
+  }, [price, getValues, reset]);
 
   const defaultValues = () => {
     if (price.length) {

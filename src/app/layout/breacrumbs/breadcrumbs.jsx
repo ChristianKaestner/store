@@ -15,7 +15,7 @@ export default function Breadcrumbs() {
   useEffect(() => {
     path.splice(0, 1);
     setCrumbs(path);
-  }, []);
+  }, [path]);
 
   const { data, isLoading } = useGetProductByIdQuery(slug);
   const title = data?.title;

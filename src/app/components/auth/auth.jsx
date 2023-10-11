@@ -30,7 +30,7 @@ export default function Auth({ toggleAuth, login }) {
     if (isLogin) {
       dispatch(toggleAccount(false));
     }
-  }, [isLogin]);
+  }, [isLogin, dispatch]);
 
   return (
     <Box

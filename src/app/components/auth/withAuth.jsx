@@ -15,11 +15,29 @@ export default function withAuth(Component) {
       }
 
       if (!isLogin && !isLoading) {
-        console.log('redirect');
         redirect('/');
       }
     }, [isLogin, isLoading, isInitialLoad]);
 
-    return <>{isLogin && !isLoading && <Component />}</>;
+    return <>{isLogin && <Component />}</>;
+    //  return <>{isLogin && !isLoading && <Component />}</>;
   };
 }
+
+// export default function WithAuth({ children }) {
+//   const { isLogin, isLoading } = useAuth();
+//   const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+//   useEffect(() => {
+//     if (isInitialLoad) {
+//       setIsInitialLoad(false);
+//       return;
+//     }
+
+//     if (!isLogin && !isLoading) {
+//       redirect('/');
+//     }
+//   }, [isLogin, isLoading, isInitialLoad]);
+
+//   return <>{isLogin && !isLoading && children}</>;
+// }

@@ -10,10 +10,12 @@ export default function CommonFileds({
   regPass,
   regEmail,
   errors,
+  clearError,
 }) {
   return (
     <>
       <InputProps
+        onChange={clearError}
         err={errors?.email}
         required
         label="Email"

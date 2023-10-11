@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
@@ -10,14 +11,29 @@ export default function Register({
   handleRegister,
   showPassword,
   handleClick,
+  httpError,
 }) {
   const {
     register,
     handleSubmit,
+    setError,
+    clearErrors,
     formState: { errors },
   } = useForm({
     mode: 'onSubmit',
   });
+
+  useEffect(() => {
+    if (httpError?.status) {
+      setError('email', { type: 'manual', message: httpError.message });
+    }
+  }, [httpError]);
+
+  const handleClearError = () => {
+    if (httpError?.status) {
+      clearErrors('email');
+    }
+  };
 
   return (
     <FormControl
@@ -90,6 +106,7 @@ export default function Register({
           pattern: /^(?=.*[a-zA-Z])(?=.*\d).+/,
         })}
         errors={errors}
+        clearError={handleClearError}
       />
       <Button
         type="submit"

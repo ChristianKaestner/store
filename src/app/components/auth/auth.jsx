@@ -12,9 +12,7 @@ import Register from './register/register';
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { user, error, isLogin } = useAuth();
-
-
+  const { error, isLogin } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -22,14 +20,17 @@ export default function Auth({ toggleAuth, login }) {
 
   const handleLogin = data => {
     dispatch(logIn(data));
-    // console.log(isError);
-    // dispatch(toggleAccount(false));
   };
 
   const handleRegister = data => {
     dispatch(register(data));
-    dispatch(toggleAccount(false));
   };
+
+  useEffect(() => {
+    if (isLogin) {
+      dispatch(toggleAccount(false));
+    }
+  }, [isLogin]);
 
   return (
     <Box
@@ -55,6 +56,7 @@ export default function Auth({ toggleAuth, login }) {
           handleRegister={handleRegister}
           showPassword={showPassword}
           handleClick={handleClickShowPassword}
+          httpError={error}
         />
       )}
 

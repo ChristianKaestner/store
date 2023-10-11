@@ -15,4 +15,5 @@ function AccountReviews() {
   );
 }
 
+AccountReviews.displayName = 'AccountReviews';
 export default withAuth(AccountReviews);

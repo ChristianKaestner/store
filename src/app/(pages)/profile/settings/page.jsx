@@ -1,6 +1,5 @@
 import AccountSettings from '../../../components/personalAccount/main/settings/settings';
 import { Box } from '@mui/material';
-import { tmpUser } from '@/app/lib/tmpData';
 
 export const metadata = {
   title: 'Profile - Settings',
@@ -17,7 +16,7 @@ export default function Settings() {
         width: { xs: '100%', md: '70%' },
       }}
     >
-      <AccountSettings user={tmpUser} />
+      <AccountSettings />
     </Box>
   );
 }

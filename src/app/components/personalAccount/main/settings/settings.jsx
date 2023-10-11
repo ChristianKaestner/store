@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { redirect } from 'next/navigation';
 import { logOut, deleteUser } from '../../../../redux/auth/operations';
@@ -20,20 +20,22 @@ function AccountSettings() {
   const [addressModal, setAddressModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
 
-  const { user } = useAuth();
-  console.log(user);
+  const { user, error, isLoading } = useAuth();
+
+  useEffect(() => {
+    if (!isLoading && !error) {
+      setDetailsModal(false);
+      setAddressModal(false);
+    }
+  }, [user, error, isLoading]);
+
   const dispath = useDispatch();
 
   const handleEditInfo = data => {
     dispath(updateUser(data));
-    setDetailsModal(false);
   };
 
-  const handleEditAddress = data => {
-    // send request
-    console.log(data);
-    setAddressModal(false);
-  };
+  const handleEditAddress = data => {};
 
   const handleLogout = () => {
     dispath(logOut());
@@ -69,7 +71,11 @@ function AccountSettings() {
           width="400px"
           maxHeight="540px"
         >
-          <EditInfoModal handleEdit={handleEditInfo} user={user} />
+          <EditInfoModal
+            handleEdit={handleEditInfo}
+            user={user}
+            httpError={error}
+          />
         </Modal>
       )}
       {addressModal && (
@@ -101,4 +107,5 @@ function AccountSettings() {
   );
 }
 
+AccountSettings.displayName = 'AccountSettings';
 export default withAuth(AccountSettings);

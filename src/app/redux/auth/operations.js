@@ -21,7 +21,10 @@ export const register = createAsyncThunk(
 
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
     }
   }
 );
@@ -33,7 +36,10 @@ export const registerGoogle = createAsyncThunk(
       token.set(tokenGoogle);
       return tokenGoogle;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
     }
   }
 );
@@ -57,7 +63,10 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('/auth/logout');
     token.set('');
   } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+    return thunkAPI.rejectWithValue({
+      message: e.response.data.message,
+      status: e.response.status,
+    });
   }
 });
 
@@ -68,7 +77,10 @@ export const updateUser = createAsyncThunk(
       const response = await axios.patch('/users/update', data);
       return response.data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
     }
   }
 );
@@ -86,8 +98,11 @@ export const refreshUser = createAsyncThunk(
       token.set(persistedToken);
       const response = await axios.get('/users/current');
       return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
     }
   }
 );

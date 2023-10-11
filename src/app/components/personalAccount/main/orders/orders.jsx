@@ -21,4 +21,5 @@ function AccountOrders() {
   );
 }
 
+AccountOrders.displayName = 'AccountOrders';
 export default withAuth(AccountOrders);

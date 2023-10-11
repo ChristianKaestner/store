@@ -14,6 +14,7 @@ export default function Login({
     register,
     handleSubmit,
     setError,
+    clearErrors,
     formState: { errors },
   } = useForm({
     mode: 'onSubmit',
@@ -26,11 +27,19 @@ export default function Login({
     }
   }, [httpError]);
 
+  const handleClearError = () => {
+    if (httpError?.status) {
+      clearErrors('email');
+      clearErrors('password');
+    }
+  };
+
   return (
     <FormControl
       sx={{ display: 'flex', mt: 2, width: { xs: '100%', sm: '60%' } }}
       component="form"
       onSubmit={handleSubmit(data => handleLogin(data))}
+      onChange={handleClearError}
     >
       <CommonFileds
         showPassword={showPassword}

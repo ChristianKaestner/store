@@ -1,19 +1,34 @@
+import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormControl, InputAdornment } from '@mui/material';
 import { Button, Typography } from '@mui/material';
 import { InputProps } from '../../../lib/commonStyles';
 import OnError from '../../Notifications/onError';
 
-export default function EditInfoModal({ user, handleEdit }) {
+export default function EditInfoModal({ user, handleEdit, httpError }) {
   const { firstName, lastName, phone, email } = user;
 
   const {
     handleSubmit,
+    setError,
+    clearErrors,
     control,
     formState: { errors },
   } = useForm({
     mode: 'onSubmit',
   });
+
+  useEffect(() => {
+    if (httpError?.status) {
+      setError('email', { type: 'manual', message: httpError.message });
+    }
+  }, [httpError]);
+
+  const handleClearError = () => {
+    if (httpError?.status) {
+      clearErrors('email');
+    }
+  };
 
   return (
     <FormControl
@@ -123,12 +138,22 @@ export default function EditInfoModal({ user, handleEdit }) {
               sx={{ mt: 2 }}
               onChange={e => {
                 onChange(e.target.value);
+                handleClearError;
               }}
             />
           );
         }}
       />
-      {errors?.email && <OnError text="Invalid email address" />}
+      {errors?.email && (
+        <OnError
+          text={
+            errors?.email?.message
+              ? errors.email.message
+              : 'Invalid email address'
+          }
+        />
+      )}
+      {/* {errors?.email && <OnError text="Invalid email address" />} */}
 
       <Button
         type="submit"

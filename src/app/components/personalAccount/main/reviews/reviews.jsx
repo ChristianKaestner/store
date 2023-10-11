@@ -16,5 +16,4 @@ function AccountReviews() {
 }
 
 AccountReviews.displayName = 'AccountReviews';
-// export default withAuth(AccountReviews);
 export const AccountReviewsWithAuth = withAuth(AccountReviews);

@@ -34,5 +34,4 @@ function AccountFavorites() {
 }
 
 AccountFavorites.displayName = 'AccountFavorites';
-// export default withAuth(AccountFavorites);
 export const AccountFavoritesWithAuth = withAuth(AccountFavorites);

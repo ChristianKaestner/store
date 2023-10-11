@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { redirect } from 'next/navigation';
 import { logOut, deleteUser } from '../../../../redux/auth/operations';
-import { updateUser } from '../../../../redux/auth/operations';
+import { updateUser, updateAddress } from '../../../../redux/auth/operations';
 import { useAuth } from '../../../../hooks/useAuth';
 import PageTitle from '../../../../components/pageTitle/pageTitle';
 import PersonalDetails from './personalDetails/personalDeatils';
@@ -29,21 +29,23 @@ function AccountSettings() {
     }
   }, [user, error, isLoading]);
 
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
 
   const handleEditInfo = data => {
-    dispath(updateUser(data));
+    dispatch(updateUser(data));
   };
 
-  const handleEditAddress = data => {};
+  const handleEditAddress = data => {
+    dispatch(updateAddress(data));
+  };
 
   const handleLogout = () => {
-    dispath(logOut());
+    dispatch(logOut());
     redirect('/');
   };
 
   const handleDelete = () => {
-    dispath(deleteUser());
+    dispatch(deleteUser());
     redirect('/');
   };
 
@@ -86,7 +88,10 @@ function AccountSettings() {
           width="400px"
           maxHeight="540px"
         >
-          <EditAddressModal handleEdit={handleEditAddress} address={address} />
+          <EditAddressModal
+            handleEdit={handleEditAddress}
+            address={user.address}
+          />
         </Modal>
       )}
       {deleteModal && (

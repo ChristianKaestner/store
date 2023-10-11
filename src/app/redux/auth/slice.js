@@ -5,6 +5,7 @@ import {
   registerGoogle,
   logOut,
   updateUser,
+  updateAddress,
   refreshUser,
   deleteUser,
 } from './operations';
@@ -96,6 +97,20 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
+        state.isLogin = true;
+        state.isLoading = false;
+        state.error = null;
+      })
+
+      .addCase(updateAddress.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(updateAddress.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(updateAddress.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload.user };
         state.isLogin = true;
         state.isLoading = false;

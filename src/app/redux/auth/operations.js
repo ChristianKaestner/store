@@ -85,6 +85,21 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const updateAddress = createAsyncThunk(
+  'users/update/address',
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.patch('/users/update/address', data);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  }
+);
+
 export const refreshUser = createAsyncThunk(
   'users/current',
   async (_, thunkAPI) => {

@@ -40,6 +40,7 @@ export default function Register({
       sx={{ display: 'flex', mt: 2, width: { xs: '100%', sm: '60%' } }}
       component="form"
       onSubmit={handleSubmit(data => handleRegister(data))}
+      onChange={handleClearError}
     >
       <InputProps
         err={errors?.firstName}

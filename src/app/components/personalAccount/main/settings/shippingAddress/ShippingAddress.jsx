@@ -29,7 +29,7 @@ export default function ShippingAddress({ onClick, address }) {
         <Table aria-label="purchase table">
           <TableBody>
             <TableRow>
-              <CellNeutral>City:</CellNeutral>
+              <CellNeutral width={'50%'}>City:</CellNeutral>
               <CellBold align="left">{city}</CellBold>
             </TableRow>
             <TableRow>

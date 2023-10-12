@@ -26,7 +26,7 @@ export default function AccountManagement({ onLogout, onDelete }) {
       </RowCenter>
       <RowBetween sx={{ mt: 2 }}>
         <AccountButton text="logout" onClick={onLogout} icon="logout" />
-        <AccountButton text="delete account" onClick={onDelete} icon="delete" />
+        <AccountButton text="delete" onClick={onDelete} icon="delete" />
       </RowBetween>
     </Paper>
   );

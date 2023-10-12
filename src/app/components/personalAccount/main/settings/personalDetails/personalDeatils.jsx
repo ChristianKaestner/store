@@ -30,7 +30,7 @@ export default function PersonalDetails({ onClick, user }) {
         <Table aria-label="purchase table">
           <TableBody>
             <TableRow>
-              <CellNeutral>First name:</CellNeutral>
+              <CellNeutral width={'50%'}>First name:</CellNeutral>
               <CellBold align="left">{firstName}</CellBold>
             </TableRow>
             <TableRow>

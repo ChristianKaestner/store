@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
 import ProductsItemModal from './productsItemModal/productsItemModal';
-import { useGetCategoriesQuery } from '../../../redux/services/categories';
+// import { useGetCategoriesQuery } from '../../../redux/services/categories';
 
 export default function ProductsModal({ handleCloseModal }) {
   const [value, setValue] = useState(0);
-  const { data = [] } = useGetCategoriesQuery();
-
+  // const { data = [] } = useGetCategoriesQuery();
+  const data = [];
   const handleChange = index => {
     setValue(index);
   };

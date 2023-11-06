@@ -3,8 +3,7 @@ import authSlice from './auth/slice';
 import cartSlice from './cart/slice';
 import modalSlice from './modal/slice';
 import filtersSlice from './filters/slice';
-import { goodsApi } from './services/goods';
-import { categoriesApi } from './services/categories';
+import { productsApi } from './services/products';
 import storage from 'redux-persist/lib/storage';
 import {
   persistStore,
@@ -35,15 +34,14 @@ export const store = configureStore({
     cart: persistReducer(cartPersistConfig, cartSlice),
     modal: modalSlice,
     filters: filtersSlice,
-    [goodsApi.reducerPath]: goodsApi.reducer,
-    [categoriesApi.reducerPath]: categoriesApi.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(goodsApi.middleware, categoriesApi.middleware),
+    }).concat(productsApi.middleware),
   ],
 });
 

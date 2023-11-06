@@ -118,11 +118,11 @@ export const updatedFilterLabel = (name, value) => {
   return value;
 };
 
-export const getGoods = (data, promoted, category) => {
-  if (promoted) return data.filter(n => n.isPromoted);
-  if (category) return data.filter(n => n.categories === category);
-  return data;
-};
+// export const getGoods = (data, promoted, category) => {
+//   if (promoted) return data.filter(n => n.isPromoted);
+//   if (category) return data.filter(n => n.categories === category);
+//   return data;
+// };
 
 export const brandsForMetaData = products => {
   const uniqBrands = [];

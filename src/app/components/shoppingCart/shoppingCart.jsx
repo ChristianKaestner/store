@@ -3,7 +3,7 @@
 import { useDispatch } from 'react-redux';
 import { cartReduceQuantity, cartRemove } from '../../redux/cart/slice';
 import { cartIncreaseQuantity, cartSetQuantity } from '../../redux/cart/slice';
-import { useGetProductsByIdsQuery } from '../../redux/services/goods';
+import { useGetProductsByIdsQuery } from '../../redux/services/products';
 import { useCart } from '../../hooks/useCart';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';

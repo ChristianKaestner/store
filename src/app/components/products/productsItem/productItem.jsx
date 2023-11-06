@@ -77,7 +77,7 @@ export default function ProductItem({
 
       <CardDescription
         product={product}
-        path={`/${product.categories}/${product.id}`}
+        path={`/${product.category}/${product.id}`}
         inCart={inCart}
         handleCart={handleCart}
         openCart={() => dispatch(toggleCart(true))}

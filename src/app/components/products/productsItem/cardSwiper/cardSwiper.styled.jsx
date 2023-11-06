@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Box } from '@mui/material';
+import { Box, Chip } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Container = styled(Box)(({ theme }) => ({
@@ -25,4 +25,20 @@ export const LinkStyled = styled(Link)({
 export const ImageStyled = styled(Image)(({ theme }) => ({
   transition: 'transform 500ms ease-in-out',
   objectFit: 'fill',
+  backgroundColor: theme.palette.primary.main,
+}));
+
+export const ChipStyled = styled(Chip, {
+  shouldForwardProp: prop => prop !== 'color',
+})(({ color, theme }) => ({
+  position: 'absolute',
+  top: 4,
+  left: 0,
+  zIndex: 1,
+  backgroundColor: theme.palette.primary[color],
+  '&.MuiChip-root': {
+    span: {
+      color: theme.palette.primary.dim,
+    },
+  },
 }));

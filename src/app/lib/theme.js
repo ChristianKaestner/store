@@ -231,5 +231,16 @@ export const myTheme = createTheme({
         }),
       },
     },
+
+    MuiRating: {
+      styleOverrides: {
+        iconEmpty: ({ theme }) => ({
+          color: theme.palette.primary.accent,
+        }),
+        iconFilled: ({ theme }) => ({
+          color: theme.palette.primary.accent,
+        }),
+      },
+    },
   },
 });

@@ -1,12 +1,12 @@
 'use client';
 
-import { Chip } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import FavoriteIcon from '../favoriteIcon/favoriteIcon';
 import { chipColor } from '@/app/lib/functions';
 import { swiperStyles } from '@/app/lib/commonStyles';
 import { Container, LinkStyled, ImageStyled } from './cardSwiper.styled';
+import { ChipStyled } from './cardSwiper.styled';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
@@ -14,6 +14,7 @@ import 'swiper/css/effect-fade';
 
 export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
   const color = chipColor(promotion);
+
   return (
     <Container>
       <Swiper
@@ -34,22 +35,8 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
           height: '100%',
         }}
       >
-        {promotion && (
-          <Chip
-            label={promotion}
-            sx={{
-              position: 'absolute',
-              top: 4,
-              left: 0,
-              zIndex: 1,
-              bgcolor: color,
-              '&.MuiChip-root': {
-                span: {
-                  color: '#fff',
-                },
-              },
-            }}
-          />
+        {promotion.promotion !== 'none' && (
+          <ChipStyled label={promotion.promotion} color={color} />
         )}
         <FavoriteIcon id={id} />
         {images.map(image => {

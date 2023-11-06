@@ -2,8 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const goodsApi = createApi({
   reducerPath: 'goodsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
   endpoints: builder => ({
+    getPromotion: builder.query({
+      query: () => '/api/products/promotion',
+    }),
     getGoods: builder.query({
       query: limit => `/goods?${limit && `_limit=${limit}`}`,
     }),
@@ -20,6 +23,7 @@ export const goodsApi = createApi({
 });
 
 export const {
+  useGetPromotionQuery,
   useGetGoodsQuery,
   useGetAllGoodsQuery,
   useGetProductByIdQuery,

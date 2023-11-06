@@ -43,6 +43,7 @@ export default function ProductItem({
   const handleMouseEnter = e => {
     const target = e.target.nodeName;
     if (target === 'path' || target === 'svg') return;
+    console.log(swiperRef);
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();
@@ -53,7 +54,7 @@ export default function ProductItem({
   const handleMouseLeave = () => {
     swiperRef?.current?.swiper?.autoplay?.stop();
     swiperRef?.current?.swiper?.pagination?.destroy();
-    swiperRef?.current?.swiper?.slideTo(0, 500, false);
+    swiperRef?.current?.swiper?.slideTo(1, 500, false);
   };
 
   return (
@@ -70,7 +71,7 @@ export default function ProductItem({
         promotion={promotion}
         images={images}
         swiperRef={swiperRef}
-        path={`/${product.categories}/${product.id}`}
+        path={`/${product.category}/${product.id}`}
         id={id}
       />
 

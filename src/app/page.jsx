@@ -6,8 +6,7 @@ import { categories } from '@/app/lib/tmpData';
 
 export const metadata = {
   title: 'Home',
-  description:
-    'This page provides product categories, hookahs, tobacco, coals and accessories, also discounted and promotional items.',
+  description: 'User table, you can retrieve data, add as well as edit. ',
 };
 
 export default function Home() {

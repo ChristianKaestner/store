@@ -60,6 +60,7 @@ export default function Sortbar({ mobile = false }) {
   };
 
   useEffect(() => {
+    // console.log('first');
     updateFilters();
   }, [filters, searchParams, dispatch]);
 

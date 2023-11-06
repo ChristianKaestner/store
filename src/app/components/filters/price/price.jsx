@@ -24,7 +24,7 @@ export default function PriceFilter({ items }) {
 
   useEffect(() => {
     const formValues = getValues();
-    if (!price.length && formValues.price.length) reset();
+    if (!price.length && formValues.price?.length) reset();
     setErrMin(false);
     setErrMax(false);
   }, [price, getValues, reset]);

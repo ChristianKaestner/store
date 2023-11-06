@@ -118,8 +118,7 @@ export const IconBtnPrev = styled(IconButton)(({ theme }) => ({
 
 export const TextNeutral = styled(Typography)(({ theme }) => ({
   fontSize: '1rem',
-  fontWeight: 400,
-  color: theme.palette.primary.neutral,
+  color: theme.palette.primary.text,
 }));
 
 export const TextBold = styled(Typography)(({ theme }) => ({

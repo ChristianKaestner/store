@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Typography, Button, Alert, Grow } from '@mui/material';
+import { Box, Typography, Button, Alert } from '@mui/material';
 import CollectionsIcon from '@mui/icons-material/Collections';
 import ClearIcon from '@mui/icons-material/Clear';
 import RotateRightIcon from '@mui/icons-material/RotateRight';

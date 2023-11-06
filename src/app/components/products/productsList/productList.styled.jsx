@@ -9,6 +9,14 @@ export const BlockBtn = styled(Box)({
   marginTop: 32,
 });
 
+export const BlockProducts = styled(Box)({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  listStyle: 'none',
+});
+
 export const PaginationStyled = styled(Pagination)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',

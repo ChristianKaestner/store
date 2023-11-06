@@ -12,13 +12,14 @@ export default function Breadcrumbs() {
   const path = usePathname().split('/');
   const { slug } = useParams();
 
+  const { data, isLoading } = useGetProductByIdQuery(slug);
+  const title = data?.title;
+
   useEffect(() => {
+    if (!isLoading) return;
     path.splice(0, 1);
     setCrumbs(path);
   }, [path]);
-
-  const { data, isLoading } = useGetProductByIdQuery(slug);
-  const title = data?.title;
 
   let url = '';
 

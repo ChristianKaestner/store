@@ -36,15 +36,15 @@ export const filterByInput = (arr, filter, field) => {
 };
 
 export const chipColor = label => {
-  switch (label) {
-    case 'New':
-      return 'primary.light';
-    case 'Sale':
-      return 'primary.subsidiary';
-    case 'Hot':
-      return 'primary.hot';
+  switch (label.promotion) {
+    case 'new':
+      return 'light';
+    case 'sale':
+      return 'subsidiary';
+    case 'hot':
+      return 'hot';
     default:
-      return 'primary.hot';
+      return 'hot';
   }
 };
 
@@ -139,4 +139,12 @@ export const profileFavoritePerRow = (lg, md, sm) => {
   if (md) return '30%';
   if (sm) return '30%';
   return '47%';
+};
+
+export const defineCategory = product => {
+  if (product.accessories !== null) return 'accessories';
+  if (product.coals !== null) return 'coals';
+  if (product.hookahs !== null) return 'hookahs';
+  if (product.tobacco !== null) return 'tobacco';
+  return;
 };

@@ -7,15 +7,28 @@ export const productsApi = createApi({
     getPromoted: builder.query({
       query: () => '/api/products/promotion',
     }),
+    getHookahs: builder.query({
+      query: () => '/api/products/hookahs',
+    }),
+    getTobacco: builder.query({
+      query: () => '/api/products/tobacco',
+    }),
+    getCoals: builder.query({
+      query: () => '/api/products/coals',
+    }),
+    getAccessories: builder.query({
+      query: () => '/api/products/accessories',
+    }),
+    getProductById: builder.query({
+      query: id => `/api/products/id/${id}`,
+    }),
     getGoods: builder.query({
       query: limit => `/goods?${limit && `_limit=${limit}`}`,
     }),
     getAllGoods: builder.query({
       query: () => '/goods',
     }),
-    getProductById: builder.query({
-      query: id => `/goods/${id}`,
-    }),
+
     getProductsByIds: builder.query({
       query: params => `/goods?${params}`,
     }),
@@ -24,6 +37,10 @@ export const productsApi = createApi({
 
 export const {
   useGetPromotedQuery,
+  useGetHookahsQuery,
+  useGetTobaccoQuery,
+  useGetCoalsQuery,
+  useGetAccessoriesQuery,
   useGetGoodsQuery,
   useGetAllGoodsQuery,
   useGetProductByIdQuery,

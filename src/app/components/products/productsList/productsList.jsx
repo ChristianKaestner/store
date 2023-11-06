@@ -1,3 +1,5 @@
+'use client';
+
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
 import { Box, Typography } from '@mui/material';

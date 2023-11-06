@@ -43,7 +43,6 @@ export default function ProductItem({
   const handleMouseEnter = e => {
     const target = e.target.nodeName;
     if (target === 'path' || target === 'svg') return;
-    console.log(swiperRef);
     swiperRef.current.swiper.enabled = true;
     swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
     swiperRef?.current?.swiper?.slideNext();

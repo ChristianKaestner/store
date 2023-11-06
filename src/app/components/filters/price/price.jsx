@@ -13,8 +13,8 @@ import { Typography } from '@mui/material';
 import debounce from 'lodash.debounce';
 
 export default function PriceFilter({ items }) {
-  const min = Math.min(...items);
-  const max = Math.max(...items);
+  const min = items.min;
+  const max = items.max;
   const [errMin, setErrMin] = useState(false);
   const [errMax, setErrMax] = useState(false);
 

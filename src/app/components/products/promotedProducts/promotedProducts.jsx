@@ -6,7 +6,7 @@ import ProductsList from '../productsList/productsList';
 
 export default function PromotedProducts() {
   const { favorites } = tmpUser;
-  const { data = [], isLoading, error } = useGetPromotedQuery();
+  const { data = [], isLoading } = useGetPromotedQuery();
 
   return (
     <>

@@ -1,5 +1,5 @@
 'use client';
-import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
+
 import { v4 as uuidv4 } from 'uuid';
 import { Aside } from './sidebar.styled';
 import PriceFilter from '../filters/price/price';
@@ -12,96 +12,96 @@ import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
 import { addCount } from '@/app/lib/functions';
 import { Box } from '@mui/material';
-export default function Sidebar({ category, mobile = false }) {
-  const { data = [], isLoading, error } = useGetAllGoodsQuery();
-  const goods = data.filter(n => n.categories === category);
+export default function Sidebar({ data, mobile = false }) {
+  // const prices = [];
+  // const colorsArr = [];
+  // const brands = [];
+  // const weights = [];
+  // const statuses = [];
+  // const flavors = [];
+  // const sizes = [];
+  // const types = [];
+  console.log(data);
 
-  const prices = [];
-  const colorsArr = [];
-  const brands = [];
-  const weights = [];
-  const statuses = [];
-  const flavors = [];
-  const sizes = [];
-  const types = [];
+  // products.products.forEach(product => {
+  //   const { price, colors, brand, weight, status, flavor, size, type } =
+  //     product;
 
-  goods.forEach(product => {
-    const { price, colors, brand, weight, status, flavor, size, type } =
-      product;
-
-    if (price) {
-      prices.push(price);
-    }
-    if (colors) {
-      colors.forEach(color => {
-        if (!colorsArr.includes(color)) {
-          colorsArr.push(color);
-        }
-      });
-    }
-    if (brand) {
-      const count = addCount(goods, 'brand', brand);
-      if (!brands.find(n => n.brand === brand)) {
-        brands.push({ id: uuidv4(), brand, count });
-      }
-    }
-    if (weight) {
-      if (!weights.find(n => n.weight === weight)) {
-        weights.push({ id: uuidv4(), weight });
-      }
-    }
-    if (status) {
-      if (!statuses.find(n => n.status === status)) {
-        statuses.push({ id: uuidv4(), status });
-      }
-    }
-    if (flavor) {
-      const count = addCount(goods, 'flavor', flavor);
-      if (!flavors.find(n => n.flavor === flavor)) {
-        flavors.push({ id: uuidv4(), flavor, count });
-      }
-    }
-    if (size) {
-      if (!sizes.find(n => n.size === size)) {
-        sizes.push({ id: uuidv4(), size });
-      }
-    }
-    if (type) {
-      if (!types.find(n => n.type === type)) {
-        types.push({ id: uuidv4(), type });
-      }
-    }
-  });
-  const colorsUniq = colorsArr.map(color => {
-    return {
-      id: uuidv4(),
-      color,
-    };
-  });
+  //   if (price) {
+  //     prices.push(price);
+  //   }
+  //   if (colors) {
+  //     colors.forEach(color => {
+  //       if (!colorsArr.includes(color)) {
+  //         colorsArr.push(color);
+  //       }
+  //     });
+  //   }
+  //   if (brand) {
+  //     const count = addCount(goods, 'brand', brand);
+  //     if (!brands.find(n => n.brand === brand)) {
+  //       brands.push({ id: uuidv4(), brand, count });
+  //     }
+  //   }
+  //   if (weight) {
+  //     if (!weights.find(n => n.weight === weight)) {
+  //       weights.push({ id: uuidv4(), weight });
+  //     }
+  //   }
+  //   if (status) {
+  //     if (!statuses.find(n => n.status === status)) {
+  //       statuses.push({ id: uuidv4(), status });
+  //     }
+  //   }
+  //   if (flavor) {
+  //     const count = addCount(goods, 'flavor', flavor);
+  //     if (!flavors.find(n => n.flavor === flavor)) {
+  //       flavors.push({ id: uuidv4(), flavor, count });
+  //     }
+  //   }
+  //   if (size) {
+  //     if (!sizes.find(n => n.size === size)) {
+  //       sizes.push({ id: uuidv4(), size });
+  //     }
+  //   }
+  //   if (type) {
+  //     if (!types.find(n => n.type === type)) {
+  //       types.push({ id: uuidv4(), type });
+  //     }
+  //   }
+  // });
+  // const colorsUniq = colorsArr.map(color => {
+  //   return {
+  //     id: uuidv4(),
+  //     color,
+  //   };
+  // });
 
   return (
     <>
       {mobile ? (
         <Box>
-          {prices.length > 0 && <PriceFilter items={prices} />}
+          {/* {prices.length > 0 && <PriceFilter items={prices} />}
           {brands.length > 0 && <BrandFilter items={brands} />}
           {weights.length > 0 && <WeightFilter items={weights} />}
           {flavors.length > 0 && <FlavorFilter items={flavors} />}
           {sizes.length > 0 && <SizeFilter items={sizes} />}
           {types.length > 0 && <TypeFilter items={types} />}
           {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
-          {statuses.length > 0 && <StatusFilter items={statuses} />}
+          {statuses.length > 0 && <StatusFilter items={statuses} />} */}
         </Box>
       ) : (
         <Aside>
-          {prices.length > 0 && <PriceFilter items={prices} />}
-          {brands.length > 0 && <BrandFilter items={brands} />}
-          {weights.length > 0 && <WeightFilter items={weights} />}
+          {data.counts.prices && <PriceFilter items={data.counts.prices} />}
+          {data.counts.brandCounts && (
+            <BrandFilter items={data.counts.brandCounts} />
+          )}
+          {/*{weights.length > 0 && <WeightFilter items={weights} />}
           {flavors.length > 0 && <FlavorFilter items={flavors} />}
           {sizes.length > 0 && <SizeFilter items={sizes} />}
           {types.length > 0 && <TypeFilter items={types} />}
           {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
-          {statuses.length > 0 && <StatusFilter items={statuses} />}
+          {statuses.length > 0 && <StatusFilter items={statuses} />} */}
         </Aside>
       )}
     </>

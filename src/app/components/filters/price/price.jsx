@@ -20,14 +20,16 @@ export default function PriceFilter({ items }) {
 
   const { price } = useFilters();
   const dispatch = useDispatch();
-  const { control, getValues, reset } = useForm();
+  const { control, getValues, setValue } = useForm();
 
   useEffect(() => {
     const formValues = getValues();
-    if (!price.length && formValues.price?.length) reset();
+    if (!price.length && formValues.price?.length) {
+      setValue('price', defaultValues());
+    }
     setErrMin(false);
     setErrMax(false);
-  }, [price, getValues, reset]);
+  }, [price, getValues]);
 
   const defaultValues = () => {
     if (price.length) {
@@ -89,6 +91,7 @@ export default function PriceFilter({ items }) {
         <Controller
           control={control}
           name="price"
+          value={defaultValues()}
           defaultValue={defaultValues()}
           render={({ field: { onChange, value } }) => {
             const minValue = isNaN(value[0]) ? min : value[0];
@@ -132,7 +135,6 @@ export default function PriceFilter({ items }) {
                   min={+min}
                   max={+max}
                   onChange={(e, value) => {
-                    console.log(value);
                     validateMin(value[0]);
                     validateMax(value[1]);
                     onChange(value);

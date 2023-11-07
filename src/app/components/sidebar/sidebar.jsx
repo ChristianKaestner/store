@@ -13,6 +13,7 @@ import TypeFilter from '../filters/type/type';
 import { addCount } from '@/app/lib/functions';
 import { Box } from '@mui/material';
 export default function Sidebar({ data, mobile = false }) {
+  console.log(data.counts);
   // const prices = [];
   // const colorsArr = [];
   // const brands = [];
@@ -21,7 +22,7 @@ export default function Sidebar({ data, mobile = false }) {
   // const flavors = [];
   // const sizes = [];
   // const types = [];
-  console.log(data);
+  // console.log(data);
 
   // products.products.forEach(product => {
   //   const { price, colors, brand, weight, status, flavor, size, type } =
@@ -95,6 +96,9 @@ export default function Sidebar({ data, mobile = false }) {
           {data.counts.prices && <PriceFilter items={data.counts.prices} />}
           {data.counts.brandCounts && (
             <BrandFilter items={data.counts.brandCounts} />
+          )}
+          {data.counts.colorCounts && (
+            <ColorFilter items={data.counts.colorCounts} />
           )}
           {/*{weights.length > 0 && <WeightFilter items={weights} />}
           {flavors.length > 0 && <FlavorFilter items={flavors} />}

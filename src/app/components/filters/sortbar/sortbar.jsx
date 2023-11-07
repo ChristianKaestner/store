@@ -1,14 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useFilters } from '@/app/hooks/useFilters';
-import {
-  addFilter,
-  removeFilter,
-  resetFilters,
-} from '@/app/redux/filters/slice';
+import { addFilter, removeFilter } from '@/app/redux/filters/slice';
+import { resetFilters } from '@/app/redux/filters/slice';
 import { FilterBlock, FilterBtn, IconClose } from './sortbar.styled';
 import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
@@ -25,7 +22,7 @@ export default function Sortbar({ mobile = false }) {
   const dispatch = useDispatch();
   const isMount = useIsMount();
 
-  const updateFilters = () => {
+  const updateFilters = useCallback(() => {
     const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
     // check redux state and update param
     Object.keys(filters).forEach(filterName => {
@@ -44,7 +41,7 @@ export default function Sortbar({ mobile = false }) {
     queryParams.forEach((filterValue, filterName) => {
       if (filterName in filters) {
         const filterValues = filterValue.split(',');
-        // console.log('parse param');
+
         filterValues.forEach(value => {
           if (!filters[filterName].includes(value)) {
             dispatch(addFilter({ filterName, filterValue: value }));
@@ -57,22 +54,23 @@ export default function Sortbar({ mobile = false }) {
     const search = decodeURIComponent(queryParams.toString());
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
-  };
+  });
 
   useEffect(() => {
-    // console.log('first');
     updateFilters();
   }, [filters, searchParams, dispatch]);
 
-  const handleDelete = e => {
-    const filterName = e.currentTarget.id;
-    const filterValue = e.currentTarget.textContent;
-    dispatch(removeFilter({ filterName, filterValue }));
-  };
+  const handleDelete = useCallback(
+    e => {
+      const { id, textContent } = e.currentTarget;
+      dispatch(removeFilter({ filterName: id, filterValue: textContent }));
+    },
+    [dispatch]
+  );
 
-  const handleDeleteAll = () => {
+  const handleDeleteAll = useCallback(() => {
     dispatch(resetFilters());
-  };
+  }, [dispatch]);
 
   return (
     <Box sx={{ zIndex: 1 }}>

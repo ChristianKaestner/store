@@ -15,9 +15,16 @@ export default function BrandFilter({ items }) {
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
 
   const { brand } = useFilters();
+
   const dispatch = useDispatch();
 
-  const brandsWithLetter = addAlphabetIndex(items, 'brand');
+  const brandCountsArr = Object.entries(items).map(([brand, count]) => ({
+    brand,
+    count,
+  }));
+
+  const brandsWithLetter = addAlphabetIndex(brandCountsArr, 'brand');
+
   const filtredBrands = filterByInput(
     brandsWithLetter,
     debouncedBrand,
@@ -25,19 +32,8 @@ export default function BrandFilter({ items }) {
   );
 
   const handleChecked = (checked, curentBrand) => {
-    checked
-      ? dispatch(
-          addFilter({
-            filterName: 'brand',
-            filterValue: curentBrand,
-          })
-        )
-      : dispatch(
-          removeFilter({
-            filterName: 'brand',
-            filterValue: curentBrand,
-          })
-        );
+    const filter = { filterName: 'brand', filterValue: curentBrand };
+    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
   };
 
   return (
@@ -58,20 +54,19 @@ export default function BrandFilter({ items }) {
         </Box>
 
         <ContainerFilter component="ul">
-          {items.length > 0 &&
+          {items &&
             filtredBrands.map(item => {
-              const { id, letter, count } = item;
               return (
-                <Box key={id} component="li">
-                  {letter && (
+                <Box key={item.brand} component="li">
+                  {item.letter && (
                     <Typography sx={{ fontWeight: 500, color: 'primary.dim' }}>
-                      {letter}
+                      {item.letter}
                     </Typography>
                   )}
                   <Label
                     label={
                       <Row>
-                        <Counter badgeContent={count}>
+                        <Counter badgeContent={item.count}>
                           <Typography sx={{ color: 'primary.dim' }}>
                             {item.brand}
                           </Typography>
@@ -80,7 +75,7 @@ export default function BrandFilter({ items }) {
                     }
                     control={
                       <Checkbox
-                        value={brand}
+                        value={item.brand}
                         checked={brand.includes(item.brand.toLowerCase())}
                         sx={{ p: 1 }}
                         size="small"

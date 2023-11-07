@@ -8,6 +8,12 @@ import { Form, Row, RowCenter, Label, List } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
 
 export default function ColorFilter({ items }) {
+  const colorCountsArr = Object.entries(items).map(([color, values]) => ({
+    color,
+    count: values.count,
+    colorValue: values.colorValue,
+  }));
+
   const { color } = useFilters();
   const dispatch = useDispatch();
 
@@ -34,9 +40,9 @@ export default function ColorFilter({ items }) {
       </Typography>
       <Form component="form">
         <List component="ul" sx={{ pl: 2 }}>
-          {items.map(item => {
+          {colorCountsArr.map(item => {
             return (
-              <Row component="li" key={item.id}>
+              <Row component="li" key={item.color}>
                 <Label
                   label={
                     <RowCenter sx={{ gap: 1 }}>
@@ -44,7 +50,7 @@ export default function ColorFilter({ items }) {
                         fontSize="small"
                         style={{
                           stroke: '#000',
-                          fill: item.color,
+                          fill: item.colorValue,
                         }}
                       />
                       <Typography sx={{ color: 'primary.dim' }}>

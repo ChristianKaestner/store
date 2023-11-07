@@ -6,6 +6,7 @@ import PriceFilter from '../filters/price/price';
 import BrandFilter from '../filters/brand/brand';
 import WeightFilter from '../filters/weight/weight';
 import ColorFilter from '../filters/color/color';
+import HookahSizeFilter from '../filters/hookahSize/hookahSize';
 import StatusFilter from '../filters/status/status';
 import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
@@ -99,6 +100,9 @@ export default function Sidebar({ data, mobile = false }) {
           )}
           {data.counts.colorCounts && (
             <ColorFilter items={data.counts.colorCounts} />
+          )}
+          {data.counts.hookahSizeCounts && (
+            <HookahSizeFilter items={data.counts.hookahSizeCounts} />
           )}
           {/*{weights.length > 0 && <WeightFilter items={weights} />}
           {flavors.length > 0 && <FlavorFilter items={flavors} />}

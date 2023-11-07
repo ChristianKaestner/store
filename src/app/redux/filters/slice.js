@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   brand: [],
   color: [],
+  hookah_size: [],
   price: [],
   size: [],
   status: [],

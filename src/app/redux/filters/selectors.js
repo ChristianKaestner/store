@@ -1,5 +1,6 @@
 export const selectBrand = state => state.filters.brand;
 export const selectColor = state => state.filters.color;
+export const selectHookahSize = state => state.filters.hookah_size;
 export const selectPrice = state => state.filters.price;
 export const selectSize = state => state.filters.size;
 export const selectStatus = state => state.filters.status;

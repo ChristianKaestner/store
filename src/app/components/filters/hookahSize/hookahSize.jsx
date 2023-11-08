@@ -11,7 +11,7 @@ export default function HookahSizeFilter({ items }) {
     hookahSize,
     count,
   }));
-  const { hookahSize } = useFilters();
+  const { hookah_size } = useFilters();
   const dispatch = useDispatch();
 
   const handleChecked = (checked, curentHookahSize) => {
@@ -40,8 +40,8 @@ export default function HookahSizeFilter({ items }) {
                   }
                   control={
                     <Checkbox
-                      value={hookahSize}
-                      checked={hookahSize.includes(item.hookahSize.toString())}
+                      value={hookah_size}
+                      checked={hookah_size.includes(item.hookahSize.toString())}
                       sx={{ p: 1 }}
                       size="small"
                       onChange={(e, checked) => {

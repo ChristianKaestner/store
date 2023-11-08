@@ -7,23 +7,16 @@ import { Form, Label, List } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
 
 export default function StatusFilter({ items }) {
+  const statusCountsArr = Object.entries(items).map(([status, count]) => ({
+    status,
+    count,
+  }));
   const { status } = useFilters();
   const dispatch = useDispatch();
 
   const handleChecked = (checked, curentStatus) => {
-    checked
-      ? dispatch(
-          addFilter({
-            filterName: 'status',
-            filterValue: curentStatus,
-          })
-        )
-      : dispatch(
-          removeFilter({
-            filterName: 'status',
-            filterValue: curentStatus,
-          })
-        );
+    const filter = { filterName: 'status', filterValue: curentStatus };
+    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
   };
 
   return (
@@ -33,9 +26,9 @@ export default function StatusFilter({ items }) {
       </Typography>
       <Form component="form">
         <List component="ul" sx={{ pl: 2 }}>
-          {items.map(item => {
+          {statusCountsArr.map(item => {
             return (
-              <Box component="li" key={item.id}>
+              <Box component="li" key={item.status}>
                 <Label
                   label={
                     <Typography sx={{ color: 'primary.dim' }}>

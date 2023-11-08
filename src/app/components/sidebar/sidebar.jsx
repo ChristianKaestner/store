@@ -13,72 +13,11 @@ import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
 import { addCount } from '@/app/lib/functions';
 import { Box } from '@mui/material';
-export default function Sidebar({ data, mobile = false }) {
-  console.log(data.counts);
-  // const prices = [];
-  // const colorsArr = [];
-  // const brands = [];
-  // const weights = [];
-  // const statuses = [];
-  // const flavors = [];
-  // const sizes = [];
-  // const types = [];
-  // console.log(data);
 
-  // products.products.forEach(product => {
-  //   const { price, colors, brand, weight, status, flavor, size, type } =
-  //     product;
-
-  //   if (price) {
-  //     prices.push(price);
-  //   }
-  //   if (colors) {
-  //     colors.forEach(color => {
-  //       if (!colorsArr.includes(color)) {
-  //         colorsArr.push(color);
-  //       }
-  //     });
-  //   }
-  //   if (brand) {
-  //     const count = addCount(goods, 'brand', brand);
-  //     if (!brands.find(n => n.brand === brand)) {
-  //       brands.push({ id: uuidv4(), brand, count });
-  //     }
-  //   }
-  //   if (weight) {
-  //     if (!weights.find(n => n.weight === weight)) {
-  //       weights.push({ id: uuidv4(), weight });
-  //     }
-  //   }
-  //   if (status) {
-  //     if (!statuses.find(n => n.status === status)) {
-  //       statuses.push({ id: uuidv4(), status });
-  //     }
-  //   }
-  //   if (flavor) {
-  //     const count = addCount(goods, 'flavor', flavor);
-  //     if (!flavors.find(n => n.flavor === flavor)) {
-  //       flavors.push({ id: uuidv4(), flavor, count });
-  //     }
-  //   }
-  //   if (size) {
-  //     if (!sizes.find(n => n.size === size)) {
-  //       sizes.push({ id: uuidv4(), size });
-  //     }
-  //   }
-  //   if (type) {
-  //     if (!types.find(n => n.type === type)) {
-  //       types.push({ id: uuidv4(), type });
-  //     }
-  //   }
-  // });
-  // const colorsUniq = colorsArr.map(color => {
-  //   return {
-  //     id: uuidv4(),
-  //     color,
-  //   };
-  // });
-
+export default function Sidebar({ filter, mobile = false }) {
+  console.log(filter);
+  const { prices, brandCounts, colorCounts, hookahSizeCounts } = filter;
+  const { statusCounts, flavorCounts, weightCounts } = filter;
   return (
     <>
       {mobile ? (
@@ -94,21 +33,19 @@ export default function Sidebar({ data, mobile = false }) {
         </Box>
       ) : (
         <Aside>
-          {data.counts.prices && <PriceFilter items={data.counts.prices} />}
-          {data.counts.brandCounts && (
-            <BrandFilter items={data.counts.brandCounts} />
-          )}
-          {data.counts.colorCounts && (
-            <ColorFilter items={data.counts.colorCounts} />
-          )}
-          {data.counts.hookahSizeCounts && (
-            <HookahSizeFilter items={data.counts.hookahSizeCounts} />
-          )}
+          {prices && <PriceFilter items={prices} />}
+          {brandCounts && <BrandFilter items={brandCounts} />}
+          {colorCounts && <ColorFilter items={colorCounts} />}
+          {hookahSizeCounts && <HookahSizeFilter items={hookahSizeCounts} />}
+          {flavorCounts && <FlavorFilter items={flavorCounts} />}
+
+          {weightCounts && <WeightFilter items={weightCounts} />}
+          {statusCounts && <StatusFilter items={statusCounts} />}
           {/*{weights.length > 0 && <WeightFilter items={weights} />}
-          {flavors.length > 0 && <FlavorFilter items={flavors} />}
+          weightCounts
           {sizes.length > 0 && <SizeFilter items={sizes} />}
           {types.length > 0 && <TypeFilter items={types} />}
-          {colorsUniq.length > 0 && <ColorFilter items={colorsUniq} />}
+         
           {statuses.length > 0 && <StatusFilter items={statuses} />} */}
         </Aside>
       )}

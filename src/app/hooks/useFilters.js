@@ -15,7 +15,7 @@ export const useFilters = () => {
   const filters = {
     brand: useSelector(selectBrand),
     color: useSelector(selectColor),
-    hookahSize: useSelector(selectHookahSize),
+    hookah_size: useSelector(selectHookahSize),
     flavor: useSelector(selectFlavor),
     price: useSelector(selectPrice),
     size: useSelector(selectSize),

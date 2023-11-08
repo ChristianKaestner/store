@@ -17,7 +17,12 @@ export default function FlavorFilter({ items }) {
   const { flavor } = useFilters();
   const dispatch = useDispatch();
 
-  const flavorsWithLetter = addAlphabetIndex(items, 'flavor');
+  const flavorCountsArr = Object.entries(items).map(([flavor, count]) => ({
+    flavor,
+    count,
+  }));
+
+  const flavorsWithLetter = addAlphabetIndex(flavorCountsArr, 'flavor');
   const filtredFlavors = filterByInput(
     flavorsWithLetter,
     debouncedFlavor,
@@ -58,20 +63,19 @@ export default function FlavorFilter({ items }) {
         </Box>
 
         <ContainerFilter component="ul">
-          {items.length > 0 &&
+          {items &&
             filtredFlavors.map(item => {
-              const { id, letter, count } = item;
               return (
-                <Box key={id} component="li">
-                  {letter && (
+                <Box key={item.flavor} component="li">
+                  {item.letter && (
                     <Typography sx={{ fontWeight: 500, color: 'primary.dim' }}>
-                      {letter}
+                      {item.letter}
                     </Typography>
                   )}
                   <Label
                     label={
                       <Row>
-                        <Counter badgeContent={count}>
+                        <Counter badgeContent={item.count}>
                           <Typography sx={{ color: 'primary.dim' }}>
                             {item.flavor}
                           </Typography>

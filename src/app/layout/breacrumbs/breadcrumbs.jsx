@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
-import { useGetProductByIdQuery } from '@/app/redux/services/products';
+// import { useGetProductByIdQuery } from '@/app/redux/services/products';
 import { Breadcrumbs as Breadcrumb, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 

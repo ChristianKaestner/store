@@ -4,6 +4,7 @@ import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
 import ProductsList from '@/app/components/products/productsList/productsList';
+import AccessoriesProducts from '@/app/components/products/accessoryProducts/accessoryProducts';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
 import { brandsForMetaData } from '@/app/lib/functions';
 import FiltersMenu from '@/app/components/filters/filtersMenu/filtersMenu';
@@ -23,7 +24,7 @@ export default function Bowls() {
   return (
     <>
       <Breadcrumbs />
-      <PageTitle title="Bowls" />
+      <PageTitle title="Accessories" />
       <Box
         sx={{
           display: 'flex',
@@ -36,7 +37,7 @@ export default function Bowls() {
         <SortFilter />
       </Box>
 
-      <Box
+      {/* <Box
         sx={{
           display: 'flex',
           flexDirection: 'row',
@@ -49,7 +50,8 @@ export default function Bowls() {
           skeleton={20}
           title="Large variety of bowls for hookahs"
         />
-      </Box>
+      </Box> */}
+      <AccessoriesProducts />
     </>
   );
 }

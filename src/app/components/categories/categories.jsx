@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
+// import Grid from '@mui/material/Unstable_Grid2';
 import { visuallyHidden } from '@mui/utils';
 import { Card } from './categories.styled';
 

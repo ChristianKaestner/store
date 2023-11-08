@@ -8,6 +8,7 @@ const initialState = {
   size: [],
   status: [],
   type: [],
+  bowl_type: [],
   weight: [],
   flavor: [],
 };

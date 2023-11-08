@@ -32,8 +32,8 @@ export const categories = [
   {
     id: 4,
     image: '/cat-bowls.png',
-    name: 'Bowls',
-    url: '/bowls',
+    name: 'Accessories',
+    url: '/accessories',
   },
 ];
 

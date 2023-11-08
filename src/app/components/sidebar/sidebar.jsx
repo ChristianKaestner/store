@@ -1,6 +1,6 @@
 'use client';
 
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import { Aside } from './sidebar.styled';
 import PriceFilter from '../filters/price/price';
 import BrandFilter from '../filters/brand/brand';
@@ -11,6 +11,7 @@ import StatusFilter from '../filters/status/status';
 import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
+import BowlTypeFilter from '../filters/bowlType/bowlType';
 // import { addCount } from '@/app/lib/functions';
 import { Box } from '@mui/material';
 
@@ -18,6 +19,8 @@ export default function Sidebar({ filter, mobile = false }) {
   console.log(filter);
   const { prices, brandCounts, colorCounts, hookahSizeCounts } = filter;
   const { statusCounts, flavorCounts, weightCounts, sizeCounts } = filter;
+  const { typeCounts, bowlTypeCounts } = filter;
+
   return (
     <>
       {mobile ? (
@@ -40,12 +43,9 @@ export default function Sidebar({ filter, mobile = false }) {
           {flavorCounts && <FlavorFilter items={flavorCounts} />}
           {sizeCounts && <SizeFilter items={sizeCounts} />}
           {weightCounts && <WeightFilter items={weightCounts} />}
+          {typeCounts && <TypeFilter items={typeCounts} />}
+          {bowlTypeCounts && <BowlTypeFilter items={bowlTypeCounts} />}
           {statusCounts && <StatusFilter items={statusCounts} />}
-          {/*
-         
-          {types.length > 0 && <TypeFilter items={types} />}
-         
-          */}
         </Aside>
       )}
     </>

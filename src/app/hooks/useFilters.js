@@ -8,6 +8,7 @@ import {
   selectSize,
   selectStatus,
   selectType,
+  selectBowlType,
   selectWeight,
 } from '../redux/filters/selectors';
 
@@ -21,6 +22,7 @@ export const useFilters = () => {
     size: useSelector(selectSize),
     status: useSelector(selectStatus),
     type: useSelector(selectType),
+    bowl_type: useSelector(selectBowlType),
     weight: useSelector(selectWeight),
   };
   return filters;

@@ -5,25 +5,22 @@ import AccordionCommon from '../accordion/accordionCommon';
 import { Checkbox, Box, Typography } from '@mui/material';
 import { Form, Label, List } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
+import { Counter, Row } from '@/app/lib/commonStyles';
 
 export default function SizeFilter({ items }) {
+  const sizeCountsArr = Object.entries(items).map(([size, count]) => ({
+    size,
+    count,
+  }));
   const { size } = useFilters();
   const dispatch = useDispatch();
 
   const handleChecked = (checked, curentSize) => {
-    checked
-      ? dispatch(
-          addFilter({
-            filterName: 'size',
-            filterValue: curentSize,
-          })
-        )
-      : dispatch(
-          removeFilter({
-            filterName: 'size',
-            filterValue: curentSize,
-          })
-        );
+    const filter = {
+      filterName: 'size',
+      filterValue: curentSize,
+    };
+    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
   };
 
   return (
@@ -33,14 +30,18 @@ export default function SizeFilter({ items }) {
       </Typography>
       <Form component="form">
         <List component="ul" sx={{ pl: 2 }}>
-          {items.map(item => {
+          {sizeCountsArr.map(item => {
             return (
-              <Box component="li" key={item.id}>
+              <Box component="li" key={item.size}>
                 <Label
                   label={
-                    <Typography sx={{ color: 'primary.dim' }}>
-                      {item.size + ' mm'}
-                    </Typography>
+                    <Row>
+                      <Counter badgeContent={item.count}>
+                        <Typography sx={{ color: 'primary.dim' }}>
+                          {item.size + ' mm'}
+                        </Typography>
+                      </Counter>
+                    </Row>
                   }
                   control={
                     <Checkbox

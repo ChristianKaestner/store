@@ -3,6 +3,7 @@ import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
+import CoalProducts from '@/app/components/products/coalProducts/coalProducts';
 import ProductsList from '@/app/components/products/productsList/productsList';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
 import { brandsForMetaData } from '@/app/lib/functions';
@@ -35,21 +36,7 @@ export default function Hookahs() {
         <FiltersMenu category="coals" />
         <SortFilter />
       </Box>
-
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-        }}
-      >
-        <Sidebar category={'coals'} />
-        <ProductsList
-          category={'coals'}
-          pagination={2}
-          skeleton={20}
-          title="Large variety of hookah coals"
-        />
-      </Box>
+      <CoalProducts />
     </>
   );
 }

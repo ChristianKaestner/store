@@ -12,12 +12,12 @@ export const addAlphabetIndex = (arr, field) => {
     });
 };
 
-export const addCount = (arr, field, value) => {
-  const filtred = arr.filter(n => {
-    return n[field] === value;
-  });
-  return filtred.length;
-};
+// export const addCount = (arr, field, value) => {
+//   const filtred = arr.filter(n => {
+//     return n[field] === value;
+//   });
+//   return filtred.length;
+// };
 
 export const filterByInput = (arr, filter, field) => {
   return arr.filter(item => {

@@ -11,13 +11,13 @@ import StatusFilter from '../filters/status/status';
 import FlavorFilter from '../filters/flavor/flavor';
 import SizeFilter from '../filters/size/size';
 import TypeFilter from '../filters/type/type';
-import { addCount } from '@/app/lib/functions';
+// import { addCount } from '@/app/lib/functions';
 import { Box } from '@mui/material';
 
 export default function Sidebar({ filter, mobile = false }) {
   console.log(filter);
   const { prices, brandCounts, colorCounts, hookahSizeCounts } = filter;
-  const { statusCounts, flavorCounts, weightCounts } = filter;
+  const { statusCounts, flavorCounts, weightCounts, sizeCounts } = filter;
   return (
     <>
       {mobile ? (
@@ -38,15 +38,14 @@ export default function Sidebar({ filter, mobile = false }) {
           {colorCounts && <ColorFilter items={colorCounts} />}
           {hookahSizeCounts && <HookahSizeFilter items={hookahSizeCounts} />}
           {flavorCounts && <FlavorFilter items={flavorCounts} />}
-
+          {sizeCounts && <SizeFilter items={sizeCounts} />}
           {weightCounts && <WeightFilter items={weightCounts} />}
           {statusCounts && <StatusFilter items={statusCounts} />}
-          {/*{weights.length > 0 && <WeightFilter items={weights} />}
-          weightCounts
-          {sizes.length > 0 && <SizeFilter items={sizes} />}
+          {/*
+         
           {types.length > 0 && <TypeFilter items={types} />}
          
-          {statuses.length > 0 && <StatusFilter items={statuses} />} */}
+          */}
         </Aside>
       )}
     </>

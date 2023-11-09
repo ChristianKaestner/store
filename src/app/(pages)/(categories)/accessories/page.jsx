@@ -1,13 +1,12 @@
 import { Box } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
-import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
-import ProductsList from '@/app/components/products/productsList/productsList';
 import AccessoriesProducts from '@/app/components/products/accessoryProducts/accessoryProducts';
 import Sortbar from '@/app/components/filters/sortbar/sortbar';
 import { brandsForMetaData } from '@/app/lib/functions';
 import FiltersMenu from '@/app/components/filters/filtersMenu/filtersMenu';
+
 // export async function generateMetadata({ params, searchParams }) {
 //   const products = await fetch(
 //     `http://localhost:3001/goods?${searchParams}`
@@ -20,7 +19,7 @@ import FiltersMenu from '@/app/components/filters/filtersMenu/filtersMenu';
 //   };
 // }
 
-export default function Bowls() {
+export default function Accessories() {
   return (
     <>
       <Breadcrumbs />
@@ -33,24 +32,10 @@ export default function Bowls() {
           mb: 1,
         }}
       >
-        <FiltersMenu category="bowls" />
+        <FiltersMenu category="accessories" />
         <SortFilter />
       </Box>
 
-      {/* <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-        }}
-      >
-        <Sidebar category={'bowls'} />
-        <ProductsList
-          category={'bowls'}
-          pagination={2}
-          skeleton={20}
-          title="Large variety of bowls for hookahs"
-        />
-      </Box> */}
       <AccessoriesProducts />
     </>
   );

@@ -13,7 +13,7 @@ export default function BowlTypeFilter({ items }) {
     count,
   }));
   const { bowl_type } = useFilters();
-  console.log(bowl_type);
+
   const dispatch = useDispatch();
 
   const handleChecked = (checked, curentBowlType) => {

@@ -10,6 +10,8 @@ import {
   selectType,
   selectBowlType,
   selectWeight,
+  selectPage,
+  selectLimit,
 } from '../redux/filters/selectors';
 
 export const useFilters = () => {
@@ -24,6 +26,8 @@ export const useFilters = () => {
     type: useSelector(selectType),
     bowl_type: useSelector(selectBowlType),
     weight: useSelector(selectWeight),
+    page: useSelector(selectPage),
+    limit: useSelector(selectLimit),
   };
   return filters;
 };

@@ -2,6 +2,7 @@ import { tmpUser } from '@/app/lib/tmpData';
 import ProductsList from '../productsList/productsList';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
+import LimitFilter from '@/app/components/filters/limitFilter/limitFilter';
 import Sortbar from '../../filters/sortbar/sortbar';
 import DrawerFilters from '../../filters/drawerFilters/drawerFilters';
 import { Row, RowBetween } from '@/app/lib/commonStyles';
@@ -20,9 +21,12 @@ export default function CommonProducts({ data, title, isLoading }) {
             <Sortbar mobile={true} total={data?.counts?.total} />
           </>
         ) : (
-          <Sortbar total={data?.counts?.total} />
+          <Sortbar total={data?.counts?.total} data={data} />
         )}
-        <SortFilter />
+        <Row sx={{ gap: 2 }}>
+          <LimitFilter />
+          <SortFilter />
+        </Row>
       </RowBetween>
       <Row>
         <Sidebar filter={data.counts} />

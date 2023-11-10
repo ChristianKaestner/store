@@ -97,6 +97,7 @@ export const getSearchParams = (searchParams, field) => {
 export const objectToArray = obj => {
   const result = [];
   Object.entries(obj).forEach(([name, values]) => {
+    if (name === 'page' || name === 'limit') return;
     values.forEach(value => {
       result.push({ name, value });
     });

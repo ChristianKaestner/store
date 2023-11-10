@@ -12,7 +12,6 @@ import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
 import { useIsMount } from '@/app/hooks/useMount';
 
-//need to validate url params, if params consist some filter or values which doesn't inculdes in list, skip ...
 export default function Sortbar({ mobile = false, total }) {
   const filters = useFilters();
   const filtersArr = objectToArray(filters);
@@ -23,19 +22,25 @@ export default function Sortbar({ mobile = false, total }) {
   const isMount = useIsMount();
   const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
-  if (isMount) {
-    queryParams.forEach((filterValue, filterName) => {
-      if (filterName in filters) {
-        const filterValues = filterValue.split(',');
+  useEffect(() => {
+    if (isMount) {
+      queryParams.forEach((filterValue, filterName) => {
+        if (filterName in filters) {
+          if (Array.isArray(filterValue)) {
+            const filterValues = filterValue.split(',');
 
-        filterValues.forEach(value => {
-          if (!filters[filterName].includes(value)) {
-            dispatch(addFilter({ filterName, filterValue: value }));
+            filterValues.forEach(value => {
+              if (!filters[filterName].includes(value)) {
+                dispatch(addFilter({ filterName, filterValue: value }));
+              }
+            });
+          } else {
+            dispatch(addFilter({ filterName, filterValue }));
           }
-        });
-      }
-    });
-  }
+        }
+      });
+    }
+  }, []);
 
   const areFiltersEmpty =
     filters.brand.length === 0 &&
@@ -47,7 +52,9 @@ export default function Sortbar({ mobile = false, total }) {
     filters.type.length === 0 &&
     filters.bowl_type.length === 0 &&
     filters.weight.length === 0 &&
-    filters.flavor.length === 0;
+    filters.flavor.length === 0 &&
+    filters.limit === '25' &&
+    filters.page === '1';
 
   const areQueryParamsEmpty = queryParams.size === 0;
 
@@ -55,14 +62,20 @@ export default function Sortbar({ mobile = false, total }) {
     if (areFiltersEmpty && areQueryParamsEmpty) {
       return;
     }
+
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
-
-      if (filterValue.length) {
+      if (
+        filterValue.length &&
+        filterName !== 'limit' &&
+        filterName !== 'page'
+      ) {
         queryParams.set(filterName, filterValue);
-      }
-
-      if (filterValue.length === 0 && !isMount) {
+      } else if (filterName === 'limit' && filterValue !== '25') {
+        queryParams.set(filterName, filterValue);
+      } else if (filterName === 'page' && filterValue !== '1') {
+        queryParams.set(filterName, filterValue);
+      } else {
         queryParams.delete(filterName);
       }
     });

@@ -8,3 +8,5 @@ export const selectType = state => state.filters.type;
 export const selectBowlType = state => state.filters.bowl_type;
 export const selectWeight = state => state.filters.weight;
 export const selectFlavor = state => state.filters.flavor;
+export const selectPage = state => state.filters.page;
+export const selectLimit = state => state.filters.limit;

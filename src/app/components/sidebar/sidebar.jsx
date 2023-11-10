@@ -15,7 +15,6 @@ import BowlTypeFilter from '../filters/bowlType/bowlType';
 import { Box } from '@mui/material';
 
 export default function Sidebar({ filter, mobile = false }) {
-  console.log(filter);
   const { prices, brandCounts, colorCounts, hookahSizeCounts } = filter;
   const { statusCounts, flavorCounts, weightCounts, sizeCounts } = filter;
   const { typeCounts, bowlTypeCounts } = filter;

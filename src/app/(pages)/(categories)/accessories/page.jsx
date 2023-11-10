@@ -1,6 +1,7 @@
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import AccessoriesProducts from '@/app/components/products/accessoryProducts/accessoryProducts';
+import { brandsForMetaData } from '@/app/lib/functions';
 
 // export async function generateMetadata({ params, searchParams }) {
 //   const products = await fetch(

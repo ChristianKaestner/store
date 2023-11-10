@@ -23,42 +23,6 @@ export default function Sortbar({ mobile = false, total }) {
   const isMount = useIsMount();
   const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
-  // const updateFilters = useCallback(() => {
-  //   // check redux state and update param
-  //   Object.keys(filters).forEach(filterName => {
-  //     const filterValue = filters[filterName];
-  //     // if filter exist in state, set it to params
-  //     if (filterValue.length) {
-  //       queryParams.set(filterName, filterValue);
-  //     }
-
-  //     // if no filter in redux and not first load delete filter
-  //     if (filterValue.length === 0 && !isMount && queryParams.size !== 0) {
-  //       queryParams.delete(filterName);
-  //     }
-  //   });
-
-  //   //parse param from url and set redux state
-  //   if (isMount) {
-  //     queryParams.forEach((filterValue, filterName) => {
-  //       if (filterName in filters) {
-  //         const filterValues = filterValue.split(',');
-
-  //         filterValues.forEach(value => {
-  //           if (!filters[filterName].includes(value)) {
-  //             dispatch(addFilter({ filterName, filterValue: value }));
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-
-  //   // set url params
-  //   const search = decodeURIComponent(queryParams.toString());
-  //   const query = search ? `?${search}` : '';
-  //   router.push(`${pathname}${query}`, { scroll: false });
-  // });
-
   if (isMount) {
     queryParams.forEach((filterValue, filterName) => {
       if (filterName in filters) {

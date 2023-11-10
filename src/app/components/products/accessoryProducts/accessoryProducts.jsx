@@ -5,10 +5,29 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function AccessoriesProducts() {
-  const filters = useFilters();
-  // console.log(filters);
-  // const filtersToQuery = filters => {};
-  const { data = [], isLoading } = useGetAccessoriesQuery();
+  const { brand, price, status, type, bowl_type, page, limit } = useFilters();
+  const params = {};
+  if (brand.length) {
+    params.brand = brand.join(',');
+  }
+  if (price.length) {
+    const [min, max] = price[0].split('-');
+    params.min = min;
+    params.max = max;
+  }
+
+  if (status.length) {
+    params.status = status.join(',');
+  }
+  if (type.length) {
+    params.type = type.join(',');
+  }
+  if (bowl_type.length) {
+    params.bowl_type = bowl_type.join(',');
+  }
+  (params.page = page), (params.limit = limit);
+
+  const { data = [], isLoading } = useGetAccessoriesQuery(params);
 
   return (
     <>

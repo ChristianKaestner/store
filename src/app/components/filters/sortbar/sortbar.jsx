@@ -13,7 +13,7 @@ import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
 import { useIsMount } from '@/app/hooks/useMount';
 
 //need to validate url params, if params consist some filter or values which doesn't inculdes in list, skip ...
-export default function Sortbar({ mobile = false }) {
+export default function Sortbar({ mobile = false, total }) {
   const filters = useFilters();
   const filtersArr = objectToArray(filters);
   const router = useRouter();
@@ -124,7 +124,7 @@ export default function Sortbar({ mobile = false }) {
     <Box sx={{ zIndex: 1 }}>
       {filtersArr.length > 0 && !mobile && (
         <FilterBlock component="ul" sx={{ gap: 1, flexWrap: 'wrap' }}>
-          <TextBold>30 products found</TextBold>
+          <TextBold>{total} products found</TextBold>
           <FilterBtn
             variant="outlined"
             endIcon={<IconClose />}

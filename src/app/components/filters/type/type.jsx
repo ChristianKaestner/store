@@ -14,10 +14,9 @@ export default function TypeFilter({ items }) {
   }));
   const { type } = useFilters();
   const dispatch = useDispatch();
-  console.log(type);
+
   const handleChecked = (checked, curentType) => {
     const filter = { filterName: 'type', filterValue: curentType };
-    console.log('checked =', checked, filter);
     checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
   };
 
@@ -48,7 +47,6 @@ export default function TypeFilter({ items }) {
                       sx={{ p: 1 }}
                       size="small"
                       onChange={(e, checked) => {
-                        console.log(checked);
                         handleChecked(checked, item.type.toLowerCase());
                       }}
                     />

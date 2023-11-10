@@ -1,11 +1,6 @@
-import { Box } from '@mui/material';
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
-import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
 import AccessoriesProducts from '@/app/components/products/accessoryProducts/accessoryProducts';
-import Sortbar from '@/app/components/filters/sortbar/sortbar';
-import { brandsForMetaData } from '@/app/lib/functions';
-import FiltersMenu from '@/app/components/filters/filtersMenu/filtersMenu';
 
 // export async function generateMetadata({ params, searchParams }) {
 //   const products = await fetch(
@@ -24,18 +19,6 @@ export default function Accessories() {
     <>
       <Breadcrumbs />
       <PageTitle title="Accessories" />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          mb: 1,
-        }}
-      >
-        <FiltersMenu category="accessories" />
-        <SortFilter />
-      </Box>
-
       <AccessoriesProducts />
     </>
   );

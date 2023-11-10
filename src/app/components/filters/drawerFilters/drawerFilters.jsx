@@ -8,7 +8,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Sidebar from '../../sidebar/sidebar';
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function DrawerFilters({category}) {
+export default function DrawerFilters({filter}) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [clearBtn, setClearBtn] = useState(false);
   const dispatch = useDispatch();
@@ -99,7 +99,7 @@ export default function DrawerFilters({category}) {
               )}
             </Box>
 
-            <Sidebar category={category} mobile={true} />
+            <Sidebar filter={filter} mobile={true} />
           </Box>
         </Box>
       </Drawer>

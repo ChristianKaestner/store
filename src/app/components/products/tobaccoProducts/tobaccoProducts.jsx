@@ -5,8 +5,17 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function TobaccoProducts() {
-  const { brand, price, status, weight, flavor, page, limit, multiplier } =
-    useFilters();
+  const {
+    brand,
+    price,
+    status,
+    weight,
+    flavor,
+    page,
+    limit,
+    multiplier,
+    sort,
+  } = useFilters();
   const params = {};
   if (brand.length) {
     params.brand = brand.join(',');
@@ -16,7 +25,6 @@ export default function TobaccoProducts() {
     params.min = min;
     params.max = max;
   }
-
   if (status.length) {
     params.status = status.join(',');
   }
@@ -25,6 +33,9 @@ export default function TobaccoProducts() {
   }
   if (flavor.length) {
     params.flavor = flavor.join(',');
+  }
+  if (sort !== '') {
+    params.sort = sort;
   }
   (params.page = page), (params.limit = limit * multiplier);
 

@@ -14,6 +14,7 @@ const initialState = {
   page: 1,
   limit: 25,
   multiplier: 1,
+  sort: '',
 };
 
 export const filtersSlice = createSlice({
@@ -27,7 +28,8 @@ export const filtersSlice = createSlice({
       } else if (
         filterName === 'page' ||
         filterName === 'limit' ||
-        filterName === 'multiplier'
+        filterName === 'multiplier' ||
+        filterName === 'sort'
       ) {
         state[filterName] = filterValue;
       } else {

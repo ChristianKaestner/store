@@ -13,6 +13,7 @@ import {
   selectPage,
   selectLimit,
   selectMultiplier,
+  selectSort,
 } from '../redux/filters/selectors';
 
 export const useFilters = () => {
@@ -30,6 +31,7 @@ export const useFilters = () => {
     page: useSelector(selectPage),
     limit: useSelector(selectLimit),
     multiplier: useSelector(selectMultiplier),
+    sort: useSelector(selectSort),
   };
   return filters;
 };

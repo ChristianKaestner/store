@@ -11,3 +11,4 @@ export const selectFlavor = state => state.filters.flavor;
 export const selectPage = state => state.filters.page;
 export const selectLimit = state => state.filters.limit;
 export const selectMultiplier = state => state.filters.multiplier;
+export const selectSort = state => state.filters.sort;

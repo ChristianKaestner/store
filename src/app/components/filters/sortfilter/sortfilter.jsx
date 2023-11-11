@@ -1,7 +1,9 @@
 'use client';
 
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { getSearchParams } from '@/app/lib/functions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFilter } from '@/app/redux/filters/slice';
+import { useFilters } from '@/app/hooks/useFilters';
 import { useForm, Controller } from 'react-hook-form';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,27 +12,17 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function SortFilter() {
-  const { control } = useForm();
+  const { control, setValue } = useForm();
+  const { sort } = useFilters();
+  const dispatch = useDispatch();
 
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const paramsSort = getSearchParams(searchParams, 'sort');
-  const defaultValue = paramsSort ? paramsSort : '';
-
-  const handleChange = value => {
-    const current = new URLSearchParams(Array.from(searchParams.entries()));
-    if (value) {
-      current.set('sort', value);
-    } else {
-      current.delete('sort');
-    }
-    const search = decodeURIComponent(current.toString());
-    const query = search ? `?${search}` : '';
-    router.push(`${pathname}${query}`, { scroll: false });
-
-    // update data by filter
+  const handleChange = currentSort => {
+    dispatch(addFilter({ filterName: 'sort', filterValue: currentSort }));
   };
+
+  useEffect(() => {
+    setValue('sort', sort);
+  }, [setValue, sort]);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'end', mb: 2, zIndex: 1 }}>
@@ -44,8 +36,9 @@ export default function SortFilter() {
         </InputLabel>
         <Controller
           control={control}
-          name="price"
-          defaultValue={defaultValue}
+          name="sort"
+          defaultValue={sort}
+          value={sort}
           render={({ field: { onChange, value } }) => {
             return (
               <Select
@@ -65,13 +58,13 @@ export default function SortFilter() {
                   },
                 }}
               >
-                <MenuItem value="">
+                <MenuItem value={''}>
                   <em>default</em>
                 </MenuItem>
                 <MenuItem value={'cheap'}>cheap</MenuItem>
                 <MenuItem value={'expensive'}>expensive</MenuItem>
-                <MenuItem value={'new'}>new</MenuItem>
-                <MenuItem value={'sale'}>sale</MenuItem>
+                <MenuItem value={'newer'}>newer</MenuItem>
+                <MenuItem value={'older'}>older</MenuItem>
               </Select>
             );
           }}

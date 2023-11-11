@@ -64,7 +64,7 @@ export default function Sortbar({ mobile = false, total }) {
     if (areFiltersEmpty && areQueryParamsEmpty) {
       return;
     }
-
+    console.log('useEffect');
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
       if (

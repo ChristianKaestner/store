@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -11,9 +11,11 @@ import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
 import { useIsMount } from '@/app/hooks/useMount';
+import isEqual from 'lodash.isequal';
 
 export default function Sortbar({ mobile = false, total }) {
   const filters = useFilters();
+  console.log(filters);
   const filtersArr = objectToArray(filters);
   const router = useRouter();
   const pathname = usePathname();
@@ -44,27 +46,14 @@ export default function Sortbar({ mobile = false, total }) {
     }
   }, []);
 
-  const areFiltersEmpty =
-    filters.brand.length === 0 &&
-    filters.color.length === 0 &&
-    filters.hookah_size.length === 0 &&
-    filters.price.length === 0 &&
-    filters.size.length === 0 &&
-    filters.status.length === 0 &&
-    filters.type.length === 0 &&
-    filters.bowl_type.length === 0 &&
-    filters.weight.length === 0 &&
-    filters.flavor.length === 0 &&
-    filters.limit === 25 &&
-    filters.page === 1;
-
-  const areQueryParamsEmpty = queryParams.size === 0;
+  const lastFilters = useRef(filters);
 
   useEffect(() => {
-    if (areFiltersEmpty && areQueryParamsEmpty) {
+    if (isEqual(filters, lastFilters.current)) {
       return;
     }
-    console.log('useEffect');
+    lastFilters.current = filters;
+
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
       if (

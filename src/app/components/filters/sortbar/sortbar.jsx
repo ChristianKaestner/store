@@ -24,20 +24,21 @@ export default function Sortbar({ mobile = false, total }) {
 
   useEffect(() => {
     if (isMount) {
-      console.log('isMount');
       queryParams.forEach((filterValue, filterName) => {
         if (filterName in filters) {
-          if (Array.isArray(filterValue)) {
-            const filterValues = filterValue.split(',');
+          const filterValues = filterValue.split(',');
 
-            filterValues.forEach(value => {
+          filterValues.forEach(value => {
+            if (Array.isArray(filters[filterName])) {
               if (!filters[filterName].includes(value)) {
                 dispatch(addFilter({ filterName, filterValue: value }));
               }
-            });
-          } else {
-            dispatch(addFilter({ filterName, filterValue: +filterValue }));
-          }
+            } else {
+              if (filters[filterName] !== value) {
+                dispatch(addFilter({ filterName, filterValue: value }));
+              }
+            }
+          });
         }
       });
     }
@@ -63,18 +64,21 @@ export default function Sortbar({ mobile = false, total }) {
     if (areFiltersEmpty && areQueryParamsEmpty) {
       return;
     }
-    console.log('useEffect');
+
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
       if (
         filterValue.length &&
         filterName !== 'limit' &&
-        filterName !== 'page'
+        filterName !== 'page' &&
+        filterName !== 'multiplier'
       ) {
         queryParams.set(filterName, filterValue);
-      } else if (filterName === 'limit' && filterValue !== '25') {
+      } else if (filterName === 'limit' && filterValue !== 25) {
+        const paramLimit = queryParams.get('limit');
+        if (paramLimit === filterValue) return;
         queryParams.set(filterName, filterValue);
-      } else if (filterName === 'page' && filterValue !== '1') {
+      } else if (filterName === 'page' && filterValue !== 1) {
         queryParams.set(filterName, filterValue);
       } else {
         queryParams.delete(filterName);

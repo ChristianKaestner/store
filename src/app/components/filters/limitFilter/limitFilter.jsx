@@ -11,8 +11,9 @@ import Select from '@mui/material/Select';
 
 export default function LimitFilter() {
   const { control, setValue } = useForm();
-  const dispatch = useDispatch();
   const { limit, page, multiplier } = useFilters();
+  const dispatch = useDispatch();
+
   const handleChange = currentLimit => {
     dispatch(addFilter({ filterName: 'limit', filterValue: currentLimit }));
     if (page !== 1) {

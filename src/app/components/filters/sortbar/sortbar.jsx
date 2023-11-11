@@ -24,6 +24,7 @@ export default function Sortbar({ mobile = false, total }) {
 
   useEffect(() => {
     if (isMount) {
+      console.log('isMount');
       queryParams.forEach((filterValue, filterName) => {
         if (filterName in filters) {
           if (Array.isArray(filterValue)) {
@@ -35,7 +36,7 @@ export default function Sortbar({ mobile = false, total }) {
               }
             });
           } else {
-            dispatch(addFilter({ filterName, filterValue }));
+            dispatch(addFilter({ filterName, filterValue: +filterValue }));
           }
         }
       });
@@ -53,8 +54,8 @@ export default function Sortbar({ mobile = false, total }) {
     filters.bowl_type.length === 0 &&
     filters.weight.length === 0 &&
     filters.flavor.length === 0 &&
-    filters.limit === '25' &&
-    filters.page === '1';
+    filters.limit === 25 &&
+    filters.page === 1;
 
   const areQueryParamsEmpty = queryParams.size === 0;
 
@@ -62,7 +63,7 @@ export default function Sortbar({ mobile = false, total }) {
     if (areFiltersEmpty && areQueryParamsEmpty) {
       return;
     }
-
+    console.log('useEffect');
     Object.keys(filters).forEach(filterName => {
       const filterValue = filters[filterName];
       if (

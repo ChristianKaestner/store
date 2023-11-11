@@ -5,7 +5,8 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function TobaccoProducts() {
-  const { brand, price, status, weight, flavor, page, limit } = useFilters();
+  const { brand, price, status, weight, flavor, page, limit, multiplier } =
+    useFilters();
   const params = {};
   if (brand.length) {
     params.brand = brand.join(',');
@@ -25,7 +26,7 @@ export default function TobaccoProducts() {
   if (flavor.length) {
     params.flavor = flavor.join(',');
   }
-  (params.page = page), (params.limit = limit);
+  (params.page = page), (params.limit = limit * multiplier);
 
   const { data = [], isLoading } = useGetTobaccoQuery(params);
 
@@ -36,6 +37,9 @@ export default function TobaccoProducts() {
           data={data}
           isLoading={isLoading}
           title="Large variety of tobacco"
+          page={page}
+          limit={limit}
+          multiplier={multiplier}
         />
       )}
     </>

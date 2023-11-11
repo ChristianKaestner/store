@@ -12,6 +12,7 @@ import {
   selectWeight,
   selectPage,
   selectLimit,
+  selectMultiplier,
 } from '../redux/filters/selectors';
 
 export const useFilters = () => {
@@ -28,6 +29,7 @@ export const useFilters = () => {
     weight: useSelector(selectWeight),
     page: useSelector(selectPage),
     limit: useSelector(selectLimit),
+    multiplier: useSelector(selectMultiplier),
   };
   return filters;
 };

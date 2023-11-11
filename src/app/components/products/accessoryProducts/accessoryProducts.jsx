@@ -5,7 +5,9 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function AccessoriesProducts() {
-  const { brand, price, status, type, bowl_type, page, limit } = useFilters();
+  const { brand, price, status, type, bowl_type, page, limit, multiplier } =
+    useFilters();
+
   const params = {};
   if (brand.length) {
     params.brand = brand.join(',');
@@ -25,7 +27,7 @@ export default function AccessoriesProducts() {
   if (bowl_type.length) {
     params.bowl_type = bowl_type.join(',');
   }
-  (params.page = page), (params.limit = limit);
+  (params.page = page), (params.limit = limit * multiplier);
 
   const { data = [], isLoading } = useGetAccessoriesQuery(params);
 
@@ -36,6 +38,9 @@ export default function AccessoriesProducts() {
           data={data}
           isLoading={isLoading}
           title="Large variety of hookah accessories"
+          page={page}
+          limit={limit}
+          multiplier={multiplier}
         />
       )}
     </>

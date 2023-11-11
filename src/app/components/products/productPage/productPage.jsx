@@ -1,6 +1,6 @@
 'use client';
 import { useParams } from 'next/navigation';
-import { useGetProductByIdQuery } from '@/app/redux/services/goods';
+import { useGetProductByIdQuery } from '@/app/redux/services/products';
 import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';

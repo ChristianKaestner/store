@@ -5,12 +5,22 @@ import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
 import LimitFilter from '@/app/components/filters/limitFilter/limitFilter';
 import Sortbar from '../../filters/sortbar/sortbar';
 import DrawerFilters from '../../filters/drawerFilters/drawerFilters';
+import PaginationComponent from '../../pagination/pagination';
 import { Row, RowBetween } from '@/app/lib/commonStyles';
 import { useMediaQuery } from '@mui/material';
 
-export default function CommonProducts({ data, title, isLoading }) {
+export default function CommonProducts({
+  data,
+  title,
+  isLoading,
+  page,
+  limit,
+  multiplier,
+}) {
   const { favorites } = tmpUser;
   const isDrawer = useMediaQuery('(max-width:1199px)');
+  const isPaginated =
+    data.counts.total > limit && data.products.length !== data.counts.total;
 
   return (
     <>
@@ -39,6 +49,15 @@ export default function CommonProducts({ data, title, isLoading }) {
           isLoading={isLoading}
         />
       </Row>
+      {isPaginated && (
+        <PaginationComponent
+          page={page}
+          limit={limit}
+          length={data.products.length}
+          total={data.counts.total}
+          multiplier={multiplier}
+        />
+      )}
     </>
   );
 }

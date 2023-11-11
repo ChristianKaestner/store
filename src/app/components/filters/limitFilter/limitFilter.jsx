@@ -12,9 +12,15 @@ import Select from '@mui/material/Select';
 export default function LimitFilter() {
   const { control, setValue } = useForm();
   const dispatch = useDispatch();
-  const { limit } = useFilters();
+  const { limit, page, multiplier } = useFilters();
   const handleChange = currentLimit => {
     dispatch(addFilter({ filterName: 'limit', filterValue: currentLimit }));
+    if (page !== 1) {
+      dispatch(addFilter({ filterName: 'page', filterValue: 1 }));
+    }
+    if (multiplier !== 1) {
+      dispatch(addFilter({ filterName: 'multiplier', filterValue: 1 }));
+    }
   };
 
   useEffect(() => {
@@ -46,12 +52,12 @@ export default function LimitFilter() {
                   },
                 }}
               >
-                <MenuItem value={'25'}>
+                <MenuItem value={25}>
                   <em>25</em>
                 </MenuItem>
-                <MenuItem value={'10'}>10</MenuItem>
-                <MenuItem value={'50'}>50</MenuItem>
-                <MenuItem value={'100'}>100</MenuItem>
+                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={50}>50</MenuItem>
+                <MenuItem value={100}>100</MenuItem>
               </Select>
             );
           }}

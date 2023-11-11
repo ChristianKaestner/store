@@ -5,7 +5,7 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function CoalProducts() {
-  const { brand, price, status, weight, size, page, limit } = useFilters();
+  const { brand, price, status, weight, size, page, limit, multiplier } = useFilters();
   const params = {};
   if (brand.length) {
     params.brand = brand.join(',');
@@ -25,7 +25,7 @@ export default function CoalProducts() {
   if (size.length) {
     params.size = size.join(',');
   }
-  (params.page = page), (params.limit = limit);
+  (params.page = page), (params.limit = limit * multiplier);
 
   const { data = [], isLoading } = useGetCoalsQuery(params);
 
@@ -36,6 +36,9 @@ export default function CoalProducts() {
           data={data}
           isLoading={isLoading}
           title="Large variety of hookah coals"
+          page={page}
+          limit={limit}
+          multiplier={multiplier}
         />
       )}
     </>

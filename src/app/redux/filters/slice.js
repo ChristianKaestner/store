@@ -11,8 +11,9 @@ const initialState = {
   bowl_type: [],
   weight: [],
   flavor: [],
-  page: '1',
-  limit: '25',
+  page: 1,
+  limit: 25,
+  multiplier: 1,
 };
 
 export const filtersSlice = createSlice({
@@ -23,7 +24,11 @@ export const filtersSlice = createSlice({
       const { filterName, filterValue } = action.payload;
       if (filterName === 'price') {
         state[filterName] = [filterValue];
-      } else if (filterName === 'page' || filterName === 'limit') {
+      } else if (
+        filterName === 'page' ||
+        filterName === 'limit' ||
+        filterName === 'multiplier'
+      ) {
         state[filterName] = filterValue;
       } else {
         if (state[filterName].includes(filterValue)) return;

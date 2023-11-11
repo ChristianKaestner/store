@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
+import { useGetAllGoodsQuery } from '@/app/redux/services/products';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';

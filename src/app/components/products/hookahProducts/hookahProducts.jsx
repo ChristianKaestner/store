@@ -5,7 +5,7 @@ import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
 
 export default function HookahProducts() {
-  const { brand, price, status, color, hookah_size, page, limit } =
+  const { brand, price, status, color, hookah_size, page, limit, multiplier } =
     useFilters();
   const params = {};
   if (brand.length) {
@@ -26,7 +26,7 @@ export default function HookahProducts() {
   if (hookah_size.length) {
     params.hookah_size = hookah_size.join(',');
   }
-  (params.page = page), (params.limit = limit);
+  (params.page = page), (params.limit = limit * multiplier);
 
   const { data = [], isLoading } = useGetHookahsQuery(params);
 
@@ -37,6 +37,9 @@ export default function HookahProducts() {
           data={data}
           isLoading={isLoading}
           title="Large variety of hookahs"
+          page={page}
+          limit={limit}
+          multiplier={multiplier}
         />
       )}
     </>

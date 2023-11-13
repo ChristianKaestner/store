@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { useGetAllGoodsQuery } from '@/app/redux/services/products';
+import { useState, useRef, useEffect } from 'react';
+import { useGetRelatedProductsQuery } from '@/app/redux/services/products';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
@@ -9,10 +9,10 @@ import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import 'swiper/css';
 
-export default function RelatedProducts() {
-  const [prevBtn, setPervBtn] = useState(false);
-  const [nextBtn, setNextBtn] = useState(true);
-  const { data = [], isLoading } = useGetAllGoodsQuery();
+export default function RelatedProducts({ id }) {
+  const [prevBtn, setPrevBtn] = useState(false);
+  const [nextBtn, setNextBtn] = useState(false);
+  const { data = [], isLoading } = useGetRelatedProductsQuery(id);
   const { cart } = useCart();
   const sliderRef = useRef();
   const mediaXS = useMediaQuery('(max-width:599px)');
@@ -21,9 +21,15 @@ export default function RelatedProducts() {
   const mediaLG = useMediaQuery('(min-width:1200px)');
   const slidesPerView = getSlideCount(mediaXS, mediaSM, mediaMD, mediaLG);
 
+  useEffect(() => {
+    if (data.length > slidesPerView) {
+      setNextBtn(true);
+    }
+  }, [data, slidesPerView]);
+  
   const handlePrevCard = () => {
     if (sliderRef.current?.activeIndex - 1 === 0) {
-      setPervBtn(false);
+      setPrevBtn(false);
     }
     if (sliderRef.current?.activeIndex === data.length - slidesPerView) {
       setNextBtn(true);
@@ -33,7 +39,7 @@ export default function RelatedProducts() {
 
   const handleNextCard = () => {
     if (sliderRef.current?.activeIndex + 1 > 0) {
-      setPervBtn(true);
+      setPrevBtn(true);
     }
     if (sliderRef.current?.activeIndex + 1 === data.length - slidesPerView) {
       setNextBtn(false);
@@ -45,10 +51,10 @@ export default function RelatedProducts() {
     const { activeIndex } = swiperCore;
     const length = data.length - slidesPerView;
     if (activeIndex === 0) {
-      setPervBtn(false);
+      setPrevBtn(false);
     }
     if (activeIndex > 0) {
-      setPervBtn(true);
+      setPrevBtn(true);
     }
     if (activeIndex === length) {
       setNextBtn(false);

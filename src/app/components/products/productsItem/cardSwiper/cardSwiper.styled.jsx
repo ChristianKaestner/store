@@ -24,8 +24,9 @@ export const LinkStyled = styled(Link)({
 
 export const ImageStyled = styled(Image)(({ theme }) => ({
   transition: 'transform 500ms ease-in-out',
-  objectFit: 'fill',
+  objectFit: 'cover',
   backgroundColor: theme.palette.primary.main,
+  borderRadius: '0 !important',
 }));
 
 export const ChipStyled = styled(Chip, {

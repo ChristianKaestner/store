@@ -20,7 +20,6 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
-        loop={true}
         effect={'fade'}
         slidesPerView={1}
         ref={swiperRef}

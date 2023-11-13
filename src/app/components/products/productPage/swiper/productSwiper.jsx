@@ -41,7 +41,6 @@ export default function ProductSwiper({ product }) {
           height: media > 900 ? '80%' : '400px',
           borderRadius: 4,
         }}
-        className="pagination"
         initialSlide={0}
         onSlideChange={handleSlideChange}
       >

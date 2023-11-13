@@ -21,6 +21,13 @@ export default function ProductSwiper({ product }) {
     }
   }, []);
 
+  const handleSlideChange = swiper => {
+    const slides = document.querySelectorAll('.swiper-slide-main');
+    slides.forEach((slide, index) => {
+      slide.style.opacity = index === swiper.activeIndex ? 1 : 0;
+    });
+  };
+
   return (
     <>
       <Swiper
@@ -36,13 +43,18 @@ export default function ProductSwiper({ product }) {
         }}
         className="pagination"
         initialSlide={0}
+        onSlideChange={handleSlideChange}
       >
         {images &&
-          images.map(image => {
+          images.map((image, index) => {
             return (
               <SwiperSlide
                 key={image}
-                style={{ backgroundColor: 'transparent' }}
+                className="swiper-slide-main"
+                style={{
+                  backgroundColor: 'transparent',
+                  opacity: index === 0 ? 1 : 0,
+                }}
               >
                 <Image
                   src={image}
@@ -50,7 +62,9 @@ export default function ProductSwiper({ product }) {
                   alt={title + ' image'}
                   sizes="100%"
                   priority="true"
-                  style={{ objectFit: 'contain' }}
+                  style={{
+                    objectFit: 'contain',
+                  }}
                 />
               </SwiperSlide>
             );

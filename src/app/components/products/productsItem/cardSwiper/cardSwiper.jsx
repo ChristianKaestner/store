@@ -39,7 +39,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
           <ChipStyled label={promotion.promotion} color={color} />
         )}
         <FavoriteIcon id={id} />
-        {images.map(image => {
+        {images.map((image, index) => {
           return (
             <SwiperSlide key={image}>
               <LinkStyled href={path}>
@@ -49,7 +49,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
                   fill={true}
                   alt="image"
                   sizes="100%"
-                  priority="false"
+                  priority={index === 0 ? 'true' : 'false'}
                 />
               </LinkStyled>
             </SwiperSlide>

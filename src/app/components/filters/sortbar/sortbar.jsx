@@ -15,7 +15,6 @@ import isEqual from 'lodash.isequal';
 
 export default function Sortbar({ mobile = false, total }) {
   const filters = useFilters();
-  console.log(filters);
   const filtersArr = objectToArray(filters);
   const router = useRouter();
   const pathname = usePathname();

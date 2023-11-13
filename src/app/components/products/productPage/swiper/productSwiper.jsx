@@ -1,27 +1,32 @@
-import { useState } from 'react';
+'use client';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { EffectFade, Pagination } from 'swiper/modules';
+import { EffectFade } from 'swiper/modules';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/thumbs';
 import './style.css';
+import 'swiper/swiper-bundle.css';
 
 export default function ProductSwiper({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const sliderRef = useRef(null);
   const { images, title } = product;
   const media = useMediaQuery('(min-width:900px)');
+
+  useEffect(() => {
+    const { swiper } = sliderRef.current;
+    if (swiper && swiper.initialized && !swiper.destroyed) {
+      setThumbsSwiper(sliderRef.current.swiper);
+    }
+  }, []);
+
   return (
     <>
       <Swiper
-        loop={true}
         effect={'fade'}
         thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs, EffectFade, Pagination]}
+        modules={[FreeMode, Navigation, Thumbs, EffectFade]}
         pagination={{
           clickable: true,
         }}
@@ -30,6 +35,7 @@ export default function ProductSwiper({ product }) {
           borderRadius: 4,
         }}
         className="pagination"
+        initialSlide={0}
       >
         {images &&
           images.map(image => {
@@ -43,47 +49,45 @@ export default function ProductSwiper({ product }) {
                   fill={true}
                   alt={title + ' image'}
                   sizes="100%"
-                  priority="false"
-                  style={{ objectFit: 'fill' }}
+                  priority="true"
+                  style={{ objectFit: 'contain' }}
                 />
               </SwiperSlide>
             );
           })}
       </Swiper>
-      {media && (
-        <Swiper
-          onSwiper={setThumbsSwiper}
-          loop={true}
-          spaceBetween={10}
-          slidesPerView={6}
-          freeMode={true}
-          watchSlidesProgress={true}
-          modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper"
-        >
-          {images &&
-            images.map(image => {
-              return (
-                <SwiperSlide
-                  key={image}
-                  style={{ backgroundColor: 'transparent' }}
-                >
-                  <Image
-                    style={{
-                      objectFit: 'fill',
-                      cursor: 'pointer',
-                    }}
-                    src={image}
-                    width={80}
-                    height={80}
-                    alt={title + ' image'}
-                    priority="false"
-                  />
-                </SwiperSlide>
-              );
-            })}
-        </Swiper>
-      )}
+
+      <Swiper
+        ref={sliderRef}
+        spaceBetween={10}
+        slidesPerView={6}
+        freeMode={true}
+        watchSlidesProgress={true}
+        modules={[FreeMode, Navigation, Thumbs]}
+        className="mySwiper"
+      >
+        {images &&
+          images.map(image => {
+            return (
+              <SwiperSlide
+                key={image}
+                style={{ backgroundColor: 'transparent' }}
+              >
+                <Image
+                  style={{
+                    objectFit: 'contain',
+                    cursor: 'pointer',
+                  }}
+                  src={image}
+                  width={80}
+                  height={80}
+                  alt={title + ' image'}
+                  priority="true"
+                />
+              </SwiperSlide>
+            );
+          })}
+      </Swiper>
     </>
   );
 }

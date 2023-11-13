@@ -9,9 +9,10 @@ import { tmpUser } from '@/app/lib/tmpData';
 
 export default function ProductPage() {
   const { slug } = useParams();
+
   const { data = [], isLoading } = useGetProductByIdQuery(slug);
   const { favorites } = tmpUser;
-
+  // console.log(data);
   return (
     <>
       {!isLoading && (
@@ -24,7 +25,7 @@ export default function ProductPage() {
               <ProductContent product={data} favorites={favorites} />
             </BlockContent>
           </Container>
-          <RelatedProducts />
+          {/* <RelatedProducts /> */}
         </>
       )}
     </>

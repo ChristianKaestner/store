@@ -33,7 +33,7 @@ export default function ProductContent({ product, favorites }) {
             sx={{ color: 'primary.dim', fontWeight: 400 }}
           >
             <Span component="span">Brand: </Span>
-            {brand}
+            {brand.brand}
           </Typography>
         </Box>
         <RowCenter sx={{ my: 2 }}>

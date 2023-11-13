@@ -11,7 +11,7 @@ export default function ProductPage() {
   const { slug } = useParams();
   const { data = [], isLoading } = useGetProductByIdQuery(slug);
   const { favorites } = tmpUser;
-  // console.log(data);
+
   return (
     <>
       {!isLoading && (

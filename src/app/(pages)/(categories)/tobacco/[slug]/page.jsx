@@ -4,11 +4,11 @@ import ProductPage from '@/app/components/products/productPage/productPage';
 export async function generateMetadata({ params }) {
   const id = params.slug;
 
-  const product = await fetch(`http://localhost:3001/goods/${id}`).then(res =>
-    res.json()
-  );
+  const product = await fetch(
+    `http://localhost:5000/api/products/id/${id}`
+  ).then(res => res.json());
   return {
-    title: `Tobacco brand ${product.brand}`,
+    title: product.title,
     description: product.description,
   };
 }

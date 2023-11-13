@@ -15,6 +15,7 @@ export const IconBtnNavigate = styled(IconButton, {
   width: 56,
   height: 40,
   borderRadius: 24,
+  opacity: 0.8,
   color:
     color === 'white' ? theme.palette.primary.dim : theme.palette.primary.light,
   border:

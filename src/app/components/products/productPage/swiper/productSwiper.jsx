@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { EffectFade } from 'swiper/modules';
+import { SwiperContainer } from './swiper.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import './style.css';
 import 'swiper/swiper-bundle.css';
@@ -30,46 +31,47 @@ export default function ProductSwiper({ product }) {
 
   return (
     <>
-      <Swiper
-        effect={'fade'}
-        thumbs={{ swiper: thumbsSwiper }}
-        modules={[FreeMode, Navigation, Thumbs, EffectFade]}
-        pagination={{
-          clickable: true,
-        }}
-        style={{
-          height: media > 900 ? '80%' : '400px',
-          borderRadius: 4,
-        }}
-        initialSlide={0}
-        onSlideChange={handleSlideChange}
-      >
-        {images &&
-          images.map((image, index) => {
-            return (
-              <SwiperSlide
-                key={image}
-                className="swiper-slide-main"
-                style={{
-                  backgroundColor: 'transparent',
-                  opacity: index === 0 ? 1 : 0,
-                }}
-              >
-                <Image
-                  src={image}
-                  fill={true}
-                  alt={title + ' image'}
-                  sizes="100%"
-                  priority="true"
+      <SwiperContainer>
+        <Swiper
+          effect={'fade'}
+          thumbs={{ swiper: thumbsSwiper }}
+          modules={[FreeMode, Navigation, Thumbs, EffectFade]}
+          pagination={{
+            clickable: true,
+          }}
+          style={{
+            height: '100%',
+            borderRadius: 4,
+          }}
+          initialSlide={0}
+          onSlideChange={handleSlideChange}
+        >
+          {images &&
+            images.map((image, index) => {
+              return (
+                <SwiperSlide
+                  key={image}
+                  className="swiper-slide-main"
                   style={{
-                    objectFit: 'contain',
+                    backgroundColor: 'transparent',
+                    opacity: index === 0 ? 1 : 0,
                   }}
-                />
-              </SwiperSlide>
-            );
-          })}
-      </Swiper>
-
+                >
+                  <Image
+                    src={image}
+                    fill={true}
+                    alt={title + ' image'}
+                    sizes="100%"
+                    priority="true"
+                    style={{
+                      objectFit: 'contain',
+                    }}
+                  />
+                </SwiperSlide>
+              );
+            })}
+        </Swiper>
+      </SwiperContainer>
       <Swiper
         ref={sliderRef}
         spaceBetween={10}

@@ -1,43 +1,27 @@
 'use client';
-
+import { Montserrat_Subrayada } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
-// import Grid from '@mui/material/Unstable_Grid2';
 import { visuallyHidden } from '@mui/utils';
-import { Card } from './categories.styled';
+import { Container, Card, CatsBlock, CatsItem } from './categories.styled';
+import { CatsText } from './categories.styled';
+
+const montserrat = Montserrat_Subrayada({
+  weight: '700',
+  subsets: ['latin'],
+});
 
 export default function Categories({ categories }) {
   return (
-    <Box sx={{ width: '100%', my: 4 }} component="section">
+    <Container component="section">
       <Typography component="h2" sx={visuallyHidden}>
         Best hookah price, top quality tobaссko, excelent coal & more
       </Typography>
-      {/* <Grid
-        container
-        rowSpacing={{ xs: 2, sm: 2, md: 3 }}
-        columnSpacing={{ xs: 2, sm: 2, md: 3 }}
-        component="ul"
-        sx={{ listStyle: 'none' }}
-      > */}
-      <Box
-        component="ul"
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-          listStyle: 'none',
-        }}
-      >
+      <CatsBlock component="ul">
         {categories.map(category => {
           return (
-            // <Grid xs={6} key={category.id} component="li">
-            <Box
-              component="li"
-              sx={{ width: 'calc(100% / 2 - 16px)', mb: 2, opacity: 0.9 }}
-              key={category.id}
-            >
+            <CatsItem component="li" key={category.id}>
               <Link href={category.name.toLowerCase()}>
                 <Card>
                   <Image
@@ -52,21 +36,16 @@ export default function Categories({ categories }) {
                     sizes="100%"
                   />
                   <Box sx={{ zIndex: 2 }}>
-                    <Typography
-                      component="h3"
-                      sx={{ fontSize: 28, color: '#fff' }}
-                    >
+                    <CatsText component="h3" className={montserrat.className}>
                       {category.name.toUpperCase()}
-                    </Typography>
+                    </CatsText>
                   </Box>
                 </Card>
               </Link>
-            </Box>
-            // </Grid>
+            </CatsItem>
           );
         })}
-      </Box>
-      {/* </Grid> */}
-    </Box>
+      </CatsBlock>
+    </Container>
   );
 }

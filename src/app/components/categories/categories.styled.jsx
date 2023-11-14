@@ -1,5 +1,39 @@
-import { Card as MuiCard } from '@mui/material';
+import { Card as MuiCard, Box } from '@mui/material';
+import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
+export const Container = styled(Box)({ width: '100%', margin: '32px 0' });
+
+export const CatsBlock = styled(Box)({
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  listStyle: 'none',
+});
+
+export const CatsItem = styled(Box)({
+  width: 'calc(100% / 2 - 16px)',
+  marginBottom: 16,
+  opacity: 0.9,
+});
+
+export const CatsText = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.dim,
+
+  [theme.breakpoints.up('xs')]: {
+    fontSize: '0.875rem',
+  },
+  [theme.breakpoints.up('s')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.75rem',
+  },
+}));
 
 export const Card = styled(MuiCard)(({ theme }) => ({
   position: 'relative',

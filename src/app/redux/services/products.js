@@ -56,9 +56,10 @@ export const {
   useGetTobaccoQuery,
   useGetCoalsQuery,
   useGetAccessoriesQuery,
-  useGetGoodsQuery,
   useGetRelatedProductsQuery,
-  useGetAllGoodsQuery,
   useGetProductByIdQuery,
+
   useGetProductsByIdsQuery,
+  useGetAllGoodsQuery,
+  useGetGoodsQuery,
 } = productsApi;

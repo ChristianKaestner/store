@@ -7,15 +7,18 @@ const montserrat = Montserrat_Subrayada({
   subsets: ['latin'],
 });
 
-export default function Logo({ isMobile }) {
+export default function Logo({ isMobile, mediaMD }) {
+  const shouldRender = !mediaMD ? isMobile && !mediaMD : true;
   return (
     <LinkStyled href="/">
       <IconBlock isMobile={isMobile}>
         <SvgIcon />
       </IconBlock>
-      <LogoText isMobile={isMobile} className={montserrat.className}>
-        SMOKEY
-      </LogoText>
+      {shouldRender && (
+        <LogoText isMobile={isMobile} className={montserrat.className}>
+          SMOKEY
+        </LogoText>
+      )}
     </LinkStyled>
   );
 }

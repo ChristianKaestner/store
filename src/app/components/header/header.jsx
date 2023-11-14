@@ -20,12 +20,16 @@ import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
 import { AppBar } from './header.styled';
 import Modal from '../modal/modal';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Header() {
   const [login, setLogin] = useState(true);
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
   const { cart } = useCart();
   const { isLogin } = useAuth();
+
+  const mediaMD = useMediaQuery('(min-width:900px)');
+
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
@@ -43,10 +47,12 @@ export default function Header() {
         <Container maxWidth="xl" sx={{ px: 3 }}>
           <Toolbar style={{ padding: 0 }}>
             <MobileMenu toggle={() => dispatch(toggleMobile(!mobileModal))} />
-            <Logo isMobile={false} />
-            <ProductsButton
-              onOpenProductsModal={() => dispatch(toggleProducts(true))}
-            />
+            <Logo isMobile={false} mediaMD={mediaMD} />
+            {mediaMD && (
+              <ProductsButton
+                onOpenProductsModal={() => dispatch(toggleProducts(true))}
+              />
+            )}
             <SearchForm />
 
             <Box sx={{ display: 'flex', justifyContent: 'end' }}>

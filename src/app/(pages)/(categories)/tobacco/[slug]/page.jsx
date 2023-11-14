@@ -1,4 +1,3 @@
-import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import ProductPage from '@/app/components/products/productPage/productPage';
 
 export async function generateMetadata({ params }) {
@@ -16,7 +15,6 @@ export async function generateMetadata({ params }) {
 export default function Hookah() {
   return (
     <>
-      <Breadcrumbs />
       <ProductPage />
     </>
   );

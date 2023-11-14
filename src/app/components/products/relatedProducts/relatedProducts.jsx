@@ -7,6 +7,7 @@ import { getSlideCount } from '@/app/lib/functions';
 import { Container, Text } from './relatedProducts.styled';
 import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { defineCategory } from '@/app/lib/functions';
 import 'swiper/css';
 
 export default function RelatedProducts({ id }) {
@@ -87,6 +88,8 @@ export default function RelatedProducts({ id }) {
 
           {data &&
             data.map(product => {
+              const category = defineCategory(product);
+              const productWithCats = { ...product, category };
               const { id } = product;
               return (
                 <SwiperSlide
@@ -95,7 +98,7 @@ export default function RelatedProducts({ id }) {
                   style={{ width: 'auto', backgroundColor: 'transparent' }}
                 >
                   <ProductsItem
-                    product={product}
+                    product={productWithCats}
                     cart={cart}
                     width={'100%'}
                     component="div"

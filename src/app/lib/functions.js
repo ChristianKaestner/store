@@ -138,9 +138,10 @@ export const profileFavoritePerRow = (lg, md, sm) => {
 };
 
 export const defineCategory = product => {
-  if (product.accessories && product.accessories !== null) return 'accessories';
-  if (product.coals && product.coals !== null) return 'coals';
-  if (product.hookahs && product.hookahs !== null) return 'hookahs';
-  if (product.tobacco && product.tobacco !== null) return 'tobacco';
+  if (product?.accessories && product?.accessories !== null)
+    return 'accessories';
+  if (product?.coals && product?.coals !== null) return 'coals';
+  if (product?.hookahs && product?.hookahs !== null) return 'hookahs';
+  if (product?.tobacco && product?.tobacco !== null) return 'tobacco';
   return;
 };

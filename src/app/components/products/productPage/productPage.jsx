@@ -1,6 +1,7 @@
 'use client';
 import { useParams } from 'next/navigation';
 import { useGetProductByIdQuery } from '@/app/redux/services/products';
+import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
@@ -16,6 +17,7 @@ export default function ProductPage() {
     <>
       {!isLoading && (
         <>
+          <Breadcrumbs product={data} />
           <Container>
             <BlockSwiper component="section">
               <ProductSwiper product={data} />

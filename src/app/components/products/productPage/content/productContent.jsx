@@ -52,7 +52,7 @@ export default function ProductContent({ product, favorites }) {
           <BalanceStatus status={status} />
         </Box>
         <BlockBtn>
-          <BuyButton id={id} width={100} isover={isover} />
+          <BuyButton id={id} isover={isover} />
           <FavoriteIcon favorites={favorites} id={id} />
         </BlockBtn>
       </PaperStyled>

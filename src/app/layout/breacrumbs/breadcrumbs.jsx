@@ -1,39 +1,19 @@
 'use client';
 
-// import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname, useParams } from 'next/navigation';
-// import { useGetProductByIdQuery } from '@/app/redux/services/products';
+import { usePathname } from 'next/navigation';
 import { Breadcrumbs as Breadcrumb, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 
-export default function Breadcrumbs() {
-  // const [product, setProduct] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [crumbs, setCrumbs] = useState([]);
+export default function Breadcrumbs({ product }) {
   const path = usePathname().split('/');
-  // console.log(path);
-
   path.splice(0, 1);
-  // setCrumbs(path);
-  const { slug } = useParams();
 
-  // const title = product?.title;
-  const title = null;
-
-  // useEffect(() => {
-  //   if (slug) {
-  //     const { data, isLoading } = useGetProductByIdQuery(slug);
-  //     setIsLoading(isLoading);
-  //     setProduct(data);
-  //   }
-  // }, [slug]);
-
-  // useEffect(() => {
-  //   const updatedPath = [...path];
-  //   updatedPath.splice(0, 1);
-  //   setCrumbs(updatedPath);
-  // }, [path]);
+  const formatText = text => {
+    if (!text) return '';
+    const lowerText = text.toLowerCase();
+    return lowerText[0].toUpperCase() + lowerText.slice(1);
+  };
 
   let url = '';
 
@@ -55,8 +35,8 @@ export default function Breadcrumbs() {
           {path &&
             path.map((crumb, index) => {
               const isId = !isNaN(+crumb);
-              const capitalizedCrumb = crumb[0].toUpperCase() + crumb.slice(1);
-
+              const capitalizedCrumb = formatText(crumb);
+              const title = formatText(formatText(product?.title));
               if (path.length - 1 !== index) {
                 url += '/' + crumb;
                 return (

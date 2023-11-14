@@ -12,6 +12,6 @@ export const ButtonStyled = styled(Button, {
     width: 120,
   },
   [theme.breakpoints.up('sm')]: {
-    width: width,
+    width: width || 160,
   },
 }));

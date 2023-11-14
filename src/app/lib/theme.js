@@ -34,6 +34,16 @@ export const myTheme = createTheme({
       iconbtn: '#ffffff33',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      s: 320,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   components: {
     MuiTextField: {
       styleOverrides: {

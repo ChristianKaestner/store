@@ -9,11 +9,15 @@ export const Block = styled(Box)({
   marginTop: 8,
 });
 
-export const BlockBtn = styled(Box)({
+export const BlockBtn = styled(Box)(({ theme }) => ({
   position: 'relative',
-  width: 240,
-  marginLeft: 16,
-});
+  display: 'flex',
+  justifyContent: 'left',
+  width: '100%',
+  [theme.breakpoints.up('s')]: {
+    justifyContent: 'center',
+  },
+}));
 
 export const PaperStyled = styled(Paper, {
   shouldForwardProp: prop => prop !== 'isover',

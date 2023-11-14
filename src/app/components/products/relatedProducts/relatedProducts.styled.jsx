@@ -4,7 +4,6 @@ import { Box, Typography } from '@mui/material';
 export const Container = styled(Box)({
   width: '100%',
   height: 'auto',
-  padding: 16,
   margin: '32px 0',
 });
 

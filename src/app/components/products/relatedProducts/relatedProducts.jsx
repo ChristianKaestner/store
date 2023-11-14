@@ -15,18 +15,25 @@ export default function RelatedProducts({ id }) {
   const { data = [], isLoading } = useGetRelatedProductsQuery(id);
   const { cart } = useCart();
   const sliderRef = useRef();
-  const mediaXS = useMediaQuery('(max-width:599px)');
+  const mediaXS = useMediaQuery('(max-width:319px)');
+  const mediaS = useMediaQuery('(max-width:599px)');
   const mediaSM = useMediaQuery('(max-width:899px)');
   const mediaMD = useMediaQuery('(max-width:1199px)');
   const mediaLG = useMediaQuery('(min-width:1200px)');
-  const slidesPerView = getSlideCount(mediaXS, mediaSM, mediaMD, mediaLG);
+  const slidesPerView = getSlideCount(
+    mediaXS,
+    mediaS,
+    mediaSM,
+    mediaMD,
+    mediaLG
+  );
 
   useEffect(() => {
     if (data.length > slidesPerView) {
       setNextBtn(true);
     }
   }, [data, slidesPerView]);
-  
+
   const handlePrevCard = () => {
     if (sliderRef.current?.activeIndex - 1 === 0) {
       setPrevBtn(false);
@@ -73,10 +80,7 @@ export default function RelatedProducts({ id }) {
           spaceBetween={16}
           wrapperTag="ul"
           onSwiper={it => (sliderRef.current = it)}
-          style={{
-            height: '100%',
-            padding: '16px',
-          }}
+          style={{ height: '100%' }}
           onSlideChange={handleSlideChange}
         >
           {prevBtn && <NavigatePrev prev={handlePrevCard} />}

@@ -15,18 +15,27 @@ export const Text = styled(Typography)(({ theme }) => ({
     textDecoration: 'underline',
   },
   [theme.breakpoints.up('xs')]: {
-    fontSize: '0.9rem',
+    fontSize: '0.875rem',
+  },
+  [theme.breakpoints.up('s')]: {
+    fontSize: '0.75rem',
   },
   [theme.breakpoints.up('sm')]: {
+    fontSize: '0.875rem',
+  },
+  [theme.breakpoints.up('md')]: {
     fontSize: '1rem',
   },
 }));
 
 export const RatingStyled = styled(Rating)(({ theme }) => ({
   [theme.breakpoints.up('xs')]: {
-    fontSize: '0.9rem',
+    fontSize: '0.7rem',
   },
   [theme.breakpoints.up('sm')]: {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('md')]: {
     fontSize: '1rem',
   },
 }));

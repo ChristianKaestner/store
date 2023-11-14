@@ -4,13 +4,12 @@ import ProductsItem from '../productsItem/productItem';
 import { useCart } from '@/app/hooks/useCart';
 import { Box, Typography } from '@mui/material';
 import Skeleton from '../../skeleton/skeleton';
-import { BlockProducts } from './productList.styled';
+import Grid from '@mui/material/Unstable_Grid2';
 import { visuallyHidden } from '@mui/utils';
 import { defineCategory } from '@/app/lib/functions';
 
 export default function ProductsList({
   skeleton,
-  width,
   component = 'h2',
   title,
   products,
@@ -25,7 +24,7 @@ export default function ProductsList({
         {title}
       </Typography>
 
-      <BlockProducts component="ul">
+      <Grid container spacing={4} sx={{}} component="ul">
         {isLoading ? (
           <Skeleton length={skeleton} />
         ) : (
@@ -35,18 +34,30 @@ export default function ProductsList({
                 const category = defineCategory(product);
                 const productWithCats = { ...product, category };
                 return (
-                  <ProductsItem
+                  <Grid
+                    xs={12}
+                    s={6}
+                    sm={4}
+                    md={3}
+                    lg={2.4}
+                    xl={2}
+                    component="li"
+                    sx={{ listStyle: 'none' }}
                     key={product.id}
-                    product={productWithCats}
-                    cart={cart}
-                    favorites={favorites}
-                    width={width}
-                  />
+                  >
+                    <ProductsItem
+                      product={productWithCats}
+                      cart={cart}
+                      favorites={favorites}
+                      component="div"
+                      mb={0}
+                    />
+                  </Grid>
                 );
               })}
           </>
         )}
-      </BlockProducts>
+      </Grid>
     </Box>
   );
 }

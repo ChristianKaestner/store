@@ -11,7 +11,6 @@ export default function ProductItem({
   product,
   cart,
   favorites,
-  width,
   component = 'li',
   mb = 16,
 }) {
@@ -53,7 +52,7 @@ export default function ProductItem({
   const handleMouseLeave = () => {
     swiperRef?.current?.swiper?.autoplay?.stop();
     swiperRef?.current?.swiper?.pagination?.destroy();
-    swiperRef?.current?.swiper?.slideTo(1, 500, false);
+    swiperRef?.current?.swiper?.slideTo(0, 500, false);
   };
 
   return (
@@ -63,7 +62,6 @@ export default function ProductItem({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       isover={isover}
-      width={width}
       mb={mb}
     >
       <CardSwiper

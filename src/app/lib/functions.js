@@ -46,8 +46,9 @@ export const catSlug = (cat, subCat) => {
   return `${cat.name}?${sub.join('_')}`;
 };
 
-export const getSlideCount = (mediaXS, mediaSM, mediaMD, mediaLG) => {
-  if (mediaXS) return 2;
+export const getSlideCount = (mediaXS, mediaS, mediaSM, mediaMD, mediaLG) => {
+  if (mediaXS) return 1;
+  if (mediaS) return 2;
   if (mediaSM) return 3;
   if (mediaMD) return 4;
   if (mediaLG) return 6;

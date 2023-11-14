@@ -2,31 +2,20 @@ import { Card as MuiCard } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const Card = styled(MuiCard, {
-  shouldForwardProp: prop =>
-    prop !== 'isover' && prop !== 'width' && prop !== 'mb',
-})(({ isover, width, mb, theme }) => ({
+  shouldForwardProp: prop => prop !== 'isover' && prop !== 'mb',
+})(({ isover, mb, theme }) => ({
   filter: isover ? 'grayscale(1)' : 'none',
   transition: 'box-shadow 500ms ease-in-out',
   backgroundColor: theme.palette.primary.main,
-  width: width ? width : 'calc(100% / 2 - 16px)',
-  height: 300,
+  height: 286,
   marginBottom: mb,
   zIndex: 1,
   opacity: 0.9,
   [theme.breakpoints.up('sm')]: {
-    width: width ? width : 'calc(100% / 3 - 16px)',
-    height: 310,
+    width: '100%',
+    height: 350,
   },
-  [theme.breakpoints.up('md')]: {
-    width: width ? width : 'calc(100% / 4 - 16px)',
-    height: 360,
-  },
-  [theme.breakpoints.up('lg')]: {
-    width: width ? width : 'calc(100% / 5 - 16px)',
-  },
-  [theme.breakpoints.up('xl')]: {
-    width: width ? width : 'calc(100% / 6 - 16px)',
-  },
+
   '&:hover': {
     boxShadow: '0px 4px 12px 1px rgba(255, 255, 255, 0.5)',
     '& .scaleImage': {

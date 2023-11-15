@@ -37,15 +37,15 @@ export const productsApi = createApi({
     getRelatedProducts: builder.query({
       query: id => `/api/products/related/${id}`,
     }),
+    getProductsByIds: builder.query({
+      query: ids => `/api/products/ids/${ids}`,
+    }),
+
     getGoods: builder.query({
       query: limit => `/goods?${limit && `_limit=${limit}`}`,
     }),
     getAllGoods: builder.query({
       query: () => '/goods',
-    }),
-
-    getProductsByIds: builder.query({
-      query: params => `/goods?${params}`,
     }),
   }),
 });
@@ -58,8 +58,8 @@ export const {
   useGetAccessoriesQuery,
   useGetRelatedProductsQuery,
   useGetProductByIdQuery,
-
   useGetProductsByIdsQuery,
+
   useGetAllGoodsQuery,
   useGetGoodsQuery,
 } = productsApi;

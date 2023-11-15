@@ -16,8 +16,9 @@ export default function ShoppingCart() {
   const dispatch = useDispatch();
   const { cart } = useCart();
 
-  const searchingParams = cart.map(item => `id=${item.id}&`);
-  const { data = [] } = useGetProductsByIdsQuery(searchingParams.join(''));
+  const ids = cart.map(item => item.id).join(',');
+  console.log(ids);
+  const { data = [] } = useGetProductsByIdsQuery(ids);
 
   const getQuantity = (cart, id) => {
     if (!cart.length) return;

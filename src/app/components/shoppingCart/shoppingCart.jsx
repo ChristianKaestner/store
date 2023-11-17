@@ -17,7 +17,7 @@ export default function ShoppingCart() {
   const { cart } = useCart();
 
   const ids = cart.map(item => item.id).join(',');
-  console.log(ids);
+
   const { data = [] } = useGetProductsByIdsQuery(ids);
 
   const getQuantity = (cart, id) => {

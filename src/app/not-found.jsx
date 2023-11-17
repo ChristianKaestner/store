@@ -7,11 +7,9 @@ export default function NotFound() {
       maxWidth="xl"
       sx={{
         position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        flexGrow: 1,
         minHeight: 500,
         px: 2,
+        pointerEvents: 'none',
       }}
     >
       <Typography

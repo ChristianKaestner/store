@@ -1,76 +1,61 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
-// import axios from 'axios';
-// import { items } from '@/app/utils/tmpData';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+// import { useCart } from '../../hooks/useCart';
 
-// axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'http://localhost:5000';
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unSet() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
+const createAsyncOperation = (method, endpoint) =>
+  createAsyncThunk(`cart/${method}`, async (payload, thunkAPI) => {
+    try {
+      let response;
+      switch (method) {
+        case 'post':
+          response = await axios.post(endpoint, payload);
+          break;
+        case 'patch':
+          response = await axios.patch(endpoint, payload);
+          break;
+        case 'get':
+          response = await axios.get(endpoint);
+          break;
+        case 'delete':
+          await axios.delete(`${endpoint}/${payload}`);
+          break;
+        default:
+          break;
+      }
+      return response ? response.data : null;
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  });
 
-// export const fetchPromotedGoods = createAsyncThunk(
-//   'promoted/goods',
-//   async (_, thunkAPI) => {
-//     try {
-//       // const response = await axios.get('/api/goods');
-//       // return response.data;
-//       return items.filter(item => item.isPromoted);
-//     } catch (e) {
-//       console.log(e);
-//       // return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
+export const addCart = createAsyncOperation('post', '/api/cart');
+export const editCart = createAsyncOperation('patch', '/api/cart');
+export const getCart = createAsyncOperation('get', '/api/cart');
+export const deleteCart = createAsyncOperation('delete', '/api/cart');
 
-// export const fetchGoods = createAsyncThunk(
-//   'goods',
-//   async (_, thunkAPI) => {
-//     try {
-//       // const response = await axios.get('/api/goods');
-//       // return response.data;
-//       return items;
-//     } catch (e) {
-//       console.log(e);
-//       // return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
-
-// export const fetchGoodsById = createAsyncThunk(
-//   'goods/id',
-//   async (id, thunkAPI) => {
-//     try {
-//       // const response = await axios.get(`/api/goods/${id}`);
-//       // return response.data;
-//       return items.find(item => item.id === id);
-//     } catch (e) {
-//       console.log(e);
-//       // return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
-
-// export const addCartRegistered = createAsyncThunk(
-//   'addCart',
-//   async (id, thunkAPI) => {
-//     try {
-//       const response = await axios.post(`/api/cart/${id}`);
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
-
-// export const addCartNotRegistered = id => {};
-
-// export const goodsOperations = {
-//   fetchPromotedGoods,
-//   fetchGoods,
-//   addCartRegistered,
-// };
+export const getCartProducts = createAsyncThunk(
+  'getCartProducts',
+  async (payload, thunkAPI) => {
+    console.log(payload);
+    try {
+      if (payload.length) {
+        const response = await axios.post('/api/products/cart', {
+          items: payload,
+        });
+        return response.data;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  }
+);

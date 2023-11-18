@@ -23,7 +23,7 @@ export default function ProductItem({
   const swiperRef = useRef();
 
   useEffect(() => {
-    cart.find(item => item.id === product.id)
+    cart.find(item => item.productId === product.id)
       ? setInCart(true)
       : setInCart(false);
   }, [cart, product.id]);

@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addCart, editCart, getCartProducts } from './operations';
+import { deleteCart, getCart } from './operations';
 
 const initialState = {
   items: [],
-  isError: false,
+  products: [],
+  error: null,
   isLoading: false,
 };
 
@@ -11,22 +14,24 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     cartAdd(state, action) {
-      const id = action.payload;
-      if (state.items.find(item => item.id === id)) return;
-      const item = { id, quantity: 1 };
+      const productId = action.payload;
+      if (state.items.find(item => item.id === productId)) return;
+      const item = { productId, quantity: 1 };
       state.items.push(item);
     },
 
     cartRemove(state, action) {
-      const id = Number(action.payload);
-      const updatedCart = state.items.filter(item => item.id !== id);
+      const productId = Number(action.payload);
+      const updatedCart = state.items.filter(
+        item => item.productId !== productId
+      );
       state.items = updatedCart;
     },
 
     cartIncreaseQuantity(state, action) {
       const { id, available } = action.payload;
       const updatedCart = state.items.map(item => {
-        if (item.id === id) {
+        if (item.productId === id) {
           return item.quantity >= available
             ? { ...item, quantity: available }
             : { ...item, quantity: item.quantity + 1 };
@@ -38,9 +43,9 @@ export const cartSlice = createSlice({
     },
 
     cartReduceQuantity(state, action) {
-      const id = action.payload;
+      const productId = action.payload;
       const updatedCart = state.items.map(item => {
-        if (item.id === id) {
+        if (item.productId === productId) {
           return item.quantity === 1
             ? { ...item, quantity: 1 }
             : { ...item, quantity: item.quantity - 1 };
@@ -54,19 +59,38 @@ export const cartSlice = createSlice({
     cartSetQuantity(state, action) {
       const { id, value } = action.payload;
 
-      const quantity = () => {
-        const num = Number(value);
-        const rounded = Math.round(num);
-        return isNaN(rounded) ? value : rounded;
-      };
-
       const updatedCart = state.items.map(item => {
-        if (item.id === id) return { ...item, quantity: quantity() };
+        if (item.productId === id) return { ...item, quantity: +value };
         return item;
       });
-      
+
       state.items = updatedCart;
     },
+  },
+  extraReducers(builder) {
+    const asyncActions = [
+      addCart,
+      editCart,
+      deleteCart,
+      getCart,
+      getCartProducts,
+    ];
+    asyncActions.forEach(asyncAction => {
+      builder.addCase(asyncAction.pending, state => {
+        state.isLoading = true;
+      });
+
+      builder.addCase(asyncAction.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      });
+
+      builder.addCase(asyncAction.fulfilled, (state, action) => {
+        state.products = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      });
+    });
   },
 });
 

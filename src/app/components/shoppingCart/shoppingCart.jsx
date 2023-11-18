@@ -1,9 +1,10 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { cartReduceQuantity, cartRemove } from '../../redux/cart/slice';
 import { cartIncreaseQuantity, cartSetQuantity } from '../../redux/cart/slice';
-import { useGetProductsByIdsQuery } from '../../redux/services/products';
+import { getCartProducts } from '../../redux/cart/operations';
 import { useCart } from '../../hooks/useCart';
 import Grid from '@mui/material/Unstable_Grid2';
 import CartItem from './cartItem/cartItem';
@@ -14,17 +15,12 @@ import OnError from '../Notifications/onError';
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
-  const { cart } = useCart();
+  const { cart, cartProducts } = useCart();
 
-  const ids = cart.map(item => item.id).join(',');
-
-  const { data = [] } = useGetProductsByIdsQuery(ids);
-
-  const getQuantity = (cart, id) => {
-    if (!cart.length) return;
-    const product = cart.find(item => item.id === id);
-    return product?.quantity || 1;
-  };
+  useEffect(() => {
+    if (!cart) return;
+    dispatch(getCartProducts(cart));
+  }, [cart]);
 
   const handleDelete = id => {
     dispatch(cartRemove(id));
@@ -39,12 +35,25 @@ export default function ShoppingCart() {
   };
 
   const handleSetQuantity = (id, value) => {
-    dispatch(cartSetQuantity({ id, value }));
+    const getQuantity = () => {
+      const product = cartProducts.find(product => product.id === id);
+      const available = product.available;
+      const num = Number(value);
+      if (!num) return 1;
+      const rounded = Math.round(num);
+      if (rounded > available) {
+        return available;
+      } else {
+        return rounded;
+      }
+    };
+    const quantity = getQuantity();
+    dispatch(cartSetQuantity({ id, value: quantity }));
   };
 
   const shoppingTotal = () => {
-    return data.reduce((sum, current) => {
-      const quantity = getQuantity(cart, current.id);
+    return cartProducts.reduce((sum, current) => {
+      const quantity = current.quantity;
       if (isNaN(quantity) || quantity < 1 || quantity > current.available) {
         return sum + current.price;
       }
@@ -54,7 +63,7 @@ export default function ShoppingCart() {
 
   return (
     <Container>
-      {data.length && cart.length ? (
+      {cartProducts.length ? (
         <>
           <Grid
             component="ul"
@@ -65,8 +74,7 @@ export default function ShoppingCart() {
               mx: 0.1,
             }}
           >
-            {data.map(product => {
-              const quantity = getQuantity(cart, product.id);
+            {cartProducts.map(product => {
               return (
                 <Grid
                   key={product.id}
@@ -75,13 +83,12 @@ export default function ShoppingCart() {
                 >
                   <CartItem
                     product={product}
-                    quantity={quantity}
                     increase={handleIncreaseQuantity}
                     reduce={handleReduceQuantity}
                     change={handleSetQuantity}
                     del={handleDelete}
                   />
-                  {quantity > product.available && (
+                  {product.quantity > product.available && (
                     <OnError
                       text={`Unfortunately we only have ${product.available} items, if
                     you need more please contact us.`}

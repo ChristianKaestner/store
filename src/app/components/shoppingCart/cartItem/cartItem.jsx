@@ -10,17 +10,10 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { InputProps, Column, RowBetween } from '../../../lib/commonStyles';
 import { Card } from './cartItem.styled';
 
-export default function CartItem({
-  product,
-  increase,
-  reduce,
-  change,
-  del,
-  quantity,
-}) {
+export default function CartItem({ product, increase, reduce, change, del }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const { id, title, images, price, available } = product;
+  const { id, title, images, price, available, quantity } = product;
 
   const {
     register,

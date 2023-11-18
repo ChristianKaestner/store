@@ -1,6 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { useCart } from '../../hooks/useCart';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -24,6 +23,7 @@ const createAsyncOperation = (method, endpoint) =>
         default:
           break;
       }
+      console.log(response.data);
       return response ? response.data : null;
     } catch (e) {
       return thunkAPI.rejectWithValue({
@@ -37,11 +37,9 @@ export const addCart = createAsyncOperation('post', '/api/cart');
 export const editCart = createAsyncOperation('patch', '/api/cart');
 export const getCart = createAsyncOperation('get', '/api/cart');
 export const deleteCart = createAsyncOperation('delete', '/api/cart');
-
 export const getCartProducts = createAsyncThunk(
   'getCartProducts',
   async (payload, thunkAPI) => {
-    console.log(payload);
     try {
       if (payload.length) {
         const response = await axios.post('/api/products/cart', {

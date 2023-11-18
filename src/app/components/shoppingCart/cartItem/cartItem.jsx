@@ -26,9 +26,9 @@ export default function CartItem({ product, increase, reduce, change, del }) {
 
   const total = (quantity, price) => {
     if (isNaN(quantity) || quantity < 1 || quantity > available) {
-      return price;
+      return price.toFixed(2);
     }
-    return quantity * price;
+    return (quantity * price).toFixed(2);
   };
 
   const onDelete = () => {

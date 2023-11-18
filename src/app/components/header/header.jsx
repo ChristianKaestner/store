@@ -25,7 +25,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export default function Header() {
   const [login, setLogin] = useState(true);
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
-  const { cart } = useCart();
+  const { cart, cartProducts } = useCart();
   const { isLogin } = useAuth();
 
   const mediaMD = useMediaQuery('(min-width:900px)');

@@ -19,11 +19,10 @@ const createAsyncOperation = (method, endpoint) =>
           break;
         case 'delete':
           await axios.delete(`${endpoint}/${payload}`);
-          break;
+          return payload;
         default:
           break;
       }
-      console.log(response.data);
       return response ? response.data : null;
     } catch (e) {
       return thunkAPI.rejectWithValue({

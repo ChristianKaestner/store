@@ -100,47 +100,45 @@ export default function ShoppingCart() {
 
   return (
     <>
-      {!isLoading && (
-        <Container>
-          {cartProducts?.length ? (
-            <>
-              <Grid
-                component="ul"
-                container
-                columnSpacing={1}
-                sx={{ listStyle: 'none' }}
-              >
-                {cartProducts.map(product => {
-                  return (
-                    <Grid
-                      key={product.id}
-                      component="li"
-                      sx={{ width: '100%', height: 'auto', mt: 1 }}
-                    >
-                      <CartItem
-                        product={product}
-                        increase={handleIncreaseQuantity}
-                        reduce={handleReduceQuantity}
-                        change={handleSetQuantity}
-                        del={handleDelete}
-                      />
-                      {product.quantity > product.available && (
-                        <OnError
-                          text={`Unfortunately we only have ${product.available} items, if
+      <Container>
+        {cartProducts?.length ? (
+          <>
+            <Grid
+              component="ul"
+              container
+              columnSpacing={1}
+              sx={{ listStyle: 'none' }}
+            >
+              {cartProducts.map(product => {
+                return (
+                  <Grid
+                    key={product.id}
+                    component="li"
+                    sx={{ width: '100%', height: 'auto', mt: 1 }}
+                  >
+                    <CartItem
+                      product={product}
+                      increase={handleIncreaseQuantity}
+                      reduce={handleReduceQuantity}
+                      change={handleSetQuantity}
+                      del={handleDelete}
+                    />
+                    {product.quantity > product.available && (
+                      <OnError
+                        text={`Unfortunately we only have ${product.available} items, if
                     you need more please contact us.`}
-                        />
-                      )}
-                    </Grid>
-                  );
-                })}
-              </Grid>
-              <TotalPrice total={shoppingTotal()} />
-            </>
-          ) : (
-            <EmptyCart />
-          )}
-        </Container>
-      )}
+                      />
+                    )}
+                  </Grid>
+                );
+              })}
+            </Grid>
+            <TotalPrice total={shoppingTotal()} />
+          </>
+        ) : (
+          <EmptyCart />
+        )}
+      </Container>
     </>
   );
 }

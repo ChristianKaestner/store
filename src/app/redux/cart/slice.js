@@ -68,13 +68,21 @@ export const cartSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    const asyncActions = [
-      addCart,
-      editCart,
-      deleteCart,
-      getCart,
-      getCartProducts,
-    ];
+    const asyncActions = [addCart, editCart, getCart, getCartProducts];
+    builder
+      .addCase(deleteCart.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteCart.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(deleteCart.fulfilled, (state, action) => {
+        const productId = action.payload;
+        state.products = state.products.filter(
+          product => product.id !== productId
+        );
+      });
     asyncActions.forEach(asyncAction => {
       builder.addCase(asyncAction.pending, state => {
         state.isLoading = true;

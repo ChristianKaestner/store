@@ -1,6 +1,9 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useAuth } from '@/app/hooks/useAuth';
+import { useCart } from '@/app/hooks/useCart';
+import { addCart, deleteCart } from '@/app/redux/cart/operations';
 import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
 import CardSwiper from './cardSwiper/cardSwiper';
@@ -9,12 +12,15 @@ import { Card } from './productItem.styled';
 
 export default function ProductItem({
   product,
-  cart,
   favorites,
   component = 'li',
   mb = 16,
 }) {
   const [inCart, setInCart] = useState(false);
+
+  const { cart, cartProducts } = useCart();
+  const { isLogin } = useAuth();
+
   const { id, images, promotion, status } = product;
   const isover = status === 'Out of stock' ? true : false;
 
@@ -23,19 +29,29 @@ export default function ProductItem({
   const swiperRef = useRef();
 
   useEffect(() => {
-    cart.find(item => item.productId === product.id)
-      ? setInCart(true)
-      : setInCart(false);
-  }, [cart, product.id]);
-
-  const handleCart = () => {
-    if (isover) return;
-    if (cart.find(item => item.id === id)) {
-      setInCart(true);
-      dispatch(cartRemove(id));
+    if (isLogin) {
+      setInCart(!!cartProducts.find(product => product.id === id));
     } else {
-      setInCart(false);
+      setInCart(!!cart.find(item => item.productId === product.id));
+    }
+  }, [cart, cartProducts, isLogin, product.id]);
+
+  const handleAddCart = () => {
+    if (isover) return;
+    setInCart(true);
+    if (isLogin) {
+      const payload = { items: [{ productId: id, quantity: 1 }] };
+      dispatch(addCart(payload));
+    } else {
       dispatch(cartAdd(id));
+    }
+  };
+  const handleDeleteCart = () => {
+    setInCart(false);
+    if (isLogin) {
+      dispatch(deleteCart(id));
+    } else {
+      dispatch(cartRemove(id));
     }
   };
 
@@ -76,7 +92,8 @@ export default function ProductItem({
         product={product}
         path={`/${product.category}/${product.id}`}
         inCart={inCart}
-        handleCart={handleCart}
+        handleAddCart={handleAddCart}
+        handleDeleteCart={handleDeleteCart}
         openCart={() => dispatch(toggleCart(true))}
       />
     </Card>

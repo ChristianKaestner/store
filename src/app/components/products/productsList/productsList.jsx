@@ -1,7 +1,7 @@
 'use client';
 
 import ProductsItem from '../productsItem/productItem';
-import { useCart } from '@/app/hooks/useCart';
+
 import { Box, Typography } from '@mui/material';
 import Skeleton from '../../skeleton/skeleton';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -16,8 +16,6 @@ export default function ProductsList({
   favorites,
   isLoading,
 }) {
-  const { cart } = useCart();
-
   return (
     <Box component="section" sx={{ width: '100%' }}>
       <Typography component={component} sx={visuallyHidden}>
@@ -47,7 +45,6 @@ export default function ProductsList({
                   >
                     <ProductsItem
                       product={productWithCats}
-                      cart={cart}
                       favorites={favorites}
                       component="div"
                       mb={0}

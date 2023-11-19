@@ -8,7 +8,8 @@ import { Block, IconAddCart, Description } from './cardDescription.styled';
 export default function CardDescription({
   product,
   inCart,
-  handleCart,
+  handleAddCart,
+  handleDeleteCart,
   openCart,
   path,
 }) {
@@ -24,9 +25,12 @@ export default function CardDescription({
         <Price component="p" price={price} />
 
         {inCart ? (
-          <SpeedDialCart handleCart={handleCart} openCart={openCart} />
+          <SpeedDialCart
+            handleDeleteCart={handleDeleteCart}
+            openCart={openCart}
+          />
         ) : (
-          <IconButton onClick={handleCart}>
+          <IconButton onClick={handleAddCart}>
             <IconAddCart />
           </IconButton>
         )}

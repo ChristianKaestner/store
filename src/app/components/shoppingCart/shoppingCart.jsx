@@ -20,10 +20,6 @@ export default function ShoppingCart() {
   const { isLogin } = useAuth();
 
   useEffect(() => {
-    console.log(cartProducts);
-  }, [cartProducts]);
-
-  useEffect(() => {
     if (isLogin) {
       dispatch(getCart());
     } else {

@@ -18,7 +18,7 @@ export default function ProductItem({
 }) {
   const [inCart, setInCart] = useState(false);
 
-  const { cart, cartProducts } = useCart();
+  const { cart, cartProducts, isLoading } = useCart();
   const { isLogin } = useAuth();
 
   const { id, images, promotion, status } = product;
@@ -30,11 +30,11 @@ export default function ProductItem({
 
   useEffect(() => {
     if (isLogin) {
-      setInCart(!!cartProducts.find(product => product.id === id));
+      setInCart(!!cartProducts.find(i => i.id === id));
     } else {
-      setInCart(!!cart.find(item => item.productId === product.id));
+      setInCart(!!cart.find(i => i.productId === id));
     }
-  }, [cart, cartProducts, isLogin, product.id]);
+  }, [cart, cartProducts, isLogin, id, isLoading]);
 
   const handleAddCart = () => {
     if (isover) return;

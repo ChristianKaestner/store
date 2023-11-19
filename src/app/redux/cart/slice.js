@@ -68,8 +68,34 @@ export const cartSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    const asyncActions = [addCart, editCart, getCart, getCartProducts];
+    const asyncActions = [getCart, getCartProducts];
     builder
+      .addCase(addCart.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(addCart.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(addCart.fulfilled, (state, action) => {
+        state.products = [...state.products, ...action.payload];
+      })
+      .addCase(editCart.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(editCart.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(editCart.fulfilled, (state, action) => {
+        const updatedProduct = action.payload[0];
+        const index = state.products.findIndex(
+          product => product.id === updatedProduct.id
+        );
+        if (index !== -1) {
+          state.products[index] = updatedProduct;
+        }
+      })
       .addCase(deleteCart.pending, state => {
         state.isLoading = true;
       })

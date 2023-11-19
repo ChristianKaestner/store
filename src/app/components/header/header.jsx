@@ -28,6 +28,8 @@ export default function Header() {
   const { cart, cartProducts } = useCart();
   const { isLogin } = useAuth();
 
+  const cartQuantity = isLogin ? cartProducts.length : cart.length;
+
   const mediaMD = useMediaQuery('(min-width:900px)');
 
   const dispatch = useDispatch();
@@ -62,7 +64,7 @@ export default function Header() {
               />
               <CartIcon
                 onOpenCartModal={() => dispatch(toggleCart(true))}
-                totalProducts={cart.length}
+                totalProducts={cartQuantity}
               />
             </Box>
           </Toolbar>

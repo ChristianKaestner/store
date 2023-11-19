@@ -16,7 +16,7 @@ import OnError from '../Notifications/onError';
 
 export default function ShoppingCart() {
   const dispatch = useDispatch();
-  const { cart, cartProducts, isLoading } = useCart();
+  const { cart, cartProducts } = useCart();
   const { isLogin } = useAuth();
 
   useEffect(() => {

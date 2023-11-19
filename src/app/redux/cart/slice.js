@@ -66,6 +66,10 @@ export const cartSlice = createSlice({
 
       state.items = updatedCart;
     },
+
+    clearCart(state) {
+      state.items = [];
+    },
   },
   extraReducers(builder) {
     const asyncActions = [getCart, getCartProducts];
@@ -135,4 +139,5 @@ export const {
   cartIncreaseQuantity,
   cartReduceQuantity,
   cartSetQuantity,
+  clearCart,
 } = cartSlice.actions;

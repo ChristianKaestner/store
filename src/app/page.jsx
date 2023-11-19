@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Hero images={images} />
-      <Categories categories={categories} />
+      <Categories />
       <PromotedProducts />
     </>
   );

@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { EffectFade } from 'swiper/modules';
 import { SwiperContainer } from './swiper.styled';
-import useMediaQuery from '@mui/material/useMediaQuery';
+// import useMediaQuery from '@mui/material/useMediaQuery';
 import './style.css';
 import 'swiper/swiper-bundle.css';
 
@@ -13,7 +13,7 @@ export default function ProductSwiper({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const sliderRef = useRef(null);
   const { images, title } = product;
-  const media = useMediaQuery('(min-width:900px)');
+  // const media = useMediaQuery('(min-width:900px)');
 
   useEffect(() => {
     const { swiper } = sliderRef.current;

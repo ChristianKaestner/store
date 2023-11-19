@@ -1,4 +1,6 @@
 'use client';
+import { useState } from 'react';
+import ReactPlayer from 'react-player';
 import { Montserrat_Subrayada } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,19 +14,56 @@ const montserrat = Montserrat_Subrayada({
   subsets: ['latin'],
 });
 
-export default function Categories({ categories }) {
+export const categories = [
+  {
+    id: 1,
+    image: '/cat-hookahs.png',
+    video: '/hookah.mp4',
+    name: 'Hookahs',
+    url: '/hookahs',
+  },
+  {
+    id: 2,
+    image: '/cat-tobacco.png',
+    video: '/tobacco.mp4',
+    name: 'Tobacco',
+    url: '/tobacco',
+  },
+  {
+    id: 3,
+    image: '/cat-coals.png',
+    video: '/coal.mp4',
+    name: 'Coals',
+    url: '/coals',
+  },
+  {
+    id: 4,
+    image: '/cat-bowls.png',
+    video: '/accessory.mp4',
+    name: 'Accessories',
+    url: '/accessories',
+  },
+];
+
+export default function Categories() {
+  const [hoveredVideo, setHoveredVideo] = useState(null);
   return (
     <Container component="section">
       <Typography component="h2" sx={visuallyHidden}>
         Best hookah price, top quality tobaссko, excelent coal & more
       </Typography>
       <CatsBlock component="ul">
-        {categories.map(category => {
+        {categories.map((category, index) => {
           return (
-            <CatsItem component="li" key={category.id}>
+            <CatsItem
+              component="li"
+              key={category.id}
+              onMouseEnter={() => setHoveredVideo(index)}
+              onMouseLeave={() => setHoveredVideo(null)}
+            >
               <Link href={category.name.toLowerCase()}>
                 <Card>
-                  <Image
+                  {/* <Image
                     className="scaleImage"
                     style={{
                       transition: 'transform 500ms ease-in-out',
@@ -34,12 +73,22 @@ export default function Categories({ categories }) {
                     fill={true}
                     alt="image"
                     sizes="100%"
+                  /> */}
+
+                  <ReactPlayer
+                    className="scaleVideo"
+                    url={category.video}
+                    playing={hoveredVideo === index}
+                    muted
+                    width="100%"
+                    height="100%"
+                    loop
                   />
-                  <Box sx={{ zIndex: 2 }}>
+                  {/* <Box sx={{ zIndex: 2 }}>
                     <CatsText component="h3" className={montserrat.className}>
                       {category.name.toUpperCase()}
                     </CatsText>
-                  </Box>
+                  </Box> */}
                 </Card>
               </Link>
             </CatsItem>

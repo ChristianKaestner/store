@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Montserrat_Subrayada } from 'next/font/google';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import { Container, Card, CatsBlock, CatsItem } from './categories.styled';
 import { CatsText } from './categories.styled';
@@ -47,6 +47,7 @@ export const categories = [
 
 export default function Categories() {
   const [hoveredVideo, setHoveredVideo] = useState(null);
+
   return (
     <Container component="section">
       <Typography component="h2" sx={visuallyHidden}>
@@ -63,18 +64,6 @@ export default function Categories() {
             >
               <Link href={category.name.toLowerCase()}>
                 <Card>
-                  {/* <Image
-                    className="scaleImage"
-                    style={{
-                      transition: 'transform 500ms ease-in-out',
-                      objectFit: 'cover',
-                    }}
-                    src={category.image}
-                    fill={true}
-                    alt="image"
-                    sizes="100%"
-                  /> */}
-
                   <ReactPlayer
                     className="scaleVideo"
                     url={category.video}
@@ -84,11 +73,22 @@ export default function Categories() {
                     height="100%"
                     loop
                   />
-                  {/* <Box sx={{ zIndex: 2 }}>
-                    <CatsText component="h3" className={montserrat.className}>
-                      {category.name.toUpperCase()}
-                    </CatsText>
-                  </Box> */}
+
+                  {/* <Image
+                      className="scaleImage"
+                      style={{
+                        transition: 'transform 500ms ease-in-out',
+                        objectFit: 'cover',
+                      }}
+                      src={category.image}
+                      fill={true}
+                      alt="image"
+                      sizes="100%"
+                    /> */}
+
+                  <CatsText component="h3" className={montserrat.className}>
+                    {category.name.toUpperCase()}
+                  </CatsText>
                 </Card>
               </Link>
             </CatsItem>

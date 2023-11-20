@@ -19,6 +19,7 @@ export const CatsItem = styled(Box)({
 });
 
 export const CatsText = styled(Typography)(({ theme }) => ({
+  position: 'absolute',
   color: theme.palette.primary.dim,
 
   [theme.breakpoints.up('xs')]: {

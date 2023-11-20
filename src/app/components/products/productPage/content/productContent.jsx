@@ -1,3 +1,9 @@
+import { useDispatch } from 'react-redux';
+import { useAuth } from '@/app/hooks/useAuth';
+import { useCart } from '@/app/hooks/useCart';
+import { toggleCart } from '@/app/redux/modal/slice';
+import { addCart } from '@/app/redux/cart/operations';
+import { cartAdd } from '@/app/redux/cart/slice';
 import { Box, Typography, Paper } from '@mui/material';
 import ProductRating from '../../productsItem/rating/rating';
 import FavoriteIcon from '../../productsItem/favoriteIcon/favoriteIcon';
@@ -14,6 +20,25 @@ export default function ProductContent({ product, favorites }) {
   const { brand, title, description, colors, price } = product;
   const { status, id } = product;
   const isover = status === 'Out of stock' ? true : false;
+
+  const { cartProducts } = useCart();
+  const { isLogin } = useAuth();
+
+  const dispatch = useDispatch();
+
+  const handleCart = () => {
+    if (isLogin) {
+      const product = cartProducts.filter(product => product.id === id);
+      console.log(product);
+      if (!product.length) {
+        const payload = { items: [{ productId: id, quantity: 1 }] };
+        dispatch(addCart(payload));
+      }
+    } else {
+      dispatch(cartAdd(id));
+    }
+    dispatch(toggleCart(true));
+  };
   return (
     <Box>
       <Paper
@@ -52,7 +77,7 @@ export default function ProductContent({ product, favorites }) {
           <BalanceStatus status={status} />
         </Box>
         <BlockBtn>
-          <BuyButton id={id} isover={isover} />
+          <BuyButton id={id} isover={isover} handleCart={handleCart} />
           <FavoriteIcon favorites={favorites} id={id} />
         </BlockBtn>
       </PaperStyled>

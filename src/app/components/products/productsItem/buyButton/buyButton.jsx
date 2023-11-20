@@ -1,17 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { toggleCart } from '@/app/redux/modal/slice';
-import { cartAdd } from '@/app/redux/cart/slice';
 import { ButtonStyled } from './buyButton.styled';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-export default function BuyButton({ id, width = 160, isover }) {
-  const dispatch = useDispatch();
-  const handleCart = () => {
-    //need to transmit current color to cart
-    dispatch(cartAdd(id));
-    dispatch(toggleCart(true));
-  };
-
+export default function BuyButton({ width = 160, isover, handleCart }) {
   return (
     <ButtonStyled
       width={width}

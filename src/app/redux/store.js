@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/slice';
 import cartSlice from './cart/slice';
+import favoriteSlice from './favorite/slice';
 import modalSlice from './modal/slice';
 import filtersSlice from './filters/slice';
 import { productsApi } from './services/products';
@@ -32,6 +33,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authSlice),
     cart: persistReducer(cartPersistConfig, cartSlice),
+    favorite: favoriteSlice,
     modal: modalSlice,
     filters: filtersSlice,
     [productsApi.reducerPath]: productsApi.reducer,

@@ -83,6 +83,8 @@ export const cartSlice = createSlice({
       })
       .addCase(addCart.fulfilled, (state, action) => {
         state.products = [...state.products, ...action.payload];
+        state.isLoading = false;
+        state.error = null;
       })
       .addCase(editCart.pending, state => {
         state.isLoading = true;
@@ -99,6 +101,8 @@ export const cartSlice = createSlice({
         if (index !== -1) {
           state.products[index] = updatedProduct;
         }
+        state.isLoading = false;
+        state.error = null;
       })
       .addCase(deleteCart.pending, state => {
         state.isLoading = true;
@@ -112,6 +116,8 @@ export const cartSlice = createSlice({
         state.products = state.products.filter(
           product => product.id !== productId
         );
+        state.isLoading = false;
+        state.error = null;
       });
     asyncActions.forEach(asyncAction => {
       builder.addCase(asyncAction.pending, state => {

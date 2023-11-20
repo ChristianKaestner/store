@@ -1,7 +1,6 @@
 'use client';
 
 import ProductsItem from '../productsItem/productItem';
-
 import { Box, Typography } from '@mui/material';
 import Skeleton from '../../skeleton/skeleton';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -13,8 +12,8 @@ export default function ProductsList({
   component = 'h2',
   title,
   products,
-  favorites,
   isLoading,
+  isFP = false,
 }) {
   return (
     <Box component="section" sx={{ width: '100%' }}>
@@ -36,16 +35,15 @@ export default function ProductsList({
                     xs={12}
                     s={6}
                     sm={4}
-                    md={3}
-                    lg={2.4}
-                    xl={2}
+                    md={isFP ? 4 : 3}
+                    lg={isFP ? 3 : 2.4}
+                    xl={isFP ? 3 : 2}
                     component="li"
                     sx={{ listStyle: 'none' }}
                     key={product.id}
                   >
                     <ProductsItem
                       product={productWithCats}
-                      favorites={favorites}
                       component="div"
                       mb={0}
                     />

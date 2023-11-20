@@ -6,12 +6,10 @@ import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
 import { Container, BlockSwiper, BlockContent } from './productPage.styled';
-import { tmpUser } from '@/app/lib/tmpData';
 
 export default function ProductPage() {
   const { slug } = useParams();
   const { data = [], isLoading } = useGetProductByIdQuery(slug);
-  const { favorites } = tmpUser;
 
   return (
     <>
@@ -23,7 +21,7 @@ export default function ProductPage() {
               <ProductSwiper product={data} />
             </BlockSwiper>
             <BlockContent component="section">
-              <ProductContent product={data} favorites={favorites} />
+              <ProductContent product={data} />
             </BlockContent>
           </Container>
           <RelatedProducts id={slug} />

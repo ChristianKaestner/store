@@ -2,7 +2,6 @@ import Hero from './components/hero/hero';
 import Categories from './components/categories/categories';
 import PromotedProducts from '@/app/components/products/promotedProducts/promotedProducts';
 import { images } from './lib/tmpData';
-import { categories } from '@/app/lib/tmpData';
 
 export const metadata = {
   title: 'Home',

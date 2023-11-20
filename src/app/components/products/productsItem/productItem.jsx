@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAuth } from '@/app/hooks/useAuth';
 import { useCart } from '@/app/hooks/useCart';
+import { useFavorite } from '@/app/hooks/useFavorite';
 import { addCart, deleteCart } from '@/app/redux/cart/operations';
 import { toggleCart } from '@/app/redux/modal/slice';
 import { cartAdd, cartRemove } from '@/app/redux/cart/slice';
@@ -10,22 +11,16 @@ import CardSwiper from './cardSwiper/cardSwiper';
 import CardDescription from './cardDescription/cardDescription';
 import { Card } from './productItem.styled';
 
-export default function ProductItem({
-  product,
-  favorites,
-  component = 'li',
-  mb = 16,
-}) {
+export default function ProductItem({ product, component = 'li', mb = 16 }) {
   const [inCart, setInCart] = useState(false);
-
   const { cart, cartProducts, isLoading } = useCart();
   const { isLogin } = useAuth();
-
+  const { favoriteIds = [] } = useFavorite();
   const { id, images, promotion, status } = product;
   const isover = status === 'Out of stock' ? true : false;
+  const isFavorite = favoriteIds.includes(id);
 
   const dispatch = useDispatch();
-
   const swiperRef = useRef();
 
   useEffect(() => {
@@ -86,6 +81,7 @@ export default function ProductItem({
         swiperRef={swiperRef}
         path={`/${product.category}/${product.id}`}
         id={id}
+        isFavorite={isFavorite}
       />
 
       <CardDescription

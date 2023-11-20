@@ -1,33 +1,32 @@
 'use client';
-
+import { useEffect } from 'react';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import ProductsList from '@/app/components/products/productsList/productsList';
-import { useGetAllGoodsQuery } from '@/app/redux/services/goods';
+import { useGetFavoriteProductsQuery } from '@/app/redux/services/products';
 import { useCart } from '@/app/hooks/useCart';
-import { useMediaQuery } from '@mui/material';
-import { profileFavoritePerRow } from '@/app/lib/functions';
+import { useAuth } from '@/app/hooks/useAuth';
+import { useFavorite } from '@/app/hooks/useFavorite';
 import withAuth from '@/app/components/auth/withAuth';
-import { tmpUser } from '@/app/lib/tmpData';
 
 function AccountFavorites() {
-  const { favorites } = tmpUser;
-  const { data = [], isLoading } = useGetAllGoodsQuery();
+  const { token } = useAuth();
+  const { favoriteIds } = useFavorite();
+  const { data = [], isLoading, refetch } = useGetFavoriteProductsQuery(token);
   const { cart } = useCart();
-  const favoritesGoods = data.filter(product => favorites.includes(product.id));
-  const lg = useMediaQuery('(min-width:1200px)');
-  const md = useMediaQuery('(min-width:600px)');
-  const sm = useMediaQuery('(min-width:600px)');
-  const width = profileFavoritePerRow(lg, md, sm);
+
+  useEffect(() => {
+    refetch();
+  }, [favoriteIds]);
 
   return (
     <>
-      <PageTitle title="Favorites goods" />
+      <PageTitle title="Favorite products" />
       <ProductsList
-        goods={favoritesGoods}
+        products={data}
         isLoading={isLoading}
         cart={cart}
         skeleton={12}
-        width={width}
+        isFP={true}
       />
     </>
   );

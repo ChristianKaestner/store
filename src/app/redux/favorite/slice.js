@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addFavorite, deleteFavorite } from './operations';
-import { getFavorite, getFavoriteProducts } from './operations';
+import { getFavorite } from './operations';
 
 const initialState = {
   ids: [],
-  products: [],
   error: null,
   isLoading: false,
 };
@@ -23,7 +22,7 @@ export const favoriteSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addFavorite.fulfilled, (state, action) => {
-        state.ids = [...state.ids, ...action.payload];
+        state.ids = [...state.ids, action.payload.productId];
         state.isLoading = false;
         state.error = null;
       })
@@ -50,18 +49,6 @@ export const favoriteSlice = createSlice({
       })
       .addCase(getFavorite.fulfilled, (state, action) => {
         state.ids = action.payload;
-        state.isLoading = false;
-        state.error = null;
-      })
-      .addCase(getFavoriteProducts.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(getFavoriteProducts.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(getFavoriteProducts.fulfilled, (state, action) => {
-        state.products = action.payload;
         state.isLoading = false;
         state.error = null;
       });

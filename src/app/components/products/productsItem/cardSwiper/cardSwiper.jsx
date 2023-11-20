@@ -12,7 +12,14 @@ import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
+export default function CardSwiper({
+  promotion,
+  images,
+  swiperRef,
+  path,
+  id,
+  isFavorite,
+}) {
   const color = chipColor(promotion);
 
   return (
@@ -37,7 +44,7 @@ export default function CardSwiper({ promotion, images, swiperRef, path, id }) {
         {promotion.promotion !== 'none' && (
           <ChipStyled label={promotion.promotion} color={color} />
         )}
-        <FavoriteIcon id={id} />
+        <FavoriteIcon id={id} isFavorite={isFavorite} />
         {images.map((image, index) => {
           return (
             <SwiperSlide key={image}>

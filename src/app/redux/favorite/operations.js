@@ -9,10 +9,7 @@ const createAsyncOperation = (method, endpoint) =>
       let response;
       switch (method) {
         case 'post':
-          response = await axios.post(endpoint, payload);
-          break;
-        case 'getProducts':
-          response = await axios.patch(endpoint);
+          response = await axios.post(`${endpoint}/${payload}`);
           break;
         case 'get':
           response = await axios.get(endpoint);
@@ -33,9 +30,5 @@ const createAsyncOperation = (method, endpoint) =>
   });
 
 export const addFavorite = createAsyncOperation('post', '/api/favorites');
-export const getFavoriteProducts = createAsyncOperation(
-  'getProducts',
-  '/api/products/favorites'
-);
 export const getFavorite = createAsyncOperation('get', '/api/favorites');
 export const deleteFavorite = createAsyncOperation('delete', '/api/favorites');

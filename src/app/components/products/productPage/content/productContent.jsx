@@ -4,6 +4,7 @@ import { useCart } from '@/app/hooks/useCart';
 import { toggleCart } from '@/app/redux/modal/slice';
 import { addCart } from '@/app/redux/cart/operations';
 import { cartAdd } from '@/app/redux/cart/slice';
+import { useFavorite } from '@/app/hooks/useFavorite';
 import { Box, Typography, Paper } from '@mui/material';
 import ProductRating from '../../productsItem/rating/rating';
 import FavoriteIcon from '../../productsItem/favoriteIcon/favoriteIcon';
@@ -16,10 +17,12 @@ import PageTitle from '@/app/components/pageTitle/pageTitle';
 import { Block, BlockBtn, PaperStyled } from './productContent.styled';
 import { RowCenter, Span } from '@/app/lib/commonStyles';
 
-export default function ProductContent({ product, favorites }) {
+export default function ProductContent({ product }) {
   const { brand, title, description, colors, price } = product;
   const { status, id } = product;
+  const { favoriteIds = [] } = useFavorite();
   const isover = status === 'Out of stock' ? true : false;
+  const isFavorite = favoriteIds.includes(id);
 
   const { cartProducts } = useCart();
   const { isLogin } = useAuth();
@@ -78,7 +81,7 @@ export default function ProductContent({ product, favorites }) {
         </Box>
         <BlockBtn>
           <BuyButton id={id} isover={isover} handleCart={handleCart} />
-          <FavoriteIcon favorites={favorites} id={id} />
+          <FavoriteIcon isFavorite={isFavorite} id={id} />
         </BlockBtn>
       </PaperStyled>
     </Box>

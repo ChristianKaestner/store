@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '@/app/redux/auth/operations';
 import { getCart, addCart } from '@/app/redux/cart/operations';
+import { getFavorite } from '@/app/redux/favorite/operations';
 import { useAuth } from '@/app/hooks/useAuth';
 import { useCart } from '@/app/hooks/useCart';
 import { clearCart } from '@/app/redux/cart/slice';
@@ -39,6 +40,7 @@ export default function RefreshUser() {
 
   useEffect(() => {
     if (isLogin) {
+      dispatch(getFavorite());
       syncCart();
     }
   }, [isLogin]);

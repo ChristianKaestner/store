@@ -1,4 +1,3 @@
-import { tmpUser } from '@/app/lib/tmpData';
 import ProductsList from '../productsList/productsList';
 import Sidebar from '@/app/components/sidebar/sidebar';
 import SortFilter from '@/app/components/filters/sortfilter/sortfilter';
@@ -17,7 +16,6 @@ export default function CommonProducts({
   limit,
   multiplier,
 }) {
-  const { favorites } = tmpUser;
   const isDrawer = useMediaQuery('(max-width:1199px)');
   const isPaginated =
     data.counts.total > limit && data.products.length !== data.counts.total;
@@ -42,7 +40,6 @@ export default function CommonProducts({
         <Sidebar filter={data.counts} />
         <ProductsList
           products={data.products}
-          favorites={favorites}
           skeleton={12}
           component="h4"
           title={title}

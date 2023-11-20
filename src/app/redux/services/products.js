@@ -1,8 +1,12 @@
+'use client';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://localhost:5000/',
+  }),
   endpoints: builder => ({
     getPromoted: builder.query({
       query: () => '/api/products/promotion',
@@ -37,6 +41,14 @@ export const productsApi = createApi({
     getRelatedProducts: builder.query({
       query: id => `/api/products/related/${id}`,
     }),
+    getFavoriteProducts: builder.query({
+      query: token => ({
+        url: '/api/products/favorites',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
 
     getGoods: builder.query({
       query: limit => `/goods?${limit && `_limit=${limit}`}`,
@@ -55,6 +67,7 @@ export const {
   useGetAccessoriesQuery,
   useGetRelatedProductsQuery,
   useGetProductByIdQuery,
+  useGetFavoriteProductsQuery,
 
   useGetAllGoodsQuery,
   useGetGoodsQuery,

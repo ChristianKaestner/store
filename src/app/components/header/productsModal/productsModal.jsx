@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Tabs, Tab, Box } from '@mui/material';
 import ProductsItemModal from './productsItemModal/productsItemModal';
-// import { useGetCategoriesQuery } from '../../../redux/services/categories';
+import { useGetProductTabsQuery } from '@/app/redux/services/products';
 
 export default function ProductsModal({ handleCloseModal }) {
   const [value, setValue] = useState(0);
-  // const { data = [] } = useGetCategoriesQuery();
-  const data = [];
+  const { data = [] } = useGetProductTabsQuery();
+
   const handleChange = index => {
     setValue(index);
   };
@@ -34,23 +34,23 @@ export default function ProductsModal({ handleCloseModal }) {
         }}
         sx={{ borderRight: 1, borderColor: 'divider', minWidth: 160 }}
       >
-        {data.length &&
+        {data.length > 0 &&
           data.map((category, index) => {
             return (
               <Tab
                 onMouseEnter={handleChange.bind(this, index)}
                 label={category.name}
-                key={category.id}
+                key={category.name}
                 sx={{ borderRadius: 1 }}
               />
             );
           })}
       </Tabs>
-      {data.length &&
+      {data.length > 0 &&
         data.map((category, index) => {
           return (
             <ProductsItemModal
-              key={category.id}
+              key={category.name}
               value={value}
               index={index}
               category={category}

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
-import { catSlug } from '../../../../lib/functions.js';
+// import { catSlug } from '../../../../lib/functions.js';
 
 export default function ProductsItemModal({
   value,
@@ -8,7 +8,8 @@ export default function ProductsItemModal({
   category,
   handleCloseModal,
 }) {
-  const { subCategory, name } = category;
+  const { name, brands } = category;
+
   return (
     <Box
       role="tabpanel"
@@ -55,11 +56,15 @@ export default function ProductsItemModal({
             height: '88%',
           }}
         >
-          {subCategory &&
-            subCategory.map(item => {
+          {brands.length > 0 &&
+            brands.map(item => {
+              const brand = item.toLowerCase().split(' ').join('+');
               return (
-                <Box component="li" key={item.id}>
-                  <Link href={catSlug(category, item)} target="_self">
+                <Box component="li" key={item}>
+                  <Link
+                    href={`/${category.name}?brand=${brand}`}
+                    target="_self"
+                  >
                     <Typography
                       sx={{
                         color: 'primary.dim',
@@ -70,7 +75,7 @@ export default function ProductsItemModal({
                         },
                       }}
                     >
-                      {item.name}
+                      {item}
                     </Typography>
                   </Link>
                 </Box>

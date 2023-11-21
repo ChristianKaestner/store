@@ -17,6 +17,7 @@ export async function generateMetadata({ params }) {
 export default function Review() {
   return (
     <>
+      //перенести ReviewTitle в Reviews
       <Breadcrumbs />
       <ReviewTitle />
       <Reviews />

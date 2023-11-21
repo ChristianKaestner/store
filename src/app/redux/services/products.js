@@ -49,12 +49,8 @@ export const productsApi = createApi({
         },
       }),
     }),
-
-    getGoods: builder.query({
-      query: limit => `/goods?${limit && `_limit=${limit}`}`,
-    }),
-    getAllGoods: builder.query({
-      query: () => '/goods',
+    getProductTabs: builder.query({
+      query: () => '/api/products/tabs',
     }),
   }),
 });
@@ -68,7 +64,5 @@ export const {
   useGetRelatedProductsQuery,
   useGetProductByIdQuery,
   useGetFavoriteProductsQuery,
-
-  useGetAllGoodsQuery,
-  useGetGoodsQuery,
+  useGetProductTabsQuery,
 } = productsApi;

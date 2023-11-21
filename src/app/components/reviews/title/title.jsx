@@ -1,6 +1,6 @@
 'use client';
 import { useParams } from 'next/navigation';
-import { useGetProductByIdQuery } from '@/app/redux/services/goods';
+import { useGetProductByIdQuery } from '@/app/redux/services/products';
 import { Typography } from '@mui/material';
 
 export default function ReviewTitle() {

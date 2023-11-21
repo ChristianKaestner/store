@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useGetProductByIdQuery } from '@/app/redux/services/goods';
+import { useGetProductByIdQuery } from '@/app/redux/services/products';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
 import { useModal } from '@/app/hooks/useModal';

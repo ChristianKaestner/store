@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { FormControl, OutlinedInput, Button } from '@mui/material';
 import { InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 export default function SearchForm() {
   const { register, getValues } = useForm();

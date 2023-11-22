@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Tabs, Tab, Box } from '@mui/material';
 import ProductsItemModal from './productsItemModal/productsItemModal';
 import { useGetProductTabsQuery } from '@/app/redux/services/products';
+import { Container, TabStyled, TabsStyled } from './productsModal.styled';
 
 export default function ProductsModal({ handleCloseModal }) {
   const [value, setValue] = useState(0);
@@ -12,16 +12,8 @@ export default function ProductsModal({ handleCloseModal }) {
   };
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-        bgcolor: 'primary.nutral',
-        display: 'flex',
-        height: 'calc(100% - 64px)',
-        overflow: 'auto',
-      }}
-    >
-      <Tabs
+    <Container>
+      <TabsStyled
         orientation="vertical"
         variant="scrollable"
         value={value}
@@ -32,20 +24,18 @@ export default function ProductsModal({ handleCloseModal }) {
             borderRadius: 4,
           },
         }}
-        sx={{ borderRight: 1, borderColor: 'divider', minWidth: 160 }}
       >
         {data.length > 0 &&
           data.map((category, index) => {
             return (
-              <Tab
+              <TabStyled
                 onMouseEnter={handleChange.bind(this, index)}
                 label={category.name}
                 key={category.name}
-                sx={{ borderRadius: 1 }}
               />
             );
           })}
-      </Tabs>
+      </TabsStyled>
       {data.length > 0 &&
         data.map((category, index) => {
           return (
@@ -58,6 +48,6 @@ export default function ProductsModal({ handleCloseModal }) {
             />
           );
         })}
-    </Box>
+    </Container>
   );
 }

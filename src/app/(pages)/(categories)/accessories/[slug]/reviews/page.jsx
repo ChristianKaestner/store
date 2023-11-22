@@ -13,11 +13,10 @@ export async function generateMetadata({ params }) {
     description: `Reviews of ${product.title} buyers `,
   };
 }
-
+//перенести ReviewTitle в Reviews
 export default function Review() {
   return (
     <>
-      //перенести ReviewTitle в Reviews
       <Breadcrumbs />
       <ReviewTitle />
       <Reviews />

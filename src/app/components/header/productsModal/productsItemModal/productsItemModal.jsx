@@ -1,6 +1,8 @@
 import Link from 'next/link';
-import { Box, Typography } from '@mui/material';
-// import { catSlug } from '../../../../lib/functions.js';
+import { usePathname, useRouter } from 'next/navigation';
+import { Box } from '@mui/material';
+import { Container, CatTitle, ItemsBlock } from './productsItemModal.styled';
+import { ItemText, ColumnTitle, Column } from './productsItemModal.styled';
 
 export default function ProductsItemModal({
   value,
@@ -8,81 +10,185 @@ export default function ProductsItemModal({
   category,
   handleCloseModal,
 }) {
-  const { name, brands } = category;
+  const path = usePathname().split('/');
+  const router = useRouter();
+
+  const handleLink = category => {
+    handleCloseModal();
+    // if (path.includes(category)) {
+    //   router.refresh();
+    //   // router.reload();
+    // }
+  };
 
   return (
-    <Box
+    <Container
       role="tabpanel"
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
-      sx={{
-        ml: 2,
-        mt: 2,
-        width: '100%',
-        // width: { xs: '50%', sm: '70%', md: '80%', lg: '85%' },
-      }}
     >
       <Link
-        href={name}
+        href={category.name}
         onClick={handleCloseModal}
         style={{ textAlign: 'center' }}
       >
-        <Typography
-          sx={{
-            color: 'primary.dim',
-            fontWeight: 500,
-            fontSize: '1.5rem',
-            '&:hover': {
-              color: 'primary.accent',
-              textDecoration: 'underline',
-            },
-          }}
-        >
-          ALL {name.toUpperCase()}
-        </Typography>
+        <CatTitle>ALL {category.name.toUpperCase()}</CatTitle>
       </Link>
       {value === index && (
-        <Box
-          component="ul"
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            flexWrap: 'wrap',
-            justifyContent: 'start',
-            gap: 4,
-            listStyle: 'none',
-            mt: 2,
-            height: '88%',
-          }}
-        >
-          {brands.length > 0 &&
-            brands.map(item => {
-              const brand = item.toLowerCase().split(' ').join('+');
-              return (
-                <Box component="li" key={item}>
-                  <Link
-                    href={`/${category.name}?brand=${brand}`}
-                    target="_self"
-                  >
-                    <Typography
-                      sx={{
-                        color: 'primary.dim',
-                        fontSize: '1.25rem',
-                        '&:hover': {
-                          color: 'primary.accent',
-                          textDecoration: 'underline',
-                        },
-                      }}
+        <ItemsBlock>
+          {category.brands.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">BRANDS</ColumnTitle>
+              {category.brands.map(item => {
+                const brand = item.toLowerCase().split(' ').join('+');
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?brand=${brand}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                      key={`/${category.name}?brand=${brand}`}
                     >
-                      {item}
-                    </Typography>
-                  </Link>
-                </Box>
-              );
-            })}
-        </Box>
+                      <ItemText>{item.toUpperCase()}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.colors?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">COLORS</ColumnTitle>
+              {category.colors.map(item => {
+                const color = item.toLowerCase().split(' ').join('+');
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?color=${color}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item.toUpperCase()}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.hookahSizes?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">SIZE</ColumnTitle>
+              {category.hookahSizes.map(item => {
+                const size = item.toLowerCase();
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?size=${size}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item.toUpperCase()}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.flavors?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">FLAVOR</ColumnTitle>
+              {category.flavors.map(item => {
+                const flavor = item.toLowerCase().split(' ').join('+');
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?flavor=${flavor}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item.toUpperCase()}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.tobaccoWeights?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">WEIGHT</ColumnTitle>
+              {category.tobaccoWeights.map(item => {
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?weight=${item}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.coalSizes?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">SIZE</ColumnTitle>
+              {category.coalSizes.map(item => {
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?size=${item}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.coalWeights?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">WEIGHT</ColumnTitle>
+              {category.coalWeights.map(item => {
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?weight=${item}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+          {category?.types?.length > 0 && (
+            <Column component="ul">
+              <ColumnTitle component="li">TYPE</ColumnTitle>
+              {category.types.map(item => {
+                const type = item.toLowerCase().split(' ').join('+');
+                return (
+                  <Box component="li" key={item}>
+                    <Link
+                      href={`/${category.name}?type=${type}`}
+                      target="_self"
+                      onClick={() => handleLink(category.name)}
+                    >
+                      <ItemText>{item.toUpperCase()}</ItemText>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Column>
+          )}
+        </ItemsBlock>
       )}
-    </Box>
+    </Container>
   );
 }

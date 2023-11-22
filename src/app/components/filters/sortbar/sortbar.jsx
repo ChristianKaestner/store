@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -10,7 +10,7 @@ import { FilterBlock, FilterBtn, IconClose } from './sortbar.styled';
 import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
-import { useIsMount } from '@/app/hooks/useMount';
+// import { useIsMount } from '@/app/hooks/useMount';
 import isEqual from 'lodash.isequal';
 
 export default function Sortbar({ mobile = false, total }) {
@@ -20,30 +20,31 @@ export default function Sortbar({ mobile = false, total }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
-  const isMount = useIsMount();
+  // const isMount = useIsMount();
   const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
   useEffect(() => {
-    if (isMount) {
-      queryParams.forEach((filterValue, filterName) => {
-        if (filterName in filters) {
-          const filterValues = filterValue.split(',');
+    // if (isMount) {
+    queryParams.forEach((filterValue, filterName) => {
+      if (filterName in filters) {
+        const filterValues = filterValue.split(',');
 
-          filterValues.forEach(value => {
-            if (Array.isArray(filters[filterName])) {
-              if (!filters[filterName].includes(value)) {
-                dispatch(addFilter({ filterName, filterValue: value }));
-              }
-            } else {
-              if (filters[filterName] !== value) {
-                dispatch(addFilter({ filterName, filterValue: value }));
-              }
+        filterValues.forEach(value => {
+          if (Array.isArray(filters[filterName])) {
+            if (!filters[filterName].includes(value)) {
+              console.log('add filter');
+              dispatch(addFilter({ filterName, filterValue: value }));
             }
-          });
-        }
-      });
-    }
-  }, []);
+          } else {
+            if (filters[filterName] !== value) {
+              dispatch(addFilter({ filterName, filterValue: value }));
+            }
+          }
+        });
+      }
+    });
+    // }
+  }, [queryParams]);
 
   const lastFilters = useRef(filters);
 
@@ -78,17 +79,40 @@ export default function Sortbar({ mobile = false, total }) {
     router.push(`${pathname}${query}`, { scroll: false });
   }, [filters, searchParams, dispatch]);
 
-  const handleDelete = useCallback(
-    e => {
-      const { id, textContent } = e.currentTarget;
-      dispatch(removeFilter({ filterName: id, filterValue: textContent }));
-    },
-    [dispatch]
-  );
+  // const handleDelete = e => {
+  //   const { id, textContent } = e.currentTarget;
+  //   dispatch(removeFilter({ filterName: id, filterValue: textContent }));
+  // };
 
-  const handleDeleteAll = useCallback(() => {
-    dispatch(resetFilters());
-  }, [dispatch]);
+  // const handleDeleteAll = useCallback(() => {
+  //   //delete all query param
+  //   dispatch(resetFilters());
+  // }, [dispatch]);
+
+  const handleDelete = e => {
+    const { id, textContent } = e.currentTarget;
+    const filter = queryParams.get(id);
+    const filterArr = filter.split(',');
+    if (filterArr.length > 1) {
+      const updatedFilterArr = filterArr.filter(value => value !== textContent);
+      queryParams.set(id, updatedFilterArr.join(','));
+    } else {
+      queryParams.delete(id);
+    }
+    const search = decodeURIComponent(queryParams.toString());
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
+    setTimeout(() => {
+      dispatch(removeFilter({ filterName: id, filterValue: textContent }));
+    }, 500);
+  };
+
+  const handleDeleteAll = async () => {
+    router.replace(pathname, { scroll: false });
+    setTimeout(() => {
+      dispatch(resetFilters());
+    }, 500);
+  };
 
   return (
     <Box sx={{ zIndex: 1 }}>

@@ -41,11 +41,6 @@ export const chipColor = label => {
   }
 };
 
-export const catSlug = (cat, subCat) => {
-  const sub = subCat.name.toLowerCase().split(' ');
-  return `${cat.name}?${sub.join('_')}`;
-};
-
 export const getSlideCount = (mediaXS, mediaS, mediaSM, mediaMD, mediaLG) => {
   if (mediaXS) return 1;
   if (mediaS) return 2;
@@ -113,12 +108,6 @@ export const updatedFilterLabel = (name, value) => {
   if (name === 'price') return 'price ' + value;
   return value;
 };
-
-// export const getGoods = (data, promoted, category) => {
-//   if (promoted) return data.filter(n => n.isPromoted);
-//   if (category) return data.filter(n => n.categories === category);
-//   return data;
-// };
 
 export const brandsForMetaData = products => {
   const uniqBrands = [];

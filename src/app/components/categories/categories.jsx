@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import ReactPlayer from 'react-player';
 import { Montserrat_Subrayada } from 'next/font/google';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
@@ -47,6 +47,7 @@ export const categories = [
 
 export default function Categories() {
   const [hoveredVideo, setHoveredVideo] = useState(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
     <Container component="section">
@@ -64,17 +65,8 @@ export default function Categories() {
             >
               <Link href={category.name.toLowerCase()}>
                 <Card>
-                  <ReactPlayer
-                    className="scaleVideo"
-                    url={category.video}
-                    playing={hoveredVideo === index}
-                    muted
-                    width="100%"
-                    height="100%"
-                    loop
-                  />
-
-                  {/* <Image
+                  {!videoLoaded ? (
+                    <Image
                       className="scaleImage"
                       style={{
                         transition: 'transform 500ms ease-in-out',
@@ -84,7 +76,19 @@ export default function Categories() {
                       fill={true}
                       alt="image"
                       sizes="100%"
-                    /> */}
+                    />
+                  ) : null}
+
+                  <ReactPlayer
+                    className="scaleVideo"
+                    url={category.video}
+                    playing={hoveredVideo === index}
+                    muted
+                    width="100%"
+                    height="100%"
+                    loop
+                    onReady={() => setVideoLoaded(true)}
+                  />
 
                   <CatsText component="h3" className={montserrat.className}>
                     {category.name.toUpperCase()}

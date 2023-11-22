@@ -20,7 +20,13 @@ export default function SearchForm() {
   const handleSearch = debounce(() => {
     const values = getValues();
     setSearch(values);
-  }, 300);
+  }, 500);
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setShowResult(false);
+    }, 200);
+  };
 
   return (
     <Box
@@ -31,14 +37,13 @@ export default function SearchForm() {
         flexGrow: 1,
         mr: 2,
       }}
-      id="search"
     >
       <FormControl
         variant="outlined"
         component="form"
         sx={{ width: '100%' }}
         onFocus={() => setShowResult(true)}
-        onBlur={() => setShowResult(false)}
+        onBlur={handleBlur}
         autoComplete="off"
       >
         <OutlinedInput

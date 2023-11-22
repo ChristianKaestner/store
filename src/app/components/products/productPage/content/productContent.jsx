@@ -32,7 +32,6 @@ export default function ProductContent({ product }) {
   const handleCart = () => {
     if (isLogin) {
       const product = cartProducts.filter(product => product.id === id);
-      console.log(product);
       if (!product.length) {
         const payload = { items: [{ productId: id, quantity: 1 }] };
         dispatch(addCart(payload));

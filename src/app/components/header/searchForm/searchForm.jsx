@@ -1,56 +1,62 @@
+import { useState } from 'react';
+import { useGetSuggestionQuery } from '@/app/redux/services/products';
 import { useForm } from 'react-hook-form';
-import { FormControl, OutlinedInput, Button } from '@mui/material';
+import { FormControl, OutlinedInput } from '@mui/material';
 import { InputAdornment } from '@mui/material';
+import SearchResult from '../searchResult/searchResult';
 import SearchIcon from '@mui/icons-material/Search';
 import debounce from 'lodash.debounce';
+import { Box } from '@mui/material';
 
 export default function SearchForm() {
+  const [search, setSearch] = useState({ search: '' });
+  const [showResult, setShowResult] = useState(false);
+  const { data = [] } = useGetSuggestionQuery(search, { skip: !search.search });
+
+  const isResultVisible = showResult && data.length > 0 && search.search !== '';
+
   const { register, getValues } = useForm();
 
   const handleSearch = debounce(() => {
-    //send request
     const values = getValues();
-    console.log(values);
-  }, 1000);
+    setSearch(values);
+  }, 300);
 
   return (
-    <FormControl
-      variant="outlined"
-      component="form"
+    <Box
       sx={{
+        position: 'relative',
         display: 'flex',
         flexDirection: 'row',
         flexGrow: 1,
         mr: 2,
       }}
+      id="search"
     >
-      <OutlinedInput
-        placeholder="search..."
-        type="search"
-        aria-label="search items"
-        {...register('seacrh', {
-          onChange: handleSearch,
-        })}
-        sx={{ flexGrow: 1, height: 40, pr: 0, background: '#fff' }}
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
-          </InputAdornment>
-        }
-        endAdornment={
-          <Button
-            position="end"
-            variant="contained"
-            sx={{
-              height: '100%',
-              color: '#fff',
-              bgcolor: 'primary.light',
-            }}
-          >
-            Find
-          </Button>
-        }
-      />
-    </FormControl>
+      <FormControl
+        variant="outlined"
+        component="form"
+        sx={{ width: '100%' }}
+        onFocus={() => setShowResult(true)}
+        onBlur={() => setShowResult(false)}
+        autoComplete="off"
+      >
+        <OutlinedInput
+          placeholder="search..."
+          type="search"
+          aria-label="search items"
+          {...register('search', {
+            onChange: handleSearch,
+          })}
+          sx={{ flexGrow: 1, height: 40, pr: 0, background: '#fff' }}
+          startAdornment={
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      {isResultVisible && <SearchResult products={data} />}
+    </Box>
   );
 }

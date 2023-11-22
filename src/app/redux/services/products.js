@@ -52,6 +52,14 @@ export const productsApi = createApi({
     getProductTabs: builder.query({
       query: () => '/api/products/tabs',
     }),
+    getSuggestion: builder.query({
+      query: params => ({
+        url: '/api/products/suggestion',
+        params,
+      }),
+
+      // skip: (arg, { getState }) => !arg?.params?.search,
+    }),
   }),
 });
 
@@ -65,4 +73,5 @@ export const {
   useGetProductByIdQuery,
   useGetFavoriteProductsQuery,
   useGetProductTabsQuery,
+  useGetSuggestionQuery,
 } = productsApi;

@@ -1,5 +1,3 @@
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 import { Box } from '@mui/material';
 import { Container, CatTitle, ItemsBlock } from './productsItemModal.styled';
 import { ItemText, ColumnTitle, Column } from './productsItemModal.styled';
@@ -10,17 +8,6 @@ export default function ProductsItemModal({
   category,
   handleCloseModal,
 }) {
-  const path = usePathname().split('/');
-  const router = useRouter();
-
-  const handleLink = category => {
-    handleCloseModal();
-    // if (path.includes(category)) {
-    //   router.refresh();
-    //   // router.reload();
-    // }
-  };
-
   return (
     <Container
       role="tabpanel"
@@ -28,13 +15,13 @@ export default function ProductsItemModal({
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
     >
-      <Link
+      <a
         href={category.name}
         onClick={handleCloseModal}
         style={{ textAlign: 'center' }}
       >
         <CatTitle>ALL {category.name.toUpperCase()}</CatTitle>
-      </Link>
+      </a>
       {value === index && (
         <ItemsBlock>
           {category.brands.length > 0 && (
@@ -42,16 +29,15 @@ export default function ProductsItemModal({
               <ColumnTitle component="li">BRANDS</ColumnTitle>
               {category.brands.map(item => {
                 const brand = item.toLowerCase().split(' ').join('+');
+                const href = `/${category.name}?brand=${brand}`;
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?brand=${brand}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
-                      key={`/${category.name}?brand=${brand}`}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -64,13 +50,12 @@ export default function ProductsItemModal({
                 const color = item.toLowerCase().split(' ').join('+');
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?color=${color}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -83,13 +68,12 @@ export default function ProductsItemModal({
                 const size = item.toLowerCase();
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?size=${size}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -102,13 +86,12 @@ export default function ProductsItemModal({
                 const flavor = item.toLowerCase().split(' ').join('+');
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?flavor=${flavor}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -120,13 +103,12 @@ export default function ProductsItemModal({
               {category.tobaccoWeights.map(item => {
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?weight=${item}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -138,13 +120,12 @@ export default function ProductsItemModal({
               {category.coalSizes.map(item => {
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?size=${item}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -156,13 +137,12 @@ export default function ProductsItemModal({
               {category.coalWeights.map(item => {
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?weight=${item}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}
@@ -175,13 +155,12 @@ export default function ProductsItemModal({
                 const type = item.toLowerCase().split(' ').join('+');
                 return (
                   <Box component="li" key={item}>
-                    <Link
+                    <a
                       href={`/${category.name}?type=${type}`}
-                      target="_self"
-                      onClick={() => handleLink(category.name)}
+                      onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </Link>
+                    </a>
                   </Box>
                 );
               })}

@@ -32,7 +32,6 @@ export default function Sortbar({ mobile = false, total }) {
         filterValues.forEach(value => {
           if (Array.isArray(filters[filterName])) {
             if (!filters[filterName].includes(value)) {
-              console.log('add filter');
               dispatch(addFilter({ filterName, filterValue: value }));
             }
           } else {

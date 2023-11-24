@@ -4,6 +4,7 @@ import cartSlice from './cart/slice';
 import favoriteSlice from './favorite/slice';
 import modalSlice from './modal/slice';
 import filtersSlice from './filters/slice';
+import reviewsSlice from './reviews/slice';
 import { productsApi } from './services/products';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -36,6 +37,7 @@ export const store = configureStore({
     favorite: favoriteSlice,
     modal: modalSlice,
     filters: filtersSlice,
+    reviews: reviewsSlice,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: getDefaultMiddleware => [

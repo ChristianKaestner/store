@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Paper } from '@mui/material';
 
 export const ReviewInfoBlock = styled(Box)({
   display: 'flex',
@@ -45,7 +45,6 @@ export const CommentsBlock = styled(Box)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'end',
   listStyle: 'none',
- 
 }));
 
 export const TextDate = styled(Typography)(({ theme }) => ({
@@ -64,4 +63,13 @@ export const Text = styled(Typography)(({ theme }) => ({
   fontWeight: 500,
   marginTop: 8,
   color: theme.palette.primary.subsidiary,
+}));
+
+export const PaperStyled = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  marginTop: 32,
+  padding: 16,
+  zIndex: 1,
+  opacity: 0.9,
+  '&:first-of-type': { marginTop: 0 },
 }));

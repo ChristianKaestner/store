@@ -6,22 +6,25 @@ import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
 import { Container, BlockSwiper, BlockContent } from './productPage.styled';
+import { defineCategory } from '@/app/lib/functions';
 
 export default function ProductPage() {
   const { slug } = useParams();
-  const { data = [], isLoading } = useGetProductByIdQuery(slug);
+  const { data = {}, isLoading } = useGetProductByIdQuery(slug);
+  const category = defineCategory(data);
+  const product = { ...data, category };
 
   return (
     <>
       {!isLoading && (
         <>
-          <Breadcrumbs product={data} />
+          <Breadcrumbs product={product} />
           <Container>
             <BlockSwiper component="section">
-              <ProductSwiper product={data} />
+              <ProductSwiper product={product} />
             </BlockSwiper>
             <BlockContent component="section">
-              <ProductContent product={data} />
+              <ProductContent product={product} />
             </BlockContent>
           </Container>
           <RelatedProducts id={slug} />

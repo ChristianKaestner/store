@@ -127,3 +127,13 @@ export const defineCategory = product => {
   if (product?.tobacco && product?.tobacco !== null) return 'tobacco';
   return;
 };
+
+export const formatDate = date => {
+  const originalDate = new Date(date);
+  const day = originalDate.getUTCDate();
+  const month = originalDate.getUTCMonth() + 1;
+  const year = originalDate.getUTCFullYear();
+  const hours = originalDate.getUTCHours();
+  const minutes = originalDate.getUTCMinutes();
+  return `${day}-${month}-${year} ${hours}:${minutes}`;
+};

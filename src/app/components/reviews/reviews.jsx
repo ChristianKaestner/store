@@ -1,9 +1,9 @@
 'use client';
-
+import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useGetProductByIdQuery } from '@/app/redux/services/products';
+import { getProductReviews } from '@/app/redux/reviews/operations';
+import { useReviews } from '@/app/hooks/useReviews';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
 import { useModal } from '@/app/hooks/useModal';
@@ -19,30 +19,39 @@ import { HeadBlock, ReviewBlock, MainBlock } from './reviews.styled';
 
 export default function Reviews() {
   const [reviewModal, setReviewModal] = useState(false);
-  const dispath = useDispatch();
-  const { isLogin, user } = useAuth();
+  const dispatch = useDispatch();
+  const { isLogin } = useAuth();
   const { successModal } = useModal();
+  const { reviews, product, isLoading } = useReviews();
   const { slug } = useParams();
-  const { data = [], isLoading } = useGetProductByIdQuery(slug);
-  const { images, title, price, id, reviews } = data;
+
+  useEffect(() => {
+    // console.log('send request with slug ', slug);
+    dispatch(getProductReviews(slug));
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   console.log(product);
+  //   console.log(isLoading);
+  // }, [product, isLoading]);
 
   const handleWirteReview = () => {
-    !isLogin ? setReviewModal(true) : dispath(toggleAccount(true));
+    // setReviewModal(true);
+    isLogin ? setReviewModal(true) : dispatch(toggleAccount(true));
   };
 
   const handleAddReview = formData => {
     setReviewModal(false);
-    dispath(toggleSuccess(true));
-    console.log(formData);
+    dispatch(toggleSuccess(true));
   };
 
   return (
     <>
-      {!isLoading && (
+      {!isLoading && product && (
         <>
           <HeadBlock>
-            <ProductRating product={data} size="medium" />
-            <ProductCode id={id} />
+            <ProductRating product={product} size="medium" />
+            <ProductCode id={product.id} />
           </HeadBlock>
           <MainBlock>
             <ReviewBlock component="section">
@@ -53,7 +62,12 @@ export default function Reviews() {
                 <p>no reviews yet...</p>
               )}
             </ReviewBlock>
-            <SideBar image={images[0]} title={title} price={price} id={id} />
+            <SideBar
+              image={product.images[0]}
+              title={product.title}
+              price={product.price}
+              id={product.id}
+            />
             {reviewModal && (
               <Modal
                 open={reviewModal}
@@ -63,13 +77,16 @@ export default function Reviews() {
                 height="600px"
                 position="center"
               >
-                <AddReviewModal user={user} handleAddReview={handleAddReview} />
+                <AddReviewModal
+                  id={product.id}
+                  handleAddReview={handleAddReview}
+                />
               </Modal>
             )}
             {successModal && (
               <Modal
                 open={successModal}
-                close={() => dispath(toggleSuccess(false))}
+                close={() => dispatch(toggleSuccess(false))}
                 title="Successfully"
                 width="600px"
                 height="auto"

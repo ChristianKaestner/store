@@ -1,42 +1,31 @@
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { FormControl, Box, TextField, Rating } from '@mui/material';
+import { TextField, Rating } from '@mui/material';
 import CommonBtn from '../../reviews/commonBtn/commonBtn';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
+import { Container, Form } from './addReviewModal.styled';
 
-export default function AddReviewModal({ user, handleAddReview }) {
+export default function AddReviewModal({ id, handleAddReview }) {
   const [fileList, setFileList] = useState([]);
   const [errUpload, setErrUpload] = useState(false);
   const { register, handleSubmit, control } = useForm();
 
   const onAddReview = data => {
-    const { comment, pros, cons, rating, name } = data;
+    console.log(data);
+    const { pros, cons, rating, text } = data;
     const formData = new FormData();
-    formData.append('images', fileList);
-    formData.append('comment', comment);
+    formData.append('id', id);
+    formData.append('text', text);
     formData.append('pros', pros);
     formData.append('cons', cons);
     formData.append('rating', rating);
-    formData.append('name', name);
+    formData.append('images', fileList);
     handleAddReview(formData);
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '90%',
-        overflowY: 'auto',
-        overflowX: 'hidden',
-      }}
-    >
-      <FormControl
-        sx={{ display: 'flex', mt: 4, pr: 2, width: '100%', overflowY: 'auto' }}
-        component="form"
-        onSubmit={handleSubmit(data => onAddReview(data))}
-      >
+    <Container>
+      <Form component="form" onSubmit={handleSubmit(data => onAddReview(data))}>
         <Controller
           control={control}
           name="rating"
@@ -50,6 +39,7 @@ export default function AddReviewModal({ user, handleAddReview }) {
               precision={0.5}
               size="large"
               onChange={onChange}
+              required
               sx={{
                 fontSize: '3rem',
                 width: '50%',
@@ -60,10 +50,10 @@ export default function AddReviewModal({ user, handleAddReview }) {
 
         <TextField
           required
-          id="comment"
-          label="Comment"
+          id="text"
+          label="Text"
           type="text"
-          {...register('comment')}
+          {...register('text')}
           multiline
           sx={{ mt: 4 }}
           inputProps={{
@@ -95,26 +85,8 @@ export default function AddReviewModal({ user, handleAddReview }) {
           setFileList={setFileList}
           setErrUpload={setErrUpload}
         />
-
-        <Controller
-          control={control}
-          name="name"
-          defaultValue={'user name from props'}
-          type="text"
-          render={({ field: { onChange, value } }) => (
-            <TextField
-              required
-              id="name"
-              label="Name"
-              type="text"
-              value={value}
-              onChange={onChange}
-              sx={{ mt: 4 }}
-            />
-          )}
-        />
         <CommonBtn text="Leave a review" />
-      </FormControl>
-    </Box>
+      </Form>
+    </Container>
   );
 }

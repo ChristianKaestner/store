@@ -57,8 +57,9 @@ export const productsApi = createApi({
         url: '/api/products/suggestion',
         params,
       }),
-
-      // skip: (arg, { getState }) => !arg?.params?.search,
+    }),
+    getProductReviews: builder.query({
+      query: id => `/api/products/reviews/${id}`,
     }),
   }),
 });
@@ -74,4 +75,5 @@ export const {
   useGetFavoriteProductsQuery,
   useGetProductTabsQuery,
   useGetSuggestionQuery,
+  useGetProductReviewsQuery,
 } = productsApi;

@@ -1,38 +1,31 @@
 import Image from 'next/image';
-import { Divider, Paper, Typography, Tooltip, Rating } from '@mui/material';
-import ReplyReview from './replyReview/replyReview';
-import RateReview from './rateReview/rateReview';
-import ReviewComment from '../reviewComment/reviewComment';
+import { Divider, Typography, Tooltip, Rating } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import { visuallyHidden } from '@mui/utils';
 import { ReviewInfoBlock, TextDate, TextName, Text } from './reviewItem.styled';
-import { ImageBlock, ImageBlockItem, ReplyBlock } from './reviewItem.styled';
-import { CommentsBlock } from './reviewItem.styled';
+import { ImageBlock, ImageBlockItem, PaperStyled } from './reviewItem.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
+import { formatDate } from '@/app/lib/functions';
+// import { ReplyBlock } from './reviewItem.styled';
+// import { CommentsBlock } from './reviewItem.styled';
+// import { visuallyHidden } from '@mui/utils';
+// import ReplyReview from './replyReview/replyReview';
+// import RateReview from './rateReview/rateReview';
+// import ReviewComment from '../reviewComment/reviewComment';
 
-export default function ReviewItem({ review, onReplyClick, onImageClick }) {
-  const { id, text, pros, cons, images, rating, date } = review;
-  const { name, usefulness, comments } = review;
+export default function ReviewItem({ review, onImageClick }) {
+  const { id, text, pros, cons, images, rating, createdAt } = review;
+  const { user } = review;
+  const date = formatDate(createdAt);
+
   return (
     <>
-      <Paper
-        elevation={3}
-        sx={{
-          bgcolor: 'primary.main',
-          mt: 4,
-          p: 2,
-          zIndex: 1,
-          opacity: 0.9,
-          '&:first-of-type': { mt: 0 },
-        }}
-        component="li"
-      >
+      <PaperStyled elevation={3} component="li">
         <ReviewInfoBlock>
           <RowCenter>
             <Tooltip title="Buyer" placement="top">
               <VerifiedIcon sx={{ color: 'primary.light' }} />
             </Tooltip>
-            <TextName>{name}</TextName>
+            <TextName>{user.firstName}</TextName>
           </RowCenter>
 
           <RowCenter>
@@ -53,7 +46,7 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
           <Typography sx={{ color: 'primary.dim' }}>{pros}</Typography>
           <Text>Cons </Text>
           <Typography sx={{ color: 'primary.dim' }}>{cons}</Typography>
-          {images.length && (
+          {images && images?.length && (
             <ImageBlock component="ul">
               {images.map(image => {
                 return (
@@ -75,13 +68,13 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
               })}
             </ImageBlock>
           )}
-          <ReplyBlock>
+          {/* <ReplyBlock>
             <ReplyReview onReplyClick={onReplyClick} />
             <RateReview usefulness={usefulness} />
-          </ReplyBlock>
+          </ReplyBlock> */}
         </>
-      </Paper>
-      {comments?.length > 0 && (
+      </PaperStyled>
+      {/* {comments?.length > 0 && (
         <>
           <Typography component="h4" sx={visuallyHidden}>
             Comments to review
@@ -92,7 +85,7 @@ export default function ReviewItem({ review, onReplyClick, onImageClick }) {
             })}
           </CommentsBlock>
         </>
-      )}
+      )} */}
     </>
   );
 }

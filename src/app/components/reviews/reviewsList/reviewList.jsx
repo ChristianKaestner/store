@@ -4,32 +4,32 @@ import { Box } from '@mui/material';
 import ReviewItem from '../reviewItem/reviewItem';
 import Modal from '../../modal/modal';
 import { useModal } from '@/app/hooks/useModal';
-import { useAuth } from '@/app/hooks/useAuth';
-import CommentReviewModal from '../reviewComment/modal/commentReviewModal';
 import FullscreanImage from '../../modal/fullscreanReview/fullscreanReview';
 import SuccessModal from '../../modal/successModal/successModal';
-import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
+import { toggleSuccess } from '@/app/redux/modal/slice';
 import { visuallyHidden } from '@mui/utils';
 import { Typography } from '@mui/material';
+// import { useAuth } from '@/app/hooks/useAuth';
+// import CommentReviewModal from '../reviewComment/modal/commentReviewModal';
 
 export default function ReviewList({ reviews }) {
-  const [commentModal, setCommentModal] = useState(false);
+  // const [commentModal, setCommentModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState({});
   const [fullscrean, setFullscrean] = useState(false);
 
   const dispath = useDispatch();
   const { successModal } = useModal();
-  const { isLogin, user } = useAuth();
+  // const { isLogin, user } = useAuth();
 
-  const handleWirteComment = () => {
-    !isLogin ? setCommentModal(true) : dispath(toggleAccount(true));
-  };
+  // const handleWirteComment = () => {
+  //   !isLogin ? setCommentModal(true) : dispath(toggleAccount(true));
+  // };
 
-  const handleAddComment = data => {
-    setCommentModal(false);
-    dispath(toggleSuccess(true));
-    console.log(data);
-  };
+  // const handleAddComment = data => {
+  //   setCommentModal(false);
+  //   dispath(toggleSuccess(true));
+  //   console.log(data);
+  // };
 
   const handleScaleImage = (id, image) => {
     const filtred = reviews.filter(review => review.id === id);
@@ -49,14 +49,14 @@ export default function ReviewList({ reviews }) {
               <ReviewItem
                 key={review.id}
                 review={review}
-                onReplyClick={handleWirteComment}
+                // onReplyClick={handleWirteComment}
                 onImageClick={handleScaleImage}
               />
             );
           })}
         </Box>
       )}
-      {commentModal && (
+      {/* {commentModal && (
         <Modal
           open={commentModal}
           close={() => setCommentModal(false)}
@@ -67,7 +67,7 @@ export default function ReviewList({ reviews }) {
         >
           <CommentReviewModal user={user} handleAddComment={handleAddComment} />
         </Modal>
-      )}
+      )} */}
       {fullscrean && (
         <Modal
           open={fullscrean}

@@ -12,6 +12,8 @@ import { formatDate } from '@/app/lib/functions';
 // import RateReview from './rateReview/rateReview';
 // import ReviewComment from '../reviewComment/reviewComment';
 
+const URL = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
+
 export default function ReviewItem({ review, onImageClick }) {
   const { id, text, pros, cons, images, rating, createdAt } = review;
   const { user } = review;
@@ -36,8 +38,8 @@ export default function ReviewItem({ review, onImageClick }) {
         <>
           <Rating
             name="half-rating"
-            precision={0.2}
-            value={rating}
+            precision={0.5}
+            value={+rating}
             readOnly
             sx={{ my: 2 }}
           />
@@ -53,7 +55,7 @@ export default function ReviewItem({ review, onImageClick }) {
                   <ImageBlockItem component="li" key={image}>
                     <Image
                       key={image}
-                      src={image}
+                      src={URL + image}
                       alt="Product photo from review"
                       fill={true}
                       sizes="100%"

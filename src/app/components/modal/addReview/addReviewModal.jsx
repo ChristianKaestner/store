@@ -3,23 +3,30 @@ import { useForm, Controller } from 'react-hook-form';
 import { TextField, Rating } from '@mui/material';
 import CommonBtn from '../../reviews/commonBtn/commonBtn';
 import UploadImage from '@/app/components/uploadImage/uploadImage';
+import OnError from '@/app/components/Notifications/onError';
 import { Container, Form } from './addReviewModal.styled';
 
 export default function AddReviewModal({ id, handleAddReview }) {
   const [fileList, setFileList] = useState([]);
   const [errUpload, setErrUpload] = useState(false);
-  const { register, handleSubmit, control } = useForm();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
   const onAddReview = data => {
-    console.log(data);
     const { pros, cons, rating, text } = data;
     const formData = new FormData();
     formData.append('id', id);
     formData.append('text', text);
     formData.append('pros', pros);
     formData.append('cons', cons);
-    formData.append('rating', rating);
-    formData.append('images', fileList);
+    formData.append('rating', +rating);
+    fileList.forEach(file => {
+      formData.append(`images`, file);
+    });
     handleAddReview(formData);
   };
 
@@ -31,6 +38,7 @@ export default function AddReviewModal({ id, handleAddReview }) {
           name="rating"
           defaultValue={null}
           type="number"
+          rules={{ required: 'Rating is required' }}
           render={({ field: { onChange, value } }) => (
             <Rating
               name="product-rating"
@@ -39,7 +47,6 @@ export default function AddReviewModal({ id, handleAddReview }) {
               precision={0.5}
               size="large"
               onChange={onChange}
-              required
               sx={{
                 fontSize: '3rem',
                 width: '50%',
@@ -47,7 +54,7 @@ export default function AddReviewModal({ id, handleAddReview }) {
             />
           )}
         />
-
+        {errors?.rating && <OnError text={errors?.rating?.message} />}
         <TextField
           required
           id="text"

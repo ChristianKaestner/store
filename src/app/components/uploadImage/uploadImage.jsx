@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import Image from 'next/image';
-import { Box, Typography, Button, Alert } from '@mui/material';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import ClearIcon from '@mui/icons-material/Clear';
-import RotateRightIcon from '@mui/icons-material/RotateRight';
+import { Box, Alert } from '@mui/material';
 import { rotateImage, getAllFilesSize } from '@/app/lib/functions';
+import { Container, Text, BtnStyled, IconUpload } from './uploadImage.styled';
+import { InputStyled, ImagesBlock, IconClear } from './uploadImage.styled';
+import { IconRotate, ImageContainer } from './uploadImage.styled';
+import { RowBetween } from '../../lib/commonStyles';
 
 export default function UploadImage({
   fileList,
@@ -54,46 +55,24 @@ export default function UploadImage({
       });
   };
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        border: 1,
-        borderRadius: 1,
-        borderColor: errUpload ? 'primary.hot' : 'primary.dim',
-        p: 2,
-        mt: 4,
-        '&:hover': {
-          borderColor: errUpload ? 'primary.hot' : 'primary.light',
-        },
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
+    <Container errUpload={errUpload}>
+      <RowBetween>
         <Box sx={{ mr: 2 }}>
-          <Typography sx={{ fontWeight: 500, color: 'primary.dim' }}>
-            Add images
-          </Typography>
-          <Typography sx={{ color: 'primary.neutral' }}>
+          <Text>Add images</Text>
+          <Text>
             Add up to 10 images in .jpg, .png formats, file size up to 5 MB
-          </Typography>
+          </Text>
         </Box>
 
-        <Button
+        <BtnStyled
           variant="contained"
           onClick={handlePick}
           type="button"
-          startIcon={<CollectionsIcon sx={{ fontSize: 40 }} />}
-          sx={{ minWidth: 120, height: 40, bgcolor: 'primary.light' }}
+          startIcon={<IconUpload />}
         >
           Upload
-        </Button>
-        <input
+        </BtnStyled>
+        <InputStyled
           ref={imagePicker}
           type="file"
           name="images"
@@ -102,81 +81,31 @@ export default function UploadImage({
           }}
           multiple
           accept="image/*,.png,.jpeg,"
-          style={{
-            opacity: 0,
-            width: 0,
-            height: 0,
-            lineHeight: 0,
-            overflow: 'hidden',
-            margin: 0,
-            padding: 0,
-          }}
         />
-      </Box>
+      </RowBetween>
       {errUpload && (
         <Alert severity="error" sx={{ mt: 2 }}>
           Upload limit exceeded
         </Alert>
       )}
       {fileList.length > 0 && (
-        <Box
-          component="ul"
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            gap: 2,
-            listStyle: 'none',
-            mt: 2,
-          }}
-        >
+        <ImagesBlock component="ul">
           {fileList.map((image, index) => {
             return (
-              <Box
-                component="li"
-                key={image.name + index}
-                sx={{ position: 'relative', pb: 2 }}
-              >
+              <ImageContainer component="li" key={image.name + index}>
                 <Image
                   src={URL.createObjectURL(image)}
                   alt="uploaded image"
                   width={80}
                   height={80}
                 />
-                <ClearIcon
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    fontSize: '1.25rem',
-                    color: 'primary.neutral',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      color: 'primary.accent',
-                    },
-                  }}
-                  onClick={() => removeImage(image.name)}
-                />
-
-                <RotateRightIcon
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    fontSize: '1.25rem',
-                    color: 'primary.neutral',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      color: 'primary.accent',
-                    },
-                  }}
-                  onClick={() => handleRotateRight(image)}
-                />
-              </Box>
+                <IconClear onClick={() => removeImage(image.name)} />
+                <IconRotate onClick={() => handleRotateRight(image)} />
+              </ImageContainer>
             );
           })}
-        </Box>
+        </ImagesBlock>
       )}
-    </Box>
+    </Container>
   );
 }

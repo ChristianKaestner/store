@@ -1,21 +1,24 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { getProductReviews } from '@/app/redux/reviews/operations';
+import { addProductReview } from '@/app/redux/reviews/operations';
 import { useReviews } from '@/app/hooks/useReviews';
 import { useAuth } from '@/app/hooks/useAuth';
-import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
 import { useModal } from '@/app/hooks/useModal';
+import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
 import SideBar from './sideBar/sideBar';
 import AddReview from './addReview/addReview';
 import Modal from '../modal/modal';
-import AddReviewModal from '../modal/addReview/addReviewModal';
 import SuccessModal from '../modal/successModal/successModal';
+import AddReviewModal from '../modal/addReview/addReviewModal';
 import ReviewList from './reviewsList/reviewList';
 import ProductRating from '../products/productsItem/rating/rating';
 import ProductCode from '../products/productsItem/productCode/productCode';
 import { HeadBlock, ReviewBlock, MainBlock } from './reviews.styled';
+import { NoReviewBlock } from './reviews.styled';
 
 export default function Reviews() {
   const [reviewModal, setReviewModal] = useState(false);
@@ -26,23 +29,19 @@ export default function Reviews() {
   const { slug } = useParams();
 
   useEffect(() => {
-    // console.log('send request with slug ', slug);
     dispatch(getProductReviews(slug));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   console.log(product);
-  //   console.log(isLoading);
-  // }, [product, isLoading]);
-
   const handleWirteReview = () => {
-    // setReviewModal(true);
     isLogin ? setReviewModal(true) : dispatch(toggleAccount(true));
   };
 
-  const handleAddReview = formData => {
-    setReviewModal(false);
-    dispatch(toggleSuccess(true));
+  const handleAddReview = async formData => {
+    const response = await dispatch(addProductReview(formData));
+    if (response.meta.requestStatus === 'fulfilled') {
+      setReviewModal(false);
+      dispatch(toggleSuccess(true));
+    }
   };
 
   return (
@@ -59,7 +58,15 @@ export default function Reviews() {
               {reviews.length > 0 ? (
                 <ReviewList reviews={reviews} />
               ) : (
-                <p>no reviews yet...</p>
+                <NoReviewBlock>
+                  <Image
+                    src="/noReview.png"
+                    alt="not found image"
+                    fill={true}
+                    sizes="100%"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </NoReviewBlock>
               )}
             </ReviewBlock>
             <SideBar
@@ -93,9 +100,7 @@ export default function Reviews() {
                 position="center"
               >
                 <SuccessModal
-                  text={
-                    'Your review has been sent for moderation and will appear on the site soon'
-                  }
+                  text={'Your review has been successfully added!'}
                 />
               </Modal>
             )}

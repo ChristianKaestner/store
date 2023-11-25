@@ -1,24 +1,22 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ReviewItem from '../reviewItem/reviewItem';
 import Modal from '../../modal/modal';
-import { useModal } from '@/app/hooks/useModal';
 import FullscreanImage from '../../modal/fullscreanReview/fullscreanReview';
-import SuccessModal from '../../modal/successModal/successModal';
-import { toggleSuccess } from '@/app/redux/modal/slice';
 import { visuallyHidden } from '@mui/utils';
-import { Typography } from '@mui/material';
+// import { useDispatch } from 'react-redux';
+// import { useModal } from '@/app/hooks/useModal';
 // import { useAuth } from '@/app/hooks/useAuth';
 // import CommentReviewModal from '../reviewComment/modal/commentReviewModal';
+// import SuccessModal from '../../modal/successModal/successModal';
+// import { toggleSuccess } from '@/app/redux/modal/slice';
 
 export default function ReviewList({ reviews }) {
-  // const [commentModal, setCommentModal] = useState(false);
   const [selectedImages, setSelectedImages] = useState({});
   const [fullscrean, setFullscrean] = useState(false);
-
-  const dispath = useDispatch();
-  const { successModal } = useModal();
+  // const [commentModal, setCommentModal] = useState(false);
+  // const dispath = useDispatch();
+  // const { successModal } = useModal();
   // const { isLogin, user } = useAuth();
 
   // const handleWirteComment = () => {
@@ -79,7 +77,7 @@ export default function ReviewList({ reviews }) {
           <FullscreanImage dto={selectedImages} />
         </Modal>
       )}
-      {successModal && (
+      {/* {successModal && (
         <Modal
           open={successModal}
           close={() => dispath(toggleSuccess(false))}
@@ -94,7 +92,7 @@ export default function ReviewList({ reviews }) {
             }
           />
         </Modal>
-      )}
+      )} */}
     </>
   );
 }

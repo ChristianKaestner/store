@@ -22,7 +22,7 @@ export const addProductReview = createAsyncThunk(
   'add/reviews',
   async (formData, thunkAPI) => {
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         `/api/products/reviews/${formData.get('id')}`,
         formData,
         {

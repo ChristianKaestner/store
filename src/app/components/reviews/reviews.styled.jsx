@@ -30,3 +30,10 @@ export const MainBlock = styled(Box)({
   marginTop: 32,
   marginBottom: 32,
 });
+
+export const NoReviewBlock = styled(Box)({
+  position: 'relative',
+  width: '100%',
+  height: 500,
+  pointerEvents: 'none',
+});

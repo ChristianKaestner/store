@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavigateNext, NavigatePrev } from '../../navigateBtn/navigateBtn';
 import 'swiper/css';
 
+const URL = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
+
 export default function FullscreanImage({ dto }) {
   const [prevBtn, setPervBtn] = useState(false);
   const [nextBtn, setNextBtn] = useState(true);
@@ -59,7 +61,7 @@ export default function FullscreanImage({ dto }) {
               style={{
                 objectFit: 'contain',
               }}
-              src={image}
+              src={URL + image}
               fill={true}
               alt="review image"
               sizes="100%"

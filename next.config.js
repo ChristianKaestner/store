@@ -9,9 +9,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'smokey-s3.s3.eu-central-1.amazonaws.com',
-        port: '',
-        pathname: '/products/**',
+        hostname: 'smokey-s3.s3.eu-central-1.amazonaws.com/**',
       },
     ],
   },

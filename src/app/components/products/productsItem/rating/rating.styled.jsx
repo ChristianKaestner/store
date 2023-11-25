@@ -28,14 +28,16 @@ export const Text = styled(Typography)(({ theme }) => ({
   },
 }));
 
-export const RatingStyled = styled(Rating)(({ theme }) => ({
+export const RatingStyled = styled(Rating, {
+  shouldForwardProp: prop => prop !== 'isCard',
+})(({ isCard, theme }) => ({
   [theme.breakpoints.up('xs')]: {
-    fontSize: '0.7rem',
+    fontSize: isCard ? '0.7rem' : '1.5rem',
   },
   [theme.breakpoints.up('sm')]: {
-    fontSize: '0.9rem',
+    fontSize: isCard ? '0.9rem' : '1.5rem',
   },
   [theme.breakpoints.up('md')]: {
-    fontSize: '1rem',
+    fontSize: isCard ? '1rem' : '1.5rem',
   },
 }));

@@ -1,5 +1,3 @@
-import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
-import ReviewTitle from '@/app/components/reviews/title/title';
 import Reviews from '@/app/components/reviews/reviews';
 
 // export async function generateMetadata({ params }) {
@@ -17,8 +15,6 @@ import Reviews from '@/app/components/reviews/reviews';
 export default function Review() {
   return (
     <>
-      <Breadcrumbs />
-      <ReviewTitle />
       <Reviews />
     </>
   );

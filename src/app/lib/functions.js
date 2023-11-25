@@ -128,6 +128,12 @@ export const defineCategory = product => {
   return;
 };
 
+export const productWithCat = product => {
+  if (!product) return;
+  const category = defineCategory(product);
+  return { ...product, category };
+};
+
 export const formatDate = date => {
   const originalDate = new Date(date);
   const day = originalDate.getUTCDate();

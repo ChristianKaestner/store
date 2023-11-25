@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Paper, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 export const HeadBlock = styled(Box)({
   display: 'flex',

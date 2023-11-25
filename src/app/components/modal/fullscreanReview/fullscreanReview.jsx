@@ -52,7 +52,7 @@ export default function FullscreanImage({ dto }) {
       }}
       initialSlide={startPos}
     >
-      {prevBtn && <NavigatePrev prev={handlePrevCard} />}
+      {prevBtn && images.length > 1 && <NavigatePrev prev={handlePrevCard} />}
 
       {images.map(image => {
         return (
@@ -71,7 +71,7 @@ export default function FullscreanImage({ dto }) {
         );
       })}
 
-      {nextBtn && <NavigateNext next={handleNextCard} />}
+      {nextBtn && images.length > 1 && <NavigateNext next={handleNextCard} />}
     </Swiper>
   );
 }

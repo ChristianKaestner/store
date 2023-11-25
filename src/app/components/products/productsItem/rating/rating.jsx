@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import { Container, Text, RatingStyled } from './rating.styled';
 
-export default function ProductRating({ product, size }) {
-  const { rating, reviews, category, id } = product;
-
+export default function ProductRating({ product, isCard = true }) {
+  const { rating, category, id, numberOfReviews } = product;
   return (
     <Container>
       <RatingStyled
         name="half-rating"
-        precision={0.5}
-        value={rating || 0}
+        precision={0.1}
+        value={+rating || 0}
+        isCard={isCard}
         readOnly
-        size={size}
       />
       <Link href={`/${category}/${id}/reviews`}>
-        <Text>{reviews?.length || 0} review</Text>
+        <Text>{numberOfReviews || 0} review</Text>
       </Link>
     </Container>
   );

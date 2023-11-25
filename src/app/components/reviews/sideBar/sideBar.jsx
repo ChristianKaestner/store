@@ -6,7 +6,7 @@ import ProductTitle from '../../products/productsItem/productTitle/productTitle'
 import { AsideBlock, ImageBlock } from './sideBar.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
 
-export default function SideBar({ image, title, price, id }) {
+export default function SideBar({ image, title, price, id, category }) {
   return (
     <AsideBlock elevation={3} component="aside">
       <ImageBlock>
@@ -20,7 +20,7 @@ export default function SideBar({ image, title, price, id }) {
         />
       </ImageBlock>
       <Box sx={{ width: '100%' }}>
-        <ProductTitle path="/" title={title} />
+        <ProductTitle path={`/${category}/${id}`} title={title} />
         <RowCenter sx={{ gap: 1 }}>
           <Price price={price} component="p" />
           <BuyButton id={id} width={120} />

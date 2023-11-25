@@ -34,7 +34,8 @@ export const reviewsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addProductReview.fulfilled, (state, action) => {
-        state.items = [...state.items, action.payload];
+        state.product = action.payload.product;
+        state.items = [...state.items, action.payload.review];
         state.isLoading = false;
         state.error = null;
       });

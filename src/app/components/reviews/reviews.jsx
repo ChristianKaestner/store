@@ -9,6 +9,8 @@ import { useReviews } from '@/app/hooks/useReviews';
 import { useAuth } from '@/app/hooks/useAuth';
 import { useModal } from '@/app/hooks/useModal';
 import { toggleAccount, toggleSuccess } from '@/app/redux/modal/slice';
+import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
+import ReviewTitle from '@/app/components/reviews/title/title';
 import SideBar from './sideBar/sideBar';
 import AddReview from './addReview/addReview';
 import Modal from '../modal/modal';
@@ -19,6 +21,7 @@ import ProductRating from '../products/productsItem/rating/rating';
 import ProductCode from '../products/productsItem/productCode/productCode';
 import { HeadBlock, ReviewBlock, MainBlock } from './reviews.styled';
 import { NoReviewBlock } from './reviews.styled';
+import { productWithCat } from '../../lib/functions';
 
 export default function Reviews() {
   const [reviewModal, setReviewModal] = useState(false);
@@ -27,6 +30,8 @@ export default function Reviews() {
   const { successModal } = useModal();
   const { reviews, product, isLoading } = useReviews();
   const { slug } = useParams();
+
+  const updatedProduct = productWithCat(product);
 
   useEffect(() => {
     dispatch(getProductReviews(slug));
@@ -46,10 +51,12 @@ export default function Reviews() {
 
   return (
     <>
-      {!isLoading && product && (
+      {product && (
         <>
+          <Breadcrumbs product={product} />
+          <ReviewTitle title={product.title} />
           <HeadBlock>
-            <ProductRating product={product} size="medium" />
+            <ProductRating product={updatedProduct} isCard={false} />
             <ProductCode id={product.id} />
           </HeadBlock>
           <MainBlock>
@@ -65,6 +72,7 @@ export default function Reviews() {
                     fill={true}
                     sizes="100%"
                     style={{ objectFit: 'contain' }}
+                    priority={true}
                   />
                 </NoReviewBlock>
               )}
@@ -73,6 +81,7 @@ export default function Reviews() {
               image={product.images[0]}
               title={product.title}
               price={product.price}
+              category={updatedProduct.category}
               id={product.id}
             />
             {reviewModal && (
@@ -100,7 +109,9 @@ export default function Reviews() {
                 position="center"
               >
                 <SuccessModal
-                  text={'Your review has been successfully added!'}
+                  text={
+                    'Your review has been successfully added! You can manage your reviews in your personal account.'
+                  }
                 />
               </Modal>
             )}

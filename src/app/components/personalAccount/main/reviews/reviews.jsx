@@ -1,16 +1,24 @@
 'use client';
-
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getuserReviews } from '@/app/redux/reviews/operations';
+import { useReviews } from '@/app/hooks/useReviews';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import ReviewList from '@/app/components/reviews/reviewsList/reviewList';
 import withAuth from '@/app/components/auth/withAuth';
-import { tmpUser } from '@/app/lib/tmpData';
 
 function AccountReviews() {
-  const { reviews } = tmpUser;
+  const { reviews, product, isLoading } = useReviews();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getuserReviews());
+  }, [dispatch]);
+
   return (
     <>
       <PageTitle title="Product Reviews" />
-      <ReviewList reviews={reviews} />
+      {reviews.length > 0 && <ReviewList reviews={reviews} isProfile={true} />}
     </>
   );
 }

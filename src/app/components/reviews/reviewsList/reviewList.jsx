@@ -11,7 +11,7 @@ import { visuallyHidden } from '@mui/utils';
 // import SuccessModal from '../../modal/successModal/successModal';
 // import { toggleSuccess } from '@/app/redux/modal/slice';
 
-export default function ReviewList({ reviews }) {
+export default function ReviewList({ reviews, isProfile = false }) {
   const [selectedImages, setSelectedImages] = useState({});
   const [fullscrean, setFullscrean] = useState(false);
   // const [commentModal, setCommentModal] = useState(false);
@@ -49,6 +49,7 @@ export default function ReviewList({ reviews }) {
                 review={review}
                 // onReplyClick={handleWirteComment}
                 onImageClick={handleScaleImage}
+                isProfile={isProfile}
               />
             );
           })}

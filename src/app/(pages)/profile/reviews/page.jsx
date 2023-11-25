@@ -1,5 +1,4 @@
-// import AccountReviews from '../../../components/personalAccount/main/reviews/reviews';
-import { AccountReviewsWithAuth } from '../../../components/personalAccount/main/reviews/reviews';
+import { AccountReviewsWithAuth } from '@/app/components/personalAccount/main/reviews/reviews';
 import { Box } from '@mui/material';
 
 export const metadata = {

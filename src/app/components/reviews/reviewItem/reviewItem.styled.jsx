@@ -1,5 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Box, Typography, Paper } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ReviewInfoBlock = styled(Box)({
   display: 'flex',
@@ -72,4 +74,18 @@ export const PaperStyled = styled(Paper)(({ theme }) => ({
   zIndex: 1,
   opacity: 0.9,
   '&:first-of-type': { marginTop: 0 },
+}));
+
+export const IconEdit = styled(EditIcon)(({ theme }) => ({
+  color: theme.palette.primary.dim,
+  '&:hover': {
+    color: theme.palette.primary.accent,
+  },
+}));
+
+export const IconDelete = styled(DeleteIcon)(({ theme }) => ({
+  color: theme.palette.primary.dim,
+  '&:hover': {
+    color: theme.palette.primary.accent,
+  },
 }));

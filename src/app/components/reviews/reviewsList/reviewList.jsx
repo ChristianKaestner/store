@@ -4,12 +4,6 @@ import ReviewItem from '../reviewItem/reviewItem';
 import Modal from '../../modal/modal';
 import FullscreanImage from '../../modal/fullscreanReview/fullscreanReview';
 import { visuallyHidden } from '@mui/utils';
-// import { useDispatch } from 'react-redux';
-// import { useModal } from '@/app/hooks/useModal';
-// import { useAuth } from '@/app/hooks/useAuth';
-// import CommentReviewModal from '../reviewComment/modal/commentReviewModal';
-// import SuccessModal from '../../modal/successModal/successModal';
-// import { toggleSuccess } from '@/app/redux/modal/slice';
 
 export default function ReviewList({ reviews, isProfile = false }) {
   const [selectedImages, setSelectedImages] = useState({});

@@ -35,20 +35,6 @@ export const ImageBlockItem = styled(Box)({
   },
 });
 
-export const ReplyBlock = styled(Box)({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginTop: 8,
-});
-
-export const CommentsBlock = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'end',
-  listStyle: 'none',
-}));
-
 export const TextDate = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.neutral,
   marginRight: 16,

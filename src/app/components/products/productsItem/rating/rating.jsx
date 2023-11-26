@@ -3,6 +3,7 @@ import { Container, Text, RatingStyled } from './rating.styled';
 
 export default function ProductRating({ product, isCard = true }) {
   const { rating, category, id, numberOfReviews } = product;
+
   return (
     <Container>
       <RatingStyled

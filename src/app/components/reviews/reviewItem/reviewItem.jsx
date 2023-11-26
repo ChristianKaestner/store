@@ -13,12 +13,6 @@ import { ImageBlock, ImageBlockItem, PaperStyled } from './reviewItem.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
 import { formatDate } from '@/app/lib/functions';
 import { IconEdit, IconDelete } from './reviewItem.styled';
-// import { ReplyBlock } from './reviewItem.styled';
-// import { CommentsBlock } from './reviewItem.styled';
-// import { visuallyHidden } from '@mui/utils';
-// import ReplyReview from './replyReview/replyReview';
-// import RateReview from './rateReview/rateReview';
-// import ReviewComment from '../reviewComment/reviewComment';
 
 const URL = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
 

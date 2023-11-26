@@ -74,7 +74,9 @@ export const reviewsSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(editProductReview.fulfilled, (state, action) => {
-        const index = state.items.findIndex(item => item.id === action.payload);
+        const index = state.items.findIndex(
+          item => item.id === action.payload.review.id
+        );
         state.items.splice(index, 1, action.payload.review);
         state.product = action.payload.product;
         state.isLoading = false;

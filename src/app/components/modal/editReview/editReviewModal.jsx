@@ -29,7 +29,7 @@ export default function EditReviewModal({ review, handleEdit }) {
       isFetchDoneRef.current = true;
     };
 
-    if (images.length && fileList.length === 0 && !isFetchDoneRef.current) {
+    if (images?.length && fileList.length === 0 && !isFetchDoneRef.current) {
       fetchData();
     }
   }, [images, fileList]);

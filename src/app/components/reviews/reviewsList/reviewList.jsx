@@ -14,20 +14,6 @@ import { visuallyHidden } from '@mui/utils';
 export default function ReviewList({ reviews, isProfile = false }) {
   const [selectedImages, setSelectedImages] = useState({});
   const [fullscrean, setFullscrean] = useState(false);
-  // const [commentModal, setCommentModal] = useState(false);
-  // const dispath = useDispatch();
-  // const { successModal } = useModal();
-  // const { isLogin, user } = useAuth();
-
-  // const handleWirteComment = () => {
-  //   !isLogin ? setCommentModal(true) : dispath(toggleAccount(true));
-  // };
-
-  // const handleAddComment = data => {
-  //   setCommentModal(false);
-  //   dispath(toggleSuccess(true));
-  //   console.log(data);
-  // };
 
   const handleScaleImage = (id, image) => {
     const filtred = reviews.filter(review => review.id === id);
@@ -47,7 +33,6 @@ export default function ReviewList({ reviews, isProfile = false }) {
               <ReviewItem
                 key={review.id}
                 review={review}
-                // onReplyClick={handleWirteComment}
                 onImageClick={handleScaleImage}
                 isProfile={isProfile}
               />
@@ -55,18 +40,6 @@ export default function ReviewList({ reviews, isProfile = false }) {
           })}
         </Box>
       )}
-      {/* {commentModal && (
-        <Modal
-          open={commentModal}
-          close={() => setCommentModal(false)}
-          title="Add comment"
-          width="600px"
-          height="auto"
-          position="center"
-        >
-          <CommentReviewModal user={user} handleAddComment={handleAddComment} />
-        </Modal>
-      )} */}
       {fullscrean && (
         <Modal
           open={fullscrean}
@@ -78,22 +51,6 @@ export default function ReviewList({ reviews, isProfile = false }) {
           <FullscreanImage dto={selectedImages} />
         </Modal>
       )}
-      {/* {successModal && (
-        <Modal
-          open={successModal}
-          close={() => dispath(toggleSuccess(false))}
-          title="Successfully"
-          width="600px"
-          height="auto"
-          position="center"
-        >
-          <SuccessModal
-            text={
-              'Your comment has been submitted for moderation and will appear on the site soon'
-            }
-          />
-        </Modal>
-      )} */}
     </>
   );
 }

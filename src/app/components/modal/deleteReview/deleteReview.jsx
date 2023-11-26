@@ -1,6 +1,6 @@
 import { Container, BtnBlock, Text, BtnStyled } from './deleteReview.styled';
 
-export default function DeleteReview({ onDelete, onAbort }) {
+export default function DeleteReviewModal({ onDelete, onAbort }) {
   return (
     <Container>
       <Text>Do you really want to delete the review?</Text>

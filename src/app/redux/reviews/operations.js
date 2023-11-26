@@ -70,3 +70,26 @@ export const deleteProductReview = createAsyncThunk(
     }
   }
 );
+
+export const editProductReview = createAsyncThunk(
+  'edit/review',
+  async (formData, thunkAPI) => {
+    try {
+      const response = await axios.patch(
+        `/api/products/reviews/${formData.get('id')}`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  }
+);

@@ -49,6 +49,22 @@ export const getSlideCount = (mediaXS, mediaS, mediaSM, mediaMD, mediaLG) => {
   if (mediaLG) return 6;
 };
 
+export const fetchImageFiles = async (imageUrls, deafultURL) => {
+  const fetchImageFile = async imageUrl => {
+    const response = await fetch(deafultURL + imageUrl);
+    const blob = await response.blob();
+    const fileName = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
+    return new File([blob], fileName, { type: blob.type });
+  };
+
+  const fetchImageFilePromises = imageUrls.map(imageUrl =>
+    fetchImageFile(imageUrl)
+  );
+  const imageFiles = await Promise.all(fetchImageFilePromises);
+
+  return imageFiles;
+};
+
 export function rotateImage(image, angle = 90) {
   return new Promise(resolve => {
     const canvas = document.createElement('canvas');

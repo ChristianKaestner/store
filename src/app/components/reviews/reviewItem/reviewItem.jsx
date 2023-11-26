@@ -2,10 +2,12 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { deleteProductReview } from '@/app/redux/reviews/operations';
+import { editProductReview } from '@/app/redux/reviews/operations';
 import { Divider, Typography, IconButton, Rating, Box } from '@mui/material';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import Modal from '../../modal/modal';
-import DeleteReview from '../../modal/deleteReview/deleteReview';
+import DeleteReviewModal from '../../modal/deleteReview/deleteReview';
+import EditReviewModal from '../../modal/editReview/editReviewModal';
 import { ReviewInfoBlock, TextDate, TextName, Text } from './reviewItem.styled';
 import { ImageBlock, ImageBlockItem, PaperStyled } from './reviewItem.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
@@ -28,7 +30,12 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
   const date = formatDate(createdAt);
   const dispatch = useDispatch();
 
-  const handleEdit = () => {};
+  const handleEdit = async formData => {
+    const response = await dispatch(editProductReview(formData));
+    if (response.meta.requestStatus === 'fulfilled') {
+      setEditModal(false);
+    }
+  };
 
   const handleDelete = async () => {
     const response = await dispatch(deleteProductReview(id));
@@ -97,10 +104,6 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
               })}
             </ImageBlock>
           )}
-          {/* <ReplyBlock>
-            <ReplyReview onReplyClick={onReplyClick} />
-            <RateReview usefulness={usefulness} />
-          </ReplyBlock> */}
         </>
       </PaperStyled>
       {deleteModal && (
@@ -112,25 +115,24 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
           height="auto"
           position="center"
         >
-          <DeleteReview
+          <DeleteReviewModal
             onDelete={handleDelete}
             onAbort={() => setDeleteModal(false)}
           />
-          {/* <CommentReviewModal user={user} handleAddComment={handleAddComment} /> */}
         </Modal>
       )}
-      {/* {comments?.length > 0 && (
-        <>
-          <Typography component="h4" sx={visuallyHidden}>
-            Comments to review
-          </Typography>
-          <CommentsBlock component="ul">
-            {comments.map(comment => {
-              return <ReviewComment key={comment.id} comment={comment} />;
-            })}
-          </CommentsBlock>
-        </>
-      )} */}
+      {editModal && (
+        <Modal
+          open={editModal}
+          close={() => setEditModal(false)}
+          title="Edit review"
+          width="600px"
+          height="600px"
+          position="center"
+        >
+          <EditReviewModal review={review} handleEdit={handleEdit} />
+        </Modal>
+      )}
     </>
   );
 }

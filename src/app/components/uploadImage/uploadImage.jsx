@@ -23,17 +23,15 @@ export default function UploadImage({
     const files = e.target.files;
     const uploadedSize = getAllFilesSize(files);
     const maxSize = 5 * 1024 * 1024;
-    if (files.length > 10 || uploadedSize > maxSize) {
+
+    if (files.length + fileList.length > 10 || uploadedSize > maxSize) {
       setErrUpload(true);
       return;
     }
+
     setErrUpload(false);
+
     Object.values(files).forEach(file => setFileList(prev => [...prev, file]));
-    const stateSize = getAllFilesSize(fileList);
-    if (fileList.length > 10 || stateSize > maxSize) {
-      setErrUpload(true);
-      return;
-    }
   };
 
   const removeImage = image => {
@@ -54,6 +52,7 @@ export default function UploadImage({
         console.error('rotate error', error);
       });
   };
+
   return (
     <Container errUpload={errUpload}>
       <RowBetween>

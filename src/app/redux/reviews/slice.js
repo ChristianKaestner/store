@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getProductReviews, addProductReview } from './operations';
 import { getuserReviews, deleteProductReview } from './operations';
+import { editProductReview } from './operations';
 
 const initialState = {
   items: [],
@@ -62,6 +63,20 @@ export const reviewsSlice = createSlice({
       .addCase(deleteProductReview.fulfilled, (state, action) => {
         const index = state.items.findIndex(item => item.id === action.payload);
         state.items.splice(index, 1);
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(editProductReview.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(editProductReview.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(editProductReview.fulfilled, (state, action) => {
+        const index = state.items.findIndex(item => item.id === action.payload);
+        state.items.splice(index, 1, action.payload.review);
+        state.product = action.payload.product;
         state.isLoading = false;
         state.error = null;
       });

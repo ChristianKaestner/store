@@ -14,8 +14,11 @@ const fillColorArray = [
   '#e85d2c',
   '#ffbd02',
 ];
-const svgFillRefs = Array.from({ length: 12 }, () => useRef(null));
+
 export default function Animation() {
+  // eslint-disable-next-line
+  const svgFillRefs = Array.from({ length: 12 }, () => useRef(null));
+
   const color = getRandomColor();
   function getRandomColor() {
     const index = Math.floor(Math.random() * fillColorArray.length);

@@ -14,9 +14,8 @@ const fillColorArray = [
   '#e85d2c',
   '#ffbd02',
 ];
-
+const svgFillRefs = Array.from({ length: 12 }, () => useRef(null));
 export default function Animation() {
-  const svgFillRefs = Array.from({ length: 12 }, () => useRef(null));
   const color = getRandomColor();
   function getRandomColor() {
     const index = Math.floor(Math.random() * fillColorArray.length);
@@ -41,7 +40,7 @@ export default function Animation() {
     return () => {
       fillAnimations.forEach(animation => animation.pause());
     };
-  }, []);
+  }, [color]);
 
   return (
     <Box

@@ -6,6 +6,7 @@ import Skeleton from '../../skeleton/skeleton';
 import Grid from '@mui/material/Unstable_Grid2';
 import { visuallyHidden } from '@mui/utils';
 import { defineCategory } from '@/app/lib/functions';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function ProductsList({
   skeleton,
@@ -53,6 +54,7 @@ export default function ProductsList({
           </>
         )}
       </Grid>
+      <Loader isLoading={isLoading} />
     </Box>
   );
 }

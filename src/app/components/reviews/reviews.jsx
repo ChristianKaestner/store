@@ -35,7 +35,7 @@ export default function Reviews() {
 
   useEffect(() => {
     dispatch(getProductReviews(slug));
-  }, [dispatch]);
+  }, [dispatch, slug]);
 
   const handleWirteReview = () => {
     isLogin ? setReviewModal(true) : dispatch(toggleAccount(true));

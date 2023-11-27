@@ -26,7 +26,7 @@ export default function ShoppingCart() {
       if (!cart) return;
       dispatch(getCartProducts(cart));
     }
-  }, [cart, isLogin]);
+  }, [cart, isLogin, dispatch]);
 
   const handleDelete = id => {
     if (isLogin) {

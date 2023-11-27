@@ -43,7 +43,7 @@ export default function RefreshUser() {
       dispatch(getFavorite());
       syncCart();
     }
-  }, [isLogin]);
+  }, [isLogin, dispatch]);
 
   return null;
 }

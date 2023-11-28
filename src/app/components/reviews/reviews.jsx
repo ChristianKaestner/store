@@ -22,9 +22,11 @@ import ProductCode from '../products/productsItem/productCode/productCode';
 import { HeadBlock, ReviewBlock, MainBlock } from './reviews.styled';
 import { NoReviewBlock } from './reviews.styled';
 import { productWithCat } from '../../lib/functions';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function Reviews() {
   const [reviewModal, setReviewModal] = useState(false);
+  const [resLoading, setResLoading] = useState(false);
   const dispatch = useDispatch();
   const { isLogin } = useAuth();
   const { successModal } = useModal();
@@ -42,11 +44,13 @@ export default function Reviews() {
   };
 
   const handleAddReview = async formData => {
+    setResLoading(true);
     const response = await dispatch(addProductReview(formData));
     if (response.meta.requestStatus === 'fulfilled') {
       setReviewModal(false);
       dispatch(toggleSuccess(true));
     }
+    setResLoading(false);
   };
 
   return (
@@ -118,6 +122,7 @@ export default function Reviews() {
           </MainBlock>
         </>
       )}
+      <Loader isLoading={isLoading || resLoading} />
     </>
   );
 }

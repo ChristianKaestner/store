@@ -16,7 +16,12 @@ import { IconEdit, IconDelete } from './reviewItem.styled';
 
 const URL = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
 
-export default function ReviewItem({ review, onImageClick, isProfile }) {
+export default function ReviewItem({
+  review,
+  onImageClick,
+  isProfile,
+  handleLoading,
+}) {
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const { id, text, pros, cons, images, rating, createdAt } = review;
@@ -25,17 +30,21 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
   const dispatch = useDispatch();
 
   const handleEdit = async formData => {
+    handleLoading(true);
     const response = await dispatch(editProductReview(formData));
     if (response.meta.requestStatus === 'fulfilled') {
       setEditModal(false);
     }
+    handleLoading(false);
   };
 
   const handleDelete = async () => {
+    handleLoading(true);
     const response = await dispatch(deleteProductReview(id));
     if (response.meta.requestStatus === 'fulfilled') {
       setDeleteModal(false);
     }
+    handleLoading(false);
   };
 
   return (
@@ -91,6 +100,7 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
                       onClick={() => onImageClick(id, image)}
                       style={{
                         borderRadius: 4,
+                        objectFit: 'cover',
                       }}
                     />
                   </ImageBlockItem>
@@ -124,7 +134,11 @@ export default function ReviewItem({ review, onImageClick, isProfile }) {
           height="600px"
           position="center"
         >
-          <EditReviewModal review={review} handleEdit={handleEdit} />
+          <EditReviewModal
+            review={review}
+            handleEdit={handleEdit}
+            handleLoading={handleLoading}
+          />
         </Modal>
       )}
     </>

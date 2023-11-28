@@ -14,12 +14,13 @@ import EditInfoModal from '../../../../components/modal/editAccount/editAccount'
 import EditAddressModal from '../../../../components/modal/editAddress/editAddress';
 import ConfirmDelModal from '../../../../components/modal/confirmDeletion/confirmDeletion';
 import withAuth from '../../../../components/auth/withAuth';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-
+  // const [req]
   const { user, error, isLoading } = useAuth();
 
   useEffect(() => {
@@ -52,19 +53,15 @@ function AccountSettings() {
   return (
     <>
       <PageTitle title="Personal information" sx={{ mt: 0 }} />
-
       <PersonalDetails user={user} onClick={() => setDetailsModal(true)} />
-
       <ShippingAddress
         address={user.address}
         onClick={() => setAddressModal(true)}
       />
-
       <AccountManagement
         onDelete={() => setDeleteModal(true)}
         onLogout={handleLogout}
       />
-
       {detailsModal && (
         <Modal
           open={detailsModal}
@@ -108,6 +105,7 @@ function AccountSettings() {
           />
         </Modal>
       )}
+      <Loader isLoading={isLoading} />
     </>
   );
 }

@@ -9,7 +9,7 @@ import { fetchImageFiles } from '../../../lib/functions';
 
 const url = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
 
-export default function EditReviewModal({ review, handleEdit }) {
+export default function EditReviewModal({ review, handleEdit, handleLoading }) {
   const [fileList, setFileList] = useState([]);
   const [errUpload, setErrUpload] = useState(false);
   const isFetchDoneRef = useRef(false);
@@ -24,9 +24,11 @@ export default function EditReviewModal({ review, handleEdit }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      handleLoading(true);
       const imageFiles = await fetchImageFiles(images, url);
       setFileList(imageFiles);
       isFetchDoneRef.current = true;
+      handleLoading(false);
     };
 
     if (images?.length && fileList.length === 0 && !isFetchDoneRef.current) {

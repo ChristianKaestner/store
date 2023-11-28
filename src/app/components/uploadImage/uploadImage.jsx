@@ -97,6 +97,7 @@ export default function UploadImage({
                   alt="uploaded image"
                   width={80}
                   height={80}
+                  style={{ objectFit: 'cover' }}
                 />
                 <IconClear onClick={() => removeImage(image.name)} />
                 <IconRotate onClick={() => handleRotateRight(image)} />

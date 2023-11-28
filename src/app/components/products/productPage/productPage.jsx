@@ -6,6 +6,7 @@ import ProductSwiper from './swiper/productSwiper';
 import ProductContent from './content/productContent';
 import RelatedProducts from '../relatedProducts/relatedProducts';
 import { Container, BlockSwiper, BlockContent } from './productPage.styled';
+import Loader from '@/app/components/loading/loaderBackdrop';
 import { defineCategory } from '@/app/lib/functions';
 
 export default function ProductPage() {
@@ -30,6 +31,7 @@ export default function ProductPage() {
           <RelatedProducts id={slug} />
         </>
       )}
+      <Loader isLoading={isLoading} />
     </>
   );
 }

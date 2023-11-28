@@ -5,7 +5,11 @@ import Modal from '../../modal/modal';
 import FullscreanImage from '../../modal/fullscreanReview/fullscreanReview';
 import { visuallyHidden } from '@mui/utils';
 
-export default function ReviewList({ reviews, isProfile = false }) {
+export default function ReviewList({
+  reviews,
+  isProfile = false,
+  handleLoading,
+}) {
   const [selectedImages, setSelectedImages] = useState({});
   const [fullscrean, setFullscrean] = useState(false);
 
@@ -29,6 +33,7 @@ export default function ReviewList({ reviews, isProfile = false }) {
                 review={review}
                 onImageClick={handleScaleImage}
                 isProfile={isProfile}
+                handleLoading={handleLoading}
               />
             );
           })}

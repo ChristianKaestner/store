@@ -5,7 +5,7 @@ export default function Loader({ isLoading }) {
   return (
     <>
       {isLoading && (
-        <Backdrop open={isLoading} sx={{ zIndex: 100 }}>
+        <Backdrop open={isLoading} sx={{ zIndex: 1301 }}>
           <Animation />
         </Backdrop>
       )}

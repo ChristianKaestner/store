@@ -8,11 +8,12 @@ import { Box, Divider, Chip } from '@mui/material';
 import Social from './social/social';
 import Login from './login/login';
 import Register from './register/register';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function Auth({ toggleAuth, login }) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { error, isLogin } = useAuth();
+  const { error, isLogin, isLoading } = useAuth();
 
   const dispatch = useDispatch();
 
@@ -79,6 +80,7 @@ export default function Auth({ toggleAuth, login }) {
         />
       </Divider>
       <Social />
+      <Loader isLoading={isLoading} />
     </Box>
   );
 }

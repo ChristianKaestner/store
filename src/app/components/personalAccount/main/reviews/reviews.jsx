@@ -1,14 +1,16 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getuserReviews } from '@/app/redux/reviews/operations';
 import { useReviews } from '@/app/hooks/useReviews';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import ReviewList from '@/app/components/reviews/reviewsList/reviewList';
 import withAuth from '@/app/components/auth/withAuth';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 function AccountReviews() {
-  const { reviews, product, isLoading } = useReviews();
+  const [reqLoading, setReqLoading] = useState(false);
+  const { reviews, isLoading } = useReviews();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,8 +19,15 @@ function AccountReviews() {
 
   return (
     <>
-      <PageTitle title="Product Reviews" />
-      {reviews.length > 0 && <ReviewList reviews={reviews} isProfile={true} />}
+      <PageTitle title="Product reviews" />
+      {reviews.length > 0 && (
+        <ReviewList
+          reviews={reviews}
+          isProfile={true}
+          handleLoading={val => setReqLoading(val)}
+        />
+      )}
+      <Loader isLoading={isLoading || reqLoading} />
     </>
   );
 }

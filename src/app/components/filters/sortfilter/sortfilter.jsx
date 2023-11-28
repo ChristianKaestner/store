@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -12,12 +13,28 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function SortFilter() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
   const { control, setValue } = useForm();
   const { sort } = useFilters();
   const dispatch = useDispatch();
 
   const handleChange = currentSort => {
-    dispatch(addFilter({ filterName: 'sort', filterValue: currentSort }));
+    if (!currentSort) {
+      queryParams.delete('sort');
+    } else {
+      queryParams.set('sort', currentSort);
+    }
+    setTimeout(() => {
+      dispatch(addFilter({ filterName: 'sort', filterValue: currentSort }));
+    }, 500);
+
+    const search = decodeURIComponent(queryParams.toString());
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
   };
 
   useEffect(() => {

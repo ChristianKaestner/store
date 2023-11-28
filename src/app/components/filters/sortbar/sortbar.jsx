@@ -10,7 +10,6 @@ import { FilterBlock, FilterBtn, IconClose } from './sortbar.styled';
 import { Box } from '@mui/material';
 import { TextBold } from '@/app/lib/commonStyles';
 import { objectToArray, updatedFilterLabel } from '@/app/lib/functions';
-// import { useIsMount } from '@/app/hooks/useMount';
 import isEqual from 'lodash.isequal';
 
 export default function Sortbar({ mobile = false, total }) {
@@ -20,11 +19,9 @@ export default function Sortbar({ mobile = false, total }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
-  // const isMount = useIsMount();
   const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
   useEffect(() => {
-    // if (isMount) {
     queryParams.forEach((filterValue, filterName) => {
       if (filterName in filters) {
         const filterValues = filterValue.split(',');
@@ -42,7 +39,6 @@ export default function Sortbar({ mobile = false, total }) {
         });
       }
     });
-    // }
   }, [queryParams]);
 
   const lastFilters = useRef(filters);
@@ -77,16 +73,6 @@ export default function Sortbar({ mobile = false, total }) {
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
   }, [filters, searchParams, dispatch]);
-
-  // const handleDelete = e => {
-  //   const { id, textContent } = e.currentTarget;
-  //   dispatch(removeFilter({ filterName: id, filterValue: textContent }));
-  // };
-
-  // const handleDeleteAll = useCallback(() => {
-  //   //delete all query param
-  //   dispatch(resetFilters());
-  // }, [dispatch]);
 
   const handleDelete = e => {
     const { id, textContent } = e.currentTarget;

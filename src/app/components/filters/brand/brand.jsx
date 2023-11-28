@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
@@ -13,6 +14,11 @@ import { visuallyHidden } from '@mui/utils';
 export default function BrandFilter({ items }) {
   const [searchedBrand, setSearchedBrand] = useState('');
   const [debouncedBrand] = useDebounce(searchedBrand, 500);
+  
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
   const { brand } = useFilters();
 
@@ -33,7 +39,30 @@ export default function BrandFilter({ items }) {
 
   const handleChecked = (checked, curentBrand) => {
     const filter = { filterName: 'brand', filterValue: curentBrand };
-    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const brandParams = queryParams.get('brand');
+      const brandParamsArr = brandParams ? brandParams.split(',') : [];
+
+      if (brandParamsArr.length > 1) {
+        const newBrandParams = brandParamsArr
+          .filter(brand => brand !== curentBrand)
+          .join(',');
+        queryParams.set('brand', newBrandParams);
+      } else {
+        queryParams.delete('brand');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

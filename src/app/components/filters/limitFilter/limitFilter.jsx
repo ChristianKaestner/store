@@ -1,5 +1,6 @@
 'use client';
 import { useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -10,18 +11,41 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function LimitFilter() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
   const { control, setValue } = useForm();
   const { limit, page, multiplier } = useFilters();
   const dispatch = useDispatch();
 
   const handleChange = currentLimit => {
-    dispatch(addFilter({ filterName: 'limit', filterValue: currentLimit }));
+    currentLimit === 25
+      ? queryParams.delete('limit')
+      : queryParams.set('limit', currentLimit);
+
+    setTimeout(() => {
+      dispatch(addFilter({ filterName: 'limit', filterValue: currentLimit }));
+    }, 500);
+
     if (page !== 1) {
-      dispatch(addFilter({ filterName: 'page', filterValue: 1 }));
+      queryParams.delete('page');
+      setTimeout(() => {
+        dispatch(addFilter({ filterName: 'page', filterValue: 1 }));
+      }, 500);
     }
+    
     if (multiplier !== 1) {
-      dispatch(addFilter({ filterName: 'multiplier', filterValue: 1 }));
+      queryParams.delete('multiplier');
+      setTimeout(() => {
+        dispatch(addFilter({ filterName: 'multiplier', filterValue: 1 }));
+      }, 500);
     }
+
+    const search = decodeURIComponent(queryParams.toString());
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
   };
 
   useEffect(() => {
@@ -56,7 +80,7 @@ export default function LimitFilter() {
                 <MenuItem value={25}>
                   <em>25</em>
                 </MenuItem>
-                <MenuItem value={10}>10</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
                 <MenuItem value={50}>50</MenuItem>
                 <MenuItem value={100}>100</MenuItem>
               </Select>

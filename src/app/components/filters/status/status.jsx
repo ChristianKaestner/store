@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
 import AccordionCommon from '../accordion/accordionCommon';
@@ -7,6 +8,11 @@ import { Form, Label, List } from '@/app/lib/commonStyles';
 import { visuallyHidden } from '@mui/utils';
 
 export default function StatusFilter({ items }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
   const statusCountsArr = Object.entries(items).map(([status, count]) => ({
     status,
     count,
@@ -16,7 +22,30 @@ export default function StatusFilter({ items }) {
 
   const handleChecked = (checked, curentStatus) => {
     const filter = { filterName: 'status', filterValue: curentStatus };
-    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const statusParams = queryParams.get('status');
+      const statusParamsArr = statusParams ? statusParams.split(',') : [];
+
+      if (statusParamsArr.length > 1) {
+        const newStatusParams = statusParamsArr
+          .filter(status => status !== curentStatus)
+          .join(',');
+        queryParams.set('status', newStatusParams);
+      } else {
+        queryParams.delete('status');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

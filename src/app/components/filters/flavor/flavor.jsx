@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDebounce } from 'use-debounce';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
@@ -13,6 +14,11 @@ import { visuallyHidden } from '@mui/utils';
 export default function FlavorFilter({ items }) {
   const [searchedFlavor, setSearchedFlavor] = useState('');
   const [debouncedFlavor] = useDebounce(searchedFlavor, 500);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
   const { flavor } = useFilters();
   const dispatch = useDispatch();
@@ -30,19 +36,31 @@ export default function FlavorFilter({ items }) {
   );
 
   const handleChecked = (checked, curentFlavor) => {
-    checked
-      ? dispatch(
-          addFilter({
-            filterName: 'flavor',
-            filterValue: curentFlavor,
-          })
-        )
-      : dispatch(
-          removeFilter({
-            filterName: 'flavor',
-            filterValue: curentFlavor,
-          })
-        );
+    const filter = { filterName: 'flavor', filterValue: curentFlavor };
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const flavorParams = queryParams.get('flavor');
+      const flavorParamsArr = flavorParams ? flavorParams.split(',') : [];
+
+      if (flavorParamsArr.length > 1) {
+        const newFlavorParams = flavorParamsArr
+          .filter(flavor => flavor !== curentFlavor)
+          .join(',');
+        queryParams.set('flavor', newFlavorParams);
+      } else {
+        queryParams.delete('flavor');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

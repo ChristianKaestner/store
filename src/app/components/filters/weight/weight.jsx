@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
 import AccordionCommon from '../accordion/accordionCommon';
@@ -8,6 +9,10 @@ import { visuallyHidden } from '@mui/utils';
 import { Counter, Row } from '@/app/lib/commonStyles';
 
 export default function WeightFilter({ items }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
   const weightCountsArr = Object.entries(items).map(([weight, count]) => ({
     weight,
     count,
@@ -17,7 +22,30 @@ export default function WeightFilter({ items }) {
 
   const handleChecked = (checked, curentWeight) => {
     const filter = { filterName: 'weight', filterValue: curentWeight };
-    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const weightParams = queryParams.get('weight');
+      const weightParamsArr = weightParams ? weightParams.split(',') : [];
+      
+      if (weightParamsArr.length > 1) {
+        const newWeightParams = weightParamsArr
+          .filter(weight => weight !== curentWeight)
+          .join(',');
+        queryParams.set('weight', newWeightParams);
+      } else {
+        queryParams.delete('weight');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

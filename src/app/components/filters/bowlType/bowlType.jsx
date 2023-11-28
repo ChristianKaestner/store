@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
 import AccordionCommon from '../accordion/accordionCommon';
@@ -8,6 +9,11 @@ import { visuallyHidden } from '@mui/utils';
 import { Counter, Row } from '@/app/lib/commonStyles';
 
 export default function BowlTypeFilter({ items }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
   const bowlTypeCountsArr = Object.entries(items).map(([bowlType, count]) => ({
     bowlType,
     count,
@@ -18,7 +24,30 @@ export default function BowlTypeFilter({ items }) {
 
   const handleChecked = (checked, curentBowlType) => {
     const filter = { filterName: 'bowl_type', filterValue: curentBowlType };
-    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const bowlTypeParams = queryParams.get('bowl_type');
+      const bowlTypeParamsArr = bowlTypeParams ? bowlTypeParams.split(',') : [];
+
+      if (bowlTypeParamsArr.length > 1) {
+        const newBowlTypeParams = bowlTypeParamsArr
+          .filter(type => type !== curentBowlType)
+          .join(',');
+        queryParams.set('bowl_type', newBowlTypeParams);
+      } else {
+        queryParams.delete('bowl_type');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

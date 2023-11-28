@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -17,6 +18,11 @@ export default function PriceFilter({ items }) {
   const max = items.max;
   const [errMin, setErrMin] = useState(false);
   const [errMax, setErrMax] = useState(false);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
 
   const { price } = useFilters();
   const dispatch = useDispatch();
@@ -65,21 +71,34 @@ export default function PriceFilter({ items }) {
     if (price[0] < min || price[0] > max || isNaN(price[0])) return;
     if (price[1] < min || price[1] > max || isNaN(price[1])) return;
 
-    price[0] === min && price[1] === max
-      ? dispatch(
+    if (price[0] === min && price[1] === max) {
+      queryParams.delete('price');
+
+      setTimeout(() => {
+        dispatch(
           removeFilter({
             filterName: 'price',
             filterValue: price,
           })
-        )
-      : dispatch(
+        );
+      }, 500);
+    } else {
+      const newPrice = `${price[0]}-${price[1]}`;
+      queryParams.set('price', newPrice);
+
+      setTimeout(() => {
+        dispatch(
           addFilter({
             filterName: 'price',
-            filterValue: `${price[0]}-${price[1]}`,
+            filterValue: newPrice,
           })
         );
+      }, 500);
+    }
 
-    // send request
+    const search = decodeURIComponent(queryParams.toString());
+    const query = search ? `?${search}` : '';
+    router.push(`${pathname}${query}`, { scroll: false });
   }, 1000);
 
   return (

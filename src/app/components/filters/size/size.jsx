@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
 import AccordionCommon from '../accordion/accordionCommon';
@@ -8,6 +9,11 @@ import { visuallyHidden } from '@mui/utils';
 import { Counter, Row } from '@/app/lib/commonStyles';
 
 export default function SizeFilter({ items }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+
   const sizeCountsArr = Object.entries(items).map(([size, count]) => ({
     size,
     count,
@@ -16,11 +22,31 @@ export default function SizeFilter({ items }) {
   const dispatch = useDispatch();
 
   const handleChecked = (checked, curentSize) => {
-    const filter = {
-      filterName: 'size',
-      filterValue: curentSize,
-    };
-    checked ? dispatch(addFilter(filter)) : dispatch(removeFilter(filter));
+    const filter = { filterName: 'size', filterValue: curentSize };
+
+    if (checked) {
+      dispatch(addFilter(filter));
+    } else {
+      const sizeParams = queryParams.get('size');
+      const sizeParamsArr = sizeParams ? sizeParams.split(',') : [];
+
+      if (sizeParamsArr.length > 1) {
+        const newSizeParams = sizeParamsArr
+          .filter(size => size !== curentSize)
+          .join(',');
+        queryParams.set('size', newSizeParams);
+      } else {
+        queryParams.delete('size');
+      }
+
+      const search = decodeURIComponent(queryParams.toString());
+      const query = search ? `?${search}` : '';
+      router.push(`${pathname}${query}`, { scroll: false });
+
+      setTimeout(() => {
+        dispatch(removeFilter(filter));
+      }, 500);
+    }
   };
 
   return (

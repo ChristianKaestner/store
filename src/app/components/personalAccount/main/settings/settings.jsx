@@ -20,7 +20,7 @@ function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  // const [req]
+
   const { user, error, isLoading } = useAuth();
 
   useEffect(() => {

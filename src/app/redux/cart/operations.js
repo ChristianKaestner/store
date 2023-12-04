@@ -20,6 +20,8 @@ const createAsyncOperation = (method, endpoint) =>
         case 'delete':
           await axios.delete(`${endpoint}/${payload}`);
           return payload;
+        case 'deleteAll':
+          response = await axios.delete(endpoint);
         default:
           break;
       }
@@ -36,6 +38,7 @@ export const addCart = createAsyncOperation('post', '/api/cart');
 export const editCart = createAsyncOperation('patch', '/api/cart');
 export const getCart = createAsyncOperation('get', '/api/cart');
 export const deleteCart = createAsyncOperation('delete', '/api/cart');
+export const deleteAllCart = createAsyncOperation('deleteAll', '/api/cart');
 export const getCartProducts = createAsyncThunk(
   'getCartProducts',
   async (payload, thunkAPI) => {

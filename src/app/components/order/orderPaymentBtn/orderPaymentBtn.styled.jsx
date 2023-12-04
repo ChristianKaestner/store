@@ -31,7 +31,7 @@ export const Text = styled(Typography)({
   color: '#fff',
 });
 
-export const ButtonProceed = styled(Button)(({ theme }) => ({
+export const ButtonPay = styled(Button)(({ theme }) => ({
   width: 100,
   height: 40,
   backgroundColor: theme.palette.primary.light,

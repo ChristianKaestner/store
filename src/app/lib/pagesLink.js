@@ -1,9 +1,8 @@
 export const productsLink = [
-  { id: 1, name: 'Hookah', href: '/' },
-  { id: 2, name: 'Tobacco', href: '/' },
-  { id: 3, name: 'Hookah bowl', href: '/' },
-  { id: 4, name: 'Coal', href: '/' },
-  { id: 5, name: 'Accessories', href: '/' },
+  { id: 1, name: 'Hookah', href: '/hookahs' },
+  { id: 2, name: 'Tobacco', href: '/tobacco' },
+  { id: 3, name: 'Coal', href: '/coals' },
+  { id: 4, name: 'Accessories', href: '/accessories' },
 ];
 
 export const supportLink = [

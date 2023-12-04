@@ -5,6 +5,13 @@ import { cartReduceQuantity, cartRemove } from '../../redux/cart/slice';
 import { cartIncreaseQuantity, cartSetQuantity } from '../../redux/cart/slice';
 import { getCart, getCartProducts } from '../../redux/cart/operations';
 import { editCart, deleteCart } from '../../redux/cart/operations';
+import { deleteAllCart } from '../../redux/cart/operations';
+import {
+  toggleCart,
+  toggleOrder,
+  toggleAccount,
+} from '../../redux/modal/slice';
+import { addOrder } from '../../redux/order/operations';
 import { useCart } from '../../hooks/useCart';
 import { useAuth } from '../../hooks/useAuth';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -94,6 +101,32 @@ export default function ShoppingCart() {
     );
   };
 
+  const handleProceed = async () => {
+    // console.log('!login ', cart);
+    // console.log('login ', cartProducts);
+
+    if (isLogin && cartProducts.length) {
+      const payload = cartProducts.map(item => ({
+        productId: item.id,
+        quantity: item.quantity,
+      }));
+      const response = await dispatch(addOrder({ items: payload }));
+
+      if (response.meta.requestStatus === 'fulfilled') {
+        const delRes = await dispatch(deleteAllCart());
+        if (delRes.meta.requestStatus === 'fulfilled') {
+          dispatch(toggleCart(false));
+          dispatch(toggleOrder(true));
+        } else {
+          console.log('pum pum pum');
+        }
+      }
+    } else {
+      dispatch(toggleCart(false));
+      dispatch(toggleAccount(true));
+    }
+  };
+
   return (
     <>
       <Container>
@@ -129,7 +162,7 @@ export default function ShoppingCart() {
                 );
               })}
             </Grid>
-            <TotalPrice total={shoppingTotal()} />
+            <TotalPrice total={shoppingTotal()} handleProceed={handleProceed} />
           </>
         ) : (
           <EmptyCart />

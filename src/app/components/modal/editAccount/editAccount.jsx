@@ -5,7 +5,12 @@ import { Button, Typography } from '@mui/material';
 import { InputProps } from '../../../lib/commonStyles';
 import OnError from '../../Notifications/onError';
 
-export default function EditInfoModal({ user, handleEdit, httpError }) {
+export default function EditInfoModal({
+  user,
+  handleEdit,
+  httpError,
+  editEmail = true,
+}) {
   const { firstName, lastName, phone, email } = user;
 
   const {
@@ -49,7 +54,7 @@ export default function EditInfoModal({ user, handleEdit, httpError }) {
               type="text"
               required
               label="First Name"
-              value={value}
+              value={value || ''}
               onChange={e => {
                 onChange(e.target.value);
               }}
@@ -74,7 +79,7 @@ export default function EditInfoModal({ user, handleEdit, httpError }) {
               type="text"
               required
               label="Last Name"
-              value={value}
+              value={value || ''}
               sx={{ mt: 2 }}
               onChange={e => {
                 onChange(e.target.value);
@@ -100,7 +105,7 @@ export default function EditInfoModal({ user, handleEdit, httpError }) {
               type="number"
               required
               label="Phone number"
-              value={value}
+              value={value || ''}
               sx={{ mt: 2 }}
               InputProps={{
                 startAdornment: (
@@ -118,47 +123,50 @@ export default function EditInfoModal({ user, handleEdit, httpError }) {
       />
       {errors.phone && <OnError text="Phone number must be 9 digits" />}
 
-      <Controller
-        control={control}
-        name="email"
-        defaultValue={email}
-        rules={{
-          required: true,
-          pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/,
-        }}
-        render={({ field: { onChange, value } }) => {
-          return (
-            <InputProps
-              err={errors?.email}
-              id="email"
-              type="email"
-              required
-              label="Email"
-              value={value}
-              sx={{ mt: 2 }}
-              onChange={e => {
-                onChange(e.target.value);
-                handleClearError;
-              }}
+      {editEmail && (
+        <>
+          <Controller
+            control={control}
+            name="email"
+            defaultValue={email}
+            rules={{
+              required: true,
+              pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/,
+            }}
+            render={({ field: { onChange, value } }) => {
+              return (
+                <InputProps
+                  err={errors?.email}
+                  id="email"
+                  type="email"
+                  required
+                  label="Email"
+                  value={value || ''}
+                  sx={{ mt: 2 }}
+                  onChange={e => {
+                    onChange(e.target.value);
+                    handleClearError;
+                  }}
+                />
+              );
+            }}
+          />
+          {errors?.email && (
+            <OnError
+              text={
+                errors?.email?.message
+                  ? errors.email.message
+                  : 'Invalid email address'
+              }
             />
-          );
-        }}
-      />
-      {errors?.email && (
-        <OnError
-          text={
-            errors?.email?.message
-              ? errors.email.message
-              : 'Invalid email address'
-          }
-        />
+          )}
+        </>
       )}
-      {/* {errors?.email && <OnError text="Invalid email address" />} */}
 
       <Button
         type="submit"
         variant="contained"
-        sx={{ mt: 2, bgcolor: 'primary.light' }}
+        sx={{ mt: 2, height: 40, bgcolor: 'primary.light' }}
       >
         Edit
       </Button>

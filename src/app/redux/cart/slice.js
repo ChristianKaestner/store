@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addCart, editCart, getCartProducts } from './operations';
-import { deleteCart, getCart } from './operations';
+import { deleteCart, getCart, deleteAllCart } from './operations';
 
 const initialState = {
   items: [],
@@ -118,7 +118,21 @@ export const cartSlice = createSlice({
         );
         state.isLoading = false;
         state.error = null;
+      })
+      .addCase(deleteAllCart.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(deleteAllCart.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(deleteAllCart.fulfilled, (state, action) => {
+        state.products = [];
+        state.items = [];
+        state.isLoading = false;
+        state.error = null;
       });
+
     asyncActions.forEach(asyncAction => {
       builder.addCase(asyncAction.pending, state => {
         state.isLoading = true;

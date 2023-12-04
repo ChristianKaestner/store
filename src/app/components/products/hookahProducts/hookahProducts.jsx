@@ -3,6 +3,7 @@
 import { useGetHookahsQuery } from '@/app/redux/services/products';
 import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function HookahProducts() {
   const {
@@ -53,6 +54,7 @@ export default function HookahProducts() {
           multiplier={multiplier}
         />
       )}
+      <Loader isLoading={isLoading} />
     </>
   );
 }

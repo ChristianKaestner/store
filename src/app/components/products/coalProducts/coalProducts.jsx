@@ -3,6 +3,7 @@
 import { useGetCoalsQuery } from '@/app/redux/services/products';
 import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function CoalProducts() {
   const { brand, price, status, weight, size, page, limit, multiplier, sort } =
@@ -44,6 +45,7 @@ export default function CoalProducts() {
           multiplier={multiplier}
         />
       )}
+      <Loader isLoading={isLoading} />
     </>
   );
 }

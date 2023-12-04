@@ -1,13 +1,13 @@
-import { Button } from '@mui/material';
-import { Container, Box, Text } from './totalPrice.styled';
-export default function TotalPrice({ total }) {
+import { Container, Box, Text, ButtonProceed } from './totalPrice.styled';
+
+export default function TotalPrice({ total, handleProceed }) {
   return (
     <Container>
       <Box>
         <Text>{total}$</Text>
-        <Button variant="contained" sx={{ bgcolor: 'primary.light' }}>
-          Checkout
-        </Button>
+        <ButtonProceed variant="contained" onClick={handleProceed}>
+          Proceed
+        </ButtonProceed>
       </Box>
     </Container>
   );

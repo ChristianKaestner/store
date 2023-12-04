@@ -159,3 +159,31 @@ export const formatDate = date => {
   const minutes = originalDate.getUTCMinutes();
   return `${day}-${month}-${year} ${hours}:${minutes}`;
 };
+
+export const getUserAddress = user => {
+  const address = [];
+  if (user?.address?.city) address.push(user?.address?.city);
+  if (user?.address?.street) address.push(`street ${user?.address?.street}`);
+  if (user?.address?.house) address.push(user?.address?.house);
+  if (user?.address?.apartment)
+    address.push(`app. ${user?.address?.apartment}`);
+
+  if (address.length > 0) {
+    return address.join(', ');
+  } else {
+    return null;
+  }
+};
+
+export const getUserInfo = user => {
+  const info = [];
+  const { firstName, lastName, phone } = user;
+  if (firstName && lastName) info.push(`${firstName} ${lastName}`);
+  if (phone) info.push(`+380${phone}`);
+
+  if (info.length > 0) {
+    return info.join(', ');
+  } else {
+    return null;
+  }
+};

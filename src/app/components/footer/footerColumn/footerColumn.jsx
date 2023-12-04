@@ -53,6 +53,7 @@ export function SubscribeColumn({ handleSubscribe }) {
     register,
     handleSubmit,
     formState: { errors },
+    clearErrors,
   } = useForm({
     mode: 'onSubmit',
   });
@@ -77,6 +78,7 @@ export function SubscribeColumn({ handleSubscribe }) {
             required: 'required',
             pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]{2,3}$/,
           })}
+          onChange={() => clearErrors('email')}
         />
         {errors.email && (
           <Typography sx={{ fontSize: '0.75rem', color: 'primary.hot' }}>

@@ -3,6 +3,7 @@
 import { useGetAccessoriesQuery } from '@/app/redux/services/products';
 import { useFilters } from '@/app/hooks/useFilters';
 import CommonProducts from '../commonProducts/commonProducts';
+import Loader from '@/app/components/loading/loaderBackdrop';
 
 export default function AccessoriesProducts() {
   const {
@@ -55,6 +56,7 @@ export default function AccessoriesProducts() {
           multiplier={multiplier}
         />
       )}
+       <Loader isLoading={isLoading} />
     </>
   );
 }

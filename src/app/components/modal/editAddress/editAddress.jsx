@@ -33,7 +33,7 @@ export default function EditAddressModal({ address, handleEdit }) {
               type="text"
               required
               label="City"
-              value={value}
+              value={value || ''}
               onChange={e => {
                 onChange(e.target.value);
               }}
@@ -56,7 +56,7 @@ export default function EditAddressModal({ address, handleEdit }) {
               type="text"
               required
               label="Street"
-              value={value}
+              value={value || ''}
               sx={{ mt: 2 }}
               onChange={e => {
                 onChange(e.target.value);
@@ -80,7 +80,7 @@ export default function EditAddressModal({ address, handleEdit }) {
               type="text"
               required
               label="House"
-              value={value}
+              value={value || ''}
               sx={{ mt: 2 }}
               onChange={e => {
                 onChange(e.target.value);
@@ -101,7 +101,7 @@ export default function EditAddressModal({ address, handleEdit }) {
               id="apartment"
               type="text"
               label="Apartment"
-              value={value}
+              value={value || ''}
               sx={{ mt: 2 }}
               onChange={e => {
                 onChange(e.target.value);
@@ -114,7 +114,7 @@ export default function EditAddressModal({ address, handleEdit }) {
       <Button
         type="submit"
         variant="contained"
-        sx={{ mt: 2, bgcolor: 'primary.light' }}
+        sx={{ mt: 2, height: 40, bgcolor: 'primary.light' }}
       >
         Edit
       </Button>

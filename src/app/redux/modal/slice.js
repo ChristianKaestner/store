@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cart: false,
   order: false,
+  payment: false,
   mobile: false,
   products: false,
   account: false,
@@ -36,6 +37,10 @@ export const modalSlice = createSlice({
     toggleSuccess(state, action) {
       state.success = action.payload;
     },
+
+    togglePayment(state, action) {
+      state.payment = action.payload;
+    },
   },
 });
 
@@ -47,4 +52,5 @@ export const {
   toggleAccount,
   toggleMobile,
   toggleSuccess,
+  togglePayment,
 } = modalSlice.actions;

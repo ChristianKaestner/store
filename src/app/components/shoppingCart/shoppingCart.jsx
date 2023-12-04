@@ -6,11 +6,8 @@ import { cartIncreaseQuantity, cartSetQuantity } from '../../redux/cart/slice';
 import { getCart, getCartProducts } from '../../redux/cart/operations';
 import { editCart, deleteCart } from '../../redux/cart/operations';
 import { deleteAllCart } from '../../redux/cart/operations';
-import {
-  toggleCart,
-  toggleOrder,
-  toggleAccount,
-} from '../../redux/modal/slice';
+import { toggleCart, toggleOrder } from '../../redux/modal/slice';
+import { toggleAccount } from '../../redux/modal/slice';
 import { addOrder } from '../../redux/order/operations';
 import { useCart } from '../../hooks/useCart';
 import { useAuth } from '../../hooks/useAuth';
@@ -102,9 +99,6 @@ export default function ShoppingCart() {
   };
 
   const handleProceed = async () => {
-    // console.log('!login ', cart);
-    // console.log('login ', cartProducts);
-
     if (isLogin && cartProducts.length) {
       const payload = cartProducts.map(item => ({
         productId: item.id,
@@ -117,8 +111,6 @@ export default function ShoppingCart() {
         if (delRes.meta.requestStatus === 'fulfilled') {
           dispatch(toggleCart(false));
           dispatch(toggleOrder(true));
-        } else {
-          console.log('pum pum pum');
         }
       }
     } else {

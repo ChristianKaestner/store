@@ -43,6 +43,7 @@ export default function RefreshUser() {
       dispatch(getFavorite());
       syncCart();
     }
+    // eslint-disable-next-line
   }, [isLogin, dispatch]);
 
   return null;

@@ -43,7 +43,7 @@ export default function Animation() {
     return () => {
       fillAnimations.forEach(animation => animation.pause());
     };
-  }, [color]);
+  }, [color, svgFillRefs]);
 
   return (
     <Box

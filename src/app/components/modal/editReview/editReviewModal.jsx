@@ -34,7 +34,7 @@ export default function EditReviewModal({ review, handleEdit, handleLoading }) {
     if (images?.length && fileList.length === 0 && !isFetchDoneRef.current) {
       fetchData();
     }
-  }, [images, fileList]);
+  }, [images, fileList, handleLoading]);
 
   const onEditReview = data => {
     const { pros, cons, rating, text } = data;

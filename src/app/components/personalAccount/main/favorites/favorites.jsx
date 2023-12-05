@@ -17,7 +17,7 @@ function AccountFavorites() {
 
   useEffect(() => {
     refetch();
-  }, [favoriteIds]);
+  }, [favoriteIds, refetch]);
 
   return (
     <>

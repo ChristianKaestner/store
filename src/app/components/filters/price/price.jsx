@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { addFilter, removeFilter } from '@/app/redux/filters/slice';
@@ -28,6 +28,15 @@ export default function PriceFilter({ items }) {
   const dispatch = useDispatch();
   const { control, getValues, setValue } = useForm();
 
+  const defaultValues = useCallback(() => {
+    if (price.length) {
+      const priceArr = price[0].split('-');
+      return priceArr.map(n => Number(n));
+    } else {
+      return [min, max];
+    }
+  }, [price, min, max]);
+
   useEffect(() => {
     const formValues = getValues();
     if (!price.length && formValues.price?.length) {
@@ -35,16 +44,7 @@ export default function PriceFilter({ items }) {
     }
     setErrMin(false);
     setErrMax(false);
-  }, [price, getValues]);
-
-  const defaultValues = () => {
-    if (price.length) {
-      const priceArr = price[0].split('-');
-      return priceArr.map(n => Number(n));
-    } else {
-      return [min, max];
-    }
-  };
+  }, [price, getValues, defaultValues, setValue]);
 
   const validateMin = minValue => {
     if (minValue < min || minValue > max) {

@@ -17,7 +17,7 @@ function AccountOrders() {
 
   useEffect(() => {
     dispatch(getOrders());
-  }, []);
+  }, [dispatch]);
 
   const handleReqLoading = value => {
     setReqLoading(value);

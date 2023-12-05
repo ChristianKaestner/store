@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { useFilters } from '@/app/hooks/useFilters';
@@ -19,7 +19,10 @@ export default function Sortbar({ mobile = false, total }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const dispatch = useDispatch();
-  const queryParams = new URLSearchParams(Array.from(searchParams.entries()));
+  const queryParams = useMemo(
+    () => new URLSearchParams(Array.from(searchParams.entries())),
+    [searchParams]
+  );
 
   useEffect(() => {
     queryParams.forEach((filterValue, filterName) => {
@@ -39,7 +42,7 @@ export default function Sortbar({ mobile = false, total }) {
         });
       }
     });
-  }, [queryParams]);
+  }, [dispatch, filters, queryParams]);
 
   const lastFilters = useRef(filters);
 
@@ -72,7 +75,7 @@ export default function Sortbar({ mobile = false, total }) {
     const search = decodeURIComponent(queryParams.toString());
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
-  }, [filters, searchParams, dispatch]);
+  }, [filters, searchParams, dispatch, pathname, queryParams, router]);
 
   const handleDelete = e => {
     const { id, textContent } = e.currentTarget;

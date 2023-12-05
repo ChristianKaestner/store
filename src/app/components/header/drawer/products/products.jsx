@@ -1,4 +1,4 @@
-import { Box, List } from '@mui/material';
+import { Box } from '@mui/material';
 import { LinkStyled } from '../drawer.styled';
 import { ItemText, Item, ListStyled } from '../drawer.styled';
 import { categories } from '../../../../lib/tmpData';

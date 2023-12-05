@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Row } from '../../../lib/commonStyles';
+import { useAuth } from '@/app/hooks/useAuth';
 import AccountInfo from './accountInfo/accountInfo';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
@@ -9,11 +9,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import CreateIcon from '@mui/icons-material/Create';
 import { Container, MenuText, Tabs, Tab } from './sideBar.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { tmpUser } from '../../../lib/tmpData';
+import { Row } from '../../../lib/commonStyles';
 
 export default function AccountAside() {
   const [page, setPage] = useState('settings');
-  const { firstName, lastName, email } = tmpUser;
+  const { firstName, lastName, email } = useAuth();
   const media = useMediaQuery('(min-width:900px)');
   const router = useRouter();
   const pathname = usePathname();

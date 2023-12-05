@@ -6,7 +6,8 @@ import { useCart } from '../../hooks/useCart';
 import { useModal } from '../../hooks/useModal';
 import { useAuth } from '../../hooks/useAuth';
 import { toggleAccount, toggleProducts } from '../../redux/modal/slice';
-import { toggleCart, toggleMobile, toggleOrder } from '../../redux/modal/slice';
+import { toggleCart, toggleMobile } from '../../redux/modal/slice';
+import { toggleOrder, togglePayment } from '../../redux/modal/slice';
 import { Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
@@ -19,14 +20,16 @@ import CartIcon from './CartIcon/CartIcon';
 import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
 import Order from '../order/order';
+import Payment from '../order/payment/payment';
 import { AppBar } from './header.styled';
 import Modal from '../modal/modal';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Header() {
   const [login, setLogin] = useState(true);
-  const { cartModal, accountModal, mobileModal, productsModal, orderModal } =
-    useModal();
+  const { cartModal, accountModal, mobileModal, productsModal } = useModal();
+  const { orderModal, paymentModal } = useModal();
+
   const { cart, cartProducts } = useCart();
   const { isLogin } = useAuth();
 
@@ -121,6 +124,18 @@ export default function Header() {
               position="center"
             >
               <Order />
+            </Modal>
+          )}
+          {paymentModal && (
+            <Modal
+              open={paymentModal}
+              close={() => dispatch(togglePayment(false))}
+              title="Payment"
+              width="600px"
+              height="600px"
+              position="center"
+            >
+              <Payment />
             </Modal>
           )}
         </Container>

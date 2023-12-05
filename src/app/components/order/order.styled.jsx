@@ -21,6 +21,11 @@ export const Text = styled(Typography)(({ theme }) => ({
   fontSize: '1em',
 }));
 
+export const TextTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.dim,
+  fontSize: '1.5em',
+}));
+
 export const Span = styled('span')(({ theme }) => ({
   color: theme.palette.primary.accent,
 }));

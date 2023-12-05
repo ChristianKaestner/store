@@ -4,7 +4,7 @@ import { Table, TableHead, Paper } from '@mui/material';
 import { Cell } from './orderTable.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function OrderTable({ goods, handleCart, handleReview }) {
+export default function OrderTable({ products, handleCart }) {
   const media = useMediaQuery('(min-width:600px)');
 
   return (
@@ -18,13 +18,11 @@ export default function OrderTable({ goods, handleCart, handleReview }) {
               <Cell align="left">Price</Cell>
               <Cell align="left">Quantity</Cell>
               <Cell align="right"></Cell>
-              <Cell align="right"></Cell>
             </TableRow>
           )}
         </TableHead>
-        {goods.map(item => {
+        {products.map(item => {
           const { product, quantity, buyingPrice } = item;
-
           return (
             <TableBody key={product.id}>
               {media ? (
@@ -43,18 +41,10 @@ export default function OrderTable({ goods, handleCart, handleReview }) {
                   <Cell align="left">{quantity}</Cell>
                   <Cell align="right">
                     <Button
-                      onClick={() => handleReview(product.id)}
-                      variant="outlined"
-                      sx={{ color: 'primary.light' }}
-                    >
-                      Review
-                    </Button>
-                  </Cell>
-                  <Cell align="right">
-                    <Button
                       onClick={() => handleCart(product.id)}
                       variant="contained"
-                      sx={{ bgcolor: 'primary.light' }}
+                      sx={{ bgcolor: 'primary.light', width: 100 }}
+                      disabled={item.status === 'Out of stock' ? true : false}
                     >
                       Cart
                     </Button>
@@ -80,16 +70,7 @@ export default function OrderTable({ goods, handleCart, handleReview }) {
                     <Cell align="left">Quantity: {quantity}</Cell>
                   </TableRow>
                   <TableRow>
-                    <Cell>
-                      <Button
-                        onClick={() => handleReview(product.id)}
-                        variant="outlined"
-                        sx={{ width: '100%', color: 'primary.light' }}
-                      >
-                        Review
-                      </Button>
-                    </Cell>
-                    <Cell>
+                    <Cell colSpan={2}>
                       <Button
                         onClick={() => handleCart(product.id)}
                         variant="contained"

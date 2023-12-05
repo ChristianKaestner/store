@@ -31,4 +31,4 @@ const createAsyncOperation = (method, endpoint) =>
 
 export const addOrder = createAsyncOperation('post', '/api/orders');
 export const editOrder = createAsyncOperation('patch', '/api/orders');
-export const getOrder = createAsyncOperation('get', '/api/orders');
+export const getOrders = createAsyncOperation('get', '/api/orders');

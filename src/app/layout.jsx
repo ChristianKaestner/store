@@ -2,7 +2,7 @@ import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
-// import CursorComponent from './components/cursor/cursor';
+import CursorComponent from './components/cursor/cursor';
 import RefreshUser from './components/auth/refreshUser';
 import { ThemeProvider } from '@mui/material/styles';
 import { myTheme } from './lib/theme';
@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider theme={myTheme}>
           <ReduxProvider>
             <RefreshUser />
-            {/* <CursorComponent /> */}
+            <CursorComponent />
             <Header />
             <Main>{children}</Main>
             <Footer />

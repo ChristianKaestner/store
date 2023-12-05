@@ -152,11 +152,11 @@ export const productWithCat = product => {
 
 export const formatDate = date => {
   const originalDate = new Date(date);
-  const day = originalDate.getUTCDate();
-  const month = originalDate.getUTCMonth() + 1;
+  const day = originalDate.getUTCDate().toString().padStart(2, '0');
+  const month = (originalDate.getUTCMonth() + 1).toString().padStart(2, '0');
   const year = originalDate.getUTCFullYear();
-  const hours = originalDate.getUTCHours();
-  const minutes = originalDate.getUTCMinutes();
+  const hours = originalDate.getUTCHours().toString().padStart(2, '0');
+  const minutes = originalDate.getUTCMinutes().toString().padStart(2, '0');
   return `${day}-${month}-${year} ${hours}:${minutes}`;
 };
 

@@ -82,7 +82,13 @@ export const cartSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(addCart.fulfilled, (state, action) => {
-        state.products = [...state.products, ...action.payload];
+        const newProduct = action.payload[0];
+        const isExisted = state.products.find(
+          product => product.id === newProduct.id
+        );
+        if (!isExisted) {
+          state.products = [...state.products, ...action.payload];
+        }
         state.isLoading = false;
         state.error = null;
       })

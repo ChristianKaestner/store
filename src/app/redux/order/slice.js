@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addOrder, editOrder, getOrder } from './operations';
+import { addOrder, editOrder, getOrders } from './operations';
 
 const initialState = {
   orders: [],
@@ -33,24 +33,23 @@ export const orderSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(editOrder.fulfilled, (state, action) => {
-        // const updatedProduct = action.payload[0];
-        // const index = state.products.findIndex(
-        //   product => product.id === updatedProduct.id
-        // );
-        // if (index !== -1) {
-        //   state.products[index] = updatedProduct;
-        // }
+        const index = state.orders.findIndex(
+          order => order.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.orders[index] = action.payload;
+        }
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(getOrder.pending, state => {
+      .addCase(getOrders.pending, state => {
         state.isLoading = true;
       })
-      .addCase(getOrder.rejected, (state, action) => {
+      .addCase(getOrders.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       })
-      .addCase(getOrder.fulfilled, (state, action) => {
+      .addCase(getOrders.fulfilled, (state, action) => {
         state.orders = action.payload;
         state.isLoading = false;
         state.error = null;

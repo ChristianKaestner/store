@@ -6,23 +6,23 @@ import CancelIcon from '@mui/icons-material/Cancel';
 export default function OrderStatus({ status }) {
   return (
     <>
-      {status === 'Fulfilled' && (
+      {status === 'completed' && (
         <CheckCircleIcon sx={{ fontSize: '2rem', color: 'success.light' }} />
       )}
-      {status === 'Pending payment' && (
+      {status === 'pending' && (
         <AccessTimeFilledIcon
           sx={{ fontSize: '2rem', color: 'warning.light' }}
         />
       )}
-      {status === 'Pending delivery' && (
+      {status === 'processing' && (
         <AccessTimeFilledIcon
           sx={{ fontSize: '2rem', color: 'warning.light' }}
         />
       )}
-      {status === 'Order shipped' && (
+      {status === 'shipped' && (
         <LocalShippingIcon sx={{ fontSize: '2rem', color: 'primary.light' }} />
       )}
-      {status === 'Rejected' && (
+      {status === 'canceled' && (
         <CancelIcon sx={{ fontSize: '2rem', color: 'error.light' }} />
       )}
     </>

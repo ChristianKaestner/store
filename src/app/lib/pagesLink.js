@@ -1,7 +1,7 @@
 export const productsLink = [
-  { id: 1, name: 'Hookah', href: '/hookahs' },
+  { id: 1, name: 'Hookahs', href: '/hookahs' },
   { id: 2, name: 'Tobacco', href: '/tobacco' },
-  { id: 3, name: 'Coal', href: '/coals' },
+  { id: 3, name: 'Charoals', href: '/charcoals' },
   { id: 4, name: 'Accessories', href: '/accessories' },
 ];
 
@@ -12,11 +12,7 @@ export const supportLink = [
   { id: 4, name: 'Delivery', href: '/' },
 ];
 
-export const contactLink = [
-  { id: 1, name: 'Address', href: '/' },
-  { id: 2, name: 'Email', href: '/' },
-  { id: 3, name: 'Phone', href: '/' },
-];
+export const contactLink = [{ id: 1, name: 'Contacts', href: '/contacts' }];
 
 export const mediaLink = [
   { id: 1, name: 'Address', href: '/' },

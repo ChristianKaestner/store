@@ -6,6 +6,7 @@ import { useGetFavoriteProductsQuery } from '@/app/redux/services/products';
 import { useCart } from '@/app/hooks/useCart';
 import { useAuth } from '@/app/hooks/useAuth';
 import { useFavorite } from '@/app/hooks/useFavorite';
+import Loader from '@/app/components/loading/loaderBackdrop';
 import withAuth from '@/app/components/auth/withAuth';
 
 function AccountFavorites() {
@@ -28,6 +29,7 @@ function AccountFavorites() {
         skeleton={12}
         isFP={true}
       />
+      <Loader isLoading={isLoading} />
     </>
   );
 }

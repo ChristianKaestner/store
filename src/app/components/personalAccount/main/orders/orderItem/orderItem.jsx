@@ -10,21 +10,25 @@ import { AccordionDetails, TextAccent, ButtonStyled } from './orderItem.styled';
 import { Column, TextBold } from '@/app/lib/commonStyles';
 import { formatDate } from '@/app/lib/functions';
 
-export default function OrderItem({ order }) {
+export default function OrderItem({ order, handleReqLoading }) {
   const { createdAt, total, status, items, id } = order;
   const date = formatDate(createdAt);
 
   const dispatch = useDispatch();
 
-  const handleCart = id => {
+  const handleCart = async id => {
+    handleReqLoading(true);
     const payload = { items: [{ productId: id, quantity: 1 }] };
-    dispatch(addCart(payload));
+    await dispatch(addCart(payload));
+    handleReqLoading(false);
   };
 
-  const handleEditOrder = e => {
+  const handleEditOrder = async e => {
     e.stopPropagation();
     if (status !== 'pending') return;
-    dispatch(editOrder(id));
+    handleReqLoading(true);
+    await dispatch(editOrder(id));
+    handleReqLoading(false);
   };
 
   const handlePay = e => {

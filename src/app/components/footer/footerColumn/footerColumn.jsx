@@ -104,25 +104,25 @@ export function FollowUsColumn() {
 
       <ColumnList style={{ display: 'flex', gap: '8px' }}>
         <li>
-          <Link href="/">
+          <a href="https://www.instagram.com/" target="_blank">
             <IconButton color="inherit" aria-label="Instagram icon">
               <InstagramIcon />
             </IconButton>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link href="/">
+          <a href="https://www.facebook.com/" target="_blank">
             <IconButton>
               <FacebookIcon />
             </IconButton>
-          </Link>
+          </a>
         </li>
         <li>
-          <Link href="/">
+          <a href="https://www.youtube.com/" target="_blank">
             <IconButton>
               <YoutubeIcon />
             </IconButton>
-          </Link>
+          </a>
         </li>
       </ColumnList>
     </Column>

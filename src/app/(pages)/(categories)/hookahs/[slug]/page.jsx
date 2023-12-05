@@ -7,7 +7,7 @@ export async function generateMetadata({ params }) {
     `http://localhost:5000/api/products/id/${id}`
   ).then(res => res.json());
   return {
-    title: product.title,
+    title: `Smokey - ${product.title}`,
     description: product.description,
   };
 }

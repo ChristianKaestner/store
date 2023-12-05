@@ -2,7 +2,7 @@ import { AccountReviewsWithAuth } from '@/app/components/personalAccount/main/re
 import { Box } from '@mui/material';
 
 export const metadata = {
-  title: 'Profile - Reviews',
+  title: 'Smokey - Reviews',
   description: `List of user reviews of purchased products`,
 };
 

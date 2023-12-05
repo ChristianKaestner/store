@@ -1,5 +1,5 @@
-import ProductPage from '@/app/components/products/productPage/productPage';
-//need to define cats
+import Reviews from '@/app/components/reviews/reviews';
+
 export async function generateMetadata({ params }) {
   const id = params.slug;
 
@@ -7,15 +7,15 @@ export async function generateMetadata({ params }) {
     `http://localhost:5000/api/products/id/${id}`
   ).then(res => res.json());
   return {
-    title: product.title,
-    description: product.description,
+    title: `Smokey - Reviews about ${product.brand} charcoal`,
+    description: `Reviews of ${product.title} buyers `,
   };
 }
 
-export default function Hookah() {
+export default function Review() {
   return (
     <>
-      <ProductPage />
+      <Reviews />
     </>
   );
 }

@@ -1,9 +1,9 @@
 'use client';
 
-import { Box, Container } from '@mui/material';
 import { CommonColumnDesk, CommonColumnMob } from './footerColumn/footerColumn';
 import { SubscribeColumn, FollowUsColumn } from './footerColumn/footerColumn';
 import { productsLink, supportLink, contactLink } from '../../lib/pagesLink';
+import { BoxStyled, ContainerStyled } from './footer.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function Footer() {
@@ -14,26 +14,8 @@ export default function Footer() {
   };
 
   return (
-    <Box
-      sx={{
-        width: '100%',
-        bgcolor: 'primary.main',
-        pb: 3,
-        zIndex: 1,
-        opacity: 0.9,
-      }}
-      component="footer"
-    >
-      <Container
-        maxWidth="xl"
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          justifyContent: 'space-between',
-          px: 3,
-          pt: 3,
-        }}
-      >
+    <BoxStyled component="footer">
+      <ContainerStyled maxWidth="xl">
         {media ? (
           <>
             <CommonColumnDesk title="Shop" pages={productsLink} />
@@ -50,7 +32,7 @@ export default function Footer() {
           </>
         )}
         <FollowUsColumn />
-      </Container>
-    </Box>
+      </ContainerStyled>
+    </BoxStyled>
   );
 }

@@ -1,9 +1,8 @@
-import Loader from '../../components/loading/loaderBackdrop';
+export const metadata = {
+  title: 'Smokey - Contacts',
+  description: 'Contact us',
+};
 
 export default function Contacts() {
-  return (
-    <>
-      <Loader isLoading={true} />
-    </>
-  );
+  return <></>;
 }

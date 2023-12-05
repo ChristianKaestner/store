@@ -1,9 +1,8 @@
-// import AccountFavorites from '@/app/components/personalAccount/main/favorites/favorites';
 import { AccountFavoritesWithAuth } from '../../../components/personalAccount/main/favorites/favorites';
 import { Box } from '@mui/material';
 
 export const metadata = {
-  title: 'Profile - Favorite',
+  title: 'Smokey - Favorite Products',
   description: `List of user's favorite products`,
 };
 

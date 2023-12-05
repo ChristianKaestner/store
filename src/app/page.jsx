@@ -4,7 +4,7 @@ import PromotedProducts from '@/app/components/products/promotedProducts/promote
 import { images } from './lib/tmpData';
 
 export const metadata = {
-  title: 'Home',
+  title: 'Smokey - Home',
   description: 'User table, you can retrieve data, add as well as edit. ',
 };
 

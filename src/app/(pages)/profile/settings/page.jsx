@@ -1,9 +1,8 @@
-// import AccountSettings from '../../../components/personalAccount/main/settings/settings';
 import { AccountSettingsWithAuth } from '../../../components/personalAccount/main/settings/settings';
 import { Box } from '@mui/material';
 
 export const metadata = {
-  title: 'Profile - Settings',
+  title: 'Smokey - Settings',
   description:
     'Personal user information, shipping address, password change, account deletion',
 };

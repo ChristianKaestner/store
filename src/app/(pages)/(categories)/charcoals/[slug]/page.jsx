@@ -1,4 +1,4 @@
-import Reviews from '@/app/components/reviews/reviews';
+import ProductPage from '@/app/components/products/productPage/productPage';
 
 export async function generateMetadata({ params }) {
   const id = params.slug;
@@ -7,15 +7,15 @@ export async function generateMetadata({ params }) {
     `http://localhost:5000/api/products/id/${id}`
   ).then(res => res.json());
   return {
-    title: `Smokey - Reviews about ${product.brand} hookah bowl`,
-    description: `Reviews of ${product.title} buyers `,
+    title: `Smokey -  ${product.title}`,
+    description: product.description,
   };
 }
 
-export default function Review() {
+export default function Hookah() {
   return (
     <>
-      <Reviews />
+      <ProductPage />
     </>
   );
 }

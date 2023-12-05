@@ -33,8 +33,8 @@ export const categories = [
     id: 3,
     image: '/cat-coals.png',
     video: '/coal.mp4',
-    name: 'Coals',
-    url: '/coals',
+    name: 'Charoals',
+    url: '/charcoals',
   },
   {
     id: 4,

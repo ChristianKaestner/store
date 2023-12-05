@@ -20,6 +20,7 @@ function AccountSettings() {
   const [detailsModal, setDetailsModal] = useState(false);
   const [addressModal, setAddressModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [reqLoading, setReqLoading] = useState(false);
 
   const { user, error, isLoading } = useAuth();
 
@@ -32,12 +33,16 @@ function AccountSettings() {
 
   const dispatch = useDispatch();
 
-  const handleEditInfo = data => {
-    dispatch(updateUser(data));
+  const handleEditInfo = async data => {
+    setReqLoading(true);
+    await dispatch(updateUser(data));
+    setReqLoading(false);
   };
 
-  const handleEditAddress = data => {
-    dispatch(updateAddress(data));
+  const handleEditAddress = async data => {
+    setReqLoading(true);
+    await dispatch(updateAddress(data));
+    setReqLoading(false);
   };
 
   const handleLogout = () => {
@@ -105,7 +110,7 @@ function AccountSettings() {
           />
         </Modal>
       )}
-      <Loader isLoading={isLoading} />
+      <Loader isLoading={isLoading || reqLoading} />
     </>
   );
 }

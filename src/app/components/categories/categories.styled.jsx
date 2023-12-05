@@ -14,8 +14,10 @@ export const CatsBlock = styled(Box)({
 
 export const CatsItem = styled(Box)({
   width: 'calc(100% / 2 - 16px)',
-  marginBottom: 16,
   opacity: 0.9,
+  '&:nth-of-type(1), &:nth-of-type(2)': {
+    marginBottom: 32,
+  },
 });
 
 export const CatsText = styled(Typography)(({ theme }) => ({

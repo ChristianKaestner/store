@@ -8,42 +8,12 @@ import { Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 import { Container, Card, CatsBlock, CatsItem } from './categories.styled';
 import { CatsText } from './categories.styled';
+import { categories } from '@/app/lib/utils';
 
 const montserrat = Montserrat_Subrayada({
   weight: '700',
   subsets: ['latin'],
 });
-
-export const categories = [
-  {
-    id: 1,
-    image: '/cat-hookahs.png',
-    video: '/hookah.mp4',
-    name: 'Hookahs',
-    url: '/hookahs',
-  },
-  {
-    id: 2,
-    image: '/cat-tobacco.png',
-    video: '/tobacco.mp4',
-    name: 'Tobacco',
-    url: '/tobacco',
-  },
-  {
-    id: 3,
-    image: '/cat-coals.png',
-    video: '/coal.mp4',
-    name: 'Charoals',
-    url: '/charcoals',
-  },
-  {
-    id: 4,
-    image: '/cat-bowls.png',
-    video: '/accessory.mp4',
-    name: 'Accessories',
-    url: '/accessories',
-  },
-];
 
 export default function Categories() {
   const [hoveredVideo, setHoveredVideo] = useState(null);
@@ -76,6 +46,7 @@ export default function Categories() {
                       fill={true}
                       alt="image"
                       sizes="100%"
+                      priority
                     />
                   ) : null}
 

@@ -150,6 +150,11 @@ export const productWithCat = product => {
   return { ...product, category };
 };
 
+export const productsWithCat = productArr => {
+  if (productArr.length === 0) return [];
+  return productArr.map(product => productWithCat(product));
+};
+
 export const formatDate = date => {
   const originalDate = new Date(date);
   const day = originalDate.getUTCDate().toString().padStart(2, '0');

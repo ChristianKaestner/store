@@ -8,14 +8,13 @@ import { useFavorite } from '@/app/hooks/useFavorite';
 import { Box, Typography, Paper } from '@mui/material';
 import ProductRating from '../../productsItem/rating/rating';
 import FavoriteIcon from '../../productsItem/favoriteIcon/favoriteIcon';
-import ColorPicker from '../colorPicker/colorPicker';
 import BuyButton from '../../productsItem/buyButton/buyButton';
 import Price from '../../productsItem/price/price';
 import BalanceStatus from '../../productsItem/balanceStatus/balanceStatus';
 import ProductCode from '../../productsItem/productCode/productCode';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import { Block, BlockBtn, PaperStyled } from './productContent.styled';
-import { RowCenter, Span } from '@/app/lib/commonStyles';
+import { Span } from '@/app/lib/commonStyles';
 
 export default function ProductContent({ product }) {
   const { brand, title, description, colors, price } = product;
@@ -63,9 +62,6 @@ export default function ProductContent({ product }) {
             {brand.brand}
           </Typography>
         </Box>
-        <RowCenter sx={{ my: 2 }}>
-          {colors && <ColorPicker colors={colors} />}
-        </RowCenter>
         <Box>
           <Typography component="h3" sx={{ color: 'primary.dim' }}>
             <Span component="span">Description:</Span> {description}

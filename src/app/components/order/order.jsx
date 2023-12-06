@@ -24,13 +24,14 @@ export default function Order() {
 
   const handlePayment = () => {
     const { address } = user;
+
     if (!address.city || !address.street || !address.house) {
       setError(true);
     } else {
       setError(false);
+      dispatch(toggleOrder(false));
+      dispatch(togglePayment(true));
     }
-    dispatch(toggleOrder(false));
-    dispatch(togglePayment(true));
   };
 
   const handleEditAddress = async data => {

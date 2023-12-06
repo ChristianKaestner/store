@@ -19,6 +19,10 @@ export default function Categories() {
   const [hoveredVideo, setHoveredVideo] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
+  const handleVideo = () => {
+    console.log('video loaded');
+    setVideoLoaded(true);
+  };
   return (
     <Container component="section">
       <Typography component="h2" sx={visuallyHidden}>
@@ -35,20 +39,19 @@ export default function Categories() {
             >
               <Link href={category.name.toLowerCase()}>
                 <Card>
-                  {!videoLoaded ? (
-                    <Image
-                      className="scaleImage"
-                      style={{
-                        transition: 'transform 500ms ease-in-out',
-                        objectFit: 'cover',
-                      }}
-                      src={category.image}
-                      fill={true}
-                      alt="image"
-                      sizes="100%"
-                      priority
-                    />
-                  ) : null}
+                  <Image
+                    className="scaleImage"
+                    style={{
+                      transition: 'transform 500ms ease-in-out',
+                      objectFit: 'cover',
+                      visibility: !videoLoaded ? 'visible' : 'hidden',
+                    }}
+                    src={category.image}
+                    fill={true}
+                    alt="image"
+                    sizes="100%"
+                    priority
+                  />
 
                   <ReactPlayer
                     className="scaleVideo"
@@ -58,7 +61,7 @@ export default function Categories() {
                     width="100%"
                     height="100%"
                     loop
-                    onReady={() => setVideoLoaded(true)}
+                    onReady={handleVideo}
                   />
 
                   <CatsText component="h3" className={montserrat.className}>

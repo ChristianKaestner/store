@@ -29,7 +29,7 @@ export const categories = [
     id: 3,
     image: '/cat-coals.png',
     video: '/coal.mp4',
-    name: 'Charoals',
+    name: 'Charcoals',
     url: '/charcoals',
   },
   {

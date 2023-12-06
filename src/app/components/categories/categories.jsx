@@ -20,9 +20,9 @@ export default function Categories() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const handleVideo = () => {
-    console.log('video loaded');
     setVideoLoaded(true);
   };
+
   return (
     <Container component="section">
       <Typography component="h2" sx={visuallyHidden}>

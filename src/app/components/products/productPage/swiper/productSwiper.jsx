@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { EffectFade } from 'swiper/modules';
 import { SwiperContainer } from './swiper.styled';
+import { PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 import './style.css';
 import 'swiper/swiper-bundle.css';
 
@@ -56,7 +57,7 @@ export default function ProductSwiper({ product }) {
                   }}
                 >
                   <Image
-                    src={image}
+                    src={PRODUCT_IMAGE_URL + image}
                     fill={true}
                     alt={title + ' image'}
                     sizes="100%"
@@ -91,7 +92,7 @@ export default function ProductSwiper({ product }) {
                     objectFit: 'contain',
                     cursor: 'pointer',
                   }}
-                  src={image}
+                  src={PRODUCT_IMAGE_URL + image}
                   width={80}
                   height={80}
                   alt={title + ' image'}

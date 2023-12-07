@@ -3,6 +3,7 @@ import { Button, TableRow, TableBody, TableContainer } from '@mui/material';
 import { Table, TableHead, Paper } from '@mui/material';
 import { Cell } from './orderTable.styled';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 
 export default function OrderTable({ products, handleCart }) {
   const media = useMediaQuery('(min-width:600px)');
@@ -29,7 +30,7 @@ export default function OrderTable({ products, handleCart }) {
                 <TableRow>
                   <Cell align="left">
                     <Image
-                      src={product.images[0]}
+                      src={PRODUCT_IMAGE_URL + product.images[0]}
                       alt={`${product.title} image`}
                       width={64}
                       height={64}

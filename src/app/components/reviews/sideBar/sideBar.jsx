@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import BuyButton from '@/app/components/products/productsItem/buyButton/buyButton';
 import Price from '@/app/components/products/productsItem/price/price';
 import ProductTitle from '../../products/productsItem/productTitle/productTitle';
+import { PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 import { AsideBlock, ImageBlock } from './sideBar.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
 
@@ -11,7 +12,7 @@ export default function SideBar({ image, title, price, id, category }) {
     <AsideBlock elevation={3} component="aside">
       <ImageBlock>
         <Image
-          src={image}
+          src={PRODUCT_IMAGE_URL + image}
           width={80}
           height={80}
           alt={title + ' image'}

@@ -9,6 +9,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { InputProps, Column, RowBetween } from '../../../lib/commonStyles';
 import { Card } from './cartItem.styled';
+import { PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 
 export default function CartItem({ product, increase, reduce, change, del }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -54,7 +55,7 @@ export default function CartItem({ product, increase, reduce, change, del }) {
       <Card>
         <Box sx={{ position: 'relative', width: '20%', borderRadius: 4 }}>
           <Image
-            src={images[0]}
+            src={PRODUCT_IMAGE_URL + images[0]}
             fill={true}
             alt="image"
             sizes="100%"

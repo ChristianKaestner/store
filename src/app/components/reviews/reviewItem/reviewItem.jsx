@@ -13,8 +13,7 @@ import { ImageBlock, ImageBlockItem, PaperStyled } from './reviewItem.styled';
 import { RowCenter } from '@/app/lib/commonStyles';
 import { formatDate } from '@/app/lib/functions';
 import { IconEdit, IconDelete } from './reviewItem.styled';
-
-const URL = 'https://smokey-s3.s3.eu-central-1.amazonaws.com/reviews/';
+import { REVIEW_IMAGE_URL } from '@/app/lib/constants';
 
 export default function ReviewItem({
   review,
@@ -92,7 +91,7 @@ export default function ReviewItem({
                   <ImageBlockItem component="li" key={image}>
                     <Image
                       key={image}
-                      src={URL + image}
+                      src={REVIEW_IMAGE_URL + image}
                       alt="Product photo from review"
                       fill={true}
                       sizes="100%"

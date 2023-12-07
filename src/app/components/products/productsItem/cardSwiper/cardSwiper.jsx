@@ -7,6 +7,7 @@ import { chipColor } from '@/app/lib/functions';
 import { swiperStyles } from '@/app/lib/commonStyles';
 import { Container, LinkStyled, ImageStyled } from './cardSwiper.styled';
 import { ChipStyled } from './cardSwiper.styled';
+import { PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
@@ -51,7 +52,7 @@ export default function CardSwiper({
               <LinkStyled href={path}>
                 <ImageStyled
                   className="scaleImage"
-                  src={image}
+                  src={PRODUCT_IMAGE_URL + image}
                   fill={true}
                   alt="image"
                   sizes="100%"

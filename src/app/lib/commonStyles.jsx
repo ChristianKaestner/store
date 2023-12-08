@@ -93,6 +93,7 @@ export const InputProps = styled(TextField, {
 
 export const swiperStyles = {
   width: '100%',
+  borderRadius: 4,
   '--swiper-pagination-color': colors.accent,
   '--swiper-pagination-bullet-inactive-color': colors.badge,
   '--swiper-pagination-bullet-inactive-opacity': '1',

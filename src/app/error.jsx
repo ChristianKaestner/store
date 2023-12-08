@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
-export default function Loading({ error }) {
+export default function Error({ error }) {
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error);
@@ -20,7 +20,18 @@ export default function Loading({ error }) {
         pointerEvents: 'none',
       }}
     >
-      <h1>SOMETHING WENT WORNG...</h1>
+      <Typography
+        component="h1"
+        sx={{
+          textAlign: 'center',
+          color: 'primary.text',
+          fontSize: '2rem',
+          fontWeight: 500,
+        }}
+      >
+        SOMETHING WENT WORNG...
+      </Typography>
+
       <Image
         src="/error.png"
         alt="error image"

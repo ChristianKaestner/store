@@ -38,7 +38,7 @@ export const BoxStyled = styled(Box)(({ theme }) => ({
 export const ContainerStyled = styled(Container)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
-  padding: '24px 24px 24px 0',
+  padding: 24,
   [theme.breakpoints.up('xs')]: {
     flexDirection: 'column',
   },

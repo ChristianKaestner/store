@@ -72,7 +72,7 @@ export default function DrawerMenu({
             )}
 
             <Item>
-              <LinkStyled href="/payment">
+              <LinkStyled href="/">
                 <IconPay />
                 <ItemText>Payment</ItemText>
               </LinkStyled>
@@ -86,9 +86,9 @@ export default function DrawerMenu({
             </Item>
 
             <Item>
-              <LinkStyled href="/contact">
+              <LinkStyled href="/contacts">
                 <IconPhone />
-                <ItemText>Contact</ItemText>
+                <ItemText>Contacts</ItemText>
               </LinkStyled>
             </Item>
           </ListStyled>

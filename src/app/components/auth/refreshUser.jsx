@@ -8,6 +8,8 @@ import { getFavorite } from '@/app/redux/favorite/operations';
 import { useAuth } from '@/app/hooks/useAuth';
 import { useCart } from '@/app/hooks/useCart';
 import { clearCart } from '@/app/redux/cart/slice';
+import { setToken } from '@/app/redux/auth/slice';
+import Cookies from 'js-cookie';
 
 export default function RefreshUser() {
   const dispatch = useDispatch();
@@ -15,7 +17,14 @@ export default function RefreshUser() {
   const { cart } = useCart();
 
   useEffect(() => {
-    dispatch(refreshUser());
+    const token = Cookies.get('token');
+    if (token) {
+      dispatch(setToken(token));
+      Cookies.remove('token');
+      dispatch(refreshUser());
+    } else {
+      dispatch(refreshUser());
+    }
   }, [dispatch]);
 
   const syncCart = async () => {

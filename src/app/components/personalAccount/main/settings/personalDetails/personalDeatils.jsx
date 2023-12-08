@@ -39,7 +39,7 @@ export default function PersonalDetails({ onClick, user }) {
             </TableRow>
             <TableRow>
               <CellNeutral>Phone number:</CellNeutral>
-              <CellBold align="left">+380{phone}</CellBold>
+              <CellBold align="left">{phone ? `+380${phone}` : ''}</CellBold>
             </TableRow>
             <TableRow>
               <CellNeutral>Email:</CellNeutral>

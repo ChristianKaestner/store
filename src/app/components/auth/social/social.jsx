@@ -1,5 +1,4 @@
 import { FcGoogle } from 'react-icons/fc';
-import { MdFacebook } from 'react-icons/md';
 import { Container, Text, ButtonStyled } from './social.styled';
 
 export default function Social() {
@@ -11,13 +10,6 @@ export default function Social() {
           Google
         </ButtonStyled>
       </a>
-
-      <ButtonStyled
-        variant="outlined"
-        startIcon={<MdFacebook color="#316FF6" />}
-      >
-        Facebook
-      </ButtonStyled>
     </Container>
   );
 }

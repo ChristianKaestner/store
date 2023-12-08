@@ -15,7 +15,8 @@ import { Container } from './order.styled';
 export default function Order() {
   const [expandedAddress, setExpandedAddress] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState(false);
-  const [error, setError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
+  const [detailsError, setDetailsError] = useState(false);
   const { orders, isLoading } = useOrders();
   const { user } = useAuth();
   const order = orders[0];
@@ -24,11 +25,13 @@ export default function Order() {
 
   const handlePayment = () => {
     const { address } = user;
+    const addressError = !address.city || !address.street || !address.house;
+    const detailsError = !user.firstName || !user.lastName || !user.phone;
 
-    if (!address.city || !address.street || !address.house) {
-      setError(true);
-    } else {
-      setError(false);
+    addressError ? setAddressError(true) : setAddressError(false);
+    detailsError ? setDetailsError(true) : setDetailsError(false);
+
+    if (!addressError && !detailsError) {
       dispatch(toggleOrder(false));
       dispatch(togglePayment(true));
     }
@@ -38,7 +41,7 @@ export default function Order() {
     const response = await dispatch(updateAddress(data));
     if (response.meta.requestStatus === 'fulfilled') {
       setExpandedAddress(false);
-      setError(false);
+      setAddressError(false);
     }
   };
 
@@ -46,6 +49,7 @@ export default function Order() {
     const response = await dispatch(updateUser(data));
     if (response.meta.requestStatus === 'fulfilled') {
       setExpandedDetails(false);
+      setDetailsError(false);
     }
   };
 
@@ -60,7 +64,7 @@ export default function Order() {
               setExpandedAddress={setExpandedAddress}
               handleEditAddress={handleEditAddress}
             />
-            {error && !expandedAddress && (
+            {addressError && !expandedAddress && (
               <OnError text={'Please fill in the Address field'} />
             )}
             <OrderUser
@@ -69,6 +73,9 @@ export default function Order() {
               setExpandedDetails={setExpandedDetails}
               handleEditDetails={handleEditDetails}
             />
+            {detailsError && !expandedDetails && (
+              <OnError text={'Please fill in the Details field'} />
+            )}
           </Box>
           {!expandedAddress && !expandedDetails && (
             <PayBtn total={order?.total} handlePayment={handlePayment} />

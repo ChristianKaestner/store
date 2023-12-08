@@ -89,7 +89,6 @@ export default function Categories() {
                     style={{
                       visibility: videoLoaded ? 'visible' : 'hidden',
                       opacity: videoLoaded ? 1 : 0,
-                      transition: 'opacity 500ms ease-in-out',
                     }}
                   />
 

@@ -1,14 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  logIn,
-  register,
-  registerGoogle,
-  logOut,
-  updateUser,
-  updateAddress,
-  refreshUser,
-  deleteUser,
-} from './operations';
+import { logIn, register, resendCode } from './operations';
+import { verifyCode, logOut, updateUser } from './operations';
+import { updateAddress, refreshUser, deleteUser } from './operations';
 
 const initialState = {
   user: {
@@ -19,6 +12,7 @@ const initialState = {
     address: { city: null, street: null, house: null, apartment: null },
   },
   token: null,
+  isVCodeSent: false,
   isLogin: false,
   error: null,
   isLoading: false,
@@ -43,26 +37,40 @@ export const authSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, action) => {
         state.user = { ...state.user, ...action.payload.user };
+        state.isVCodeSent = true;
+        state.isLogin = false;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(resendCode.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(resendCode.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(resendCode.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
+        state.isVCodeSent = true;
+        state.isLogin = false;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(verifyCode.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(verifyCode.rejected, (state, action) => {
+        state.error = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(verifyCode.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload.user };
         state.token = action.payload.token;
+        state.isVCodeSent = false;
         state.isLogin = true;
         state.isLoading = false;
         state.error = null;
       })
-
-      .addCase(registerGoogle.pending, state => {
-        state.isLoading = true;
-      })
-      .addCase(registerGoogle.rejected, (state, action) => {
-        state.error = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(registerGoogle.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLogin = true;
-        state.isLoading = false;
-      })
-
       .addCase(logIn.pending, state => {
         state.isLoading = true;
       })
@@ -77,7 +85,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
       .addCase(logOut.pending, state => {
         state.isLoading = true;
       })
@@ -92,7 +99,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
       .addCase(updateUser.pending, state => {
         state.isLoading = true;
       })
@@ -106,7 +112,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
       .addCase(updateAddress.pending, state => {
         state.isLoading = true;
       })
@@ -120,7 +125,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
       .addCase(refreshUser.pending, state => {
         state.isLoading = true;
       })
@@ -134,7 +138,6 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
-
       .addCase(deleteUser.pending, state => {
         state.isLoading = true;
       })

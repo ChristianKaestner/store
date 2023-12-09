@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from '@/app/redux/auth/operations';
+import { refreshUser, verifyCode } from '@/app/redux/auth/operations';
 import { getCart, addCart } from '@/app/redux/cart/operations';
 import { getFavorite } from '@/app/redux/favorite/operations';
 import { useAuth } from '@/app/hooks/useAuth';
@@ -12,9 +13,23 @@ import { setToken } from '@/app/redux/auth/slice';
 import Cookies from 'js-cookie';
 
 export default function RefreshUser() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const code = searchParams.get('code');
+
   const dispatch = useDispatch();
   const { isLogin } = useAuth();
   const { cart } = useCart();
+
+  const verify = () => {
+    dispatch(verifyCode({ code }));
+    router.push(pathname, { scroll: false });
+  };
+
+  if (code) {
+    verify();
+  }
 
   useEffect(() => {
     const token = Cookies.get('token');

@@ -17,6 +17,38 @@ export const register = createAsyncThunk(
   async (newUser, thunkAPI) => {
     try {
       const response = await axios.post('/auth/register', newUser);
+
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  }
+);
+
+export const resendCode = createAsyncThunk(
+  'auth/resend',
+  async (email, thunkAPI) => {
+    try {
+      const response = await axios.post('/auth/resend', { email });
+
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue({
+        message: e.response.data.message,
+        status: e.response.status,
+      });
+    }
+  }
+);
+
+export const verifyCode = createAsyncThunk(
+  'auth/verify',
+  async (code, thunkAPI) => {
+    try {
+      const response = await axios.post('/auth/verify', code);
       token.set(response.data.token);
 
       return response.data;
@@ -29,20 +61,20 @@ export const register = createAsyncThunk(
   }
 );
 
-export const registerGoogle = createAsyncThunk(
-  'auth/registerGoogle',
-  async (tokenGoogle, thunkAPI) => {
-    try {
-      token.set(tokenGoogle);
-      return tokenGoogle;
-    } catch (e) {
-      return thunkAPI.rejectWithValue({
-        message: e.response.data.message,
-        status: e.response.status,
-      });
-    }
-  }
-);
+// export const registerGoogle = createAsyncThunk(
+//   'auth/registerGoogle',
+//   async (tokenGoogle, thunkAPI) => {
+//     try {
+//       token.set(tokenGoogle);
+//       return tokenGoogle;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue({
+//         message: e.response.data.message,
+//         status: e.response.status,
+//       });
+//     }
+//   }
+// );
 
 export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {

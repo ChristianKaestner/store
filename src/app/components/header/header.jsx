@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { toggleAccount, toggleProducts } from '../../redux/modal/slice';
 import { toggleCart, toggleMobile } from '../../redux/modal/slice';
 import { toggleOrder, togglePayment } from '../../redux/modal/slice';
+import { toggleSuccess } from '../../redux/modal/slice';
 import { Container, Toolbar, Box } from '@mui/material';
 import MobileMenu from './mobileMenu/mobileMenu';
 import DrawerMenu from './drawer/drawer';
@@ -21,6 +22,7 @@ import Auth from '../auth/auth';
 import ShoppingCart from '../shoppingCart/shoppingCart';
 import Order from '../order/order';
 import Payment from '../order/payment/payment';
+import SuccessModal from '../modal/successModal/successModal';
 import { AppBar } from './header.styled';
 import Modal from '../modal/modal';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -28,7 +30,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export default function Header() {
   const [login, setLogin] = useState(true);
   const { cartModal, accountModal, mobileModal, productsModal } = useModal();
-  const { orderModal, paymentModal } = useModal();
+  const { orderModal, paymentModal, successModal } = useModal();
 
   const { cart, cartProducts } = useCart();
   const { isLogin } = useAuth();
@@ -99,7 +101,27 @@ export default function Header() {
               width="600px"
               position="center"
             >
-              <Auth toggleAuth={() => setLogin(!login)} login={login} />
+              <Auth
+                toggleAuth={() => setLogin(!login)}
+                login={login}
+                closeModal={() => dispatch(toggleAccount(false))}
+              />
+            </Modal>
+          )}
+          {successModal && (
+            <Modal
+              open={successModal}
+              close={() => dispatch(toggleSuccess(false))}
+              title="Successfully"
+              width="600px"
+              height="auto"
+              position="center"
+            >
+              <SuccessModal
+                text={
+                  'Your account is registered but need to confirm your email, please click the button in your email.'
+                }
+              />
             </Modal>
           )}
           {cartModal && (

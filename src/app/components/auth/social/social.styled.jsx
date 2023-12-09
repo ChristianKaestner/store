@@ -1,15 +1,5 @@
-import { Box, Typography, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-
-export const Container = styled(Box)(({ theme }) => ({
-  marginTop: 16,
-  [theme.breakpoints.up('xs')]: {
-    width: '100%',
-  },
-  [theme.breakpoints.up('sm')]: {
-    width: '40%',
-  },
-}));
 
 export const Text = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.dim,

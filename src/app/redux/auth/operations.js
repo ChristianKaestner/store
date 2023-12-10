@@ -61,21 +61,6 @@ export const verifyCode = createAsyncThunk(
   }
 );
 
-// export const registerGoogle = createAsyncThunk(
-//   'auth/registerGoogle',
-//   async (tokenGoogle, thunkAPI) => {
-//     try {
-//       token.set(tokenGoogle);
-//       return tokenGoogle;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue({
-//         message: e.response.data.message,
-//         status: e.response.status,
-//       });
-//     }
-//   }
-// );
-
 export const logIn = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     const response = await axios.post('/auth/login', user);

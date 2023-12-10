@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { refreshUser, verifyCode } from '@/app/redux/auth/operations';
@@ -13,6 +13,8 @@ import { setToken } from '@/app/redux/auth/slice';
 import Cookies from 'js-cookie';
 
 export default function RefreshUser() {
+  const refreshSentRef = useRef(false);
+  const verifySentRef = useRef(false);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -22,14 +24,13 @@ export default function RefreshUser() {
   const { isLogin } = useAuth();
   const { cart } = useCart();
 
-  const verify = () => {
-    dispatch(verifyCode({ code }));
-    router.push(pathname, { scroll: false });
-  };
-
-  if (code) {
-    verify();
-  }
+  useEffect(() => {
+    if (code && !verifySentRef.current) {
+      verifySentRef.current = true;
+      dispatch(verifyCode({ code }));
+      router.push(pathname, { scroll: false });
+    }
+  }, [dispatch, code, verifySentRef, pathname, router]);
 
   useEffect(() => {
     const token = Cookies.get('token');
@@ -38,7 +39,10 @@ export default function RefreshUser() {
       Cookies.remove('token');
       dispatch(refreshUser());
     } else {
-      dispatch(refreshUser());
+      if (!refreshSentRef.current) {
+        refreshSentRef.current = true;
+        dispatch(refreshUser());
+      }
     }
   }, [dispatch]);
 

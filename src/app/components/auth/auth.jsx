@@ -61,7 +61,7 @@ export default function Auth({ toggleAuth, login, closeModal }) {
     }
 
     return () => clearInterval(interval);
-  }, [disabled]);
+  }, [disabled, isVCodeSent]);
 
   return (
     <AuthContainer>

@@ -18,7 +18,8 @@ export default function CommonProducts({
 }) {
   const isDrawer = useMediaQuery('(max-width:1199px)');
   const isPaginated =
-    data.counts.total > limit && data.products.length !== data.counts.total;
+    data?.counts?.total > limit &&
+    data?.products?.length !== data?.counts?.total;
 
   return (
     <>

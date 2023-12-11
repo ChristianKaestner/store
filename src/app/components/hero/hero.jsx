@@ -52,7 +52,7 @@ export default function Hero({ images }) {
                 fill={true}
                 alt="image"
                 sizes="100%"
-                priority={index === 0 ? 'true' : 'false'}
+                priority={index === 0 ? true : false}
                 style={{ objectFit: 'cover' }}
               />
             </SwiperSlide>

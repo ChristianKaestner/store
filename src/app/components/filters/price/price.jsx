@@ -45,7 +45,7 @@ export default function PriceFilter({ items }) {
     setErrMin(false);
     setErrMax(false);
   }, [price, getValues, defaultValues, setValue]);
-
+  // getValues, defaultValues, setValue
   const validateMin = minValue => {
     if (minValue < min || minValue > max) {
       setErrMin(true);

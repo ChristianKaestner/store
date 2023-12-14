@@ -5,14 +5,13 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install sharp globally
-RUN npm install -g sharp
+# Install sharp dependencies
 
-# Install dependencies using npm
+# RUN npm install --force sharp@0.32.6 --arch=x64 --platform=linux
+
 COPY package.json package-lock.json* ./
 RUN npm install
 
-# Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
@@ -21,7 +20,7 @@ COPY . .
 
 
 # Set platform, arch, and libc for npm
-# RUN npm_config_platform=linux npm_config_arch=x64 npm_config_libc=glibc npm ci
+RUN npm_config_platform=linux npm_config_arch=x64 npm_config_libc=glibc npm ci
 
 RUN npm run build
 
@@ -30,8 +29,7 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -52,7 +50,7 @@ USER nextjs
 EXPOSE 3000
 
 ENV PORT 3000
-ENV NEXT_SHARP_PATH /app/node_modules/sharp
+ENV NEXT_SHARP_PATH=/app/node_modules/sharp
 # set hostname to localhost
 ENV HOSTNAME "0.0.0.0"
 

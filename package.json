@@ -29,7 +29,7 @@
     "react-player": "^2.13.0",
     "react-redux": "^8.1.2",
     "redux-persist": "^6.0.0",
-    "sharp": "^0.33.0",
+    "sharp": "^0.32.6",
     "swiper": "^11.0.4",
     "use-debounce": "^9.0.4",
     "uuid": "^9.0.0"

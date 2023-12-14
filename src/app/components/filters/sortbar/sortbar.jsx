@@ -42,7 +42,8 @@ export default function Sortbar({ mobile = false, total }) {
         });
       }
     });
-  }, [dispatch, filters, queryParams]);
+    // eslint-disable-next-line
+  }, []);
 
   const lastFilters = useRef(filters);
 
@@ -75,7 +76,8 @@ export default function Sortbar({ mobile = false, total }) {
     const search = decodeURIComponent(queryParams.toString());
     const query = search ? `?${search}` : '';
     router.push(`${pathname}${query}`, { scroll: false });
-  }, [filters, searchParams, dispatch, pathname, queryParams, router]);
+    // eslint-disable-next-line
+  }, [filters, searchParams]);
 
   const handleDelete = e => {
     const { id, textContent } = e.currentTarget;

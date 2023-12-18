@@ -47,10 +47,10 @@ export default function DrawerMenu({
 
         <Divider />
         {productsOpen ? (
-          <ProductsList />
+          <ProductsList handleDrawerToggle={handleDrawerToggle} />
         ) : (
           <ListStyled>
-            <Item>
+            <Item onClick={handleDrawerToggle}>
               <LinkStyled href="/">
                 <IconHome />
                 <ItemText>Home</ItemText>
@@ -58,7 +58,7 @@ export default function DrawerMenu({
             </Item>
 
             {isLogin ? (
-              <Item>
+              <Item onClick={handleDrawerToggle}>
                 <LinkStyled href="/profile/settings">
                   <IconProfile />
                   <ItemText>Profile</ItemText>
@@ -71,21 +71,21 @@ export default function DrawerMenu({
               </Item>
             )}
 
-            <Item>
+            <Item onClick={handleDrawerToggle}>
               <LinkStyled href="/">
                 <IconPay />
                 <ItemText>Payment</ItemText>
               </LinkStyled>
             </Item>
 
-            <Item>
+            <Item onClick={handleDrawerToggle}>
               <LinkStyled href="/delivery">
                 <IconShipping />
                 <ItemText>Delivery</ItemText>
               </LinkStyled>
             </Item>
 
-            <Item>
+            <Item onClick={handleDrawerToggle}>
               <LinkStyled href="/contacts">
                 <IconPhone />
                 <ItemText>Contacts</ItemText>

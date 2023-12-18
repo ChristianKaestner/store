@@ -9,10 +9,10 @@ export async function generateMetadata({ params }) {
   );
 
   return {
-    title: `Smokey - Reviews about ${product.brand} hookah accessory`,
+    title: `Smokey - Reviews about ${product.brand.brand} hookah accessory`,
     description: `Reviews of ${product.title} buyers`,
     openGraph: {
-      title: `Smokey - Reviews about ${product.brand} hookah accessory`,
+      title: `Smokey - Reviews about ${product.brand.brand} hookah accessory`,
       description: `Reviews of ${product.title} buyers`,
       url: `https://smokey.top/accessories/${id}/reviews`,
       siteName: 'Smokey',
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
           url: PRODUCT_IMAGE_URL + product.images[0],
           width: 600,
           height: 800,
-          alt: product.brand,
+          alt: product.brand.brand,
         },
       ],
       locale: 'en_US',

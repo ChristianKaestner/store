@@ -22,7 +22,7 @@ export default function ProductsList({
         {title}
       </Typography>
 
-      <Grid container spacing={4} sx={{}} component="ul">
+      <Grid container spacing={4} sx={{ listStyle: 'none' }} component="ul">
         {isLoading ? (
           <Skeleton length={skeleton} />
         ) : (

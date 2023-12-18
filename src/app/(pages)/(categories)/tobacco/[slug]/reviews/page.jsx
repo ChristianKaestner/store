@@ -1,5 +1,5 @@
 import Reviews from '@/app/components/reviews/reviews';
-import { SERVER_URL } from '@/app/lib/constants';
+import { SERVER_URL, PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 
 export async function generateMetadata({ params }) {
   const id = params.slug;
@@ -8,10 +8,10 @@ export async function generateMetadata({ params }) {
     res.json()
   );
   return {
-    title: `Smokey - Reviews about ${product.brand} tobacco`,
+    title: `Smokey - Reviews about ${product.brand.brand} tobacco`,
     description: `Reviews of ${product.title} buyers `,
     openGraph: {
-      title: `Smokey - Reviews about ${product.brand} hookah tobacco`,
+      title: `Smokey - Reviews about ${product.brand.brand} hookah tobacco`,
       description: `Reviews of ${product.title} buyers`,
       url: `https://smokey.top/tobacco/${id}/reviews`,
       siteName: 'Smokey',
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
           url: PRODUCT_IMAGE_URL + product.images[0],
           width: 600,
           height: 800,
-          alt: product.brand,
+          alt: product.brand.brand,
         },
       ],
       locale: 'en_US',

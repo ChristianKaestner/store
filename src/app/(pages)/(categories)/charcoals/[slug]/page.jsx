@@ -1,5 +1,5 @@
 import ProductPage from '@/app/components/products/productPage/productPage';
-import { SERVER_URL } from '@/app/lib/constants';
+import { SERVER_URL, PRODUCT_IMAGE_URL } from '@/app/lib/constants';
 
 export async function generateMetadata({ params }) {
   const id = params.slug;
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
           url: PRODUCT_IMAGE_URL + product.images[0],
           width: 600,
           height: 800,
-          alt: product.brand,
+          alt: product.brand.brand,
         },
       ],
       locale: 'en_US',

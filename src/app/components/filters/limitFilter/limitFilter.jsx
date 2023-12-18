@@ -35,7 +35,7 @@ export default function LimitFilter() {
         dispatch(addFilter({ filterName: 'page', filterValue: 1 }));
       }, 500);
     }
-    
+
     if (multiplier !== 1) {
       queryParams.delete('multiplier');
       setTimeout(() => {
@@ -53,7 +53,14 @@ export default function LimitFilter() {
   }, [setValue, limit]);
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'end', mb: 2, zIndex: 1 }}>
+    <Box
+      sx={{
+        display: { xs: 'none', sm: 'flex' },
+        justifyContent: 'end',
+        mb: 2,
+        zIndex: 1,
+      }}
+    >
       <FormControl size="small" sx={{ width: 80 }}>
         <Controller
           control={control}
@@ -80,7 +87,6 @@ export default function LimitFilter() {
                 <MenuItem value={25}>
                   <em>25</em>
                 </MenuItem>
-                <MenuItem value={5}>5</MenuItem>
                 <MenuItem value={50}>50</MenuItem>
                 <MenuItem value={100}>100</MenuItem>
               </Select>

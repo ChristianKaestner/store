@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Box } from '@mui/material';
 import { Container, CatTitle, ItemsBlock } from './productsItemModal.styled';
 import { ItemText, ColumnTitle, Column } from './productsItemModal.styled';
@@ -15,13 +16,13 @@ export default function ProductsItemModal({
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
     >
-      <a
+      <Link
         href={category.name}
         onClick={handleCloseModal}
         style={{ textAlign: 'center' }}
       >
         <CatTitle>ALL {category.name.toUpperCase()}</CatTitle>
-      </a>
+      </Link>
       {value === index && (
         <ItemsBlock>
           {category.brands.length > 0 && (
@@ -29,15 +30,14 @@ export default function ProductsItemModal({
               <ColumnTitle component="li">BRANDS</ColumnTitle>
               {category.brands.map(item => {
                 const brand = item.toLowerCase().split(' ').join('+');
-                const href = `/${category.name}?brand=${brand}`;
                 return (
                   <Box component="li" key={item}>
-                    <a
+                    <Link
                       href={`/${category.name}?brand=${brand}`}
                       onClick={handleCloseModal}
                     >
                       <ItemText>{item.toUpperCase()}</ItemText>
-                    </a>
+                    </Link>
                   </Box>
                 );
               })}

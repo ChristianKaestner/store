@@ -1,8 +1,22 @@
 'use client';
 import { useEffect } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function FluidCursor() {
+  const mobile = useMediaQuery('(max-width:599px)');
+
   useEffect(() => {
+    mobile
+      ? (document.body.style.backgroundColor = '#000000B3')
+      : (document.body.style.backgroundColor = '');
+
+    return () => {
+      document.body.style.backgroundColor = '';
+    };
+  }, [mobile]);
+
+  useEffect(() => {
+    if (mobile) return;
     const canvas = document.getElementsByTagName('canvas')[0];
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
@@ -894,7 +908,7 @@ export default function FluidCursor() {
     );
   }, []);
 
-  return (
+  return mobile ? (
     <canvas
       style={{
         position: 'fixed',
@@ -906,5 +920,5 @@ export default function FluidCursor() {
         opacity: 0.7,
       }}
     />
-  );
+  ) : null;
 }

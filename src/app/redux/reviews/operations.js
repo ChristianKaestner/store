@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { SERVER_URL } from '@/app/lib/constants';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = SERVER_URL;
 
 export const getuserReviews = createAsyncThunk(
   'getUser/reviews',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`/api/products/reviews`);
+      const response = await axios.get(`products/reviews`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue({
@@ -22,7 +23,7 @@ export const getProductReviews = createAsyncThunk(
   'get/reviews',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.get(`/api/products/reviews/${id}`);
+      const response = await axios.get(`products/reviews/${id}`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue({
@@ -38,7 +39,7 @@ export const addProductReview = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post(
-        `/api/products/reviews/${formData.get('id')}`,
+        `products/reviews/${formData.get('id')}`,
         formData,
         {
           headers: {
@@ -60,7 +61,7 @@ export const deleteProductReview = createAsyncThunk(
   'delete/review',
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`/api/products/reviews/${id}`);
+      await axios.delete(`products/reviews/${id}`);
       return id;
     } catch (e) {
       return thunkAPI.rejectWithValue({
@@ -76,7 +77,7 @@ export const editProductReview = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.patch(
-        `/api/products/reviews/${formData.get('id')}`,
+        `products/reviews/${formData.get('id')}`,
         formData,
         {
           headers: {

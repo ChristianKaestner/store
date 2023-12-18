@@ -71,11 +71,11 @@ export default function Reviews() {
               ) : (
                 <NoReviewBlock>
                   <Image
-                    src="/noReview.png"
+                    src="/noReview.webp"
                     alt="not found image"
                     fill={true}
                     sizes="100%"
-                    style={{ objectFit: 'contain' }}
+                    style={{ objectFit: 'contain', zIndex: -1 }}
                     priority={true}
                   />
                 </NoReviewBlock>

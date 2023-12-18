@@ -1,65 +1,66 @@
 'use client';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { SERVER_URL } from '@/app/lib/constants';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
 
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000/',
+    baseUrl: SERVER_URL,
   }),
   endpoints: builder => ({
     getPromoted: builder.query({
-      query: () => '/api/products/promotion',
+      query: () => 'products/promotion',
     }),
     getHookahs: builder.query({
       query: params => ({
-        url: '/api/products/hookahs',
+        url: 'products/hookahs',
         params,
       }),
     }),
     getTobacco: builder.query({
       query: params => ({
-        url: '/api/products/tobacco',
+        url: 'products/tobacco',
         params,
       }),
     }),
     getCoals: builder.query({
       query: params => ({
-        url: '/api/products/coals',
+        url: 'products/coals',
         params,
       }),
     }),
     getAccessories: builder.query({
       query: params => ({
-        url: '/api/products/accessories',
+        url: 'products/accessories',
         params,
       }),
     }),
     getProductById: builder.query({
-      query: id => `/api/products/id/${id}`,
+      query: id => `products/id/${id}`,
     }),
     getRelatedProducts: builder.query({
-      query: id => `/api/products/related/${id}`,
+      query: id => `products/related/${id}`,
     }),
     getFavoriteProducts: builder.query({
       query: token => ({
-        url: '/api/products/favorites',
+        url: 'products/favorites',
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }),
     }),
     getProductTabs: builder.query({
-      query: () => '/api/products/tabs',
+      query: () => 'products/tabs',
     }),
     getSuggestion: builder.query({
       query: params => ({
-        url: '/api/products/suggestion',
+        url: 'products/suggestion',
         params,
       }),
     }),
     getProductReviews: builder.query({
-      query: id => `/api/products/reviews/${id}`,
+      query: id => `products/reviews/${id}`,
     }),
   }),
 });

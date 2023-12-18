@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 next dev",
+    "build": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 next build",
+    "start": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "animejs": "^3.2.1",
     "axios": "^1.4.0",
+    "cross-env": "^7.0.3",
     "eslint": "8.45.0",
     "eslint-config-next": "^13.5.4",
     "js-cookie": "^3.0.5",
@@ -29,7 +30,7 @@
     "react-player": "^2.13.0",
     "react-redux": "^8.1.2",
     "redux-persist": "^6.0.0",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.0",
     "swiper": "^11.0.4",
     "use-debounce": "^9.0.4",
     "uuid": "^9.0.0"

@@ -5,7 +5,7 @@ export default function EmptyCart() {
   return (
     <Container>
       <Image
-        src="/cart.png"
+        src="/cart.webp"
         alt="shopping cart"
         fill={true}
         sizes="100%"

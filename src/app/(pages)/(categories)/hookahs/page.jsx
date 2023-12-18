@@ -1,12 +1,9 @@
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import HookahProducts from '@/app/components/products/hookahProducts/hookahProducts';
+import { hookahsMetadata } from '@/app/lib/metadata';
 
-export const metadata = {
-  title: 'Smokey - Hookahs',
-  description:
-    'Hookahs from the most famous brands: Amy, Mya, Wookah, Golden Desert, Lavoo, Oduman',
-};
+export const metadata = hookahsMetadata;
 
 export default function Hookahs() {
   return (

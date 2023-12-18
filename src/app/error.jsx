@@ -32,7 +32,7 @@ export default function Error({ error }) {
       </Typography>
 
       <Image
-        src="/error.png"
+        src="/error.webp"
         alt="error image"
         fill={true}
         sizes="100%"

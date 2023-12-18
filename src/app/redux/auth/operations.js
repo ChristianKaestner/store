@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { SERVER_URL } from '@/app/lib/constants';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = SERVER_URL;
 
 const token = {
   set(token) {

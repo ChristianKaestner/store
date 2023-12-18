@@ -25,7 +25,7 @@ export default function NotFound() {
       </Typography>
 
       <Image
-        src="/404.png"
+        src="/404.webp"
         alt="not found image"
         fill={true}
         sizes="100%"

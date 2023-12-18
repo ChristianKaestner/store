@@ -1,12 +1,9 @@
 import Breadcrumbs from '@/app/layout/breacrumbs/breadcrumbs';
 import PageTitle from '@/app/components/pageTitle/pageTitle';
 import TobaccoProducts from '@/app/components/products/tobaccoProducts/tobaccoProducts';
+import { tobaccoMetadata } from '@/app/lib/metadata';
 
-export const metadata = {
-  title: 'Smokey - Hookah tobacco',
-  description:
-    'Hookahs tobacco from the most famous brands: All Fakher, Adalya, Bali, Fumari, Serbetli ',
-};
+export const metadata = tobaccoMetadata;
 
 export default function Tobacco() {
   return (

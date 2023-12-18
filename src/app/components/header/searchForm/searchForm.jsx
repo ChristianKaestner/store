@@ -44,12 +44,12 @@ export default function SearchForm() {
         sx={{ width: '100%' }}
         onFocus={() => setShowResult(true)}
         onBlur={handleBlur}
-        autoComplete="off"
+        autoComplete="new-password"
       >
         <OutlinedInput
           placeholder="search..."
-          type="search"
-          aria-label="search items"
+          type="text"
+          autoComplete="new-password"
           {...register('search', {
             onChange: handleSearch,
           })}

@@ -63,7 +63,10 @@ export default function ProductContent({ product }) {
           </Typography>
         </Box>
         <Box>
-          <Typography component="h3" sx={{ color: 'primary.dim' }}>
+          <Typography
+            component="h3"
+            sx={{ color: 'primary.dim', whiteSpace: 'pre-line' }}
+          >
             <Span component="span">Description:</Span> {description}
           </Typography>
         </Box>

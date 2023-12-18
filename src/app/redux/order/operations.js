@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { SERVER_URL } from '@/app/lib/constants';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = SERVER_URL;
 
 const createAsyncOperation = (method, endpoint) =>
   createAsyncThunk(`order/${method}`, async (payload, thunkAPI) => {
@@ -29,6 +30,6 @@ const createAsyncOperation = (method, endpoint) =>
     }
   });
 
-export const addOrder = createAsyncOperation('post', '/api/orders');
-export const editOrder = createAsyncOperation('patch', '/api/orders');
-export const getOrders = createAsyncOperation('get', '/api/orders');
+export const addOrder = createAsyncOperation('post', 'orders');
+export const editOrder = createAsyncOperation('patch', 'orders');
+export const getOrders = createAsyncOperation('get', 'orders');

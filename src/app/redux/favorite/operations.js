@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { SERVER_URL } from '@/app/lib/constants';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = SERVER_URL;
 
 const createAsyncOperation = (method, endpoint) =>
   createAsyncThunk(`favorite/${method}`, async (payload, thunkAPI) => {
@@ -29,6 +30,6 @@ const createAsyncOperation = (method, endpoint) =>
     }
   });
 
-export const addFavorite = createAsyncOperation('post', '/api/favorites');
-export const getFavorite = createAsyncOperation('get', '/api/favorites');
-export const deleteFavorite = createAsyncOperation('delete', '/api/favorites');
+export const addFavorite = createAsyncOperation('post', 'favorites');
+export const getFavorite = createAsyncOperation('get', 'favorites');
+export const deleteFavorite = createAsyncOperation('delete', 'favorites');

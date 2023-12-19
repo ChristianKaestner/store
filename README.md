@@ -26,6 +26,9 @@
     <li>
         <span><a href="https://cloud.google.com/" target="_blank" rel="noreferrer">Google cloud</a>, Server</span>
     </li>
+    <li>
+        <span><a href="https://hub.docker.com/" target="_blank" rel="noreferrer">Docker</a>, Conainer</span>
+    </li>
 </ul>
 <h3>Usage</h3>
 <ul>

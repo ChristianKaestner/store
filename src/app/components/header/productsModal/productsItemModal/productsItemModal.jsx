@@ -17,7 +17,7 @@ export default function ProductsItemModal({
       aria-labelledby={`vertical-tab-${index}`}
     >
       <Link
-        href={category.name}
+        href={`/${category.name}`}
         onClick={handleCloseModal}
         style={{ textAlign: 'center' }}
       >

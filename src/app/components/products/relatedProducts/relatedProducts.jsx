@@ -74,42 +74,46 @@ export default function RelatedProducts({ id }) {
 
   return (
     <Container component="section">
-      <Text component="h2">You may also be interested</Text>
-      {!isLoading && (
-        <Swiper
-          slidesPerView={slidesPerView}
-          spaceBetween={16}
-          wrapperTag="ul"
-          onSwiper={it => (sliderRef.current = it)}
-          style={{ height: '100%' }}
-          onSlideChange={handleSlideChange}
-        >
-          {prevBtn && <NavigatePrev prev={handlePrevCard} />}
+      {data.length > 0 && (
+        <>
+          <Text component="h2">You may also be interested</Text>
+          {!isLoading && (
+            <Swiper
+              slidesPerView={slidesPerView}
+              spaceBetween={16}
+              wrapperTag="ul"
+              onSwiper={it => (sliderRef.current = it)}
+              style={{ height: '100%' }}
+              onSlideChange={handleSlideChange}
+            >
+              {prevBtn && <NavigatePrev prev={handlePrevCard} />}
 
-          {data &&
-            data.map(product => {
-              const category = defineCategory(product);
-              const productWithCats = { ...product, category };
-              const { id } = product;
-              return (
-                <SwiperSlide
-                  key={id}
-                  tag="li"
-                  style={{ width: 'auto', backgroundColor: 'transparent' }}
-                >
-                  <ProductsItem
-                    product={productWithCats}
-                    cart={cart}
-                    width={'100%'}
-                    component="div"
-                    mb={0}
-                  />
-                </SwiperSlide>
-              );
-            })}
+              {data &&
+                data.map(product => {
+                  const category = defineCategory(product);
+                  const productWithCats = { ...product, category };
+                  const { id } = product;
+                  return (
+                    <SwiperSlide
+                      key={id}
+                      tag="li"
+                      style={{ width: 'auto', backgroundColor: 'transparent' }}
+                    >
+                      <ProductsItem
+                        product={productWithCats}
+                        cart={cart}
+                        width={'100%'}
+                        component="div"
+                        mb={0}
+                      />
+                    </SwiperSlide>
+                  );
+                })}
 
-          {nextBtn && <NavigateNext next={handleNextCard} />}
-        </Swiper>
+              {nextBtn && <NavigateNext next={handleNextCard} />}
+            </Swiper>
+          )}
+        </>
       )}
     </Container>
   );

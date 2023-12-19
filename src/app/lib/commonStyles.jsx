@@ -51,7 +51,13 @@ export const ColumnCenter = styled(Box)({
 });
 
 export const Label = styled(FormControlLabel)(({ theme }) => ({
-  width: '110%',
+  [theme.breakpoints.up('xs')]: {
+    width: '100%',
+  },
+  [theme.breakpoints.up('lg')]: {
+    width: '110%',
+  },
+
   borderRadius: 1,
   '&:hover': { backgroundColor: theme.palette.primary.iconbtn },
 }));

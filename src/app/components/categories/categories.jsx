@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Typography } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { Container, Card, CatsBlock, CatsItem } from './categories.styled';
 import { CatsText } from './categories.styled';
 import { categories } from '@/app/lib/utils';
@@ -18,6 +19,7 @@ const montserrat = Montserrat_Subrayada({
 export default function Categories() {
   const [hoveredVideo, setHoveredVideo] = useState(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const lg = useMediaQuery('(min-width:1200px)');
 
   const handleVideo = () => {
     setVideoLoaded(true);
@@ -51,25 +53,23 @@ export default function Categories() {
                     alt="image"
                     sizes="100%"
                     priority
-                    // placeholder={`data:image/svg+xml;base64,${toBase64(
-                    //   shimmer(720, 200)
-                    // )}`}
                   />
-
-                  <ReactPlayer
-                    className="scaleVideo"
-                    url={category.video}
-                    playing={hoveredVideo === index}
-                    muted
-                    width="100%"
-                    height="100%"
-                    loop
-                    onReady={handleVideo}
-                    style={{
-                      visibility: videoLoaded ? 'visible' : 'hidden',
-                      opacity: videoLoaded ? 1 : 0,
-                    }}
-                  />
+                  {lg && (
+                    <ReactPlayer
+                      className="scaleVideo"
+                      url={category.video}
+                      playing={hoveredVideo === index}
+                      muted
+                      width="100%"
+                      height="100%"
+                      loop
+                      onReady={handleVideo}
+                      style={{
+                        visibility: videoLoaded ? 'visible' : 'hidden',
+                        opacity: videoLoaded ? 1 : 0,
+                      }}
+                    />
+                  )}
 
                   <CatsText component="h3" className={montserrat.className}>
                     {category.name.toUpperCase()}

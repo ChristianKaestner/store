@@ -15,7 +15,7 @@ export default function DrawerMenu({
   handleDrawerToggle,
   openAuth,
   isLogin,
-  handleOpenCart
+  handleOpenCart,
 }) {
   const [productsOpen, setProductsOpen] = useState(false);
 
@@ -24,13 +24,12 @@ export default function DrawerMenu({
   };
 
   const onCartClick = () => {
-    handleDrawerToggle()
-    handleOpenCart()
-  }
+    handleDrawerToggle();
+    handleOpenCart();
+  };
 
   return (
     <SwipeableDrawer
-      variant="temporary"
       open={mobileOpen}
       onOpen={handleDrawerToggle}
       onClose={handleDrawerToggle}

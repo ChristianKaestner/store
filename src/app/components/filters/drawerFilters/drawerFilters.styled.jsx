@@ -1,5 +1,4 @@
 import { Box, Button } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import { styled } from '@mui/material/styles';
 
 export const FilterBtn = styled(Button)(({ theme }) => ({
@@ -15,9 +14,7 @@ export const FilterBtn = styled(Button)(({ theme }) => ({
 }));
 
 export const DrawerBlock = styled(Box)(({ theme }) => ({
-  position: 'fixed',
-  top: 0,
-  left: 0,
+  position: 'relative',
   width: 260,
   height: '100%',
   backgroundColor: theme.palette.primary.main,

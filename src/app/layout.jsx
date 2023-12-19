@@ -15,7 +15,7 @@ const openSans = Open_Sans({
   weight: ['400', '500', '700'],
 });
 
-export const metadata = layoutMetadata
+export const metadata = layoutMetadata;
 
 export default function RootLayout({ children }) {
   return (

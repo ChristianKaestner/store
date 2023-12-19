@@ -3,7 +3,6 @@ import { IconButton } from '@mui/material';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 export const BurgerMenuBtn = styled(IconButton)(({ theme }) => ({
-  paddingRight: 0,
   marginRight: 8,
   [theme.breakpoints.up('xs')]: {
     display: 'flex',

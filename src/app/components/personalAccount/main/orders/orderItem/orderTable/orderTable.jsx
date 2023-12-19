@@ -56,7 +56,7 @@ export default function OrderTable({ products, handleCart }) {
                   <TableRow>
                     <Cell align="left" width="50%">
                       <Image
-                        src={product.images[0]}
+                        src={PRODUCT_IMAGE_URL + product.images[0]}
                         alt={`${product.title} image`}
                         width={64}
                         height={64}

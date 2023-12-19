@@ -51,19 +51,23 @@ export default function ProductItem({ product, component = 'li', mb = 16 }) {
   };
 
   const handleMouseEnter = e => {
-    const target = e.target.nodeName;
-    if (target === 'path' || target === 'svg') return;
-    swiperRef.current.swiper.enabled = true;
-    swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
-    swiperRef?.current?.swiper?.slideNext();
-    swiperRef?.current?.swiper?.autoplay?.start();
-    swiperRef?.current?.swiper?.pagination?.init();
+    if (swiperRef?.current?.swiper) {
+      const target = e.target.nodeName;
+      if (target === 'path' || target === 'svg') return;
+      swiperRef.current.swiper.enabled = true;
+      swiperRef.current.swiper.originalParams.autoplay.delay = 6000;
+      swiperRef?.current?.swiper?.slideNext();
+      swiperRef?.current?.swiper?.autoplay?.start();
+      swiperRef?.current?.swiper?.pagination?.init();
+    }
   };
 
   const handleMouseLeave = () => {
-    swiperRef?.current?.swiper?.autoplay?.stop();
-    swiperRef?.current?.swiper?.pagination?.destroy();
-    swiperRef?.current?.swiper?.slideTo(0, 500, false);
+    if (swiperRef?.current?.swiper) {
+      swiperRef?.current?.swiper?.autoplay?.stop();
+      swiperRef?.current?.swiper?.pagination?.destroy();
+      swiperRef?.current?.swiper?.slideTo(0, 500, false);
+    }
   };
 
   return (

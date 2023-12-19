@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { resetFilters } from '@/app/redux/filters/slice';
 import { useFilters } from '@/app/hooks/useFilters';
-import { Drawer } from '@mui/material';
+import { SwipeableDrawer } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Sidebar from '../../sidebar/sidebar';
@@ -40,9 +40,9 @@ export default function DrawerFilters({ filter }) {
       >
         Filters
       </FilterBtn>
-      <Drawer
-        variant="temporary"
+      <SwipeableDrawer
         open={filtersOpen}
+        onOpen={() => setFiltersOpen(true)}
         onClose={() => setFiltersOpen(false)}
         ModalProps={{
           keepMounted: true,
@@ -72,7 +72,7 @@ export default function DrawerFilters({ filter }) {
             <Sidebar filter={filter} mobile={true} />
           </StyledBox>
         </DrawerBlock>
-      </Drawer>
+      </SwipeableDrawer>
     </>
   );
 }

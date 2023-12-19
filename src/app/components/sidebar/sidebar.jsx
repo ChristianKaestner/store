@@ -1,6 +1,5 @@
 'use client';
 
-// import { v4 as uuidv4 } from 'uuid';
 import { Aside } from './sidebar.styled';
 import PriceFilter from '../filters/price/price';
 import BrandFilter from '../filters/brand/brand';

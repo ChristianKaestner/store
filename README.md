@@ -51,8 +51,12 @@ After registration you can add products to favorites, purchase, and manage data 
    <p>Each product has its own rating and reviews. You can rate the product and add a photo. After that the review will become available on the product page. You can edit or delete a review in your personal cabinet. 
    </p>
 </li>
- <h4>Features</h4>
+<li>
+  <h4>Features</h4>
    <p>
    Unique design. Smoke cursor effect. Full mobile adaptation with flexible designs and normal viewing up to 280 pixel.
    </p>
+</li>
+    
+ 
 </ul>

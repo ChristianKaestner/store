@@ -1,4 +1,7 @@
 <h1>Smokey - Hookah shop</h1>
+<p align="center">
+  <a href="https://smokey.top/" target="blank"><img src="https://smokey-s3.s3.eu-central-1.amazonaws.com/logo.svg" width="200" alt="Smokey Logo" /></a>
+</p>
 <h2>Client</h2>
 <h2><a href="https://github.com/vladyslav-rohalov/smokey-server">Server</a> </h2>
 <p>Hookah shop with a colorful design, and great functionality.</p>

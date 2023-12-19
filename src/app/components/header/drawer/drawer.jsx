@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Divider, Drawer, Typography } from '@mui/material';
+import { Divider, SwipeableDrawer, Typography } from '@mui/material';
 import { LinkStyled } from './drawer.styled';
-import { ListStyled, ItemText, IconHome, IconPay } from './drawer.styled';
+import { ListStyled, ItemText, IconHome, IconCart } from './drawer.styled';
 import { IconProfile, IconShipping, IconPhone } from './drawer.styled';
 import { DrawerBlock, ButtonToggle, IconApp, Item } from './drawer.styled';
 import ProductsList from './products/products';
@@ -15,6 +15,7 @@ export default function DrawerMenu({
   handleDrawerToggle,
   openAuth,
   isLogin,
+  handleOpenCart
 }) {
   const [productsOpen, setProductsOpen] = useState(false);
 
@@ -22,10 +23,16 @@ export default function DrawerMenu({
     setProductsOpen(!productsOpen);
   };
 
+  const onCartClick = () => {
+    handleDrawerToggle()
+    handleOpenCart()
+  }
+
   return (
-    <Drawer
+    <SwipeableDrawer
       variant="temporary"
       open={mobileOpen}
+      onOpen={handleDrawerToggle}
       onClose={handleDrawerToggle}
       ModalProps={{
         keepMounted: true,
@@ -71,11 +78,9 @@ export default function DrawerMenu({
               </Item>
             )}
 
-            <Item onClick={handleDrawerToggle}>
-              <LinkStyled href="/">
-                <IconPay />
-                <ItemText>Payment</ItemText>
-              </LinkStyled>
+            <Item onClick={onCartClick}>
+              <IconCart />
+              <ItemText>Cart</ItemText>
             </Item>
 
             <Item onClick={handleDrawerToggle}>
@@ -94,6 +99,6 @@ export default function DrawerMenu({
           </ListStyled>
         )}
       </DrawerBlock>
-    </Drawer>
+    </SwipeableDrawer>
   );
 }

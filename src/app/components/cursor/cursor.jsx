@@ -1,29 +1,15 @@
 'use client';
 import { useEffect } from 'react';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function FluidCursor() {
-  const mobile = useMediaQuery('(max-width:599px)');
-
   useEffect(() => {
-    mobile
-      ? (document.body.style.backgroundColor = '#000000B3')
-      : (document.body.style.backgroundColor = '');
-
-    return () => {
-      document.body.style.backgroundColor = '';
-    };
-  }, [mobile]);
-
-  useEffect(() => {
-    if (mobile) return;
     const canvas = document.getElementsByTagName('canvas')[0];
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
 
     let config = {
       TEXTURE_DOWNSAMPLE: 1,
-      DENSITY_DISSIPATION: 0.98,
+      DENSITY_DISSIPATION: 0.97,
       VELOCITY_DISSIPATION: 0.99,
       PRESSURE_DISSIPATION: 0.8,
       PRESSURE_ITERATIONS: 25,
@@ -828,87 +814,96 @@ export default function FluidCursor() {
       }
     }
 
-    canvas.addEventListener(
-      'mousemove',
-      e => {
-        pointers[0].down = true;
-        pointers[0].color = [
+    const handleGlobalMouseMove = e => {
+      const globalMouseX = e.clientX;
+      const globalMouseY = e.clientY;
+
+      pointers[0].down = true;
+      pointers[0].color = [
+        Math.random() + 0.2,
+        Math.random() + 0.2,
+        Math.random() + 0.2,
+      ];
+
+      pointers[0].moved = pointers[0].down;
+      pointers[0].dx = (globalMouseX - pointers[0].x) * 10.0;
+      pointers[0].dy = (globalMouseY - pointers[0].y) * 10.0;
+      pointers[0].x = globalMouseX;
+      pointers[0].y = globalMouseY;
+    };
+
+    const handleGlobalMouseUp = e => {
+      pointers[0].down = false;
+    };
+
+    const handleGlobalTouchMove = e => {
+      const touches = e.touches;
+      for (let i = 0; i < touches.length; i++) {
+        let pointer = pointers[i];
+        pointer.moved = pointer.down;
+        pointer.dx = (touches[i].clientX - pointer.x) * 10.0;
+        pointer.dy = (touches[i].clientY - pointer.y) * 10.0;
+        pointer.x = touches[i].clientX;
+        pointer.y = touches[i].clientY;
+      }
+    };
+
+    const handleGlobalTouchStart = e => {
+      const touches = e.targetTouches;
+      for (let i = 0; i < touches.length; i++) {
+        if (i >= pointers.length) pointers.push(new pointerPrototype());
+
+        pointers[i].id = touches[i].identifier;
+        pointers[i].down = true;
+        pointers[i].x = touches[i].clientX;
+        pointers[i].y = touches[i].clientY;
+        pointers[i].color = [
           Math.random() + 0.2,
           Math.random() + 0.2,
           Math.random() + 0.2,
         ];
+      }
+    };
 
-        pointers[0].moved = pointers[0].down;
-        pointers[0].dx = (e.offsetX - pointers[0].x) * 10.0;
-        pointers[0].dy = (e.offsetY - pointers[0].y) * 10.0;
-        pointers[0].x = e.offsetX;
-        pointers[0].y = e.offsetY;
-      },
-      { passive: false }
-    );
+    const handleGlobalTouchEnd = e => {
+      const touches = e.changedTouches;
+      for (let i = 0; i < touches.length; i++)
+        for (let j = 0; j < pointers.length; j++)
+          if (touches[i].identifier == pointers[j].id) pointers[j].down = false;
+    };
 
-    canvas.addEventListener(
-      'touchmove',
-      e => {
-        e.preventDefault();
-        const touches = e.targetTouches;
-        for (let i = 0; i < touches.length; i++) {
-          let pointer = pointers[i];
-          pointer.moved = pointer.down;
-          pointer.dx = (touches[i].pageX - pointer.x) * 10.0;
-          pointer.dy = (touches[i].pageY - pointer.y) * 10.0;
-          pointer.x = touches[i].pageX;
-          pointer.y = touches[i].pageY;
-        }
-      },
-      // false
-      { passive: false }
-    );
+    const handleWindowResize = () => {
+      resizeCanvas();
+    };
 
-    canvas.addEventListener(
-      'touchstart',
-      e => {
-        e.preventDefault();
-        const touches = e.targetTouches;
-        for (let i = 0; i < touches.length; i++) {
-          if (i >= pointers.length) pointers.push(new pointerPrototype());
+    window.addEventListener('mousemove', handleGlobalMouseMove, {
+      passive: false,
+    });
+    window.addEventListener('mouseup', handleGlobalMouseUp, { passive: false });
+    window.addEventListener('touchmove', handleGlobalTouchMove, {
+      passive: false,
+    });
 
-          pointers[i].id = touches[i].identifier;
-          pointers[i].down = true;
-          pointers[i].x = touches[i].pageX;
-          pointers[i].y = touches[i].pageY;
-          pointers[i].color = [
-            Math.random() + 0.2,
-            Math.random() + 0.2,
-            Math.random() + 0.2,
-          ];
-        }
-      },
-      { passive: false }
-    );
+    window.addEventListener('touchstart', handleGlobalTouchStart, {
+      passive: false,
+    });
+    window.addEventListener('touchend', handleGlobalTouchEnd, {
+      passive: false,
+    });
+    window.addEventListener('resize', handleWindowResize, {
+      passive: false,
+    });
 
-    window.addEventListener(
-      'mouseup',
-      () => {
-        pointers[0].down = false;
-      },
-      { passive: false }
-    );
-
-    window.addEventListener(
-      'touchend',
-      e => {
-        const touches = e.changedTouches;
-        for (let i = 0; i < touches.length; i++)
-          for (let j = 0; j < pointers.length; j++)
-            if (touches[i].identifier == pointers[j].id)
-              pointers[j].down = false;
-      },
-      { passive: false }
-    );
+    return () => {
+      window.removeEventListener('touchmove', handleGlobalTouchMove);
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+      window.removeEventListener('touchstart', handleGlobalTouchStart);
+      window.removeEventListener('touchend', handleGlobalTouchEnd);
+      window.removeEventListener('resize', handleWindowResize);
+    };
   }, []);
 
-  return mobile ? (
+  return (
     <canvas
       style={{
         position: 'fixed',
@@ -920,5 +915,5 @@ export default function FluidCursor() {
         opacity: 0.7,
       }}
     />
-  ) : null;
+  );
 }

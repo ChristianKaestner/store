@@ -50,6 +50,10 @@ export default function Header() {
     dispatch(toggleMobile(false));
   };
 
+  const handleOpenCart = () => {
+    dispatch(toggleCart(true));
+  };
+
   return (
     <>
       <AppBar>
@@ -70,7 +74,7 @@ export default function Header() {
                 isLogin={isLogin}
               />
               <CartIcon
-                onOpenCartModal={() => dispatch(toggleCart(true))}
+                onOpenCartModal={handleOpenCart}
                 totalProducts={cartQuantity}
               />
             </Box>
@@ -80,6 +84,7 @@ export default function Header() {
             handleDrawerToggle={() => dispatch(toggleMobile(!mobileModal))}
             openAuth={handleAuth}
             isLogin={isLogin}
+            handleOpenCart={handleOpenCart}
           />
           {productsModal && (
             <Modal

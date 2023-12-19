@@ -6,8 +6,8 @@ import AppsIcon from '@mui/icons-material/Apps';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
-import PaymentIcon from '@mui/icons-material/Payment';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 export const LinkStyled = styled(Link)({
   display: 'flex',
@@ -71,7 +71,7 @@ export const IconPhone = styled(PhoneIcon)(({ theme }) => ({
   fontSize: '1.5rem',
   color: theme.palette.primary.light,
 }));
-export const IconPay = styled(PaymentIcon)(({ theme }) => ({
+export const IconCart = styled(ShoppingCartOutlinedIcon)(({ theme }) => ({
   marginRight: 16,
   fontSize: '1.5rem',
   color: theme.palette.primary.light,

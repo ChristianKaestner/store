@@ -23,6 +23,9 @@
     <li>
         <span><a href="https://mui.com/material-ui/" target="_blank" rel="noreferrer">Material UI</a>, Design</span>
     </li>
+    <li>
+        <span><a href="https://cloud.google.com/" target="_blank" rel="noreferrer">Google cloud</a>, Server</span>
+    </li>
 </ul>
 <h3>Usage</h3>
 <ul>
@@ -34,5 +37,19 @@ After registration all goods from the cart are synchronized with the cart on the
 After registration you can add products to favorites, purchase, and manage data in your personal cabinet.
    </p>
 </li>
-
+<li>
+   <h4>Searching and filtering </h4>
+   <p>The products are categorized. Each category has its own individual and general filters. All filters are stored both in the application state and displayed as URL parameters.
+   You can also use the autocomplete in the header bar to search or use pre-made templates by clicking the products button in the header.
+   </p>
+</li>
+<li>
+   <h4>Reviews</h4>
+   <p>Each product has its own rating and reviews. You can rate the product and add a photo. After that the review will become available on the product page. You can edit or delete a review in your personal cabinet. 
+   </p>
+</li>
+ <h4>Features</h4>
+   <p>
+   Unique design. Smoke cursor effect. Full mobile adaptation with flexible designs and normal viewing up to 280 pixel.
+   </p>
 </ul>

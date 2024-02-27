@@ -26,7 +26,7 @@ export default function About() {
           fontWeight: 500,
         }}
       >
-        IN THE PROCESS..
+        text
       </Typography>
 
       <Image
